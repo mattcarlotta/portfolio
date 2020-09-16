@@ -2,17 +2,17 @@ import { createRef, PureComponent } from "react";
 import { ClickHandlerProps } from "~types";
 
 class ClickHandler extends PureComponent<ClickHandlerProps> {
-  wrapperRef = createRef<HTMLDivElement>();
-
-  componentDidMount() {
+  componentDidMount(): void {
     document.addEventListener("mousedown", this.handleClickOutside);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
-  handleClickOutside = (event: Event) => {
+  wrapperRef = createRef<HTMLDivElement>();
+
+  handleClickOutside = (event: Event): void => {
     const { closeModal } = this.props;
 
     if (
@@ -23,7 +23,9 @@ class ClickHandler extends PureComponent<ClickHandlerProps> {
       closeModal();
   };
 
-  render = () => <div ref={this.wrapperRef}>{this.props.children}</div>;
+  render = (): JSX.Element => (
+    <div ref={this.wrapperRef}>{this.props.children}</div>
+  );
 }
 
 export default ClickHandler;

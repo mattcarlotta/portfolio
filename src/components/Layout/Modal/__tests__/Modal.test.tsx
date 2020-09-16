@@ -34,7 +34,7 @@ const initProps = {
   onClick,
 };
 
-const wrapper = mount(
+const wrapper: any = mount(
   <Modal {...initProps}>
     <Image src={image} alt="example" />
   </Modal>,

@@ -23,7 +23,7 @@ const Page = ({
   snapshotdirectory,
   snapshots,
   tech,
-}: PageProps) => (
+}: PageProps): JSX.Element => (
   <>
     <Head {...head} />
     <ModalContainer>

@@ -34,7 +34,7 @@ class CustomDocument extends Document {
     }
   }
 
-  render = () => (
+  render = (): JSX.Element => (
     <Html lang="en">
       <Head>
         <meta name="theme-color" content="#000000" />

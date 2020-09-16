@@ -25,7 +25,7 @@ const initProps = {
   tech: ["Babel", "Enzyme", "Javascript", "Jest", "RollupJS"],
 };
 
-let wrapper = mount(<Page {...initProps} />);
+let wrapper: any = mount(<Page {...initProps} />);
 
 describe("Page", () => {
   it("renders without errors", () => {
