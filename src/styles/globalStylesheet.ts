@@ -1,98 +1,101 @@
 /* istanbul ignore file */
 import { createGlobalStyle } from "styled-components";
 
-export default createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: 'Poppins Light';
+    font-family: "Jura Medium";
     font-style: normal;
     font-weight: normal;
-    src: url("/fonts/Poppins-Light.ttf") format('truetype');
+    font-display: swap;
+    src: url("/fonts/Jura-Medium.ttf") format("truetype");
   }
 
   #__next, body, html {
-    min-height: 100vh;
-  }
-
-  html,body {
+		height: 100%;
     width: 100%;
-    margin: 0;
-    padding: 0;
   }
-  
+
   body {
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: "Poppins Light", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    background-color: #ebebeb;
+    margin: 0;
+    font-family: "Jura Medium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+		background: url("./bg.webp");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center;
+		background-color: #010007;
+		color: #fff;
   }
 
-  @keyframes wave {
-    0% {
-      left: -60%;
-    }
-
-    100% {
-      left: 125%;
-    }
+  *, :after, :before {
+    box-sizing: border-box;
   }
 
-  @keyframes pulse {
-    0% {
-      background-color: #eee;
-    }
-
-    50% {
-      background-color: #e4e4e4;
-    }
-
-    100% {
-      background-color: #eee;
-    }
+  :-moz-focus-inner {
+    border: 0;
   }
 
-  @keyframes pop {
-    0% {
-      top: 6px;
-      height: 46px;
-    }
-
-    50%,
-    100% {
-      top: 19px;
-      height: 21px;
-    }
-  }
-
-  @keyframes delay {
-    0%,
-    40%,
-    100% {
-      transform: scaleY(0.05);
-      -webkit-transform: scaleY(0.05);
-    }
-
-    20% {
-      transform: scaleY(1);
-      -webkit-transform: scaleY(1);
-    }
-  }
-
-  @keyframes fadeIn {
+	@keyframes fadein {
     from {
       opacity: 0;
     }
-
     to {
       opacity: 1;
     }
   }
 
-  ::-moz-focus-inner {
-    border: 0;
+	@keyframes wave {
+    0% {
+      left: -60%;
+    }
+    100% {
+      left: 125%;
+    }
   }
 
-  *, ::after, ::before {
-    box-sizing: border-box;
+  @keyframes spinner-spin {
+  	100% {
+  		transform: rotate(360deg);
+  	}
   }
+
+  @keyframes spinner-fade {
+  	20% {
+  		opacity: 0.1;
+  	}
+  	40% {
+  		opacity: 1;
+  	}
+  	60% {
+  		opacity: 0.1;
+  	}
+  }
+
+  @keyframes spin {
+  	from {
+  		transform: rotate(0);
+  	}
+  	to {
+  		transform: rotate(359deg);
+  	}
+  }
+
+  @keyframes grow {
+  	0% {
+  		width: 0px;
+  	}
+  	100% {
+  		width: 100px;
+  	}
+  }
+
+	@keyframes rotate {
+		0% {
+			transform: rotateX(0) rotateY(0) rotateZ(0);
+		}
+		100% {
+			transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+		}
+	}
 `;
+
+export default GlobalStyle;

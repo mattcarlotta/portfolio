@@ -1,16 +1,19 @@
-/* istanbul ignore file */
 import styled from "styled-components";
 
-export default styled.div`
+const ModalContent = styled.div<{ isLoaded?: boolean }>`
   width: 100%;
-  display: flex;
+  height: calc(100% - 96px);
+  padding: 50px;
   position: relative;
-  overflow-y: auto;
-  flex-direction: column;
-  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
-    0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
   border-radius: 10px;
-  background-color: #f8f8f8;
+  background-color: #fff;
+  color: #0096ff;
+  text-shadow: 0px 0px 0.5px #fff;
   text-align: left;
   z-index: 200;
+  flex-direction: column;
+  visibility: ${({ isLoaded }) => (isLoaded ? "visible" : "hidden")};
 `;
+
+export default ModalContent;

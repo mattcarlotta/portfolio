@@ -1,9 +1,7 @@
-/* istanbul ignore file */
 import styled from "styled-components";
 
-export default styled.div`
+const BackgroundOverlay = styled.div`
   opacity: 1;
-  transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   top: 0;
   left: 0;
   right: 0;
@@ -13,3 +11,5 @@ export default styled.div`
   touch-action: none;
   background-color: rgba(0, 0, 0, 0.5);
 `;
+
+export default BackgroundOverlay;

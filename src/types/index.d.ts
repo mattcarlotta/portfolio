@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import { NextApiRequest, NextApiResponse, NextPage } from "next";
+import { NextPage } from "next";
 import { AppProps } from "next/app";
 import {
   ComponentType,
@@ -7,45 +7,12 @@ import {
   CSSProperties,
   FC,
   FormEvent,
+  MouseEvent,
   ReactNode,
+  ReactElement,
 } from "react";
-import { AnyAction, Store } from "redux";
-import { SagaIterator } from "redux-saga";
-import * as actions from "../actions/Users";
-
-/// ACTIONS ///
-
-export type UserData = {
-  _id: string;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  userName?: string;
-  backgroundInfo?: string;
-  address?: {
-    street?: string;
-    state?: string;
-    suite?: string;
-    city?: string;
-    zipCode?: string;
-  };
-};
-
-export type UserProps = {
-  props: UserData;
-};
-
-export interface UpdatedUserProps extends UserProps {
-  id: string;
-}
 
 /// COMPONENTS ///
-
-export type ActionButtonProps = {
-  className?: string;
-  dataTestId?: string;
-  style?: CSSProperties;
-};
 
 export type BaseFieldProps = {
   name: string;
@@ -73,6 +40,11 @@ export interface CardProps {
   deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
 }
 
+export type ClickHandlerProps = {
+  closeModal: (selected?: string) => void;
+  children: ReactNode;
+};
+
 type ComponentProps = {
   className?: string;
   children?: any;
@@ -93,39 +65,12 @@ export type ContainerProps = {
   style?: CSSProperties;
 };
 
-export interface ButtonProps extends ComponentProps {
-  dataTestId?: string;
-  disabled?: boolean;
-  danger?: boolean;
-  primary?: boolean;
-  onClick?: (event: any) => void;
-  type: "button" | "submit" | "reset" | undefined;
-}
-
-export interface DeleteButtonProps extends ActionButtonProps {
-  onClick: () => ReturnType<typeof actions.deleteUser>;
-}
-export interface DisplayUserListProps {
-  data: any[];
-  isEditingID?: string;
-  deleteUser: (id: string) => ReturnType<typeof actions.deleteUser>;
-  handleCloseModal: (event: any) => void;
-  handleEditClick: (id: string) => void;
-  handleResetEditClick: (event: any) => void;
-  resetMessage: () => void;
-  updateUser: ({
-    props: UserData,
-    id: string,
-  }) => ReturnType<typeof actions.updateUser>;
-}
-
-export interface EditButtonProps extends ActionButtonProps {
-  onClick: (event: any) => void;
-}
-
-export type FieldErrorProps = {
-  className?: string;
-  errors?: string;
+export type FileDetailsProps = {
+  active: bool;
+  fileName: PropTypes.string;
+  location?: string;
+  status: string;
+  source: string;
 };
 
 export type HeaderProps = {
@@ -135,121 +80,70 @@ export type HeaderProps = {
   url: string;
 };
 
-export type InputProps = ComponentProps;
+export type ImageProps = {
+  alt: string;
+  containerStyle?: string;
+  handleImageLoaded: () => void;
+  onClick: () => void;
+  src: string;
+  styles?: string;
+};
 
 export type LinkProps = {
+  ariaLabel: string;
+  asHref?: string;
+  dataTestId: string;
   children: ReactNode;
   className?: string;
   href: string;
-};
-
-export type LoadingUsersProps = {
-  className?: string;
-  duration?: string;
-  height?: number;
-  opacity?: string;
-  width?: number;
+  padding?: string;
+  style?: CSSProperties;
 };
 
 export type ModalProps = {
-  children: ReactNode;
-  maxWidth?: string;
-  onClick: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  title?: string;
+  children: ReactElement;
+  isOpen: boolean;
+  onClick: () => void;
 };
 
-export type ShowUsersState = {
-  isEditingID: string;
-  openModal: boolean;
+export type ModalContainerProps = {
+  children: (
+    isOpen: boolean,
+    selected: string,
+    toggleModal: (selected?: string) => void,
+  ) => JSX.Element;
 };
 
-export interface TextAreaProps extends ComponentProps {
-  rows?: number;
-}
-
-export type ToastProps = {
-  type: "success" | "info" | "error" | "warning";
-  message: string;
-};
-
-export interface UserFormFields extends BaseFieldProps {
-  disabled?: boolean;
-  readOnly?: boolean;
-}
-
-export interface UserFormProps extends UserData {
-  _id?: string;
-  resetMessage: () => void;
-  serverError?: string;
-  serverMessage?: string;
-  resetForm: (event?: any) => void;
-  cancelForm?: (event: any) => void;
-  submitAction: ({
-    props: UserData,
-    id: string,
-  }) => ReturnType<typeof actions.createUser | typeof actions.updateUser>;
-}
-
-export interface UserFormState {
-  fields: UserFormFields[];
-  errors: number;
-  isSubmitting: boolean;
-}
-
-export type UserListNavigationProps = {
-  className?: string;
-  openModal: (event: any) => void;
-  seedDB: (type: string) => ReturnType<typeof actions.seedDB>;
-};
-
-/// REDUX + SAGAS ///
-
-export interface SagaStore extends Store {
-  sagaTask: Task;
-}
-
-export type ServerReducerState = {
-  error: string;
-  message: string;
-};
-
-export type UserReducerState = {
-  data: [];
-  isLoading: boolean;
-};
-
-export type ReducerState = {
-  server: ServerReducerState;
-  users: UserReducerState;
-};
-
-/// UTILS ///
-
-export type FieldKeys = "city" | "street" | "state" | "suite" | "zipCode";
-
-export type ParseKeys<T> = {
-  [K in keyof T]: T[K] extends { name: string } ? T[K]["name"] : never;
-}[Exclude<keyof T, keyof []>];
-
-export type ParseFields<T> = {
-  address: {
-    [N in Extract<ParseKeys<T>, FieldKeys>]: string;
+export type PageProps = {
+  description: ReactNode | string;
+  head: {
+    title: string;
+    url: string;
+    description: string;
   };
-} & {
-  [N in Exclude<ParseKeys<T>, FieldKeys>]: string;
+  filedetails: {
+    active: boolean;
+    location?: string;
+    status: string;
+    source: string;
+  };
+  snapshots: Array<{
+    src: string;
+    alt: string;
+    title: string;
+  }>;
+  snapshotdirectory?: string;
+  tech: string[];
 };
 
 export {
-  AnyAction,
   AppProps,
   ChangeEvent,
   ComponentType,
   CSSProperties,
   FC,
   FormEvent,
-  NextApiRequest,
-  NextApiResponse,
   NextPage,
+  MouseEvent,
   ReactNode,
-  SagaIterator,
 };

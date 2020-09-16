@@ -1,35 +1,39 @@
-import { FaCoffee } from "react-icons/fa";
+import Bars from "~components/Layout/Bars";
+import Card from "~components/Layout/Card";
+import CardTitle from "~components/Layout/CardTitle";
+import Flex from "~components/Layout/Flex";
+import Image from "~components/Layout/Image";
+import Projects from "~components/Layout/Projects";
+import Head from "~components/Navigation/Header";
 import Link from "~components/Navigation/Link";
-import SubTitle from "~components/Layout/SubTitle";
-import Header from "~components/Navigation/Header";
-import { NextPage } from "~types";
+import { FC } from "~types";
 
-const Home: NextPage = () => (
-  <div
-    data-testid="home-page"
-    css="text-align: center;height: 100%;color: #007ec5;background-color: #ebebeb;"
-  >
-    <Header title="Home" url="/" />
-    <div css="max-width: 850px;width: 100%;padding-top: 25vh;margin-left: auto;	margin-right: auto;margin-bottom: 20px;">
-      <img
-        css="margin-bottom: 10px;width: 100%;"
-        src="/images/nextjsKit.png"
-        alt="ssrLogoLight.png"
-      />
-      <SubTitle>Edit files in the root directory and save to reload.</SubTitle>
-      <Link href="/users">
-        <FaCoffee
-          style={{
-            position: "relative",
-            top: 6,
-            fontSize: 23,
-            marginRight: 5,
-          }}
-        />
-        See Example
-      </Link>
-    </div>
-  </div>
+const Home: FC = (): JSX.Element => (
+  <>
+    <Head title="Home" url="/" description="My personal website." />
+    <Flex data-testid="home-page" justify="center" flexwrap>
+      {Projects.map(({ title, href, src, alt, ariaLabel }) => (
+        <Link
+          dataTestId={title}
+          ariaLabel={ariaLabel}
+          key={href}
+          padding="0px"
+          href={`/${href}`}
+        >
+          <Card>
+            <CardTitle>{title}</CardTitle>
+            <Bars />
+            <Image
+              src={`projects/${src}`}
+              alt={alt}
+              styles="max-height: 180px;max-width: 250px; margin: 0 auto; border-radius: 4px;"
+              containerStyle="cursor: pointer;align-items: center;display: flex;width: 85%;height: 80%;float: left;margin: 15px 25px;text-align: center;"
+            />
+          </Card>
+        </Link>
+      ))}
+    </Flex>
+  </>
 );
 
 export default Home;
