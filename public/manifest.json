@@ -1,6 +1,6 @@
 {
-  "short_name": "nextjs-ssr-kit",
-  "name": "NextJS SSR Kit",
+  "short_name": "Matt Carlotta",
+  "name": "Personal Website",
   "icons": [
     {
       "src": "favicon.ico",
@@ -14,19 +14,13 @@
       "purpose": "any maskable"
     },
     {
-      "src": "logo_256x256.png",
-      "type": "image/png",
-      "sizes": "256x256",
-      "purpose": "any maskable"
-    },
-    {
       "src": "logo_512x512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

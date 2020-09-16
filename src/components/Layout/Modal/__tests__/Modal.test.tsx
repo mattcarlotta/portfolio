@@ -1,62 +1,72 @@
-import { mount, ReactWrapper } from "enzyme";
+import { mount } from "enzyme";
+import { act } from "react-dom/test-utils";
+import { SyntheticEvent } from "react";
 import Modal from "../index";
+
+const flushPromises = () => new Promise(setImmediate);
+
+const image = new global.Image();
+image.src =
+  "data:image/png;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAQAAAAfQ//73v/+BiOh/AAA=";
+
+const Image = ({
+  alt,
+  handleImageLoaded,
+  src,
+}: {
+  alt: string;
+  handleImageLoaded?: (e: SyntheticEvent<HTMLImageElement, Event>) => void;
+  src: any;
+}) => (
+  <img
+    src={src}
+    alt={alt}
+    onLoad={handleImageLoaded}
+    onError={handleImageLoaded}
+  />
+);
 
 const onClick = jest.fn();
 
-const initialProps = {
-  children: <p data-testid="modal-details">Test</p>,
-  maxWidth: "",
+const initProps = {
+  children: <h1>Example Modal Content</h1>,
+  isOpen: false,
   onClick,
-  title: "Test Title",
 };
 
+const wrapper: any = mount(
+  <Modal {...initProps}>
+    <Image src={image} alt="example" />
+  </Modal>,
+);
+
 describe("Modal", () => {
-  let wrapper: ReactWrapper;
-  beforeEach(() => {
-    wrapper = mount(<Modal {...initialProps} />);
+  it("initially renders nothing", () => {
+    expect(wrapper.find("ModalContainer").exists()).toBeFalsy();
   });
 
-  // it("initially adds an 'overflow:hidden' style to the body", () => {
-  // expect(document.body).toHaveStyle("overflow: hidden");
-  // });
+  it("renders a modal with some sample content without errors", async () => {
+    wrapper.setProps({ isOpen: true });
 
-  // it("removes 'overflow:hidden' style from the body on unmount", () => {
-  //   wrapper.unmount();
-  //   expect(wrapper.find("body")).not.toHaveStyle("overflow: hidden");
-  // });
+    await act(async () => {
+      wrapper.find("img").props().onLoad();
+      await flushPromises();
+      wrapper.update();
 
-  it("renders without errors", () => {
-    expect(wrapper.find("[data-testid='modal-overlay']")).toExist();
+      expect(wrapper.find("Container").exists()).toBeTruthy();
+      expect(wrapper.find("ModalContent").props().isLoaded).toBeTruthy();
+    });
   });
 
-  it("renders the title", () => {
-    expect(wrapper.find("[data-testid='modal-title']").first()).toHaveText(
-      initialProps.title,
-    );
-  });
-
-  it("closes the modal when the close button is clicked", () => {
+  it("calls a passed in 'onClick' prop function", () => {
     wrapper.setProps({ onClick });
-    wrapper.find("[data-testid='close-modal']").first().simulate("click");
 
-    expect(onClick).toHaveBeenCalledTimes(1);
+    wrapper.find("button").simulate("click");
+    expect(onClick).toHaveBeenCalled();
   });
 
-  it("renders wrapped children nodes", () => {
-    expect(wrapper.find("[data-testid='modal-details']")).toExist();
-  });
-
-  it("initially sets the max-width to 600px", () => {
-    expect(
-      wrapper.find("[data-testid='modal-container']").first(),
-    ).toHaveStyleRule("max-width", "600px");
-  });
-
-  it("initially sets the max-width to 'this.props.maxWidth'", () => {
-    wrapper.setProps({ maxWidth: "700px" });
-
-    expect(
-      wrapper.find("[data-testid='modal-container']").first(),
-    ).toHaveStyleRule("max-width", "700px");
+  it("closes the modal", () => {
+    wrapper.setProps({ isOpen: false });
+    expect(wrapper.find("ModalContainer").exists()).toBeFalsy();
   });
 });

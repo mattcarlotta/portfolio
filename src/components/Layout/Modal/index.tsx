@@ -1,71 +1,55 @@
-import { useEffect } from "react";
+import { cloneElement, useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { FaTimes } from "react-icons/fa";
-import Flex from "~components/Layout/Flex";
-import FlexEnd from "~components/Layout/FlexEnd";
-import FlexStart from "~components/Layout/FlexStart";
 import BackgroundOverlay from "./BackgroundOverlay";
+import ClickHandler from "./ClickHandler";
+import Container from "./Container";
 import CloseModalButton from "./CloseModalButton";
 import ModalContent from "./ModalContent";
-import ModalContainer from "./ModalContainer";
-import ModalRoot from "./ModalRoot";
 import WindowContainer from "./WindowContainer";
 import { ModalProps } from "~types";
 
 const Modal = ({
   children,
-  maxWidth,
+  isOpen,
   onClick,
-  title,
-}: ModalProps): JSX.Element => {
+}: ModalProps): JSX.Element | null => {
+  const [isLoaded, setLoaded] = useState(true);
+
+  const handleImageLoaded = useCallback(() => setLoaded(true), []);
+
   /* istanbul ignore next */
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-
+    document.body.style.overflow = isOpen ? "hidden" : "visible";
     return () => {
       document.body.style.overflow = "visible";
     };
-  }, []);
+  }, [isOpen]);
 
-  return createPortal(
-    <div data-testid="modal-overlay">
-      <BackgroundOverlay />
-      <WindowContainer>
-        <ModalRoot>
-          <ModalContainer data-testid="modal-container" maxWidth={maxWidth}>
-            <ModalContent data-testid="modal-content">
-              <Flex
-                data-testid="modal-header"
-                style={{ padding: 15, width: "auto" }}
-              >
-                <FlexStart>
-                  <div
-                    data-testid="modal-title"
-                    css="padding: 2px;font-weight: bold;color: #7d7d7d;font-size: 16px;"
-                  >
-                    {title}
-                  </div>
-                </FlexStart>
-                <FlexEnd>
-                  <CloseModalButton
-                    data-testid="close-modal"
-                    aria-label="close modal"
-                    onClick={onClick}
-                  >
+  useEffect(() => {
+    if (!isOpen) setLoaded(false);
+  }, [isOpen]);
+
+  return isOpen
+    ? createPortal(
+        <div id="modal">
+          <BackgroundOverlay data-testid="background-overlay" />
+          <WindowContainer>
+            <Container>
+              <ClickHandler closeModal={onClick}>
+                <ModalContent isLoaded={isLoaded}>
+                  <CloseModalButton data-testid="close-modal" onClick={onClick}>
                     <FaTimes />
                   </CloseModalButton>
-                </FlexEnd>
-              </Flex>
-              <div data-testid="modal-body" css="padding: 10px 20px 20px;">
-                {children}
-              </div>
-            </ModalContent>
-          </ModalContainer>
-        </ModalRoot>
-      </WindowContainer>
-    </div>,
-    document.body,
-  );
+                  {cloneElement(children, { handleImageLoaded })}
+                </ModalContent>
+              </ClickHandler>
+            </Container>
+          </WindowContainer>
+        </div>,
+        document.body,
+      )
+    : null;
 };
 
 export default Modal;

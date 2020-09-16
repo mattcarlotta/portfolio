@@ -2,9 +2,11 @@ import { mount } from "enzyme";
 import Link from "../index";
 
 const initProps = {
+  ariaLabel: "Navigate to test",
+  className: "Test",
   children: "Test",
-  style: {},
-  href: "/test",
+  dataTestId: "link",
+  href: "/",
 };
 
 const wrapper = mount(<Link {...initProps} />);

@@ -1,28 +1,22 @@
-context("Home Page", () => {
+context("Not Found Page", () => {
   beforeEach(() => {
     cy.visit("/notfound", { failOnStatusCode: false });
   });
 
-  it("initially displays a welcome message", () => {
-    cy.get("[data-testid=modal-message]").should(
+  it("displays a 404 message", () => {
+    cy.get("[data-testid='not-found-page']").should("have.length", 1);
+
+    cy.get("[data-testid='status-code']").should("have.text", "404");
+    cy.get("[data-testid='page-response']").should(
       "have.text",
-      "Welcome to the NextJS SSR Kit!",
+      "Uh Oh! Page not found!",
     );
   });
 
-  it("initially displays a logo and with a  'See Example' link", () => {
-    cy.get("[data-testid=not-found-page]").should("have.length", 1);
-
-    cy.get("[data-testid=link]")
-      .should("have.length", 1)
-      .and("have.attr", "href", "/");
-  });
-
-  it("allows a user to navigate to the home page", () => {
-    cy.get("[data-testid=link]").click();
+  it("allows a user to navigate back to the home page", () => {
+    cy.get("[data-testid='navigate-home']").click();
 
     cy.url().should("contain", "/");
-
-    cy.get("[data-testid=home-page]").should("have.length", 1);
+    cy.get("[data-testid='home-page']").should("have.length", 1);
   });
 });

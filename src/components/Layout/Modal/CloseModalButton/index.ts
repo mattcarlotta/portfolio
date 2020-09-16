@@ -1,7 +1,6 @@
-/* istanbul ignore file */
 import styled from "styled-components";
 
-export default styled.button`
+const CloseModalButton = styled.button`
   cursor: pointer;
   color: #d2d2d2;
   border: 0;
@@ -21,3 +20,5 @@ export default styled.button`
     outline: none;
   }
 `;
+
+export default CloseModalButton;

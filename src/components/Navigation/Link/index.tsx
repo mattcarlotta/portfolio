@@ -2,31 +2,43 @@ import Link from "next/link";
 import styled from "styled-components";
 import { LinkProps } from "~types";
 
-const LinkComponent = ({ children, className, href, ...rest }: LinkProps) => (
-  <Link href={href} prefetch={false} passHref>
-    <a data-testid="link" {...rest} className={className}>
+const LinkComponent = ({
+  ariaLabel,
+  asHref,
+  className,
+  children,
+  dataTestId,
+  href,
+  style,
+}: LinkProps) => (
+  <Link href={href} as={asHref} prefetch={false} passHref>
+    <a
+      aria-label={ariaLabel}
+      data-testid={dataTestId}
+      style={style}
+      className={className}
+    >
       {children}
     </a>
   </Link>
 );
 
 const StyledLink = styled(LinkComponent)`
-  cursor: pointer;
-  display: block;
-  color: #007ec5;
-  font-size: 16px;
-  text-align: center;
-  transition: all 0.2s ease-in-out;
+  padding: ${({ padding }) => padding || "10px 15px"};
+  color: #1295f3;
+  transition: all 0.5s;
   text-decoration: none;
-  text-transform: uppercase;
 
   :hover {
-    color: #0f7ae5;
-    text-decoration: underline;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
   }
 
   :focus {
-    outline: 0;
+    color: #1295f3;
+    outline: none !important;
+    text-decoration: none;
   }
 `;
 

@@ -1,26 +1,21 @@
 import Head from "next/head";
+import Center from "~components/Layout/Center";
 import Flex from "~components/Layout/Flex";
-import HomeIcon from "~components/Layout/HomeIcon";
-import Link from "~components/Navigation/Link";
+import Home from "~components/Navigation/Home";
 import { NextPage } from "~types";
 
 const NotFound: NextPage = () => (
-  <Flex justify="center" style={{ height: "90vh" }} id="notfound">
+  <Flex justify="center" style={{ height: "50vh" }}>
     <Head>
-      <title>Server Error - NextJS SSR Kit</title>
+      <title>Server Error - Matt Carlotta</title>
     </Head>
-    <div css="color: #03a9f3;text-align: center;">
-      <div css="font-size: 120px;margin-bottom: 0;padding: 0px;">
-        <span>500</span>
-      </div>
-      <div css="font-size: 32px;font-weight: bold;margin-top: -5px;margin-bottom: 20px;letter-spacing: 2px;">
+    <Center>
+      <div css="font-size: 40px;margin-bottom: 0;padding: 0px;">500</div>
+      <div css="font-size: 20px;font-weight: bold;margin-top: -5px;margin-bottom: 20px;letter-spacing: 2px;">
         Uh Oh! The server encountered an error!
       </div>
-      <Link href="/">
-        <HomeIcon />
-        <span>Go Back</span>
-      </Link>
-    </div>
+      <Home />
+    </Center>
   </Flex>
 );
 
