@@ -10,11 +10,11 @@ const OutsideLink = styled.a.attrs(() => ({
   text-decoration: underline;
   cursor: pointer;
 
-  &:hover {
+  :hover {
     color: #fff;
   }
 
-  &:focus {
+  :focus {
     color: #1295f3;
     outline: none !important;
   }

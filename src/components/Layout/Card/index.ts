@@ -42,7 +42,7 @@ const Card = styled.div`
     border-image-slice: 1;
   }
 
-  &:hover {
+  :hover {
     background-color: rgba(2, 28, 48, 0.4);
     box-shadow: 0px 0px 26px -2px rgba(0, 64, 255, 1);
     transform: scale(1.1);
@@ -59,7 +59,7 @@ const Card = styled.div`
       opacity: 0.4;
     }
 
-    &:after {
+    :after {
       border-width: 2px;
       border-style: solid;
       -o-border-image: -o-linear-gradient(
