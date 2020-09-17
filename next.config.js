@@ -1,3 +1,4 @@
+require("./env");
 const openBrowser = require("react-dev-utils/openBrowser");
 const plugins = require("./config/plugins");
 
