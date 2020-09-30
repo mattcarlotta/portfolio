@@ -1,61 +1,3 @@
-const snapshots = [
-  {
-    id: "Dashboard",
-    dir: "dashboard",
-    name: "Dashboard",
-  },
-  {
-    id: "Email - Event",
-    dir: "email",
-    name: "EmailEventReminder",
-  },
-  {
-    id: "Email - Schedule",
-    dir: "email",
-    name: "EmailScheduleReminder",
-  },
-  {
-    id: "Events",
-    dir: "events",
-    name: "Events",
-  },
-  {
-    id: "Event Scheduling",
-    dir: "schedule",
-    name: "EventSchedule",
-  },
-  {
-    id: "Help",
-    dir: "help",
-    name: "Help",
-  },
-  {
-    id: "Member - Availability",
-    dir: "availability",
-    name: "Availability",
-  },
-  {
-    id: "Member - Settings",
-    dir: "settings",
-    name: "Settings",
-  },
-  {
-    id: "Schedule - Calendar",
-    dir: "schedule",
-    name: "Schedule",
-  },
-  {
-    id: "Schedule - My Games",
-    dir: "schedule",
-    name: "ScheduleMyGames",
-  },
-  {
-    id: "Schedule - My Event",
-    dir: "schedule",
-    name: "ScheduledEvent",
-  },
-];
-
 context("SJS Ice Team Project Page", () => {
   before(() => {
     cy.visit("/sjs-ice-team");
@@ -104,7 +46,63 @@ context("SJS Ice Team Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    snapshots.forEach(({ id, dir, name }) => {
+    [
+      {
+        id: "Dashboard",
+        dir: "dashboard",
+        name: "Dashboard",
+      },
+      {
+        id: "Email - Event",
+        dir: "email",
+        name: "EmailEventReminder",
+      },
+      {
+        id: "Email - Schedule",
+        dir: "email",
+        name: "EmailScheduleReminder",
+      },
+      {
+        id: "Events",
+        dir: "events",
+        name: "Events",
+      },
+      {
+        id: "Event Scheduling",
+        dir: "schedule",
+        name: "EventSchedule",
+      },
+      {
+        id: "Help",
+        dir: "help",
+        name: "Help",
+      },
+      {
+        id: "Member - Availability",
+        dir: "availability",
+        name: "Availability",
+      },
+      {
+        id: "Member - Settings",
+        dir: "settings",
+        name: "Settings",
+      },
+      {
+        id: "Schedule - Calendar",
+        dir: "schedule",
+        name: "Schedule",
+      },
+      {
+        id: "Schedule - My Games",
+        dir: "schedule",
+        name: "ScheduleMyGames",
+      },
+      {
+        id: "Schedule - My Event",
+        dir: "schedule",
+        name: "ScheduledEvent",
+      },
+    ].forEach(({ id, dir, name }) => {
       cy.get(`[data-testid='${id}']`).click();
 
       const src = `/projects/sjsit/${dir}/sjsiceteam${name}`;
