@@ -1,46 +1,3 @@
-const snapshots = [
-  {
-    id: "Create Plan",
-    name: "CreatePlan",
-  },
-  {
-    id: "Create Template",
-    name: "CreateTemplate",
-  },
-  {
-    id: "Dashboard",
-    name: "Dashboard",
-  },
-  {
-    id: "Notifications",
-    name: "Notes",
-  },
-  {
-    id: "Profile",
-    name: "Profile",
-  },
-  {
-    id: "Refund Transactions",
-    name: "RefundTrans",
-  },
-  {
-    id: "Send Message",
-    name: "SendMessage",
-  },
-  {
-    id: "Subscriber Registration",
-    name: "SubRegister",
-  },
-  {
-    id: "Subscribers",
-    name: "Subs",
-  },
-  {
-    id: "Transactions",
-    name: "Transactions",
-  },
-];
-
 context("Subskribble Project Page", () => {
   before(() => {
     cy.visit("/subskribble");
@@ -80,7 +37,48 @@ context("Subskribble Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    snapshots.forEach(({ id, name }) => {
+    [
+      {
+        id: "Create Plan",
+        name: "CreatePlan",
+      },
+      {
+        id: "Create Template",
+        name: "CreateTemplate",
+      },
+      {
+        id: "Dashboard",
+        name: "Dashboard",
+      },
+      {
+        id: "Notifications",
+        name: "Notes",
+      },
+      {
+        id: "Profile",
+        name: "Profile",
+      },
+      {
+        id: "Refund Transactions",
+        name: "RefundTrans",
+      },
+      {
+        id: "Send Message",
+        name: "SendMessage",
+      },
+      {
+        id: "Subscriber Registration",
+        name: "SubRegister",
+      },
+      {
+        id: "Subscribers",
+        name: "Subs",
+      },
+      {
+        id: "Transactions",
+        name: "Transactions",
+      },
+    ].forEach(({ id, name }) => {
       cy.get(`[data-testid='${id}']`).click();
 
       const src = `/projects/subskribble/subskribble${name}`;

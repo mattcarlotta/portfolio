@@ -1,22 +1,3 @@
-const snapshots = [
-  {
-    id: "Home",
-    name: "Home",
-  },
-  {
-    id: "Ex. API",
-    name: "ExampleAPI",
-  },
-  {
-    id: "Ex. API Create",
-    name: "ExampleAPICreate",
-  },
-  {
-    id: "Ex. API Edit",
-    name: "ExampleAPIEdit",
-  },
-];
-
 context("NextJS SSR Kit Project Page", () => {
   before(() => {
     cy.visit("/nextjs-ssr-kit");
@@ -56,7 +37,24 @@ context("NextJS SSR Kit Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    snapshots.forEach(({ id, name }) => {
+    [
+      {
+        id: "Home",
+        name: "Home",
+      },
+      {
+        id: "Ex. API",
+        name: "ExampleAPI",
+      },
+      {
+        id: "Ex. API Create",
+        name: "ExampleAPICreate",
+      },
+      {
+        id: "Ex. API Edit",
+        name: "ExampleAPIEdit",
+      },
+    ].forEach(({ id, name }) => {
       cy.get(`[data-testid='${id}']`).click();
 
       const src = `/projects/nextssrkit/nextssrkit${name}`;

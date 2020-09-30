@@ -1,18 +1,3 @@
-const snapshots = [
-  {
-    id: "Ex. Syntax Code",
-    name: "Code",
-  },
-  {
-    id: "Ex. Syntax Code Preview",
-    name: "CodePreview",
-  },
-  {
-    id: "Ex. Syntax Code Source",
-    name: "Source",
-  },
-];
-
 context("React SMDE Project Page", () => {
   before(() => {
     cy.visit("/react-smde");
@@ -61,7 +46,20 @@ context("React SMDE Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    snapshots.forEach(({ id, name }) => {
+    [
+      {
+        id: "Ex. Syntax Code",
+        name: "Code",
+      },
+      {
+        id: "Ex. Syntax Code Preview",
+        name: "CodePreview",
+      },
+      {
+        id: "Ex. Syntax Code Source",
+        name: "Source",
+      },
+    ].forEach(({ id, name }) => {
       cy.get(`[data-testid='${id}']`).click();
 
       const src = `/projects/reactsmde/reactsmde${name}`;
