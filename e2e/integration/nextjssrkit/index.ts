@@ -1,3 +1,22 @@
+const snapshots = [
+  {
+    id: "Home",
+    name: "Home",
+  },
+  {
+    id: "Ex. API",
+    name: "ExampleAPI",
+  },
+  {
+    id: "Ex. API Create",
+    name: "ExampleAPICreate",
+  },
+  {
+    id: "Ex. API Edit",
+    name: "ExampleAPIEdit",
+  },
+];
+
 context("NextJS SSR Kit Project Page", () => {
   before(() => {
     cy.visit("/nextjs-ssr-kit");
@@ -29,15 +48,15 @@ context("NextJS SSR Kit Project Page", () => {
     cy.get("[data-testid='tech']").should("have.length", 1);
   });
 
-  it("displays the 1 project snapshot thumbnail", () => {
+  it("displays the 4 project snapshot thumbnail", () => {
     cy.get("[data-testid='snapshots']").should("have.length", 1);
     cy.get("[data-testid='snapshots']")
       .find("picture")
-      .should("have.length", 1);
+      .should("have.length", 4);
   });
 
   it("displays a modal for individual project snapshots", () => {
-    [{ id: "Logo", name: "Preview" }].forEach(({ id, name }) => {
+    snapshots.forEach(({ id, name }) => {
       cy.get(`[data-testid='${id}']`).click();
 
       const src = `/projects/nextssrkit/nextssrkit${name}`;
