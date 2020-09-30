@@ -12,7 +12,7 @@ const NotFound: NextPage = () => (
     </Head>
     <Center>
       <div
-        css={`
+        css={css`
           font-size: 40px;
           margin-bottom: 0;
           padding: 0px;
@@ -21,7 +21,7 @@ const NotFound: NextPage = () => (
         500
       </div>
       <div
-        css={`
+        css={css`
           font-size: 20px;
           font-weight: bold;
           margin-top: -5px;
