@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Bars = ({ className }: { className?: string }) => (
   <div className={className}>
@@ -9,6 +9,15 @@ const Bars = ({ className }: { className?: string }) => (
 );
 
 const BarsIcon = styled(Bars)`
+  @keyframes grow {
+    0% {
+      width: 0px;
+    }
+    100% {
+      width: 100px;
+    }
+  }
+
   position: relative;
 
   .bar1,
@@ -23,19 +32,16 @@ const BarsIcon = styled(Bars)`
 
   .bar1 {
     top: 4px;
-    -webkit-animation: grow 1.5s linear infinite;
     animation: grow 1.5s linear infinite;
   }
 
   .bar2 {
     top: 8px;
-    -webkit-animation: grow 1.65s linear infinite;
     animation: grow 1.65s linear infinite;
   }
 
   .bar3 {
     top: 12px;
-    -webkit-animation: grow 1.75s linear infinite;
     animation: grow 1.75s linear infinite;
   }
 `;

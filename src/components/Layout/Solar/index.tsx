@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import FlexCenter from "~components/Layout/FlexCenter";
 
 const Solar = ({ className }: { className?: string }) => (
@@ -19,6 +19,15 @@ const Solar = ({ className }: { className?: string }) => (
 );
 
 const SolarIcon = styled(Solar)`
+  @keyframes spin {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
   position: relative;
   background-color: transparent;
   z-index: -1;

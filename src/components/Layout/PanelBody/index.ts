@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Bars from "~components/Layout/Bars";
 
 const PanelBody = styled.div`

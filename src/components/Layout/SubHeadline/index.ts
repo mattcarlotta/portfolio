@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const SubHeadline = styled.p`
   color: #1295f3;

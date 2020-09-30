@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Info = styled.div`
   @media (max-width: 550px) {

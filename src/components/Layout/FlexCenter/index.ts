@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const FlexCenter = styled.div<{ direction?: string }>`
   flex-direction: ${({ direction }) => direction || "column"};

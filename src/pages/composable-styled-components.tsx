@@ -8,7 +8,7 @@ const ComposableStyledComponents: FC = (): JSX.Element => (
       <>
         A lightweight composable npm package for&nbsp;
         <OutsideLink
-          aria-label="Navigate to styled-components home page"
+          ariaLabel="Navigate to styled-components home page"
           href="https://styled-components.com/"
           style={{ padding: 0 }}
         >
@@ -17,7 +17,7 @@ const ComposableStyledComponents: FC = (): JSX.Element => (
         . The package is created using a custom RollupJS configuration, is
         backed by 100% test coverage and is published to&nbsp;
         <OutsideLink
-          aria-label="Navigate to npm composable-styled-components package page"
+          ariaLabel="Navigate to npm composable-styled-components package page"
           href="https://www.npmjs.com/package/composable-styled-components"
           style={{ padding: 0 }}
         >
@@ -26,7 +26,7 @@ const ComposableStyledComponents: FC = (): JSX.Element => (
         . Meanwhile, the documentation website is built in Typescript, optimized
         for SEO with&nbsp;
         <OutsideLink
-          aria-label="Navigate to Algolia home page"
+          ariaLabel="Navigate to Algolia home page"
           href="https://www.algolia.com"
           style={{ padding: 0 }}
         >

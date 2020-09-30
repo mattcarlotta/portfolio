@@ -1,19 +1,25 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Orbits = ({ className }: { className?: string }) => (
   <div className={className}>
     <div className="container">
-      <div className="circle" />
-      <div className="circle" />
-      <div className="circle" />
-      <div className="circle" />
-      <div className="circle" />
-      <div className="circle" />
+      {[0, 1, 2, 3, 4, 5].map(key => (
+        <div key={key} className={`circle circle-${key}`} />
+      ))}
     </div>
   </div>
 );
 
 const OrbitsIcon = styled(Orbits)`
+  @keyframes solar-rotate {
+    0% {
+      transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+    100% {
+      transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+  }
+
   position: relative;
   top: 0;
   left: 0;
@@ -32,23 +38,23 @@ const OrbitsIcon = styled(Orbits)`
     width: 150px;
     height: 150px;
     transform: rotateX(60deg) rotateZ(-30deg);
-    animation: rotate 20s infinite linear;
+    animation: solar-rotate 20s infinite linear;
     transform-style: preserve-3d;
   }
 
-  .circle:nth-child(1) {
+  .circle-1 {
     transform: rotateZ(72deg) rotateX(63.435deg);
   }
-  .circle:nth-child(2) {
+  .circle-2 {
     transform: rotateZ(144deg) rotateX(63.435deg);
   }
-  .circle:nth-child(3) {
+  .circle-3 {
     transform: rotateZ(216deg) rotateX(63.435deg);
   }
-  .circle:nth-child(4) {
+  .circle-4 {
     transform: rotateZ(288deg) rotateX(63.435deg);
   }
-  .circle:nth-child(5) {
+  .circle-5 {
     transform: rotateZ(360deg) rotateX(63.435deg);
   }
 

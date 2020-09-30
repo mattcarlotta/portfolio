@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const ImageContainer = styled.div`
   align-items: center;

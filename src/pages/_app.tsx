@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { CacheProvider } from "@emotion/core";
+import { cache } from "emotion";
 import Body from "~components/Layout/Body";
 import Header from "~components/Layout/Header";
 import Footer from "~components/Layout/Footer";
@@ -7,7 +9,7 @@ import GlobalStylesheet from "~styles/globalStylesheet";
 import { FC, AppProps } from "~types";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => (
-  <>
+  <CacheProvider value={cache}>
     <Head>
       <meta
         name="viewport"
@@ -22,7 +24,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => (
       <Footer />
     </Main>
     <GlobalStylesheet />
-  </>
+  </CacheProvider>
 );
 
 export default App;
