@@ -8,7 +8,7 @@ const AliasDirs: FC = (): JSX.Element => (
       <>
         With the help of the&nbsp;
         <OutsideLink
-          aria-label="Navigate to babel-plugin-module-resolver home page"
+          ariaLabel="Navigate to babel-plugin-module-resolver home page"
           href="https://github.com/tleunen/babel-plugin-module-resolver"
           style={{ padding: 0 }}
         >

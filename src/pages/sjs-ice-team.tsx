@@ -12,7 +12,7 @@ const SJSIceTeam: FC = (): JSX.Element => (
         Ice Team. The application is separated into 4 services: Front-facing
         application,&nbsp;
         <OutsideLink
-          aria-label="Navigate to emailing microservice source page"
+          ariaLabel="Navigate to emailing microservice source page"
           href="https://github.com/mattcarlotta/SJSITAPP-Agent"
           style={{ padding: 0 }}
         >
@@ -20,7 +20,7 @@ const SJSIceTeam: FC = (): JSX.Element => (
         </OutsideLink>
         ,&nbsp;
         <OutsideLink
-          aria-label="Navigate to image microservice source page"
+          ariaLabel="Navigate to image microservice source page"
           href="https://github.com/mattcarlotta/SJSITAPP-Image"
           style={{ padding: 0 }}
         >

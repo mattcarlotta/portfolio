@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { css } from "@emotion/core";
 import BrokenImage from "~components/Layout/BrokenImage";
 import { ImageProps } from "~types";
 
@@ -29,7 +30,13 @@ const Image = ({
   }, []);
 
   return (
-    <picture data-testid="picture" css={containerStyle} onClick={onClick}>
+    <picture
+      data-testid="picture"
+      css={css`
+        ${containerStyle}
+      `}
+      onClick={onClick}
+    >
       {!error ? (
         <>
           <source
@@ -39,7 +46,9 @@ const Image = ({
           />
           <img
             ref={handleImageRef}
-            css={styles}
+            css={css`
+              ${styles}
+            `}
             src={`/${src}.png`}
             onLoad={onLoad}
             onError={onError}

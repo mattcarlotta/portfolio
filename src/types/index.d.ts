@@ -136,6 +136,15 @@ export type PageProps = {
   tech: string[];
 };
 
+export type OutsideLinkProps = {
+  ariaLabel: string;
+  className?: string;
+  children: string | ReactNode;
+  dataTestId?: string;
+  href: string;
+  style?: CSSProperties;
+};
+
 export {
   AppProps,
   ChangeEvent,

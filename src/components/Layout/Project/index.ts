@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Project = styled.div`
   box-shadow: 0px 0px 26px 0px rgba(0, 64, 255, 1);

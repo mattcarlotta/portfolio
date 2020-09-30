@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const Body = styled.div`
   @media (max-width: 1000px) {

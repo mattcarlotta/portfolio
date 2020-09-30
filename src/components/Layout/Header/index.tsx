@@ -1,3 +1,4 @@
+import { css } from "@emotion/core";
 import { IconContext } from "react-icons";
 import { FaBlog } from "react-icons/fa";
 import { GoHome, GoMail } from "react-icons/go";
@@ -41,13 +42,21 @@ const FOOTERLINKS = [
 ];
 
 const Header: FC = (): JSX.Element => (
-  <header css="padding-top: 60px;">
+  <header
+    css={css`
+      padding-top: 60px;
+    `}
+  >
     <IconContext.Provider
       value={{
         style: { fontSize: 18, verticalAlign: "text-top", marginRight: 5 },
       }}
     >
-      <nav css="margin: 0 auto;">
+      <nav
+        css={css`
+          margin: 0 auto;
+        `}
+      >
         <FlexCenter direction="row">
           <ListItem>
             <Link
@@ -61,8 +70,8 @@ const Header: FC = (): JSX.Element => (
           {FOOTERLINKS.map(({ dataTestId, description, Icon, link }) => (
             <ListItem key={description}>
               <OutsideLink
-                data-testid={dataTestId}
-                aria-label={description}
+                dataTestId={dataTestId}
+                ariaLabel={description}
                 href={link}
               >
                 <Icon className="icon" />

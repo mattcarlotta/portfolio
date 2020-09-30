@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { AiOutlineFileImage } from "react-icons/ai";
 
 const Image = ({ className }: { className?: string }) => (

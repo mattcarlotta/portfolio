@@ -28,6 +28,14 @@ const Projects = [
     ariaLabel: "Navigate to the React Hooks Guide project page.",
   },
   {
+    title: "NextJS SSR Kit",
+    href: "nextjs-ssr-kit",
+    description: "A custom fully-loaded boilerplate for server-side solutions.",
+    src: "nextssrkit/nextssrkitPreviewMin",
+    alt: "nextjs-ssr-kit-preview",
+    ariaLabel: "Navigate to the Next SSR Kit project page.",
+  },
+  {
     title: "Subskribble",
     href: "subskribble",
     description:
@@ -43,14 +51,6 @@ const Projects = [
     src: "composable/composablePreviewMin",
     alt: "composable-preview",
     ariaLabel: "Navigate to the Composable Styled Components project page.",
-  },
-  {
-    title: "NextJS SSR Kit",
-    href: "nextjs-ssr-kit",
-    description: "A custom fully-loaded boilerplate for server-side solutions.",
-    src: "nextssrkit/nextssrkitPreviewMin",
-    alt: "nextjs-ssr-kit-preview",
-    ariaLabel: "Navigate to the Next SSR Kit project page.",
   },
   {
     title: "React SMDE",

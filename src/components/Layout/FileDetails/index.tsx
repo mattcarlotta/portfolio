@@ -1,3 +1,4 @@
+import { css } from "@emotion/core";
 import { AiOutlineFolderOpen, AiOutlineCode } from "react-icons/ai";
 import { BsFillCircleFill } from "react-icons/bs";
 import { RiMapPin2Line } from "react-icons/ri";
@@ -17,7 +18,12 @@ const FileDetails = ({
       style: { fontSize: 20, verticalAlign: "text-top", marginRight: 7 },
     }}
   >
-    <div css="margin-bottom: 20px; padding-left: 20px;">
+    <div
+      css={css`
+        margin-bottom: 20px;
+        padding-left: 20px;
+      `}
+    >
       <Info data-testid="status">
         <BsFillCircleFill style={{ color: active ? "limegreen" : "#2c4776" }} />
         {status}

@@ -3,7 +3,7 @@ import { FC } from "~types";
 
 const NextJSSSRKit: FC = (): JSX.Element => (
   <Page
-    description=" A fully-loaded custom NextJS boilerplate for server-side solutions. This website and several projects were built using this boilerplate!"
+    description=" A fully-loaded, built from the ground up, NextJS boilerplate for server-side solutions. This website and several projects were built using this boilerplate! Sports a custom NextJS config, Emotion SSR integration, custom Jest and Cypress testing suites, implements Github Actions for CI, and it even has an interactive API example using MongoDB."
     head={{
       title: "NextJS SSR Kit",
       url: "/nextjs-ssr-kit",
@@ -18,13 +18,29 @@ const NextJSSSRKit: FC = (): JSX.Element => (
     snapshotdirectory="nextssrkit"
     snapshots={[
       {
-        src: "nextssrkitPreview",
-        alt: "next-ssr-kit-preview",
-        title: "Logo",
+        src: "nextssrkitHome",
+        alt: "next-ssr-kit-home-preview",
+        title: "Home",
+      },
+      {
+        src: "nextssrkitExampleAPI",
+        alt: "next-ssr-kit-example-preview",
+        title: "Ex. API",
+      },
+      {
+        src: "nextssrkitExampleAPICreate",
+        alt: "next-ssr-kit-example-create-preview",
+        title: "Ex. API Create",
+      },
+      {
+        src: "nextssrkitExampleAPIEdit",
+        alt: "next-ssr-kit-example-create-preview",
+        title: "Ex. API Edit",
       },
     ]}
     tech={[
       "Cypress",
+      "Emotion",
       "Enzyme",
       "Eslint",
       "Github Actions",
@@ -32,7 +48,6 @@ const NextJSSSRKit: FC = (): JSX.Element => (
       "MongoDB",
       "NextJS",
       "ReactJS (w/ReduxJS + Redux Saga)",
-      "Styled-components",
       "Stylelint",
       "Typescript",
     ]}
