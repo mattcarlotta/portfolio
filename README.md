@@ -12,7 +12,7 @@ Current browser support:
 
 Mobile:
 <br />
-<img src="https://i.imgur.com/rgXVtHZ.png" alt="mobile.png" />
+<img src="https://i.imgur.com/svTrPUW.png" alt="mobile.png" />
 
 Desktop:
 <br />
