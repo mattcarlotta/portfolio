@@ -1,12 +1,14 @@
 import Head from "next/head";
 import { CacheProvider } from "@emotion/core";
-import { cache } from "emotion";
+import createCache from "@emotion/cache";
 import Body from "~components/Layout/Body";
 import Header from "~components/Layout/Header";
 import Footer from "~components/Layout/Footer";
 import Main from "~components/Layout/Main";
 import GlobalStylesheet from "~styles/globalStylesheet";
 import { FC, AppProps } from "~types";
+
+const cache = createCache();
 
 const App: FC<AppProps> = ({ Component, pageProps }) => (
   <CacheProvider value={cache}>
