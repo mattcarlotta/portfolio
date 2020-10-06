@@ -1,6 +1,6 @@
 {
   "name": "portoflio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My personal website.",
   "repository": "https://github.com/mattcarlotta/portfolio",
   "author": "Matt Carlotta",
@@ -27,7 +27,7 @@
     "test:watchall": "NODE_ENV=test jest --config ./jest.json .-watchAll"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{ts,tsx}": [
       "npm run lint",
       "npm run test"
     ]
@@ -39,12 +39,11 @@
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/cache": "^10.0.29",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
-    "emotion": "^10.0.27",
-    "emotion-server": "^10.0.27",
     "lodash.get": "^4.4.2",
     "lodash.isempty": "^4.4.0",
     "next": "^9.5.3",
