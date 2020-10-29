@@ -2,7 +2,6 @@ const { DefinePlugin } = require("webpack");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-const WebpackBar = require("webpackbar");
 const address = require("address");
 
 const { analyze, baseURL, LOCALHOST, NODE_ENV, PORT } = process.env;
@@ -26,12 +25,6 @@ module.exports = isServer => {
     );
   } else {
     plugins.push(
-      /* shows a compilation bar instead of the default compile message */
-      new WebpackBar({
-        color: "#268bd2",
-        minimal: false,
-        compiledIn: false,
-      }),
       /* in console error */
       inDev &&
         new FriendlyErrorsWebpackPlugin({
