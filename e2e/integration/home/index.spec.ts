@@ -1,8 +1,8 @@
 const Projects = [
   {
-    id: "Project Aeon (working title)",
-    href: "project-aeon",
-    title: "Project Aeon",
+    id: "Snackables",
+    href: "snackables",
+    title: "Snackables",
   },
   {
     id: "Composable Styled Components",
