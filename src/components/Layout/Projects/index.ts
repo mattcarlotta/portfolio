@@ -1,13 +1,13 @@
 /* istanbul ignore file */
 const Projects = [
   {
-    title: "Project Aeon (working title)",
-    href: "project-aeon",
+    title: "Snackables",
+    href: "snackables",
     description:
-      "A better web app to ask web development questions and use integrated tools to answer them.",
-    src: "projectaeon/projectaeonPreviewMin",
-    alt: "project-aeon-preview",
-    ariaLabel: "Navigate to the Project Aeon project page.",
+      "A package module that automatically loads environment variables from a predefined ENV_LOAD variable.",
+    src: "snackables/snackablesLogoMin",
+    alt: "snackables-preview",
+    ariaLabel: "Navigate to the snackables project page.",
   },
   {
     title: "SJS Ice Team",
