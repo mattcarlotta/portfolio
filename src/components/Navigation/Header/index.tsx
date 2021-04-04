@@ -1,8 +1,6 @@
 import Head from "next/head";
 import { HeaderProps } from "~types";
 
-const { LOCALHOST } = process.env;
-
 const Header = ({
   description,
   title,
@@ -11,10 +9,13 @@ const Header = ({
 }: HeaderProps): JSX.Element => (
   <Head>
     <title>{title} - Matt Carlotta</title>
-    <link rel="canonical" href={`${LOCALHOST}${url}`} />
+    <link rel="canonical" href={`${process.env.NEXT_PUBLIC_CLIENT}${url}`} />
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={`${LOCALHOST}${url}`} />
+    <meta
+      property="og:url"
+      content={`${process.env.NEXT_PUBLIC_CLIENT}${url}`}
+    />
     <meta property="og:type" content={type} />
   </Head>
 );

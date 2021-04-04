@@ -1,11 +1,12 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const SSDTGenApp: FC = (): JSX.Element => (
+const SSDTGenApp: NextPage = () => (
   <Page
-    description="A standalone app that attempts to build and compile custom SSDTs (System Service Descriptor Tables) for X99/Z170/Z97/H97 systems running Mac OS. Specifically, it will inject properties into the system&#39;s ACPI (Advanced Configuration and Power Interface) tables for: on-board sound, an external GPU/HDMI audio, sSata Contoller, ethernet, IMEI controller, LPC support, NVMe devices, Sata Controller, SBUS controller, XHC usb power options, and XOSI support."
+    description="a standalone app that attempts to build and compile custom ssdts (system service descriptor Tables) for x99/z170/z97/h97 systems running mac os. specifically, it will inject properties into the system&#39;s acpi (advanced configuration and power interface) tables for: on-board sound, an external gpu/hdmi audio, ssata contoller, ethernet, imei controller, lpc support, nvme devices, sata controller, sbus controller, xhc usb power options, and xosi support."
     head={{
-      title: "ssdtGen App",
+      title: "ssdtgen app",
       url: "/ssdtgen-app",
       description:
         "A standalone Mac OS application that builds and compiles custom SSDTs for X99, Z170, Z97, and H97 systems running Mac OS.",
@@ -18,22 +19,22 @@ const SSDTGenApp: FC = (): JSX.Element => (
     snapshotdirectory="ssdtgenapp"
     snapshots={[
       {
-        src: "ssdtgenappLogo",
-        alt: "logo-preview",
-        title: "Logo",
-      },
-      {
         src: "ssdtgenappPreview",
         alt: "app-preview",
-        title: "App",
+        title: "app",
       },
       {
         src: "ssdtgenappExample",
         alt: "example-preview",
-        title: "Ex. SSDT",
+        title: "ex. ssdt",
+      },
+      {
+        src: "ssdtgenappLogo",
+        alt: "logo-preview",
+        title: "logo",
       },
     ]}
-    tech={["Bash", "Swift", "ASL"]}
+    tech={["bash", "swift", "asl"]}
   />
 );
 

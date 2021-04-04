@@ -1,28 +1,30 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
 import Link from "~components/Navigation/Link";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const FullstackMERNKit: FC = (): JSX.Element => (
+const FullstackMERNKit: NextPage = () => (
   <Page
     description={
       <>
-        A fully-loaded custom boilerplate using MongoDB, Express, React/Redux
-        and Node for client-side solutions. This website and several projects
+        a fully-loaded custom boilerplate using mongodb, express, react/redux
+        and node for client-side solutions. this website and several projects
         were once built using this boilerplate, but have since been archived in
         favor of the&nbsp;
         <Link
           ariaLabel="Navigate to the Next SSR Kit project page."
           dataTestId="nextjs-ssr-link"
-          style={{ padding: 0, textDecoration: "underline" }}
           href="/nextjs-ssr-kit"
+          padding="0"
+          showUnderline
         >
-          NextJS SSR Kit
+          nextjs ssr kit
         </Link>
         .
       </>
     }
     head={{
-      title: "Fullstack M.E.R.N. Kit",
+      title: "fullstack m.e.r.n kit",
       url: "/fullstack-mern-kit",
       description:
         "A fully-loaded custom boilerplate using MongoDB, Express, React/Redux and Node for client-side solutions.",
@@ -37,10 +39,10 @@ const FullstackMERNKit: FC = (): JSX.Element => (
       {
         src: "mernkitPreview",
         alt: "mernkit-preview",
-        title: "Logo",
+        title: "logo",
       },
     ]}
-    tech={["MongoDB", "ExpressJS", "ReactJS", "NodeJS"]}
+    tech={["mongdb", "expressjs", "reactjs", "nodejs"]}
   />
 );
 

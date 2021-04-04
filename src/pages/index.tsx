@@ -1,3 +1,4 @@
+import * as React from "react";
 import Bars from "~components/Layout/Bars";
 import Card from "~components/Layout/Card";
 import CardTitle from "~components/Layout/CardTitle";
@@ -6,9 +7,9 @@ import Image from "~components/Layout/Image";
 import Projects from "~components/Layout/Projects";
 import Head from "~components/Navigation/Header";
 import Link from "~components/Navigation/Link";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const Home: FC = (): JSX.Element => (
+const Home: NextPage = () => (
   <>
     <Head title="Home" url="/" description="My personal website." />
     <Flex data-testid="home-page" justify="center" flexwrap>

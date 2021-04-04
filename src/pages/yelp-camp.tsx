@@ -1,11 +1,12 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const YelpCamp: FC = (): JSX.Element => (
+const YelpCamp: NextPage = () => (
   <Page
-    description="An experimental website for creating, editing, and reviewing campground sites from all over California. Utilizing Google maps, the OpenWeatherMap API, and user reviews, campers can plan their journey ahead of time."
+    description="an experimental website for creating, editing, and reviewing campground sites from all over california. utilizing google maps, the openweathermap api, and user reviews, campers can plan their journey ahead of time."
     head={{
-      title: "Yelp Camp",
+      title: "yelp camp",
       url: "/yelp-camp",
       description:
         "An experimental website for creating, editing, and reviewing campground sites from all over California.",
@@ -20,10 +21,10 @@ const YelpCamp: FC = (): JSX.Element => (
       {
         src: "yelpcampPreview",
         alt: "yelp-camp-preview",
-        title: "Ex. Campground",
+        title: "ex. campground",
       },
     ]}
-    tech={["MongoDB", "ExpressJS", "ReactJS", "NodeJS"]}
+    tech={["mongodb", "expressjs", "reactjs", "nodejs"]}
   />
 );
 

@@ -23,21 +23,26 @@ const LinkComponent = ({
   </Link>
 );
 
-const StyledLink = styled(LinkComponent)`
+const StyledLink = styled(LinkComponent)<{
+  fontSize?: string;
+  showUnderline?: boolean;
+}>`
   padding: ${({ padding }) => padding || "10px 15px"};
   color: #1295f3;
   transition: all 0.5s;
   text-decoration: none;
+  outline: none;
+  font-size: ${({ fontSize }) => fontSize};
 
   :hover {
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: ${({ showUnderline }) =>
+      showUnderline ? "underline" : "none"};
     color: #fff;
   }
 
   :focus {
     color: #1295f3;
-    outline: none !important;
     text-decoration: none;
   }
 `;

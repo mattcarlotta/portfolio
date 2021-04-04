@@ -81,11 +81,11 @@ export type HeaderProps = {
 };
 
 export type ImageProps = {
-  alt: string;
+  alt?: string;
   containerStyle?: string;
   handleImageLoaded: () => void;
   onClick: () => void;
-  src: string;
+  src?: string;
   styles?: string;
 };
 
@@ -109,7 +109,7 @@ export type ModalProps = {
 export type ModalContainerProps = {
   children: (
     isOpen: boolean,
-    selected: string,
+    selected?: string,
     toggleModal: (selected?: string) => void,
   ) => JSX.Element;
 };

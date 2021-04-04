@@ -9,9 +9,11 @@ const Home: FC = (): JSX.Element => (
       dataTestId="navigate-home"
       ariaLabel="Navigate back to home page"
       href="/"
+      fontSize="15px"
+      showUnderline
     >
-      <GoHome style={{ marginRight: 5, verticalAlign: "baseline" }} />
-      Go Home
+      <GoHome style={{ marginRight: 5, position: "relative", top: 2 }} />
+      Go Back Home
     </Link>
   </Center>
 );

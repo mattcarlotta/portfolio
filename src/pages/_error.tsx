@@ -1,12 +1,12 @@
 import Head from "next/head";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import Center from "~components/Layout/Center";
 import Flex from "~components/Layout/Flex";
 import Home from "~components/Navigation/Home";
 import { NextPage } from "~types";
 
 const NotFound: NextPage = () => (
-  <Flex justify="center" style={{ height: "50vh" }}>
+  <Flex justify="center" height="50vh">
     <Head>
       <title>Server Error - Matt Carlotta</title>
     </Head>
@@ -29,7 +29,7 @@ const NotFound: NextPage = () => (
           letter-spacing: 2px;
         `}
       >
-        Uh Oh! The server encountered an error!
+        uh oh! the server encountered an error!
       </div>
       <Home />
     </Center>

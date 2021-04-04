@@ -1,16 +1,17 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const AliasDirs: FC = (): JSX.Element => (
+const AliasDirs: NextPage = () => (
   <Page
     description={
       <>
-        With the help of the&nbsp;
+        with the help of the&nbsp;
         <OutsideLink
           ariaLabel="Navigate to babel-plugin-module-resolver home page"
           href="https://github.com/tleunen/babel-plugin-module-resolver"
-          style={{ padding: 0 }}
+          padding="0"
         >
           babel-plugin-module-resolver
         </OutsideLink>
@@ -19,17 +20,17 @@ const AliasDirs: FC = (): JSX.Element => (
       </>
     }
     head={{
-      title: "Alias Dirs",
+      title: "alias dirs",
       url: "/alias-dirs",
       description:
         "Automatically creates aliased import directories for babel.",
     }}
     filedetails={{
       active: false,
-      status: "Decommissioned",
+      status: "decommissioned",
       source: "https://github.com/mattcarlotta/alias-dirs",
     }}
-    tech={["Babel", "Enzyme", "Javascript", "Jest", "RollupJS"]}
+    tech={["babel", "enzyme", "javascript", "jest", "rollupjs"]}
   />
 );
 

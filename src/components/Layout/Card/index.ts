@@ -4,7 +4,7 @@ import CardTitle from "~components/Layout/CardTitle";
 
 const Card = styled.div`
   width: 300px;
-  height: 250px;
+  height: 260px;
   margin: 5px;
   border-radius: 4px;
   overflow: hidden;

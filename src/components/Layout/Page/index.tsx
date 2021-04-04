@@ -1,3 +1,4 @@
+import * as React from "react";
 import CardTitle from "~components/Layout/CardTitle";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import Image from "~components/Layout/Image";

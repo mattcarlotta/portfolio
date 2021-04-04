@@ -1,11 +1,12 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const Subskribble: FC = (): JSX.Element => (
+const Subskribble: NextPage = () => (
   <Page
-    description="An experimental web application to create, manage, and send personalized updates to a list of subscribers. The application also included subscriber plans, plan promotionals, payment options, account charting and analytics, notifications, and an image CDN microservice."
+    description="an experimental web application to create, manage, and send personalized updates to a list of subscribers. the application also included subscriber plans, plan promotionals, payment options, account charting and analytics, notifications, and an image cdn microservice."
     head={{
-      title: "Subskribble",
+      title: "subskribble",
       url: "/subskribble",
       description:
         "A web application to create, manage, and send personalized updates to a list of subscribers.",
@@ -20,55 +21,55 @@ const Subskribble: FC = (): JSX.Element => (
       {
         src: "subskribbleCreatePlan",
         alt: "create-plan-preview",
-        title: "Create Plan",
+        title: "create plan",
       },
       {
         src: "subskribbleCreateTemplate",
         alt: "create-template-preview",
-        title: "Create Template",
+        title: "create template",
       },
       {
         src: "subskribbleDashboard",
         alt: "dashboard-preview",
-        title: "Dashboard",
+        title: "dashboard",
       },
       {
         src: "subskribbleNotes",
         alt: "notifications-preview",
-        title: "Notifications",
+        title: "notifications",
       },
       {
         src: "subskribbleProfile",
         alt: "profile-preview",
-        title: "Profile",
-      },
-      {
-        src: "subskribbleRefundTrans",
-        alt: "refund-transactions-preview",
-        title: "Refund Transactions",
-      },
-      {
-        src: "subskribbleSendMessage",
-        alt: "send-message-preview",
-        title: "Send Message",
+        title: "profile",
       },
       {
         src: "subskribbleSubRegister",
         alt: "subcriber-registration-preview",
-        title: "Subscriber Registration",
+        title: "registration",
+      },
+      {
+        src: "subskribbleRefundTrans",
+        alt: "refund-transactions-preview",
+        title: "refunds",
+      },
+      {
+        src: "subskribbleSendMessage",
+        alt: "send-message-preview",
+        title: "send message",
       },
       {
         src: "subskribbleSubs",
         alt: "subscribers-preview",
-        title: "Subscribers",
+        title: "subscribers",
       },
       {
         src: "subskribbleTransactions",
         alt: "subskribble-transactions-preview",
-        title: "Transactions",
+        title: "transactions",
       },
     ]}
-    tech={["MongoDB", "ExpressJS", "ReactJS", "NodeJS"]}
+    tech={["mongodb", "expressjs", "reactjs", "nodejs"]}
   />
 );
 
