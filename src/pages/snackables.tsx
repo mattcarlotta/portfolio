@@ -26,7 +26,7 @@ const Snackables: NextPage = () => (
         , snackables is a simple to use&nbsp;
         <OutsideLink
           ariaLabel="Navigate to bundle phobia snackables page"
-          href="https://bundlephobia.com/result?p=snackables@1.0.4"
+          href="https://bundlephobia.com/result?p=snackables@2.1.0"
           padding="0"
         >
           zero-dependency
