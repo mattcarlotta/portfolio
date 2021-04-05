@@ -6,7 +6,7 @@ const Subskribble: NextPage = () => (
   <Page
     description="an experimental web application to create, manage, and send personalized updates to a list of subscribers. the application also included subscriber plans, plan promotionals, payment options, account charting and analytics, notifications, and an image cdn microservice."
     head={{
-      title: "subskribble",
+      title: "Subskribble",
       url: "/subskribble",
       description:
         "A web application to create, manage, and send personalized updates to a list of subscribers.",

@@ -37,7 +37,7 @@ const SJSIceTeam: NextPage = () => (
       </>
     }
     head={{
-      title: "sjs ice team (w.i.p.)",
+      title: "SJS Ice Team (W.I.P.)",
       url: "/sjs-ice-team",
       description:
         "An application to manage the San Jose Sharks Ice Team scheduling.",

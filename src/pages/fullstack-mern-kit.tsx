@@ -24,7 +24,7 @@ const FullstackMERNKit: NextPage = () => (
       </>
     }
     head={{
-      title: "fullstack m.e.r.n. kit",
+      title: "Fullstack M.E.R.N. Kit",
       url: "/fullstack-mern-kit",
       description:
         "A fully-loaded custom boilerplate using MongoDB, Express, React/Redux and Node for client-side solutions.",

@@ -30,11 +30,16 @@ const Page = ({
     <ModalContainer>
       {(isOpen, selected, toggleModal) => (
         <Project>
-          <PanelTitle data-testid="panel-title">{head.title}</PanelTitle>
+          <PanelTitle data-testid="panel-title">
+            {head.title.toLowerCase()}
+          </PanelTitle>
           <Panel>
             <Text>
               <DetailHeadline>Details:</DetailHeadline>
-              <FileDetails {...filedetails} fileName={head.title} />
+              <FileDetails
+                {...filedetails}
+                fileName={head.title.toLowerCase()}
+              />
               <DetailHeadline>Description:</DetailHeadline>
               <SubTitle data-testid="description">{description}</SubTitle>
               <DetailHeadline>Tech Specs:</DetailHeadline>

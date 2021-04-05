@@ -6,7 +6,7 @@ const YelpCamp: NextPage = () => (
   <Page
     description="an experimental website for creating, editing, and reviewing campground sites from all over california. utilizing google maps, the openweathermap api, and user reviews, campers can plan their journey ahead of time."
     head={{
-      title: "yelp camp",
+      title: "Yelp Camp",
       url: "/yelp-camp",
       description:
         "An experimental website for creating, editing, and reviewing campground sites from all over California.",
