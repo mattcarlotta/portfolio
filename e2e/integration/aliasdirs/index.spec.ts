@@ -4,16 +4,13 @@ context("Alias Dirs Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "Alias Dirs");
+    cy.get("[data-testid='panel-title']").should("have.text", "alias dirs");
   });
 
   it("displays the project details", () => {
     cy.get("[data-testid='status']").should("have.text", "Decommissioned");
-    cy.get("[data-testid='filename']").should("have.text", "Alias Dirs");
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/alias-dirs",
-    );
+    cy.get("[data-testid='filename']").should("have.text", "alias dirs");
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",

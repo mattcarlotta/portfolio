@@ -73,7 +73,7 @@ const Snackables: NextPage = () => (
     snapshotdirectory="snackables"
     snapshots={[
       {
-        src: "snackablesLogo",
+        src: "snackablesLogo2",
         alt: "snackables-logo-preview",
         title: "logo",
       },

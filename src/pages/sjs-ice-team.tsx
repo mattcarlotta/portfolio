@@ -45,18 +45,13 @@ const SJSIceTeam: NextPage = () => (
     filedetails={{
       active: true,
       location: "https://sjsiceteam.com",
-      status: "in orbit",
+      status: "In Orbit",
       source: "https://github.com/mattcarlotta/SJSITApp-SSR",
     }}
     snapshotdirectory="sjsit"
     snapshots={[
       {
-        src: "availability/sjsiceteamAvailability",
-        alt: "member-availability-preview",
-        title: "availability",
-      },
-      {
-        src: "dashboard/sjsiceteamDashboard",
+        src: "newdesign/dashboard/sjsiceteamDashboard",
         alt: "dashboard-preview",
         title: "dashboard",
       },
@@ -71,37 +66,37 @@ const SJSIceTeam: NextPage = () => (
         title: "email schedule",
       },
       {
-        src: "schedule/sjsiceteamSchedule",
+        src: "newdesign/schedule/sjsiceteamSchedule",
         alt: "schedule-calendar-preview",
         title: "event calendar",
       },
       {
-        src: "events/sjsiceteamEvents",
-        alt: "events-preview",
-        title: "events",
+        src: "newdesign/event/sjsiceteamEvent",
+        alt: "event-preview",
+        title: "event",
       },
       {
-        src: "help/sjsiceteamHelp",
+        src: "newdesign/help/sjsiceteamHelp",
         alt: "help-preview",
         title: "help",
       },
       {
-        src: "schedule/sjsiceteamScheduledEvent",
-        alt: "scheduled-my-event-preview",
-        title: "my event",
+        src: "newdesign/home/sjsiceteamHome",
+        alt: "home-preview",
+        title: "home",
       },
       {
-        src: "schedule/sjsiceteamScheduleMyGames",
-        alt: "scheduled-my-games-preview",
-        title: "my games",
+        src: "newdesign/availability/sjsiceteamAvailability",
+        alt: "member-availability-preview",
+        title: "my availability",
       },
       {
-        src: "schedule/sjsiceteamEventSchedule",
-        alt: "event-scheduling-preview",
-        title: "scheduling",
+        src: "newdesign/settings/sjsiceteamMyResponse",
+        alt: "member-response-preview",
+        title: "my response",
       },
       {
-        src: "settings/sjsiceteamSettings",
+        src: "newdesign/settings/sjsiceteamSettings",
         alt: "member-settings-preview",
         title: "settings",
       },

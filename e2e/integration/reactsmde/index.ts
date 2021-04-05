@@ -4,25 +4,19 @@ context("React SMDE Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "React SMDE");
+    cy.get("[data-testid='panel-title']").should("have.text", "react smde");
   });
 
   it("displays the project details", () => {
-    cy.get("[data-testid='status']").should("have.text", "In Orbit");
-    cy.get("[data-testid='filename']").should("have.text", "React SMDE");
-    cy.get("[data-testid='location-link']").should(
-      "have.text",
-      "https://mattcarlotta.github.io/react-smde",
-    );
+    cy.get("[data-testid='status']").should("have.text", "Decommissioned");
+    cy.get("[data-testid='filename']").should("have.text", "react smde");
+    cy.get("[data-testid='location-link']").should("have.text", "demo");
     cy.get("[data-testid='location-link']").should(
       "have.attr",
       "target",
       "_blank",
     );
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/react-smde",
-    );
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -48,15 +42,15 @@ context("React SMDE Project Page", () => {
   it("displays a modal for individual project snapshots", () => {
     [
       {
-        id: "Ex. Syntax Code",
+        id: "ex. code",
         name: "Code",
       },
       {
-        id: "Ex. Syntax Code Preview",
+        id: "ex. code preview",
         name: "CodePreview",
       },
       {
-        id: "Ex. Syntax Code Source",
+        id: "ex. code source",
         name: "Source",
       },
     ].forEach(({ id, name }) => {

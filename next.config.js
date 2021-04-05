@@ -1,11 +1,7 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
-const open = require("opener");
 
-const { analyze, NEXT_PUBLIC_CLIENT, NODE_ENV } = process.env;
-
-/* opens a browser window */
-if (NODE_ENV === "development") open(NEXT_PUBLIC_CLIENT);
+const { analyze } = process.env;
 
 module.exports = {
   webpack(config, { isServer }) {

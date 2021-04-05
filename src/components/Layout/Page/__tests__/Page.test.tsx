@@ -55,10 +55,10 @@ describe("Page", () => {
       initProps.head.title,
     );
     expect(wrapper.find("[data-testid='location']").first().text()).toEqual(
-      initProps.filedetails.location,
+      "demo",
     );
     expect(wrapper.find("[data-testid='source']").first().text()).toEqual(
-      initProps.filedetails.source,
+      "source",
     );
   });
 

@@ -59,8 +59,8 @@ const Image = ({
 
 /* istanbul ignore next */
 Image.defaultProps = {
-  handleImageLoaded: () => {},
-  onClick: () => {},
+  handleImageLoaded: () => null,
+  onClick: () => null,
 };
 
 export default Image;

@@ -6,17 +6,14 @@ context("React Hooks Guide Project Page", () => {
   it("displays the project page", () => {
     cy.get("[data-testid='panel-title']").should(
       "have.text",
-      "React Hooks Guide",
+      "react hooks guide",
     );
   });
 
   it("displays the project details", () => {
     cy.get("[data-testid='status']").should("have.text", "Decommissioned");
-    cy.get("[data-testid='filename']").should("have.text", "React Hooks Guide");
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/react-hooks",
-    );
+    cy.get("[data-testid='filename']").should("have.text", "react hooks guide");
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -41,7 +38,7 @@ context("React Hooks Guide Project Page", () => {
 
   it("displays a modal for individual project snapshots", () => {
     ["Home", "API", "Examples"].forEach(id => {
-      cy.get(`[data-testid='${id}']`).click();
+      cy.get(`[data-testid='${id.toLowerCase()}']`).click();
 
       const src = `/projects/reacthooks/reacthooks${id}`;
 

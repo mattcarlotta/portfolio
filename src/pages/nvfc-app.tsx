@@ -26,7 +26,7 @@ const NVFCApp: NextPage = () => (
       {
         src: "nvfcappPreview",
         alt: "system-info-preview",
-        title: "system Info",
+        title: "system info",
       },
     ]}
     tech={["python3", "matplotlib", "pip3", "pygtk", "nvidia drivers"]}

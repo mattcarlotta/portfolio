@@ -27,7 +27,7 @@ const AliasDirs: NextPage = () => (
     }}
     filedetails={{
       active: false,
-      status: "decommissioned",
+      status: "Decommissioned",
       source: "https://github.com/mattcarlotta/alias-dirs",
     }}
     tech={["babel", "enzyme", "javascript", "jest", "rollupjs"]}

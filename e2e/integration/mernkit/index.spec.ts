@@ -6,7 +6,7 @@ context("Fullstack M.E.R.N. Kit Project Page", () => {
   it("displays the project page", () => {
     cy.get("[data-testid='panel-title']").should(
       "have.text",
-      "Fullstack M.E.R.N. Kit",
+      "fullstack m.e.r.n. kit",
     );
   });
 
@@ -14,12 +14,9 @@ context("Fullstack M.E.R.N. Kit Project Page", () => {
     cy.get("[data-testid='status']").should("have.text", "Archived");
     cy.get("[data-testid='filename']").should(
       "have.text",
-      "Fullstack M.E.R.N. Kit",
+      "fullstack m.e.r.n. kit",
     );
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/fullstack-mern-kit",
-    );
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -43,7 +40,7 @@ context("Fullstack M.E.R.N. Kit Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    [{ id: "Logo", name: "Preview" }].forEach(({ id, name }) => {
+    [{ id: "logo", name: "Preview" }].forEach(({ id, name }) => {
       cy.get(`[data-testid='${id}']`).click();
 
       const src = `/projects/mernkit/mernkit${name}`;

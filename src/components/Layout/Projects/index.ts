@@ -5,7 +5,7 @@ const Projects = [
     href: "sjs-ice-team",
     description:
       "An application to manage the San Jose Sharks Ice Team scheduling.",
-    src: "sjsit/sjsiceteamPreviewMin",
+    src: "sjsit/newdesign/sjsiceteamPreviewMin",
     alt: "sjsiceteam-preview",
     ariaLabel: "Navigate to the SJS Ice Team project page.",
   },
@@ -14,8 +14,8 @@ const Projects = [
     href: "gamersnexus",
     description:
       "A mockup, created in 3 days, as a redesign proposal for GamersNexus.net.",
-    src: "snackables/snackablesLogoMin",
-    alt: "snackables-preview",
+    src: "gamersnexus/gamernexusLogoMin",
+    alt: "gamersnexus-preview",
     ariaLabel: "Navigate to the gamersnexus project page.",
   },
   {
@@ -23,7 +23,7 @@ const Projects = [
     href: "snackables",
     description:
       "A package module that automatically loads environment variables from a predefined ENV_LOAD variable.",
-    src: "snackables/snackablesLogoMin",
+    src: "snackables/snackablesLogo2Min",
     alt: "snackables-preview",
     ariaLabel: "Navigate to the snackables project page.",
   },
@@ -79,7 +79,7 @@ const Projects = [
     ariaLabel: "Navigate to the Alias Dirs project page.",
   },
   {
-    title: "fullstack m.e.r.n kit",
+    title: "fullstack m.e.r.n. kit",
     href: "fullstack-mern-kit",
     description:
       "A fully custom boilerplate for MongoDB, Express, React/Redux and Node client-side solutions.",

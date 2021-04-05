@@ -38,7 +38,7 @@ const ComposableStyledComponents: NextPage = () => (
       </>
     }
     head={{
-      title: "Composable Styled Components",
+      title: "composable styled components",
       url: "/composable-styled-components",
       description: "A lightweight composable solution for styled-components.",
     }}

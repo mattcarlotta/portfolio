@@ -4,25 +4,25 @@ context("SJS Ice Team Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "SJS Ice Team");
+    cy.get("[data-testid='panel-title']").should(
+      "have.text",
+      "sjs ice team (w.i.p.)",
+    );
   });
 
   it("displays the project details", () => {
     cy.get("[data-testid='status']").should("have.text", "In Orbit");
-    cy.get("[data-testid='filename']").should("have.text", "SJS Ice Team");
-    cy.get("[data-testid='location-link']").should(
+    cy.get("[data-testid='filename']").should(
       "have.text",
-      "https://sjsiceteam.com",
+      "sjs ice team (w.i.p.)",
     );
+    cy.get("[data-testid='location-link']").should("have.text", "demo");
     cy.get("[data-testid='location-link']").should(
       "have.attr",
       "target",
       "_blank",
     );
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/SJSITApp-SSR",
-    );
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -38,69 +38,64 @@ context("SJS Ice Team Project Page", () => {
     cy.get("[data-testid='tech']").should("have.length", 1);
   });
 
-  it("displays the 11 project snapshot thumbnails", () => {
+  it("displays the 10 project snapshot thumbnails", () => {
     cy.get("[data-testid='snapshots']").should("have.length", 1);
     cy.get("[data-testid='snapshots']")
       .find("picture")
-      .should("have.length", 11);
+      .should("have.length", 10);
   });
 
   it("displays a modal for individual project snapshots", () => {
     [
       {
-        id: "Dashboard",
-        dir: "dashboard",
+        id: "dashboard",
+        dir: "newdesign/dashboard",
         name: "Dashboard",
       },
       {
-        id: "Email - Event",
+        id: "email event",
         dir: "email",
         name: "EmailEventReminder",
       },
       {
-        id: "Email - Schedule",
+        id: "email schedule",
         dir: "email",
         name: "EmailScheduleReminder",
       },
       {
-        id: "Events",
-        dir: "events",
-        name: "Events",
-      },
-      {
-        id: "Event Scheduling",
-        dir: "schedule",
-        name: "EventSchedule",
-      },
-      {
-        id: "Help",
-        dir: "help",
-        name: "Help",
-      },
-      {
-        id: "Member - Availability",
-        dir: "availability",
-        name: "Availability",
-      },
-      {
-        id: "Member - Settings",
-        dir: "settings",
-        name: "Settings",
-      },
-      {
-        id: "Schedule - Calendar",
-        dir: "schedule",
+        id: "event calendar",
+        dir: "newdesign/schedule",
         name: "Schedule",
       },
       {
-        id: "Schedule - My Games",
-        dir: "schedule",
-        name: "ScheduleMyGames",
+        id: "event",
+        dir: "newdesign/event",
+        name: "Event",
       },
       {
-        id: "Schedule - My Event",
-        dir: "schedule",
-        name: "ScheduledEvent",
+        id: "help",
+        dir: "newdesign/help",
+        name: "Help",
+      },
+      {
+        id: "home",
+        dir: "newdesign/home",
+        name: "Home",
+      },
+      {
+        id: "my availability",
+        dir: "newdesign/availability",
+        name: "Availability",
+      },
+      {
+        id: "my response",
+        dir: "newdesign/settings",
+        name: "MyResponse",
+      },
+      {
+        id: "settings",
+        dir: "newdesign/settings",
+        name: "Settings",
       },
     ].forEach(({ id, dir, name }) => {
       cy.get(`[data-testid='${id}']`).click();
