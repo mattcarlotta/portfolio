@@ -46,7 +46,7 @@ const SJSIceTeam: NextPage = () => (
       active: true,
       location: "https://sjsiceteam.com",
       status: "In Orbit",
-      source: "https://github.com/mattcarlotta/SJSITApp-SSR",
+      source: "https://github.com/mattcarlotta/SJSITAPP-Website",
     }}
     snapshotdirectory="sjsit"
     snapshots={[
