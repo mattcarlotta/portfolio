@@ -6,7 +6,7 @@ const NextJSSSRKit: NextPage = () => (
   <Page
     description="a fully-loaded, built from the ground up, nextjs boilerplate for server-side solutions. this website and several projects were built using this boilerplate! it sports a custom nextjs config, emotion ssr integration, custom jest and cypress testing suites, implements github actions for ci, and it even has an interactive api example using mongodb."
     head={{
-      title: "nextjs ssr kit",
+      title: "NextJS SSR Kit",
       url: "/nextjs-ssr-kit",
       description:
         "A fully-loaded custom NextJS boilerplate for server-side solutions.",

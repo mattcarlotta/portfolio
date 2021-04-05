@@ -6,7 +6,7 @@ const NVFCApp: NextPage = () => (
   <Page
     description="a standalone linux application that creates a modifiable 2d curve of temp and fan speed points that automatically controls a nvidia gpu&#39;s fan based on the gpu&#39;s temperature."
     head={{
-      title: "fan controller (nvfc) app",
+      title: "Fan Controller (nvfc) App",
       url: "/nvfc-app",
       description:
         "A standalone Linux application that creates a modifiable 2D curve of temp and fan speed points that automatically controls a Nvidia GPU's fan based on the GPU's temperature.",

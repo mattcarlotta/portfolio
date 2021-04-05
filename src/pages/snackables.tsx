@@ -59,7 +59,7 @@ const Snackables: NextPage = () => (
       </>
     }
     head={{
-      title: "snackables",
+      title: "Snackables",
       url: "/snackables",
       description:
         "A package module that automatically loads environment variables from a predefined ENV_LOAD variable.",

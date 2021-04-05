@@ -19,7 +19,7 @@ const GamersNexus: NextPage = () => (
       </>
     }
     head={{
-      title: "gamersnexus mock up",
+      title: "GamersNexus Mock Up",
       url: "/gamersnexus",
       description:
         "a mock up created in 3 days as a redesign proposal for GamersNexus.net.",

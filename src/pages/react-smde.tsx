@@ -6,7 +6,7 @@ const ReactSMDE: NextPage = () => (
   <Page
     description="a lightweight simple markdown editor (smde) npm package for react."
     head={{
-      title: "react smde",
+      title: "React SMDE",
       url: "/react-smde",
       description: "A lightweight, simple, markdown editor for React.",
     }}

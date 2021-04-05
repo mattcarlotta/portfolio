@@ -6,7 +6,7 @@ const ReactHooksGuide: NextPage = () => (
   <Page
     description="an educational website to help up-and-coming developers understand react’s newly introduced hooks. the entire website was built using hooks and provides: interactive hook examples with example code and in-depth hook descriptions and usage cases. designed for both mobile to desktop screen sizes, and has a light and dark theme."
     head={{
-      title: "react hooks guide",
+      title: "React Hooks Guide",
       url: "/react-hooks-guide",
       description:
         "An educational website to help up-and-coming developers understand React’s newly introduced hooks.",

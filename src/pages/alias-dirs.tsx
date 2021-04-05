@@ -20,7 +20,7 @@ const AliasDirs: NextPage = () => (
       </>
     }
     head={{
-      title: "alias dirs",
+      title: "Alias Dirs",
       url: "/alias-dirs",
       description:
         "Automatically creates aliased import directories for babel.",

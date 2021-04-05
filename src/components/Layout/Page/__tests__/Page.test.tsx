@@ -40,7 +40,9 @@ describe("Page", () => {
   });
 
   it("populates the panel title", () => {
-    expect(wrapper.find("PanelTitle").text()).toEqual(initProps.head.title);
+    expect(wrapper.find("PanelTitle").text()).toEqual(
+      initProps.head.title.toLowerCase(),
+    );
   });
 
   it("renders the solar system", () => {
@@ -52,7 +54,7 @@ describe("Page", () => {
       initProps.filedetails.status,
     );
     expect(wrapper.find("[data-testid='filename']").first().text()).toEqual(
-      initProps.head.title,
+      initProps.head.title.toLowerCase(),
     );
     expect(wrapper.find("[data-testid='location']").first().text()).toEqual(
       "demo",
