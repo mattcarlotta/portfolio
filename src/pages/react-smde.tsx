@@ -1,17 +1,18 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const ReactSMDE: FC = (): JSX.Element => (
+const ReactSMDE: NextPage = () => (
   <Page
-    description="A lightweight Simple Markdown Editor (SMDE) npm package for React."
+    description="a lightweight simple markdown editor (smde) npm package for react."
     head={{
-      title: "React SMDE",
+      title: "react smde",
       url: "/react-smde",
       description: "A lightweight, simple, markdown editor for React.",
     }}
     filedetails={{
-      active: true,
-      status: "In Orbit",
+      active: false,
+      status: "Decommissioned",
       location: "https://mattcarlotta.github.io/react-smde",
       source: "https://github.com/mattcarlotta/react-smde",
     }}
@@ -20,29 +21,29 @@ const ReactSMDE: FC = (): JSX.Element => (
       {
         src: "reactsmdeCode",
         alt: "example-code-preview",
-        title: "Ex. Syntax Code",
+        title: "ex. code",
       },
       {
         src: "reactsmdeCodePreview",
         alt: "example-code-syntax-preview",
-        title: "Ex. Syntax Code Preview",
+        title: "ex. code preview",
       },
       {
         src: "reactsmdeSource",
         alt: "example-code-source-preview",
-        title: "Ex. Syntax Code Source",
+        title: "ex. code source",
       },
     ]}
     tech={[
-      "Enzyme",
-      "Eslint",
-      "Github Actions",
-      "Jest",
-      "Material-ui",
-      "ReactJS",
-      "RollupJS",
-      "Styled-components",
-      "StorybookJS",
+      "enzyme",
+      "eslint",
+      "github actions",
+      "jest",
+      "material-ui",
+      "reactjs",
+      "rollupjs",
+      "styled-components",
+      "storybookjs",
     ]}
   />
 );

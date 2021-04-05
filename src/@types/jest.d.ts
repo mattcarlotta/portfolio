@@ -10,6 +10,10 @@ declare global {
       navigator: any;
       React: any;
     }
+
+    interface Document {
+      documentMode?: any;
+    }
   }
 }
 /* eslint-enable */

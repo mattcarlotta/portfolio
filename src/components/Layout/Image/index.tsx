@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import { css } from "@emotion/core";
+import * as React from "react";
+import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
 import { ImageProps } from "~types";
 
@@ -11,23 +11,22 @@ const Image = ({
   src,
   styles,
 }: ImageProps): JSX.Element => {
-  const [error, setError] = useState(false);
-
-  const onLoad = useCallback(() => {
+  const [error, setError] = React.useState(false);
+  const onLoad = () => {
     handleImageLoaded();
-  }, []);
+  };
 
-  const onError = useCallback(() => {
+  const onError = () => {
     setError(true);
     handleImageLoaded();
-  }, []);
+  };
 
-  const handleImageRef = useCallback(node => {
+  const handleImageRef = (node: HTMLImageElement | null) => {
     if (node) {
       node.onload = onLoad;
       node.onerror = onError;
     }
-  }, []);
+  };
 
   return (
     <picture
@@ -39,11 +38,7 @@ const Image = ({
     >
       {!error ? (
         <>
-          <source
-            ref={handleImageRef}
-            srcSet={`/${src}.webp`}
-            type="image/webp"
-          />
+          <source srcSet={`/${src}.webp`} type="image/webp" />
           <img
             ref={handleImageRef}
             css={css`
@@ -64,8 +59,8 @@ const Image = ({
 
 /* istanbul ignore next */
 Image.defaultProps = {
-  handleImageLoaded: () => {},
-  onClick: () => {},
+  handleImageLoaded: () => null,
+  onClick: () => null,
 };
 
 export default Image;

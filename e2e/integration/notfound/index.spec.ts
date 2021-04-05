@@ -9,7 +9,7 @@ context("Not Found Page", () => {
     cy.get("[data-testid='status-code']").should("have.text", "404");
     cy.get("[data-testid='page-response']").should(
       "have.text",
-      "Uh Oh! Page not found!",
+      "page not found!",
     );
   });
 

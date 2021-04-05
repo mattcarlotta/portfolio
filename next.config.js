@@ -1,16 +1,22 @@
-require("snackables");
-const openBrowser = require("react-dev-utils/openBrowser");
-const plugins = require("./config/plugins");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
-const { NODE_ENV, LOCALHOST } = process.env;
-
-/* opens a browser window */
-if (NODE_ENV === "development") openBrowser(LOCALHOST);
+const { analyze } = process.env;
 
 module.exports = {
   webpack(config, { isServer }) {
     /* adds custom plugins to client and server */
-    config.plugins.push(...plugins(isServer));
+    config.plugins.push(
+      ...[
+        analyze &&
+          new BundleAnalyzerPlugin({
+            analyzerMode: "static",
+            reportFilename: isServer
+              ? "../analyze/server.html"
+              : "./analyze/client.html",
+          }),
+      ].filter(Boolean),
+    );
 
     /* return new config to next */
     return config;

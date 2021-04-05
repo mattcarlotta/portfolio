@@ -1,63 +1,70 @@
+const dayjs = require("dayjs");
+
 const Projects = [
   {
-    id: "Snackables",
-    href: "snackables",
-    title: "Snackables",
-  },
-  {
-    id: "Composable Styled Components",
-    href: "composable-styled-components",
-    title: "Composable Styled Components",
-  },
-  {
-    id: "SJS Ice Team",
+    id: "sjs ice team (w.i.p.)",
     href: "sjs-ice-team",
-    title: "SJS Ice Team",
+    title: "sjs ice team (w.i.p.)",
   },
   {
-    id: "NextJS SSR Kit",
-    href: "nextjs-ssr-kit",
-    title: "NextJS SSR Kit",
+    id: "gamersnexus mock up",
+    href: "gamersnexus",
+    title: "gamersnexus mock up",
   },
   {
-    id: "React SMDE",
-    href: "react-smde",
-    title: "React SMDE",
+    id: "snackables",
+    href: "snackables",
+    title: "snackables",
   },
   {
-    id: "Alias Dirs",
-    href: "alias-dirs",
-    title: "Alias Dirs",
-  },
-  {
-    id: "React Hooks Guide",
+    id: "react hooks guide",
     href: "react-hooks-guide",
-    title: "React Hooks Guide",
+    title: "react hooks guide",
   },
   {
-    id: "Subskribble",
+    id: "nextjs ssr kit",
+    href: "nextjs-ssr-kit",
+    title: "nextjs ssr kit",
+  },
+  {
+    id: "subskribble",
     href: "subskribble",
-    title: "Subskribble",
+    title: "subskribble",
   },
   {
-    id: "Fullstack M.E.R.N. Kit",
+    id: "composable components",
+    href: "composable-styled-components",
+    title: "composable styled components",
+  },
+  {
+    id: "react smde",
+    href: "react-smde",
+    title: "react smde",
+  },
+  {
+    id: "alias dirs",
+    href: "alias-dirs",
+    title: "alias dirs",
+  },
+  {
+    id: "fullstack m.e.r.n. kit",
     href: "fullstack-mern-kit",
-    title: "Fullstack M.E.R.N. Kit",
+    title: "fullstack m.e.r.n. kit",
   },
   {
-    id: "Yelp Camp",
+    id: "yelp camp",
     href: "yelp-camp",
-    title: "Yelp Camp",
+    title: "yelp camp",
   },
   {
-    id: "Nvidia Fan Controller (nvfc) App",
+    id: "fan controller app",
     href: "nvfc-app",
-    title: "Nvidia Fan Controller (nvfc) App",
+    title: "fan controller (nvfc) app",
   },
   {
-    id: "ssdtGen App",
+    id: "ssdtgen app",
     href: "ssdtgen-app",
-    title: "ssdtGen App",
+    title: "ssdtgen app",
   },
 ];
 
@@ -92,8 +99,8 @@ context("Home Page", () => {
     cy.get("[data-testid='blog']").should("have.attr", "target", "_blank");
   });
 
-  it("displays 12 project links", () => {
-    cy.get("[data-testid='body']").find("a").should("have.length", 12);
+  it("displays 13 project links", () => {
+    cy.get("[data-testid='body']").find("a").should("have.length", 13);
   });
 
   it("navigates to all projects", () => {
@@ -111,6 +118,6 @@ context("Home Page", () => {
     cy.get("[data-testid='footer']").should("have.length", 1);
     cy.get("[data-testid='footer']")
       .find("p")
-      .should("have.text", "©2020 matt carlotta");
+      .should("have.text", `©${dayjs().year()} matt carlotta`);
   });
 });

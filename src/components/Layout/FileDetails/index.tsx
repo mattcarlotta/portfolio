@@ -1,4 +1,4 @@
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import { AiOutlineFolderOpen, AiOutlineCode } from "react-icons/ai";
 import { BsFillCircleFill } from "react-icons/bs";
 import { RiMapPin2Line } from "react-icons/ri";
@@ -42,7 +42,7 @@ const FileDetails = ({
             target="_blank"
             aria-label="Link to hosted website"
           >
-            {location}
+            demo
           </a>
         </Info>
       )}
@@ -55,7 +55,7 @@ const FileDetails = ({
           target="_blank"
           aria-label="Link to source code"
         >
-          {source}
+          source
         </a>
       </Info>
     </div>

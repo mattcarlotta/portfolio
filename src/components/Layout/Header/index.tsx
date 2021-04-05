@@ -1,4 +1,4 @@
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import { IconContext } from "react-icons";
 import { FaBlog } from "react-icons/fa";
 import { GoHome, GoMail } from "react-icons/go";
@@ -12,7 +12,6 @@ import OutsideLink from "~components/Navigation/OutsideLink";
 import Center from "~components/Layout/Center";
 import Headline from "~components/Layout/Headline";
 import SubHeadline from "~components/Layout/SubHeadline";
-import { FC } from "~types";
 
 const FOOTERLINKS = [
   {
@@ -41,7 +40,7 @@ const FOOTERLINKS = [
   },
 ];
 
-const Header: FC = (): JSX.Element => (
+const Header = (): JSX.Element => (
   <header
     css={css`
       padding-top: 60px;

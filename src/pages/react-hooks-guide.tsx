@@ -1,11 +1,12 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const ReactHooksGuide: FC = (): JSX.Element => (
+const ReactHooksGuide: NextPage = () => (
   <Page
-    description="An educational website to help up-and-coming developers understand React’s newly introduced hooks. The entire website was built using hooks and provides: Interactive hook examples with example code and in-depth hook descriptions and usage cases. Designed for both mobile to desktop screen sizes, and has a light and dark theme."
+    description="an educational website to help up-and-coming developers understand react’s newly introduced hooks. the entire website was built using hooks and provides: interactive hook examples with example code and in-depth hook descriptions and usage cases. designed for both mobile to desktop screen sizes, and has a light and dark theme."
     head={{
-      title: "React Hooks Guide",
+      title: "react hooks guide",
       url: "/react-hooks-guide",
       description:
         "An educational website to help up-and-coming developers understand React’s newly introduced hooks.",
@@ -18,39 +19,39 @@ const ReactHooksGuide: FC = (): JSX.Element => (
     snapshotdirectory="reacthooks"
     snapshots={[
       {
-        src: "reacthooksHome",
-        alt: "home-preview",
-        title: "Home",
-      },
-      {
         src: "reacthooksAPI",
         alt: "api-preview",
-        title: "API",
+        title: "api",
       },
       {
         src: "reacthooksExamples",
         alt: "examples-preview",
-        title: "Examples",
+        title: "examples",
+      },
+      {
+        src: "reacthooksHome",
+        alt: "home-preview",
+        title: "home",
       },
       {
         src: "reacthooksMobile",
         alt: "mobile-preview",
-        title: "Mobile Screen",
+        title: "mobile layout",
       },
       {
         src: "reacthooksPad",
         alt: "pad-preview",
-        title: "Pad Screen",
+        title: "ipad layout",
       },
     ]}
     tech={[
-      "Create React App",
-      "Codesandbox",
-      "ExpressJS",
-      "ReactJS",
-      "Nginx",
-      "Styled-components (with theming)",
-      "Webpack",
+      "create react app",
+      "codesandbox",
+      "expressjs",
+      "reactjs",
+      "nginx",
+      "styled-components (with theming)",
+      "webpack",
     ]}
   />
 );

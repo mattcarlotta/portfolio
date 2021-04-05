@@ -1,3 +1,4 @@
+import * as React from "react";
 import Head from "next/head";
 import Body from "~components/Layout/Body";
 import Header from "~components/Layout/Header";

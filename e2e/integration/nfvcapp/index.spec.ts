@@ -6,7 +6,7 @@ context("Nvidia Fan Controller (nvfc) App Project Page", () => {
   it("displays the project page", () => {
     cy.get("[data-testid='panel-title']").should(
       "have.text",
-      "Nvidia Fan Controller (nvfc) App",
+      "fan controller (nvfc) app",
     );
   });
 
@@ -14,12 +14,9 @@ context("Nvidia Fan Controller (nvfc) App Project Page", () => {
     cy.get("[data-testid='status']").should("have.text", "Archived");
     cy.get("[data-testid='filename']").should(
       "have.text",
-      "Nvidia Fan Controller (nvfc) App",
+      "fan controller (nvfc) app",
     );
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/nvfcApp",
-    );
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -44,8 +41,8 @@ context("Nvidia Fan Controller (nvfc) App Project Page", () => {
 
   it("displays a modal for individual project snapshots", () => {
     [
-      { id: "Logo", name: "Logo" },
-      { id: "System Info", name: "Preview" },
+      { id: "logo", name: "Logo" },
+      { id: "system info", name: "Preview" },
     ].forEach(({ id, name }) => {
       cy.get(`[data-testid='${id}']`).click();
 

@@ -4,16 +4,13 @@ context("NextJS SSR Kit Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "NextJS SSR Kit");
+    cy.get("[data-testid='panel-title']").should("have.text", "nextjs ssr kit");
   });
 
   it("displays the project details", () => {
     cy.get("[data-testid='status']").should("have.text", "In Orbit");
-    cy.get("[data-testid='filename']").should("have.text", "NextJS SSR Kit");
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/nextjs-ssr-kit",
-    );
+    cy.get("[data-testid='filename']").should("have.text", "nextjs ssr kit");
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -39,19 +36,19 @@ context("NextJS SSR Kit Project Page", () => {
   it("displays a modal for individual project snapshots", () => {
     [
       {
-        id: "Home",
+        id: "home",
         name: "Home",
       },
       {
-        id: "Ex. API",
+        id: "ex. api",
         name: "ExampleAPI",
       },
       {
-        id: "Ex. API Create",
+        id: "ex. api create",
         name: "ExampleAPICreate",
       },
       {
-        id: "Ex. API Edit",
+        id: "ex. api edit",
         name: "ExampleAPIEdit",
       },
     ].forEach(({ id, name }) => {

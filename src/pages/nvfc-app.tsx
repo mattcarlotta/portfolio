@@ -1,11 +1,12 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const NVFCApp: FC = (): JSX.Element => (
+const NVFCApp: NextPage = () => (
   <Page
-    description=" A standalone Linux application that creates a modifiable 2D curve of temp and fan speed points that automatically controls a Nvidia GPU&#39;s fan based on the GPU&#39;s temperature."
+    description="a standalone linux application that creates a modifiable 2d curve of temp and fan speed points that automatically controls a nvidia gpu&#39;s fan based on the gpu&#39;s temperature."
     head={{
-      title: "Nvidia Fan Controller (nvfc) App",
+      title: "fan controller (nvfc) app",
       url: "/nvfc-app",
       description:
         "A standalone Linux application that creates a modifiable 2D curve of temp and fan speed points that automatically controls a Nvidia GPU's fan based on the GPU's temperature.",
@@ -20,15 +21,15 @@ const NVFCApp: FC = (): JSX.Element => (
       {
         src: "nvfcappLogo",
         alt: "logo-preview",
-        title: "Logo",
+        title: "logo",
       },
       {
         src: "nvfcappPreview",
         alt: "system-info-preview",
-        title: "System Info",
+        title: "system info",
       },
     ]}
-    tech={["Python3", "Matplotlib", "Pip3", "PyGTK", "Nvidia drivers"]}
+    tech={["python3", "matplotlib", "pip3", "pygtk", "nvidia drivers"]}
   />
 );
 

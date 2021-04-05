@@ -4,16 +4,13 @@ context("Subskribble Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "Subskribble");
+    cy.get("[data-testid='panel-title']").should("have.text", "subskribble");
   });
 
   it("displays the project details", () => {
     cy.get("[data-testid='status']").should("have.text", "Decommissioned");
-    cy.get("[data-testid='filename']").should("have.text", "Subskribble");
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/subskribble",
-    );
+    cy.get("[data-testid='filename']").should("have.text", "subskribble");
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -59,16 +56,16 @@ context("Subskribble Project Page", () => {
         name: "Profile",
       },
       {
-        id: "Refund Transactions",
+        id: "Registration",
+        name: "SubRegister",
+      },
+      {
+        id: "Refunds",
         name: "RefundTrans",
       },
       {
         id: "Send Message",
         name: "SendMessage",
-      },
-      {
-        id: "Subscriber Registration",
-        name: "SubRegister",
       },
       {
         id: "Subscribers",
@@ -79,7 +76,7 @@ context("Subskribble Project Page", () => {
         name: "Transactions",
       },
     ].forEach(({ id, name }) => {
-      cy.get(`[data-testid='${id}']`).click();
+      cy.get(`[data-testid='${id.toLowerCase()}']`).click();
 
       const src = `/projects/subskribble/subskribble${name}`;
 

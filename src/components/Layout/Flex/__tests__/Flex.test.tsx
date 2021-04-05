@@ -28,4 +28,14 @@ describe("Flex", () => {
     wrapper.setProps({ justify: "center" });
     expect(wrapper).toHaveStyleRule("justify-content", "center");
   });
+
+  it("sets height when passed a 'height' prop", () => {
+    wrapper.setProps({ height: "10px" });
+    expect(wrapper).toHaveStyleRule("height", "10px");
+  });
+
+  it("sets width when passed a 'width' prop", () => {
+    wrapper.setProps({ width: "10px" });
+    expect(wrapper).toHaveStyleRule("width", "10px");
+  });
 });

@@ -1,43 +1,44 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const ComposableStyledComponents: FC = (): JSX.Element => (
+const ComposableStyledComponents: NextPage = () => (
   <Page
     description={
       <>
-        A lightweight composable npm package for&nbsp;
+        a lightweight composable npm package for&nbsp;
         <OutsideLink
           ariaLabel="Navigate to styled-components home page"
           href="https://styled-components.com/"
-          style={{ padding: 0 }}
+          padding="0"
         >
           styled-components
         </OutsideLink>
-        . The package is created using a custom RollupJS configuration, is
+        . the package is created using a custom rollupjs configuration, is
         backed by 100% test coverage and is published to&nbsp;
         <OutsideLink
           ariaLabel="Navigate to npm composable-styled-components package page"
           href="https://www.npmjs.com/package/composable-styled-components"
-          style={{ padding: 0 }}
+          padding="0"
         >
           npm
         </OutsideLink>
-        . Meanwhile, the documentation website is built in Typescript, optimized
-        for SEO with&nbsp;
+        . meanwhile, the documentation website is built in typescript, optimized
+        for seo with&nbsp;
         <OutsideLink
           ariaLabel="Navigate to Algolia home page"
           href="https://www.algolia.com"
-          style={{ padding: 0 }}
+          padding="0"
         >
-          Algolia
+          algolia
         </OutsideLink>
         &nbsp;search engine crawler integration, and utilizes the
         composable-styled-components package to construct reusable components.
       </>
     }
     head={{
-      title: "Composable Styled Components",
+      title: "composable styled components",
       url: "/composable-styled-components",
       description: "A lightweight composable solution for styled-components.",
     }}
@@ -50,41 +51,41 @@ const ComposableStyledComponents: FC = (): JSX.Element => (
     snapshotdirectory="composable"
     snapshots={[
       {
-        src: "composableHome",
-        alt: "home-preview",
-        title: "Home",
-      },
-      {
         src: "composableAPI",
         alt: "api-preview",
-        title: "API",
+        title: "api",
       },
       {
         src: "composableDemos",
         alt: "demo-preview",
-        title: "Demos",
+        title: "demos",
+      },
+      {
+        src: "composableHome",
+        alt: "home-preview",
+        title: "home",
       },
       {
         src: "composableReleases",
         alt: "releases-preview",
-        title: "Releases",
+        title: "releases",
       },
       {
         src: "composableSearch",
         alt: "search-preview",
-        title: "Search",
+        title: "search",
       },
     ]}
     tech={[
-      "Babel",
-      "Cypress",
-      "Enzyme",
-      "Jest",
-      "ReactJS",
-      "Typescript (website)",
-      "NextJS",
-      "NPM",
-      "Rollup",
+      "babel",
+      "cypress",
+      "enzyme",
+      "jest",
+      "reactjs",
+      "typescript (website)",
+      "nextjs",
+      "npmM",
+      "rollupjs",
       "Webpack",
     ]}
   />

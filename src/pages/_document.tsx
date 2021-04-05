@@ -1,12 +1,13 @@
+import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { version } from "../../package.json";
+import packageJson from "../../package.json";
 
 class CustomDocument extends Document {
   render = (): JSX.Element => (
     <Html lang="en">
       <Head>
         <meta name="theme-color" content="#000000" />
-        <meta name="build version" content={version} />
+        <meta name="build version" content={packageJson.version} />
         <link
           rel="apple-touch-icon"
           sizes="192x192"
@@ -16,7 +17,7 @@ class CustomDocument extends Document {
         <link rel="manifest" href="/manifest.json" />
         <link
           rel="preload"
-          href="/fonts/Jura-Medium.ttf"
+          href="/fonts/elemental.ttf"
           as="font"
           crossOrigin="anonymous"
         />

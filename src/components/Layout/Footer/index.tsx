@@ -1,19 +1,23 @@
-import { css } from "@emotion/core";
+import dayjs from "dayjs";
+import styled from "@emotion/styled";
 import Center from "~components/Layout/Center";
 import SubHeadline from "~components/Layout/SubHeadline";
-import { FC } from "~types";
 
-const Footer: FC = (): JSX.Element => (
-  <footer
-    data-testid="footer"
-    css={css`
-      margin: 70px 0 50px;
-    `}
-  >
+const FooterComponent = ({
+  className,
+}: {
+  className?: string;
+}): JSX.Element => (
+  <footer data-testid="footer" className={className}>
     <Center>
-      <SubHeadline>©2020 matt carlotta</SubHeadline>
+      <SubHeadline>©{dayjs().year()} matt carlotta</SubHeadline>
     </Center>
   </footer>
 );
+
+const Footer = styled(FooterComponent)`
+  margin: 70px 0 50px 0;
+  padding-bottom: 20px;
+`;
 
 export default Footer;

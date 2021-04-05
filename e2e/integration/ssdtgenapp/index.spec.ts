@@ -4,16 +4,13 @@ context("ssdtGen App Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "ssdtGen App");
+    cy.get("[data-testid='panel-title']").should("have.text", "ssdtgen app");
   });
 
   it("displays the project details", () => {
     cy.get("[data-testid='status']").should("have.text", "Archived");
-    cy.get("[data-testid='filename']").should("have.text", "ssdtGen App");
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/ssdtGenApp",
-    );
+    cy.get("[data-testid='filename']").should("have.text", "ssdtgen app");
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -42,7 +39,7 @@ context("ssdtGen App Project Page", () => {
       { id: "App", name: "Preview" },
       { id: "Ex. SSDT", name: "Example" },
     ].forEach(({ id, name }) => {
-      cy.get(`[data-testid='${id}']`).click();
+      cy.get(`[data-testid='${id.toLowerCase()}']`).click();
 
       const src = `/projects/ssdtgenapp/ssdtgenapp${name}`;
 

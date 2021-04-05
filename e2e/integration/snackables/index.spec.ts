@@ -4,25 +4,19 @@ context("Snackables Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "Snackables");
+    cy.get("[data-testid='panel-title']").should("have.text", "snackables");
   });
 
   it("displays the project details", () => {
     cy.get("[data-testid='status']").should("have.text", "In Orbit");
-    cy.get("[data-testid='filename']").should("have.text", "Snackables");
-    cy.get("[data-testid='location-link']").should(
-      "have.text",
-      "https://www.npmjs.com/package/snackables",
-    );
+    cy.get("[data-testid='filename']").should("have.text", "snackables");
+    cy.get("[data-testid='location-link']").should("have.text", "demo");
     cy.get("[data-testid='location-link']").should(
       "have.attr",
       "target",
       "_blank",
     );
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/snackables",
-    );
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -46,8 +40,8 @@ context("Snackables Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    [{ id: "Logo", name: "Logo" }].forEach(({ id, name }) => {
-      cy.get(`[data-testid='${id}']`).click();
+    [{ id: "Logo", name: "Logo2" }].forEach(({ id, name }) => {
+      cy.get(`[data-testid='${id.toLowerCase()}']`).click();
 
       const src = `/projects/snackables/snackables${name}`;
 

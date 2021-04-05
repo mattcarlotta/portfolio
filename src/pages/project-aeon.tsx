@@ -1,18 +1,19 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const ProjectAeon: FC = (): JSX.Element => (
+const ProjectAeon: NextPage = () => (
   <Page
-    description="Work in progress: An application to ask and/or review web development code that utilizes integrated tools to run and share them. The aim of this project is to integrate development tools like: Babel REPL/Codesandbox/Codepen/JS Fiddle/Typescript playground (and so on) into a central hub for teams or individuals to share their code quickly and effectively. In addition, the website will be optimized for SEO and will prioritize questions and answers by user up/down votes. Open to the public, open source, and free to use."
+    description="work in progress: an application to ask and/or review web development code that utilizes integrated tools to run and share them. the aim of this project is to integrate development tools like: babel repl/codesandbox/codepen/js fiddle/typescript playground (and so on) into a central hub for teams or individuals to share their code quickly and effectively. In addition, the website will be optimized for seo and will prioritize questions and answers by user up/down votes. Open to the public, open source, and free to use."
     head={{
-      title: "Project Aeon",
+      title: "project aeon",
       url: "/project-aeon",
       description:
         "A better app to ask web development questions and use integrated tools to share them.",
     }}
     filedetails={{
-      active: true,
-      status: "In Development",
+      active: false,
+      status: "Decommissioned",
       source: "https://github.com/mattcarlotta/project-aeon",
     }}
     snapshotdirectory="projectaeon"
@@ -20,30 +21,30 @@ const ProjectAeon: FC = (): JSX.Element => (
       {
         src: "projectaeonAskQuestion",
         alt: "ask-question-preview",
-        title: "Ask Question",
-      },
-      {
-        src: "projectaeonQuestion",
-        alt: "question-preview",
-        title: "Question",
+        title: "ask question",
       },
       {
         src: "projectaeonComment",
         alt: "comment-preview",
-        title: "Comment",
-      },
-      {
-        src: "projectaeonTags",
-        alt: "tags-preview",
-        title: "Tags",
+        title: "comment",
       },
       {
         src: "projectaeonProfile",
         alt: "profile-preview",
-        title: "Profile",
+        title: "profile",
+      },
+      {
+        src: "projectaeonQuestion",
+        alt: "question-preview",
+        title: "question",
+      },
+      {
+        src: "projectaeonTags",
+        alt: "tags-preview",
+        title: "tags",
       },
     ]}
-    tech={["PostgreSQL", "ReactJS (w/ReduxJS)", "NextJS", "NodeJS", "Nginx"]}
+    tech={["postgresql", "reactjs (w / reduxjs)", "nextjs", "nodejs", "nginx"]}
   />
 );
 

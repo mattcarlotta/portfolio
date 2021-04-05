@@ -22,9 +22,9 @@ const OutsideLinkComponent = ({
   </a>
 );
 
-const OutsideLink = styled(OutsideLinkComponent)`
-  padding: 10px 15px;
-  color: #1295f3;
+const OutsideLink = styled(OutsideLinkComponent)<{ padding?: string }>`
+  padding: ${({ padding }) => padding || "10px 15px"};
+  color: #008ef1;
   transition: all 0.5s;
   text-decoration: underline;
   cursor: pointer;
@@ -34,7 +34,7 @@ const OutsideLink = styled(OutsideLinkComponent)`
   }
 
   :focus {
-    color: #1295f3;
+    color: #008ef1;
     outline: none !important;
   }
 `;

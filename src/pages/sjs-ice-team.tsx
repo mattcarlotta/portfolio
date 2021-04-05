@@ -1,20 +1,21 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const SJSIceTeam: FC = (): JSX.Element => (
+const SJSIceTeam: NextPage = () => (
   <Page
     description={
       <>
-        An application to consolidate Google forms, Excel, and manual
-        user-generated monthly PDFs into a single, unified, semi-automated
-        month-to-month scheduling service for 25+ members of the San Jose Sharks
-        Ice Team. The application is separated into 4 services: Front-facing
-        application,&nbsp;
+        an application (work in progress) to consolidate google forms, excel,
+        and manual user-generated monthly pdfs into a single, unified,
+        semi-automated month-to-month scheduling service for 25+ members of the
+        san jose sharks ice team. the application is separated into 4 services:
+        front-facing application,&nbsp;
         <OutsideLink
           ariaLabel="Navigate to emailing microservice source page"
           href="https://github.com/mattcarlotta/SJSITAPP-Agent"
-          style={{ padding: 0 }}
+          padding="0"
         >
           an automated emailing microservice
         </OutsideLink>
@@ -22,21 +23,21 @@ const SJSIceTeam: FC = (): JSX.Element => (
         <OutsideLink
           ariaLabel="Navigate to image microservice source page"
           href="https://github.com/mattcarlotta/SJSITAPP-Image"
-          style={{ padding: 0 }}
+          padding="0"
         >
           an automated image microservice
         </OutsideLink>
-        , and a database optimization microservice. The main application
-        utilizes NextJS for SEO, while the microservices utilize NodeJS with
-        ExpressJS. All services utilizes Github Actions for pre-flight unit and
-        e2e tests; as well as, continuous integrations with a remote Linux
-        server running PM2 processes. The application is designed for and
-        supports: Chrome, Firefox, IE11, and Safari (for mobile, pad, and
+        , and a database optimization microservice. the main application
+        utilizes nextjs for seo, while the microservices utilize nodejs with
+        expressjs. all services utilizes github actions for pre-flight unit and
+        e2e tests; as well as, continuous integrations with a remote linux
+        server running pm2 processes. the application is designed for and
+        supports: chrome, firefox, ie11, and safari (for mobile, pad, and
         desktop screens).
       </>
     }
     head={{
-      title: "SJS Ice Team",
+      title: "sjs ice team (w.i.p.)",
       url: "/sjs-ice-team",
       description:
         "An application to manage the San Jose Sharks Ice Team scheduling.",
@@ -45,75 +46,71 @@ const SJSIceTeam: FC = (): JSX.Element => (
       active: true,
       location: "https://sjsiceteam.com",
       status: "In Orbit",
-      source: "https://github.com/mattcarlotta/SJSITApp-SSR",
+      source: "https://github.com/mattcarlotta/SJSITAPP-Website",
     }}
     snapshotdirectory="sjsit"
     snapshots={[
       {
-        src: "dashboard/sjsiceteamDashboard",
+        src: "newdesign/dashboard/sjsiceteamDashboard",
         alt: "dashboard-preview",
-        title: "Dashboard",
+        title: "dashboard",
       },
       {
         src: "email/sjsiceteamEmailEventReminder",
         alt: "email-upcoming-event-preview",
-        title: "Email - Event",
+        title: "email event",
       },
       {
         src: "email/sjsiceteamEmailScheduleReminder",
         alt: "email-upcoming-schedule-preview",
-        title: "Email - Schedule",
+        title: "email schedule",
       },
       {
-        src: "events/sjsiceteamEvents",
-        alt: "events-preview",
-        title: "Events",
-      },
-      {
-        src: "schedule/sjsiceteamEventSchedule",
-        alt: "event-scheduling-preview",
-        title: "Event Scheduling",
-      },
-      {
-        src: "help/sjsiceteamHelp",
-        alt: "help-preview",
-        title: "Help",
-      },
-      {
-        src: "availability/sjsiceteamAvailability",
-        alt: "member-availability-preview",
-        title: "Member - Availability",
-      },
-      {
-        src: "settings/sjsiceteamSettings",
-        alt: "member-settings-preview",
-        title: "Member - Settings",
-      },
-      {
-        src: "schedule/sjsiceteamSchedule",
+        src: "newdesign/schedule/sjsiceteamSchedule",
         alt: "schedule-calendar-preview",
-        title: "Schedule - Calendar",
+        title: "event calendar",
       },
       {
-        src: "schedule/sjsiceteamScheduleMyGames",
-        alt: "scheduled-my-games-preview",
-        title: "Schedule - My Games",
+        src: "newdesign/event/sjsiceteamEvent",
+        alt: "event-preview",
+        title: "event",
       },
       {
-        src: "schedule/sjsiceteamScheduledEvent",
-        alt: "scheduled-my-event-preview",
-        title: "Schedule - My Event",
+        src: "newdesign/help/sjsiceteamHelp",
+        alt: "help-preview",
+        title: "help",
+      },
+      {
+        src: "newdesign/home/sjsiceteamHome",
+        alt: "home-preview",
+        title: "home",
+      },
+      {
+        src: "newdesign/availability/sjsiceteamAvailability",
+        alt: "member-availability-preview",
+        title: "my availability",
+      },
+      {
+        src: "newdesign/settings/sjsiceteamMyResponse",
+        alt: "member-response-preview",
+        title: "my response",
+      },
+      {
+        src: "newdesign/settings/sjsiceteamSettings",
+        alt: "member-settings-preview",
+        title: "settings",
       },
     ]}
     tech={[
-      "Github Actions",
-      "MongoDB",
-      "ReactJS (w/ReduxJS)",
-      "NextJS",
-      "ExpressJS",
-      "NodeJS",
-      "Nginx",
-      "PM2",
+      "github actions",
+      "mongodb",
+      "typescript",
+      "reactjs (w / reduxjs)",
+      "nextjs",
+      "expressjs",
+      "nodejs",
+      "nginx",
+      "pm2",
     ]}
   />
 );

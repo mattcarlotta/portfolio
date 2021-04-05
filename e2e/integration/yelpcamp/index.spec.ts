@@ -4,16 +4,13 @@ context("Yelp Camp Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "Yelp Camp");
+    cy.get("[data-testid='panel-title']").should("have.text", "yelp camp");
   });
 
   it("displays the project details", () => {
     cy.get("[data-testid='status']").should("have.text", "Decommissioned");
-    cy.get("[data-testid='filename']").should("have.text", "Yelp Camp");
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/campground-app-frontend",
-    );
+    cy.get("[data-testid='filename']").should("have.text", "yelp camp");
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -38,7 +35,7 @@ context("Yelp Camp Project Page", () => {
 
   it("displays a modal for individual project snapshots", () => {
     [{ id: "Ex. Campground", name: "Preview" }].forEach(({ id, name }) => {
-      cy.get(`[data-testid='${id}']`).click();
+      cy.get(`[data-testid='${id.toLowerCase()}']`).click();
 
       const src = `/projects/yelpcamp/yelpcamp${name}`;
 

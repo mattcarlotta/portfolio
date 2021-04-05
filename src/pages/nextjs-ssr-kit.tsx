@@ -1,11 +1,12 @@
+import * as React from "react";
 import Page from "~components/Layout/Page";
-import { FC } from "~types";
+import { NextPage } from "~types";
 
-const NextJSSSRKit: FC = (): JSX.Element => (
+const NextJSSSRKit: NextPage = () => (
   <Page
-    description=" A fully-loaded, built from the ground up, NextJS boilerplate for server-side solutions. This website and several projects were built using this boilerplate! Sports a custom NextJS config, Emotion SSR integration, custom Jest and Cypress testing suites, implements Github Actions for CI, and it even has an interactive API example using MongoDB."
+    description="a fully-loaded, built from the ground up, nextjs boilerplate for server-side solutions. this website and several projects were built using this boilerplate! it sports a custom nextjs config, emotion ssr integration, custom jest and cypress testing suites, implements github actions for ci, and it even has an interactive api example using mongodb."
     head={{
-      title: "NextJS SSR Kit",
+      title: "nextjs ssr kit",
       url: "/nextjs-ssr-kit",
       description:
         "A fully-loaded custom NextJS boilerplate for server-side solutions.",
@@ -18,38 +19,38 @@ const NextJSSSRKit: FC = (): JSX.Element => (
     snapshotdirectory="nextssrkit"
     snapshots={[
       {
-        src: "nextssrkitHome",
-        alt: "next-ssr-kit-home-preview",
-        title: "Home",
-      },
-      {
         src: "nextssrkitExampleAPI",
         alt: "next-ssr-kit-example-preview",
-        title: "Ex. API",
+        title: "ex. api",
       },
       {
         src: "nextssrkitExampleAPICreate",
         alt: "next-ssr-kit-example-create-preview",
-        title: "Ex. API Create",
+        title: "ex. api create",
       },
       {
         src: "nextssrkitExampleAPIEdit",
         alt: "next-ssr-kit-example-create-preview",
-        title: "Ex. API Edit",
+        title: "ex. api edit",
+      },
+      {
+        src: "nextssrkitHome",
+        alt: "next-ssr-kit-home-preview",
+        title: "home",
       },
     ]}
     tech={[
-      "Cypress",
-      "Emotion",
-      "Enzyme",
-      "Eslint",
-      "Github Actions",
-      "Jest",
-      "MongoDB",
-      "NextJS",
-      "ReactJS (w/ReduxJS + Redux Saga)",
-      "Stylelint",
-      "Typescript",
+      "cypress",
+      "emotion",
+      "enzyme",
+      "eslint",
+      "github actions",
+      "jest",
+      "mongodb",
+      "nextjs",
+      "reactjs (w / reduxjs + redux saga)",
+      "stylelint",
+      "typescript",
     ]}
   />
 );

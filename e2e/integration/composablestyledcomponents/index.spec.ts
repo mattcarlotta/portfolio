@@ -6,7 +6,7 @@ context("Composable Styled Components Project Page", () => {
   it("displays the project page", () => {
     cy.get("[data-testid='panel-title']").should(
       "have.text",
-      "Composable Styled Components",
+      "composable styled components",
     );
   });
 
@@ -14,21 +14,15 @@ context("Composable Styled Components Project Page", () => {
     cy.get("[data-testid='status']").should("have.text", "In Orbit");
     cy.get("[data-testid='filename']").should(
       "have.text",
-      "Composable Styled Components",
+      "composable styled components",
     );
-    cy.get("[data-testid='location-link']").should(
-      "have.text",
-      "https://composable.mattcarlotta.sh",
-    );
+    cy.get("[data-testid='location-link']").should("have.text", "demo");
     cy.get("[data-testid='location-link']").should(
       "have.attr",
       "target",
       "_blank",
     );
-    cy.get("[data-testid='source']").should(
-      "have.text",
-      "https://github.com/mattcarlotta/composable-styled-components",
-    );
+    cy.get("[data-testid='source']").should("have.text", "source");
     cy.get("[data-testid='source-link']").should(
       "have.attr",
       "target",
@@ -53,7 +47,7 @@ context("Composable Styled Components Project Page", () => {
 
   it("displays a modal for individual project snapshots", () => {
     ["Home", "API", "Demos", "Releases", "Search"].forEach(id => {
-      cy.get(`[data-testid='${id}']`).click();
+      cy.get(`[data-testid='${id.toLowerCase()}']`).click();
 
       const src = `/projects/composable/composable${id.replace(/ /g, "")}`;
 
