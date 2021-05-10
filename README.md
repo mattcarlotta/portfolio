@@ -9,11 +9,3 @@ Current browser support:
 <img style="margin-right: 5px;" src="https://i.imgur.com/mlO6osU.png" alt="safari.png" />
 <img style="margin-right: 5px;" src="https://i.imgur.com/0fyCByq.png" alt="samsung.png" />
 <img style="margin-right: 5px;" src="https://i.imgur.com/mD6SztK.png" alt="ie11.png" />
-
-Mobile:
-<br />
-<img src="https://i.imgur.com/eBmh1k7.png" alt="mobile.png" />
-
-Desktop:
-<br />
-<img src="https://i.imgur.com/Sg0mDDo.png" alt="desktop.png" />
