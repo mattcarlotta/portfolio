@@ -1,8 +1,7 @@
-import * as React from "react";
 import Page from "~components/Layout/Page";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const ProjectAeon: NextPage = () => (
+const ProjectAeon = (): ReactElement => (
   <Page
     description="work in progress: an application to ask and/or review web development code that utilizes integrated tools to run and share them. the aim of this project is to integrate development tools like: babel repl/codesandbox/codepen/js fiddle/typescript playground (and so on) into a central hub for teams or individuals to share their code quickly and effectively. In addition, the website will be optimized for seo and will prioritize questions and answers by user up/down votes. Open to the public, open source, and free to use."
     head={{

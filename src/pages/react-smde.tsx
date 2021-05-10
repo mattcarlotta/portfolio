@@ -1,10 +1,9 @@
-import * as React from "react";
 import Page from "~components/Layout/Page";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const ReactSMDE: NextPage = () => (
+const ReactSMDE = (): ReactElement => (
   <Page
-    description="a lightweight simple markdown editor (smde) npm package for react."
+    description="A lightweight Simple Markdown Editor (smde) npm package for React."
     head={{
       title: "React SMDE",
       url: "/react-smde",

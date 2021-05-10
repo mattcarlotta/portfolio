@@ -1,10 +1,20 @@
 import { css } from "@emotion/react";
-import { AiOutlineFolderOpen, AiOutlineCode } from "react-icons/ai";
-import { BsFillCircleFill } from "react-icons/bs";
-import { RiMapPin2Line } from "react-icons/ri";
-import { IconContext } from "react-icons";
 import Info from "~components/Layout/Info";
-import { FileDetailsProps } from "~types";
+import {
+  AiOutlineFolderOpen,
+  AiOutlineCode,
+  BsFillCircleFill,
+  IconContext,
+  RiMapPin2Line,
+} from "~icons";
+
+export type FileDetailsProps = {
+  active: boolean;
+  fileName: string;
+  location?: string;
+  status: string;
+  source: string;
+};
 
 const FileDetails = ({
   active,
@@ -20,6 +30,9 @@ const FileDetails = ({
   >
     <div
       css={css`
+        font-family: "Mukta", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
         margin-bottom: 20px;
         padding-left: 20px;
       `}
@@ -42,7 +55,7 @@ const FileDetails = ({
             target="_blank"
             aria-label="Link to hosted website"
           >
-            demo
+            Demo
           </a>
         </Info>
       )}
@@ -55,7 +68,7 @@ const FileDetails = ({
           target="_blank"
           aria-label="Link to source code"
         >
-          source
+          Source
         </a>
       </Info>
     </div>

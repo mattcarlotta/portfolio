@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import FlexCenter from "~components/Layout/FlexCenter";
+import { ReactElement } from "~types";
 
-const Solar = ({ className }: { className?: string }) => (
+const Solar = ({ className }: { className?: string }): ReactElement => (
   <FlexCenter data-testid="solar-system" className={className}>
     <div className="solar-system">
       <div className="earth-orbit orbit">

@@ -1,5 +1,12 @@
 import * as React from "react";
-import { ModalContainerProps } from "~types";
+
+export type ModalContainerProps = {
+  children: (
+    isOpen: boolean,
+    selected: string | undefined,
+    toggleModal: (selected?: string) => void,
+  ) => JSX.Element;
+};
 
 export type ModalContainerState = {
   isOpen: boolean;

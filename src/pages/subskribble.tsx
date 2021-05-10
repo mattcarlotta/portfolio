@@ -1,10 +1,9 @@
-import * as React from "react";
 import Page from "~components/Layout/Page";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const Subskribble: NextPage = () => (
+const Subskribble = (): ReactElement => (
   <Page
-    description="an experimental web application to create, manage, and send personalized updates to a list of subscribers. the application also included subscriber plans, plan promotionals, payment options, account charting and analytics, notifications, and an image cdn microservice."
+    description="An experimental web application to create, manage, and send personalized updates to a list of subscribers. The application included subscriber plans, plan promotionals, payment options, account charting and analytics, notifications, and an image CDN microservice."
     head={{
       title: "Subskribble",
       url: "/subskribble",

@@ -12,6 +12,14 @@ export const GlobalStylesheet = (): JSX.Element => (
         src: url("/fonts/elemental.ttf") format("truetype");
       }
 
+      @font-face {
+        font-family: "Mukta";
+        font-style: normal;
+        font-weight: normal;
+        font-display: swap;
+        src: url("/fonts/Mukta.ttf") format("truetype");
+      }
+
       #__next,
       body,
       html {
@@ -27,15 +35,15 @@ export const GlobalStylesheet = (): JSX.Element => (
         background-position: center;
         background-color: #010007;
         color: #fff;
+        font-family: "Elemental", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
       }
 
       *,
       :after,
       :before {
         box-sizing: border-box;
-        font-family: "Elemental", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
-          "Helvetica Neue", sans-serif;
       }
 
       :-moz-focus-inner {

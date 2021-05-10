@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 const Projects = [
   {
-    title: "sjs ice team (w.i.p.)",
+    title: "sjs ice team",
     href: "sjs-ice-team",
     description:
       "An application to manage the San Jose Sharks Ice Team scheduling.",

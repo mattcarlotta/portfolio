@@ -3,9 +3,9 @@ import { css } from "@emotion/react";
 import Center from "~components/Layout/Center";
 import Flex from "~components/Layout/Flex";
 import Home from "~components/Navigation/Home";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const NotFound: NextPage = () => (
+const NotFound = (): ReactElement => (
   <Flex
     data-testid="not-found-page"
     justify="center"

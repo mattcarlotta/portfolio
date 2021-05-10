@@ -1,13 +1,13 @@
 import * as React from "react";
 import Page from "~components/Layout/Page";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const AliasDirs: NextPage = () => (
+const AliasDirs = (): ReactElement => (
   <Page
     description={
       <>
-        with the help of the&nbsp;
+        With the help of the&nbsp;
         <OutsideLink
           ariaLabel="Navigate to babel-plugin-module-resolver home page"
           href="https://github.com/tleunen/babel-plugin-module-resolver"
@@ -16,7 +16,7 @@ const AliasDirs: NextPage = () => (
           babel-plugin-module-resolver
         </OutsideLink>
         , this npm package traverses a project&#39;s <i>src</i> directory and
-        automatically creates aliased imports for babel.
+        automatically creates aliased imports for Babel.
       </>
     }
     head={{

@@ -1,5 +1,10 @@
 import { createRef, PureComponent } from "react";
-import { ClickHandlerProps } from "~types";
+import { ReactNode } from "~types";
+
+export type ClickHandlerProps = {
+  closeModal: (selected?: string) => void;
+  children: ReactNode;
+};
 
 class ClickHandler extends PureComponent<ClickHandlerProps> {
   componentDidMount(): void {

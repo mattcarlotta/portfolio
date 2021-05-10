@@ -1,4 +1,4 @@
-import { mount } from "enzyme";
+import { mount, ReactWrapper } from "enzyme";
 import Page from "../index";
 
 const initProps = {
@@ -25,7 +25,10 @@ const initProps = {
   tech: ["Babel", "Enzyme", "Javascript", "Jest", "RollupJS"],
 };
 
-let wrapper: any = mount(<Page {...initProps} />);
+let wrapper: ReactWrapper = mount(<Page {...initProps} />);
+
+const findById = (id: string): ReactWrapper =>
+  wrapper.find(`[data-testid='${id}']`);
 
 describe("Page", () => {
   it("renders without errors", () => {
@@ -34,44 +37,36 @@ describe("Page", () => {
 
   it("populates the head with a title, url, description, and type", () => {
     const head = wrapper.find("Header");
-    expect(head.props().title).toEqual(initProps.head.title);
-    expect(head.props().url).toEqual(initProps.head.url);
-    expect(head.props().description).toEqual(initProps.head.description);
+    expect(head.prop("title")).toEqual(initProps.head.title);
+    expect(head.prop("url")).toEqual(initProps.head.url);
+    expect(head.prop("description")).toEqual(initProps.head.description);
   });
 
   it("populates the panel title", () => {
-    expect(wrapper.find("PanelTitle").text()).toEqual(
-      initProps.head.title.toLowerCase(),
-    );
+    expect(wrapper.find("PanelTitle").text()).toEqual(initProps.head.title);
   });
 
   it("renders the solar system", () => {
-    expect(wrapper.find("[data-testid='solar-system']")).toExist();
+    expect(findById("solar-system")).toExist();
   });
 
   it("populates the file details", () => {
-    expect(wrapper.find("[data-testid='status']").first().text()).toEqual(
+    expect(findById("status").first().text()).toEqual(
       initProps.filedetails.status,
     );
-    expect(wrapper.find("[data-testid='filename']").first().text()).toEqual(
-      initProps.head.title.toLowerCase(),
-    );
-    expect(wrapper.find("[data-testid='location']").first().text()).toEqual(
-      "demo",
-    );
-    expect(wrapper.find("[data-testid='source']").first().text()).toEqual(
-      "source",
-    );
+    expect(findById("filename").first().text()).toEqual(initProps.head.title);
+    expect(findById("location").first().text()).toEqual("Demo");
+    expect(findById("source").first().text()).toEqual("Source");
   });
 
   it("populates the description details", () => {
-    expect(wrapper.find("[data-testid='description']").first().text()).toEqual(
+    expect(findById("description").first().text()).toEqual(
       initProps.description,
     );
   });
 
   it("populates the tech details", () => {
-    expect(wrapper.find("[data-testid='tech']").first().text()).toEqual(
+    expect(findById("tech").first().text()).toEqual(
       initProps.tech.map(t => t).join(""),
     );
   });
@@ -79,7 +74,7 @@ describe("Page", () => {
   it("populates the snapshots", () => {
     const { snapshotdirectory, snapshots } = initProps;
 
-    const snapshot = wrapper.find("[data-testid='snapshots']").first();
+    const snapshot = findById("snapshots").first();
     expect(snapshot.find("CardTitle").first().text()).toEqual(
       snapshots[0].title,
     );
@@ -93,7 +88,7 @@ describe("Page", () => {
 
   it("displays a modal", () => {
     wrapper.find("PreviewCard").first().simulate("click");
-    expect(wrapper.find("Modal").first().props().isOpen).toBeTruthy();
+    expect(wrapper.find("Modal").first().prop("isOpen")).toBeTruthy();
   });
 
   it("populates the file details with active project", () => {
@@ -109,9 +104,7 @@ describe("Page", () => {
 
     wrapper = mount(<Page {...activeProps} />);
 
-    expect(wrapper.find("[data-testid='status']").first().text()).toEqual(
-      status,
-    );
+    expect(findById("status").first().text()).toEqual(status);
 
     expect(wrapper.find("BsFillCircleFill").first()).toHaveStyle(
       "color",

@@ -1,14 +1,14 @@
 import * as React from "react";
 import Page from "~components/Layout/Page";
 import Link from "~components/Navigation/Link";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const FullstackMERNKit: NextPage = () => (
+const FullstackMERNKit = (): ReactElement => (
   <Page
     description={
       <>
-        a fully-loaded custom boilerplate using mongodb, express, react/redux
-        and node for client-side solutions. this website and several projects
+        A fully-loaded custom boilerplate using MongoDBN, ExpressJS, React/Redux
+        and node for client-side solutions. This website and several projects
         were once built using this boilerplate, but have since been archived in
         favor of the&nbsp;
         <Link
@@ -18,7 +18,7 @@ const FullstackMERNKit: NextPage = () => (
           padding="0"
           showUnderline
         >
-          nextjs ssr kit
+          Nextjs SSR Kit
         </Link>
         .
       </>
@@ -30,7 +30,7 @@ const FullstackMERNKit: NextPage = () => (
         "A fully-loaded custom boilerplate using MongoDB, Express, React/Redux and Node for client-side solutions.",
     }}
     filedetails={{
-      active: true,
+      active: false,
       status: "Archived",
       source: "https://github.com/mattcarlotta/fullstack-mern-kit",
     }}

@@ -7,9 +7,9 @@ import Image from "~components/Layout/Image";
 import Projects from "~components/Layout/Projects";
 import Head from "~components/Navigation/Header";
 import Link from "~components/Navigation/Link";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const Home: NextPage = () => (
+const Home = (): ReactElement => (
   <>
     <Head title="Home" url="/" description="My personal website." />
     <Flex data-testid="home-page" justify="center" flexwrap>

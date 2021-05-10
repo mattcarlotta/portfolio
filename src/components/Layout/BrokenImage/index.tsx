@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { AiOutlineFileImage } from "react-icons/ai";
+import { AiOutlineFileImage } from "~icons";
 
 const Image = ({ className }: { className?: string }) => (
   <div data-testid="broken-image" className={className}>

@@ -1,5 +1,14 @@
 import styled from "@emotion/styled";
-import { OutsideLinkProps } from "~types";
+import { CSSProperties, ReactNode } from "~types";
+
+export type OutsideLinkProps = {
+  ariaLabel: string;
+  className?: string;
+  children: ReactNode;
+  dataTestId?: string;
+  href: string;
+  style?: CSSProperties;
+};
 
 const OutsideLinkComponent = ({
   ariaLabel,

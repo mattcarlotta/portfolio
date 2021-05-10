@@ -5,9 +5,9 @@ import Header from "~components/Layout/Header";
 import Footer from "~components/Layout/Footer";
 import Main from "~components/Layout/Main";
 import GlobalStylesheet from "~styles/globalStylesheet";
-import { FC, AppProps } from "~types";
+import { AppProps, ReactElement } from "~types";
 
-const App: FC<AppProps> = ({ Component, pageProps }) => (
+const App = ({ Component, pageProps }: AppProps): ReactElement => (
   <>
     <Head>
       <meta

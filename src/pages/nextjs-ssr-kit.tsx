@@ -1,10 +1,10 @@
 import * as React from "react";
 import Page from "~components/Layout/Page";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const NextJSSSRKit: NextPage = () => (
+const NextJSSSRKit = (): ReactElement => (
   <Page
-    description="a fully-loaded, built from the ground up, nextjs boilerplate for server-side solutions. this website and several projects were built using this boilerplate! it sports a custom nextjs config, emotion ssr integration, custom jest and cypress testing suites, implements github actions for ci, and it even has an interactive api example using mongodb."
+    description="A fully-loaded, built from the ground up, NextJS boilerplate for server-side solutions. This website and several other projects were built using this boilerplate! It sports a custom NextJS configuration, Emotion SSR integration, custom Jest and Cypress testing suites, implements Github Actions for CI, and it even has an interactive API example using MongoDB."
     head={{
       title: "NextJS SSR Kit",
       url: "/nextjs-ssr-kit",

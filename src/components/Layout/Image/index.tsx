@@ -1,7 +1,16 @@
 import * as React from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
-import { ImageProps } from "~types";
+import { ReactElement } from "~types";
+
+export type ImageProps = {
+  alt?: string;
+  containerStyle?: string;
+  handleImageLoaded: () => void;
+  onClick: () => void;
+  src?: string;
+  styles?: string;
+};
 
 const Image = ({
   alt,
@@ -10,7 +19,7 @@ const Image = ({
   onClick,
   src,
   styles,
-}: ImageProps): JSX.Element => {
+}: ImageProps): ReactElement => {
   const [error, setError] = React.useState(false);
   const onLoad = () => {
     handleImageLoaded();

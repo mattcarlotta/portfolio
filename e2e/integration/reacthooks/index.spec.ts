@@ -4,41 +4,34 @@ context("React Hooks Guide Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should(
-      "have.text",
-      "react hooks guide",
-    );
+    cy.findByTestId("panel-title").should("have.text", "React Hooks Guide");
   });
 
   it("displays the project details", () => {
-    cy.get("[data-testid='status']").should("have.text", "Decommissioned");
-    cy.get("[data-testid='filename']").should("have.text", "react hooks guide");
-    cy.get("[data-testid='source']").should("have.text", "source");
-    cy.get("[data-testid='source-link']").should(
-      "have.attr",
-      "target",
-      "_blank",
-    );
+    cy.findByTestId("status").should("have.text", "Decommissioned");
+    cy.findByTestId("filename").should("have.text", "React Hooks Guide");
+    cy.findByTestId("source").should("have.text", "Source");
+    cy.findByTestId("source-link").should("have.attr", "target", "_blank");
   });
 
   it("displays the project description", () => {
-    cy.get("[data-testid='description']").should("have.length", 1);
+    cy.findByTestId("description").should("exist");
   });
 
   it("displays the project tech specs", () => {
-    cy.get("[data-testid='tech']").should("have.length", 1);
+    cy.findByTestId("tech").should("exist");
   });
 
   it("displays the 5 project snapshot thumbnails", () => {
-    cy.get("[data-testid='snapshots']").should("have.length", 1);
-    cy.get("[data-testid='snapshots']")
+    cy.findByTestId("snapshots")
+      .should("exist")
       .find("picture")
       .should("have.length", 5);
   });
 
   it("displays a modal for individual project snapshots", () => {
     ["Home", "API", "Examples"].forEach(id => {
-      cy.get(`[data-testid='${id.toLowerCase()}']`).click();
+      cy.findByTestId(id.toLowerCase()).click();
 
       const src = `/projects/reacthooks/reacthooks${id}`;
 
@@ -54,7 +47,7 @@ context("React Hooks Guide Project Page", () => {
         .find("img")
         .should("have.attr", "src", `${src}.png`);
 
-      cy.get("[data-testid='close-modal']").click();
+      cy.findByTestId("close-modal").click();
     });
   });
 });
