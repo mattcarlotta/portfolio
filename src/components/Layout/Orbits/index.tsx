@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const Orbits = ({ className }: { className?: string }) => (
+const Orbits = ({ className }: { className?: string }): JSX.Element => (
   <div className={className}>
     <div className="container">
       {[0, 1, 2, 3, 4, 5].map(key => (

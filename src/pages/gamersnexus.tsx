@@ -1,13 +1,13 @@
 import * as React from "react";
 import Page from "~components/Layout/Page";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const GamersNexus: NextPage = () => (
+const GamersNexus = (): ReactElement => (
   <Page
     description={
       <>
-        a mock up created in 3 days as a redesign proposal for &nbsp;
+        A mock up created in 3 days as a redesign proposal for&nbsp;
         <OutsideLink
           ariaLabel="Navigate to gamersnexus home page"
           href="https://www.gamersnexus.net/"
@@ -27,7 +27,7 @@ const GamersNexus: NextPage = () => (
     filedetails={{
       active: true,
       location: "https://gamersnexus.mattcarlotta.sh/",
-      status: "in orbit",
+      status: "In Orbit",
       source: "https://github.com/mattcarlotta/gamersnexus",
     }}
     snapshotdirectory="gamersnexus"

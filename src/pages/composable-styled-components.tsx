@@ -1,13 +1,13 @@
 import * as React from "react";
 import Page from "~components/Layout/Page";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const ComposableStyledComponents: NextPage = () => (
+const ComposableStyledComponents = (): ReactElement => (
   <Page
     description={
       <>
-        a lightweight composable npm package for&nbsp;
+        A lightweight composable npm package for&nbsp;
         <OutsideLink
           ariaLabel="Navigate to styled-components home page"
           href="https://styled-components.com/"
@@ -24,14 +24,14 @@ const ComposableStyledComponents: NextPage = () => (
         >
           npm
         </OutsideLink>
-        . meanwhile, the documentation website is built in typescript, optimized
-        for seo with&nbsp;
+        . Meanwhile, the documentation website is built in Typescript, optimized
+        for SEO with&nbsp;
         <OutsideLink
           ariaLabel="Navigate to Algolia home page"
           href="https://www.algolia.com"
           padding="0"
         >
-          algolia
+          Algolia
         </OutsideLink>
         &nbsp;search engine crawler integration, and utilizes the
         composable-styled-components package to construct reusable components.
@@ -43,9 +43,9 @@ const ComposableStyledComponents: NextPage = () => (
       description: "A lightweight composable solution for styled-components.",
     }}
     filedetails={{
-      active: true,
+      active: false,
       location: "https://composable.mattcarlotta.sh",
-      status: "In Orbit",
+      status: "Decommissioned",
       source: "https://github.com/mattcarlotta/composable-styled-components",
     }}
     snapshotdirectory="composable"

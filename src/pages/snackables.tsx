@@ -1,13 +1,13 @@
 import * as React from "react";
 import Page from "~components/Layout/Page";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const Snackables: NextPage = () => (
+const Snackables = (): ReactElement => (
   <Page
     description={
       <>
-        heavily inspired by&nbsp;
+        Heavily inspired by&nbsp;
         <OutsideLink
           ariaLabel="Navigate to dotenv npm home page"
           href="https://www.npmjs.com/package/dotenv"
@@ -32,7 +32,7 @@ const Snackables: NextPage = () => (
           zero-dependency
         </OutsideLink>
         &nbsp; package module that automatically loads environment variables
-        from a predefined ENV_LOAD variable. when it comes to .env file naming,
+        from a predefined ENV_LOAD variable. When it comes to .env file naming,
         snackables is unopinionated, so you can name them anything you&#39;d
         like or you can follow the&nbsp;
         <OutsideLink
@@ -42,7 +42,7 @@ const Snackables: NextPage = () => (
         >
           the twelve-factor app
         </OutsideLink>
-        &nbsp;methodology. the package is completely written in typescript,
+        &nbsp;methodology. The package is completely written in typescript,
         backed by&nbsp;
         <OutsideLink
           ariaLabel="Navigate to codecov snackables page"
@@ -51,11 +51,11 @@ const Snackables: NextPage = () => (
         >
           100% test coverage
         </OutsideLink>
-        &nbsp;and is compiled in es5 javascript. the purpose of this package is
-        to keep everything within one encapsulated loop to reduce iterations
-        which results in an up to 50% faster performance over dotenv and
-        dotenv-expand and up to 80% faster performance than nextjs&#39; current
-        implementation.
+        &nbsp;and is compiled in ES5 javascript. The main advantage of this
+        package is that it keeps everything within one encapsulated loop to
+        reduce iterations. As a result, .env file loading is up to 50% faster
+        than dotenv and dotenv-expand and up to 80% faster than NextJS&#39;
+        current implementation.
       </>
     }
     head={{

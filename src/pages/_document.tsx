@@ -1,4 +1,3 @@
-import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import packageJson from "../../package.json";
 
@@ -18,6 +17,12 @@ class CustomDocument extends Document {
         <link
           rel="preload"
           href="/fonts/elemental.ttf"
+          as="font"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/Mukta.ttf"
           as="font"
           crossOrigin="anonymous"
         />

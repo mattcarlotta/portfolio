@@ -4,37 +4,30 @@ context("React SMDE Project Page", () => {
   });
 
   it("displays the project page", () => {
-    cy.get("[data-testid='panel-title']").should("have.text", "react smde");
+    cy.findByTestId("panel-title").should("have.text", "React SMDE");
   });
 
   it("displays the project details", () => {
-    cy.get("[data-testid='status']").should("have.text", "Decommissioned");
-    cy.get("[data-testid='filename']").should("have.text", "react smde");
-    cy.get("[data-testid='location-link']").should("have.text", "demo");
-    cy.get("[data-testid='location-link']").should(
-      "have.attr",
-      "target",
-      "_blank",
-    );
-    cy.get("[data-testid='source']").should("have.text", "source");
-    cy.get("[data-testid='source-link']").should(
-      "have.attr",
-      "target",
-      "_blank",
-    );
+    cy.findByTestId("status").should("have.text", "Decommissioned");
+    cy.findByTestId("filename").should("have.text", "React SMDE");
+    cy.findByTestId("location-link").should("have.text", "Demo");
+    cy.findByTestId("location-link").should("have.attr", "target", "_blank");
+
+    cy.findByTestId("source").should("have.text", "Source");
+    cy.findByTestId("source-link").should("have.attr", "target", "_blank");
   });
 
   it("displays the project description", () => {
-    cy.get("[data-testid='description']").should("have.length", 1);
+    cy.findByTestId("description").should("exist");
   });
 
   it("displays the project tech specs", () => {
-    cy.get("[data-testid='tech']").should("have.length", 1);
+    cy.findByTestId("tech").should("exist");
   });
 
   it("displays the 3 project snapshot thumbnail", () => {
-    cy.get("[data-testid='snapshots']").should("have.length", 1);
-    cy.get("[data-testid='snapshots']")
+    cy.findByTestId("snapshots")
+      .should("exist")
       .find("picture")
       .should("have.length", 3);
   });
@@ -54,7 +47,7 @@ context("React SMDE Project Page", () => {
         name: "Source",
       },
     ].forEach(({ id, name }) => {
-      cy.get(`[data-testid='${id}']`).click();
+      cy.findByTestId(id).click();
 
       const src = `/projects/reactsmde/reactsmde${name}`;
 
@@ -70,7 +63,7 @@ context("React SMDE Project Page", () => {
         .find("img")
         .should("have.attr", "src", `${src}.png`);
 
-      cy.get("[data-testid='close-modal']").click();
+      cy.findByTestId("close-modal").click();
     });
   });
 });

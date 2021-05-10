@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 /* eslint-disable */
-export {};
+import * as React from "react";
 
 declare global {
   namespace NodeJS {
@@ -8,7 +8,7 @@ declare global {
       document: Document;
       window: any;
       navigator: any;
-      React: any;
+      React: typeof React;
     }
 
     interface Document {
@@ -16,4 +16,5 @@ declare global {
     }
   }
 }
-/* eslint-enable */
+
+export {};

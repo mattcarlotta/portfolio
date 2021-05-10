@@ -2,9 +2,9 @@ import PanelBody from "~components/Layout/PanelBody";
 import PanelContainer from "~components/Layout/PanelContainer";
 import Bars from "~components/Layout/Bars";
 import Solar from "~components/Layout/Solar";
-import { ReactNode } from "~types";
+import { ReactNode, ReactElement } from "~types";
 
-const Panel = ({ children }: { children: ReactNode }): JSX.Element => (
+const Panel = ({ children }: { children: ReactNode }): ReactElement => (
   <PanelContainer>
     <Solar />
     <PanelBody>

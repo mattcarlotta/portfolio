@@ -2,69 +2,69 @@ const dayjs = require("dayjs");
 
 const Projects = [
   {
-    id: "sjs ice team (w.i.p.)",
+    id: "sjs ice team",
     href: "sjs-ice-team",
-    title: "sjs ice team (w.i.p.)",
+    title: "SJS Ice Team",
   },
   {
     id: "gamersnexus mock up",
     href: "gamersnexus",
-    title: "gamersnexus mock up",
+    title: "GamersNexus Mock Up",
   },
   {
     id: "snackables",
     href: "snackables",
-    title: "snackables",
+    title: "Snackables",
   },
   {
     id: "react hooks guide",
     href: "react-hooks-guide",
-    title: "react hooks guide",
+    title: "React Hooks Guide",
   },
   {
     id: "nextjs ssr kit",
     href: "nextjs-ssr-kit",
-    title: "nextjs ssr kit",
+    title: "NextJS SSR Kit",
   },
   {
     id: "subskribble",
     href: "subskribble",
-    title: "subskribble",
+    title: "Subskribble",
   },
   {
     id: "composable components",
     href: "composable-styled-components",
-    title: "composable styled components",
+    title: "Composable Styled Components",
   },
   {
     id: "react smde",
     href: "react-smde",
-    title: "react smde",
+    title: "React SMDE",
   },
   {
     id: "alias dirs",
     href: "alias-dirs",
-    title: "alias dirs",
+    title: "Alias Dirs",
   },
   {
     id: "fullstack m.e.r.n. kit",
     href: "fullstack-mern-kit",
-    title: "fullstack m.e.r.n. kit",
+    title: "Fullstack M.E.R.N. Kit",
   },
   {
     id: "yelp camp",
     href: "yelp-camp",
-    title: "yelp camp",
+    title: "Yelp Camp",
   },
   {
     id: "fan controller app",
     href: "nvfc-app",
-    title: "fan controller (nvfc) app",
+    title: "Fan Controller (nvfc) App",
   },
   {
     id: "ssdtgen app",
     href: "ssdtgen-app",
-    title: "ssdtgen app",
+    title: "ssdtGen App",
   },
 ];
 
@@ -74,49 +74,48 @@ context("Home Page", () => {
   });
 
   it("displays a header", () => {
-    cy.get("[data-testid='header']").should("have.length", 1);
-    cy.get("[data-testid='header']")
-      .find("h1")
-      .should("have.text", "MATT CARLOTTA");
-    cy.get("[data-testid='header']")
+    cy.findByTestId("header").should("exist");
+
+    cy.findByTestId("header").find("h1").should("have.text", "MATT CARLOTTA");
+    cy.findByTestId("header")
       .find("p")
       .should("have.text", "fullstack web developer and commercial artist");
   });
 
   it("displays a link to open email", () => {
-    cy.get("[data-testid='mail']").should("have.attr", "target", "_blank");
+    cy.findByTestId("mail").should("have.attr", "target", "_blank");
   });
 
   it("displays a link to open github", () => {
-    cy.get("[data-testid='github']").should("have.attr", "target", "_blank");
+    cy.findByTestId("github").should("have.attr", "target", "_blank");
   });
 
   it("displays a link to open linkedin", () => {
-    cy.get("[data-testid='linkedin']").should("have.attr", "target", "_blank");
+    cy.findByTestId("linkedin").should("have.attr", "target", "_blank");
   });
 
   it("displays a link to open blogger", () => {
-    cy.get("[data-testid='blog']").should("have.attr", "target", "_blank");
+    cy.findByTestId("blog").should("have.attr", "target", "_blank");
   });
 
   it("displays 13 project links", () => {
-    cy.get("[data-testid='body']").find("a").should("have.length", 13);
+    cy.findByTestId("body").find("a").should("have.length", 13);
   });
 
   it("navigates to all projects", () => {
     Projects.forEach(({ id, href, title }) => {
-      cy.get(`[data-testid='${id}']`).click();
+      cy.findByTestId(id).click();
       cy.url().should("contain", `/${href}`);
-      cy.get("[data-testid='panel-title']").should("have.text", title);
+      cy.findByTestId("panel-title").should("have.text", title);
 
-      cy.get("[data-testid='go-home']").click();
+      cy.findByTestId("go-home").click();
       cy.url().should("contain", "/");
     });
   });
 
   it("displays a footer", () => {
-    cy.get("[data-testid='footer']").should("have.length", 1);
-    cy.get("[data-testid='footer']")
+    cy.findByTestId("footer")
+      .should("exist")
       .find("p")
       .should("have.text", `©${dayjs().year()} matt carlotta`);
   });

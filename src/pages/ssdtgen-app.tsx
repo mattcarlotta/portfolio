@@ -1,10 +1,9 @@
-import * as React from "react";
 import Page from "~components/Layout/Page";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const SSDTGenApp: NextPage = () => (
+const SSDTGenApp = (): ReactElement => (
   <Page
-    description="a standalone app that attempts to build and compile custom ssdts (system service descriptor Tables) for x99/z170/z97/h97 systems running mac os. specifically, it will inject properties into the system&#39;s acpi (advanced configuration and power interface) tables for: on-board sound, an external gpu/hdmi audio, ssata contoller, ethernet, imei controller, lpc support, nvme devices, sata controller, sbus controller, xhc usb power options, and xosi support."
+    description="A standalone app that attempts to build and compile custom SSDTs (system service descriptor Tables) for x99/z170/z97/h97 systems running Mac OS. Specifically, it will inject properties into the system&#39;s ACPI (advanced configuration and power interface) tables for: on-board sound, an external GPU/HDMI audio, SSATA contoller, ethernet, IMEI controller, LPC support, NMVe devices, Sata controller, SBUS controller, XHC USB power options, and XOSI support."
     head={{
       title: "ssdtGen App",
       url: "/ssdtgen-app",
@@ -12,7 +11,7 @@ const SSDTGenApp: NextPage = () => (
         "A standalone Mac OS application that builds and compiles custom SSDTs for X99, Z170, Z97, and H97 systems running Mac OS.",
     }}
     filedetails={{
-      active: true,
+      active: false,
       status: "Archived",
       source: "https://github.com/mattcarlotta/ssdtGenApp",
     }}

@@ -1,32 +1,38 @@
-import { cloneElement, useCallback, useEffect, useState } from "react";
+import * as React from "react";
 import { createPortal } from "react-dom";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes } from "~icons";
 import BackgroundOverlay from "./BackgroundOverlay";
 import ClickHandler from "./ClickHandler";
 import Container from "./Container";
 import CloseModalButton from "./CloseModalButton";
 import ModalContent from "./ModalContent";
 import WindowContainer from "./WindowContainer";
-import { ModalProps } from "~types";
+import { ReactElement } from "~types";
+
+export type ModalProps = {
+  children: ReactElement;
+  isOpen: boolean;
+  onClick: () => void;
+};
 
 const Modal = ({
   children,
   isOpen,
   onClick,
-}: ModalProps): JSX.Element | null => {
-  const [isLoaded, setLoaded] = useState(true);
+}: ModalProps): ReactElement | null => {
+  const [isLoaded, setLoaded] = React.useState(true);
 
-  const handleImageLoaded = useCallback(() => setLoaded(true), []);
+  const handleImageLoaded = React.useCallback(() => setLoaded(true), []);
 
   /* istanbul ignore next */
-  useEffect(() => {
+  React.useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "visible";
     return () => {
       document.body.style.overflow = "visible";
     };
   }, [isOpen]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isOpen) setLoaded(false);
   }, [isOpen]);
 
@@ -41,7 +47,7 @@ const Modal = ({
                   <CloseModalButton data-testid="close-modal" onClick={onClick}>
                     <FaTimes />
                   </CloseModalButton>
-                  {cloneElement(children, { handleImageLoaded })}
+                  {React.cloneElement(children, { handleImageLoaded })}
                 </ModalContent>
               </ClickHandler>
             </Container>

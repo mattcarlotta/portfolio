@@ -1,9 +1,4 @@
 import { css } from "@emotion/react";
-import { IconContext } from "react-icons";
-import { FaBlog } from "react-icons/fa";
-import { GoHome, GoMail } from "react-icons/go";
-import { FiLinkedin } from "react-icons/fi";
-import { RiGithubLine } from "react-icons/ri";
 import FlexCenter from "~components/Layout/FlexCenter";
 import ListItem from "~components/Layout/ListItem";
 import Orbits from "~components/Layout/Orbits";
@@ -12,6 +7,15 @@ import OutsideLink from "~components/Navigation/OutsideLink";
 import Center from "~components/Layout/Center";
 import Headline from "~components/Layout/Headline";
 import SubHeadline from "~components/Layout/SubHeadline";
+import {
+  IconContext,
+  GoHome,
+  GoMail,
+  FaBlog,
+  FiLinkedin,
+  RiGithubLine,
+} from "~icons";
+import { ReactElement } from "~types";
 
 const FOOTERLINKS = [
   {
@@ -40,7 +44,7 @@ const FOOTERLINKS = [
   },
 ];
 
-const Header = (): JSX.Element => (
+const Header = (): ReactElement => (
   <header
     css={css`
       padding-top: 60px;

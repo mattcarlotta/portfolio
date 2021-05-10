@@ -1,10 +1,9 @@
-import * as React from "react";
 import Page from "~components/Layout/Page";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const ReactHooksGuide: NextPage = () => (
+const ReactHooksGuide = (): ReactElement => (
   <Page
-    description="an educational website to help up-and-coming developers understand react’s newly introduced hooks. the entire website was built using hooks and provides: interactive hook examples with example code and in-depth hook descriptions and usage cases. designed for both mobile to desktop screen sizes, and has a light and dark theme."
+    description="An educational website to help up-and-coming developers understand React’s newly introduced hooks. The entire website was built using hooks and provides: interactive hook examples with example code and in-depth hook descriptions and usage cases. Designed for both mobile to desktop screen sizes, and has a light and dark theme."
     head={{
       title: "React Hooks Guide",
       url: "/react-hooks-guide",

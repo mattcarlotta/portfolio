@@ -1,6 +1,17 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
-import { LinkProps } from "~types";
+import { CSSProperties, ReactElement, ReactNode } from "~types";
+
+export type LinkProps = {
+  ariaLabel: string;
+  asHref?: string;
+  dataTestId: string;
+  children: ReactNode;
+  className?: string;
+  href: string;
+  padding?: string;
+  style?: CSSProperties;
+};
 
 const LinkComponent = ({
   ariaLabel,
@@ -10,7 +21,7 @@ const LinkComponent = ({
   dataTestId,
   href,
   style,
-}: LinkProps) => (
+}: LinkProps): ReactElement => (
   <Link href={href} as={asHref} prefetch={false} passHref>
     <a
       aria-label={ariaLabel}

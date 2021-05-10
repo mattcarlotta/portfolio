@@ -1,10 +1,9 @@
-import * as React from "react";
 import Page from "~components/Layout/Page";
-import { NextPage } from "~types";
+import { ReactElement } from "~types";
 
-const NVFCApp: NextPage = () => (
+const NVFCApp = (): ReactElement => (
   <Page
-    description="a standalone linux application that creates a modifiable 2d curve of temp and fan speed points that automatically controls a nvidia gpu&#39;s fan based on the gpu&#39;s temperature."
+    description="A standalone Linux application that creates a modifiable 2D curve of temperature to fan speed percentage points. These points will then control an Nvidia GPU&#39;s fan based on its temperature."
     head={{
       title: "Fan Controller (nvfc) App",
       url: "/nvfc-app",
@@ -12,7 +11,7 @@ const NVFCApp: NextPage = () => (
         "A standalone Linux application that creates a modifiable 2D curve of temp and fan speed points that automatically controls a Nvidia GPU's fan based on the GPU's temperature.",
     }}
     filedetails={{
-      active: true,
+      active: false,
       status: "Archived",
       source: "https://github.com/mattcarlotta/nvfcApp",
     }}
