@@ -19,13 +19,13 @@ const Projects = [
     ariaLabel: "Navigate to the gamersnexus project page.",
   },
   {
-    title: "snackables",
-    href: "snackables",
+    title: "@noshot env",
+    href: "noshotenv",
     description:
       "A package module that automatically loads environment variables from a predefined ENV_LOAD variable.",
-    src: "snackables/snackablesLogo2Min",
-    alt: "snackables-preview",
-    ariaLabel: "Navigate to the snackables project page.",
+    src: "noshotenv/noshotenvLogoMin",
+    alt: "noshotenv-preview",
+    ariaLabel: "Navigate to the @noshot/env project page.",
   },
   {
     title: "react hooks guide",
