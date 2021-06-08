@@ -1,15 +1,15 @@
-context("Snackables Project Page", () => {
+context("NoShot Env Project Page", () => {
   before(() => {
-    cy.visit("/snackables");
+    cy.visit("/noshotenv");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should("have.text", "Snackables");
+    cy.findByTestId("panel-title").should("have.text", "@noshot/env");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "In Orbit");
-    cy.findByTestId("filename").should("have.text", "Snackables");
+    cy.findByTestId("filename").should("have.text", "@noshot/env");
     cy.findByTestId("location-link").should("have.text", "Demo");
     cy.findByTestId("location-link").should("have.attr", "target", "_blank");
     cy.findByTestId("source").should("have.text", "Source");
@@ -32,10 +32,10 @@ context("Snackables Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    [{ id: "Logo", name: "Logo2" }].forEach(({ id, name }) => {
+    ["Logo"].forEach(id => {
       cy.findByTestId(id.toLowerCase()).click();
 
-      const src = `/projects/snackables/snackables${name}`;
+      const src = `/projects/noshotenv/noshotenv${id}`;
 
       cy.get("#modal").find("[data-testid='picture']").should("have.length", 1);
 

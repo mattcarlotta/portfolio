@@ -12,9 +12,9 @@ const Projects = [
     title: "GamersNexus Mock Up",
   },
   {
-    id: "snackables",
-    href: "snackables",
-    title: "Snackables",
+    id: "@noshot env",
+    href: "noshotenv",
+    title: "@noshot/env",
   },
   {
     id: "react hooks guide",
