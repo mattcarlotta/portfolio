@@ -12,8 +12,8 @@ const NextJSSSRKit = (): ReactElement => (
         "A fully-loaded custom NextJS boilerplate for server-side solutions.",
     }}
     filedetails={{
-      active: true,
-      status: "In Orbit",
+      active: false,
+      status: "Archived",
       source: "https://github.com/mattcarlotta/nextjs-ssr-kit",
     }}
     snapshotdirectory="nextssrkit"

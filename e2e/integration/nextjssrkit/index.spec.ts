@@ -8,7 +8,7 @@ context("NextJS SSR Kit Project Page", () => {
   });
 
   it("displays the project details", () => {
-    cy.findByTestId("status").should("have.text", "In Orbit");
+    cy.findByTestId("status").should("have.text", "Archived");
     cy.findByTestId("filename").should("have.text", "NextJS SSR Kit");
     cy.findByTestId("source").should("have.text", "Source");
     cy.findByTestId("source-link").should("have.attr", "target", "_blank");

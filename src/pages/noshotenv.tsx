@@ -52,10 +52,10 @@ const NoShotEnv = (): ReactElement => (
           100% test coverage
         </OutsideLink>
         &nbsp;and is compiled in ES5 CommonJS and ES6 ES Modules. The main
-        advantage of this package is that it dynamically loads env files and as
-        quickly as possible. As a result, .env file loading is between 40-70%
-        faster than dotenv and dotenv-expand and up to 80%-90% faster than
-        NextJS&#39; current implementation:&nbsp;
+        advantage of this package is that it extend and/or dynamically load env
+        files as quickly as possible from a configuration file. As a result,
+        .env file loading is between 40-70% faster than dotenv and dotenv-expand
+        and up to 80%-90% faster than NextJS&#39; current implementation:&nbsp;
         <OutsideLink
           ariaLabel="Navigate to noshot/env-metrics page"
           href="https://github.com/no-shot/env-metrics#metrics"
