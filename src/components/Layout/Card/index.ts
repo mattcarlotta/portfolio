@@ -7,7 +7,6 @@ const Card = styled.div`
   height: 260px;
   margin: 5px;
   border-radius: 4px;
-  overflow: hidden;
   text-align: center;
   background-color: transparent;
   color: #0096ff;
@@ -43,9 +42,9 @@ const Card = styled.div`
   }
 
   :hover {
-    background-color: rgba(2, 28, 48, 0.4);
+    background-color: rgba(0, 2, 14, 1);
     box-shadow: 0px 0px 26px -2px rgba(0, 64, 255, 1);
-    transform: scale(1.1);
+    transform: scale(1.15);
     transition: transform 200ms ease-in-out;
 
     ${CardTitle} {

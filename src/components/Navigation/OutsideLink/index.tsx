@@ -31,11 +31,14 @@ const OutsideLinkComponent = ({
   </a>
 );
 
-const OutsideLink = styled(OutsideLinkComponent)<{ padding?: string }>`
+const OutsideLink = styled(OutsideLinkComponent)<{
+  padding?: string;
+  textDecoration?: string;
+}>`
   padding: ${({ padding }) => padding || "10px 15px"};
   color: #008ef1;
   transition: all 0.5s;
-  text-decoration: underline;
+  text-decoration: ${({ textDecoration }) => textDecoration || "underline"};
   cursor: pointer;
 
   :hover {

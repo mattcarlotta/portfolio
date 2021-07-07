@@ -2,6 +2,7 @@ import * as React from "react";
 import Bars from "~components/Layout/Bars";
 import Card from "~components/Layout/Card";
 import CardTitle from "~components/Layout/CardTitle";
+import Category from "~components/Layout/Category";
 import Flex from "~components/Layout/Flex";
 import Image from "~components/Layout/Image";
 import Apps from "~components/Layout/Apps";
@@ -14,7 +15,7 @@ import { ReactElement } from "~types";
 const Home = (): ReactElement => (
   <>
     <Head title="Home" url="/" description="My personal website." />
-    <h2>Applications</h2>
+    <Category>Applications</Category>
     <Flex data-testid="home-page" justify="center" flexwrap margin="0 0 80px 0">
       {Apps.map(({ title, href, src, alt, ariaLabel }) => (
         <Link
@@ -37,12 +38,13 @@ const Home = (): ReactElement => (
         </Link>
       ))}
     </Flex>
-    <h2>Explorations</h2>
+    <Category>Explorations</Category>
     <Flex data-testid="home-page" justify="center" flexwrap>
       {Explorations.map(({ title, href, src, alt, ariaLabel }) => (
         <OutsideLink
           dataTestId={title}
           ariaLabel={ariaLabel}
+          textDecoration="none"
           key={href}
           padding="0px"
           href={`https://codesandbox.io/s/${href}`}

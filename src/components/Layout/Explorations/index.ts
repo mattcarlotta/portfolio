@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 const Explorations = [
   {
-    title: "drag and drop between lists",
+    title: "drag & drop between lists",
     href: "ttmj3",
     description: "An example of dragging and dropping an item between lists.",
     src: "explorations/dragDropBetweenLists",
@@ -38,7 +38,7 @@ const Explorations = [
       "Navigate to the Dynamic Field Creation example codesandbox page.",
   },
   {
-    title: "draggable - bound to window",
+    title: "draggable bound to window",
     href: "k5n52xq70r",
     description: "An example of making a component bound to the window.",
     src: "explorations/draggableBoundToWindow",
@@ -47,7 +47,7 @@ const Explorations = [
       "Navigate to the Draggable Bound to Window example codesandbox page.",
   },
   {
-    title: "formik and ant design",
+    title: "formik with ant design",
     href: "4x47oznvvx",
     description: "An example of integrating Formik with Ant Design.",
     src: "explorations/formikAntDesign",
@@ -72,13 +72,13 @@ const Explorations = [
     ariaLabel: "Navigate to the DropZone Redux Form example codesandbox page.",
   },
   {
-    title: "image fade transition",
+    title: "custom image transition",
     href: "6lmv669kz",
     description: "An example of fading an image into another image.",
-    src: "explorations/fadeImage",
+    src: "explorations/customImageTransition",
     alt: "fade-image",
     ariaLabel:
-      "Navigate to the Image Fade Transition example codesandbox page.",
+      "Navigate to the Custom Image Transition example codesandbox page.",
   },
   {
     title: "custom select",
