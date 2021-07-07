@@ -98,8 +98,8 @@ context("Home Page", () => {
     cy.findByTestId("blog").should("have.attr", "target", "_blank");
   });
 
-  it("displays 13 project links", () => {
-    cy.findByTestId("body").find("a").should("have.length", 13);
+  it("displays 39 project links", () => {
+    cy.findByTestId("body").find("a").should("have.length", 39);
   });
 
   it("navigates to all projects", () => {

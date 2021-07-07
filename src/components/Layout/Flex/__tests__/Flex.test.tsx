@@ -34,6 +34,11 @@ describe("Flex", () => {
     expect(wrapper).toHaveStyleRule("height", "10px");
   });
 
+  it("sets margin when passed a 'margin' prop", () => {
+    wrapper.setProps({ margin: "10px" });
+    expect(wrapper).toHaveStyleRule("margin", "10px");
+  });
+
   it("sets width when passed a 'width' prop", () => {
     wrapper.setProps({ width: "10px" });
     expect(wrapper).toHaveStyleRule("width", "10px");

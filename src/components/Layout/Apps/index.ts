@@ -97,6 +97,15 @@ const Projects = [
     ariaLabel: "Navigate to the Yelp Camp project page.",
   },
   {
+    title: "autorun gcn driver",
+    href: "autorun-gcn-driver",
+    description:
+      "A program that replaces manually opening the GCN USB Adapter, pressing the 'Start' button and then searching through the vJoy devices to find which vJoy device is active.",
+    src: "autorungcn/autorunGCNPreviewMin",
+    alt: "autorun-gcn-preview",
+    ariaLabel: "Navigate to the Autorun GCN project page.",
+  },
+  {
     title: "fan controller app",
     href: "nvfc-app",
     description:

@@ -60,7 +60,7 @@ const Header = (): ReactElement => (
           margin: 0 auto;
         `}
       >
-        <FlexCenter direction="row">
+        <FlexCenter breakpoint direction="row">
           <ListItem>
             <Link
               dataTestId="go-home"

@@ -4,6 +4,7 @@ const Flex = styled.div<{
   direction?: string;
   height?: string;
   justify?: string;
+  margin?: string;
   flexwrap?: boolean;
   width?: string;
 }>`
@@ -15,6 +16,7 @@ const Flex = styled.div<{
   width: ${({ width }) => width || "100%"};
   flex-wrap: ${({ flexwrap }) => (flexwrap ? "wrap" : "nowrap")};
   justify-content: ${({ justify }) => justify || "start"};
+  margin: ${({ margin }) => margin};
 `;
 
 export default Flex;
