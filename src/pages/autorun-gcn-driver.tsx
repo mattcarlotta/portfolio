@@ -29,7 +29,7 @@ const AutorunGCNDriver = (): ReactElement => (
       </>
     }
     head={{
-      title: "autorun gcn driver",
+      title: "Autorun GCN Driver",
       url: "/autorun-gcn-driver",
       description:
         "A program that replaces manually opening the GCN USB Adapter, pressing the 'Start' button and then searching through the vJoy devices to find which vJoy device is active.",
