@@ -9,7 +9,6 @@ import Apps from "~components/Layout/Apps";
 import Explorations from "~components/Layout/Explorations";
 import Head from "~components/Navigation/Header";
 import Link from "~components/Navigation/Link";
-import OutsideLink from "~components/Navigation/OutsideLink";
 import { ReactElement } from "~types";
 
 const Home = (): ReactElement => (
@@ -17,15 +16,16 @@ const Home = (): ReactElement => (
     <Head title="Home" url="/" description="My personal website." />
     <Category>Applications</Category>
     <Flex data-testid="home-page" justify="center" flexwrap margin="0 0 80px 0">
-      {Apps.map(({ title, href, src, alt, ariaLabel }) => (
+      {Apps.map(({ title, href, src, alt, ariaLabel }, index) => (
         <Link
           dataTestId={title}
           ariaLabel={ariaLabel}
           key={href}
           padding="0px"
           href={`/${href}`}
+          scroll={false}
         >
-          <Card>
+          <Card custom={index}>
             <CardTitle>{title}</CardTitle>
             <Bars />
             <Image
@@ -40,16 +40,16 @@ const Home = (): ReactElement => (
     </Flex>
     <Category>Explorations</Category>
     <Flex data-testid="home-page" justify="center" flexwrap>
-      {Explorations.map(({ title, href, src, alt, ariaLabel }) => (
-        <OutsideLink
+      {Explorations.map(({ title, href, src, alt, ariaLabel }, index) => (
+        <Link
           dataTestId={title}
           ariaLabel={ariaLabel}
-          textDecoration="none"
           key={href}
           padding="0px"
-          href={`https://codesandbox.io/s/${href}`}
+          href={`/explorations/${href}`}
+          scroll={false}
         >
-          <Card>
+          <Card custom={index}>
             <CardTitle>{title}</CardTitle>
             <Bars />
             <Image
@@ -59,7 +59,7 @@ const Home = (): ReactElement => (
               containerStyle="cursor: pointer;align-items: center;display: flex;width: 85%;height: 80%;float: left;margin: 15px 25px;text-align: center;"
             />
           </Card>
-        </OutsideLink>
+        </Link>
       ))}
     </Flex>
   </>

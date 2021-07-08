@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import type { NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { AppProps } from "next/app";
 import type {
   ComponentType,
@@ -20,6 +20,8 @@ export {
   CSSProperties,
   FC,
   FormEvent,
+  GetStaticPaths,
+  GetStaticProps,
   NextPage,
   MouseEvent,
   ReactElement,

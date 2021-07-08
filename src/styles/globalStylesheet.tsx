@@ -38,11 +38,14 @@ export const GlobalStylesheet = (): JSX.Element => (
         font-family: "Elemental", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
           "Helvetica Neue", sans-serif;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        ::-webkit-scrollbar {
+          display: none;
+        }
       }
 
-      *,
-      :after,
-      :before {
+      * {
         box-sizing: border-box;
       }
 

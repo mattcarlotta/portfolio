@@ -1,8 +1,24 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import CardTitle from "~components/Layout/CardTitle";
 
-const Card = styled.div`
+const cardVariants = {
+  animate: (index: number) => ({
+    x: 0,
+    opacity: 1,
+    transition: { delay: 0.1 * index },
+  }),
+  initial: { x: -1000, opacity: 0 },
+  exit: (index: number) => ({
+    x: -1000,
+    opacity: 0,
+    transition: { delay: 0.015 * index },
+  }),
+  hover: { scale: 1.1 },
+};
+
+const Card = styled(motion.div)`
   width: 300px;
   height: 260px;
   margin: 5px;
@@ -22,7 +38,7 @@ const Card = styled.div`
       bottom,
       #73b9ff 0%,
       #005193 50%,
-      #005193 100%
+      #00284a 100%
     );
     border-image: -webkit-gradient(
       linear,
@@ -30,13 +46,13 @@ const Card = styled.div`
       left top,
       from(#73b9ff),
       color-stop(50%, #005193),
-      to(#005193)
+      to(#00284a)
     );
     border-image: linear-gradient(
       to top,
       #73b9ff 0%,
       #005193 50%,
-      #005193 100%
+      #00284a 100%
     );
     border-image-slice: 1;
   }
@@ -44,8 +60,6 @@ const Card = styled.div`
   :hover {
     background-color: rgba(0, 2, 14, 1);
     box-shadow: 0px 0px 26px -2px rgba(0, 64, 255, 1);
-    transform: scale(1.15);
-    transition: transform 200ms ease-in-out;
 
     ${CardTitle} {
       background: #0080ff;
@@ -85,5 +99,13 @@ const Card = styled.div`
     }
   }
 `;
+
+Card.defaultProps = {
+  whileHover: "hover",
+  initial: "initial",
+  exit: "exit",
+  animate: "animate",
+  variants: cardVariants,
+};
 
 export default Card;
