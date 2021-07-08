@@ -10,6 +10,7 @@ export type LinkProps = {
   className?: string;
   href: string;
   padding?: string;
+  scroll?: boolean;
   style?: CSSProperties;
 };
 
@@ -20,9 +21,10 @@ const LinkComponent = ({
   children,
   dataTestId,
   href,
+  scroll,
   style,
 }: LinkProps): ReactElement => (
-  <Link href={href} as={asHref} prefetch={false} passHref>
+  <Link href={href} as={asHref} prefetch={false} scroll={scroll} passHref>
     <a
       aria-label={ariaLabel}
       data-testid={dataTestId}

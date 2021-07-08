@@ -1,10 +1,19 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
-const Category = styled.div`
+const categoryVariants = {
+  initial: { x: -1000, opacity: 0 },
+  exit: { x: -1000, opacity: 0 },
+  animate: { x: 0, opacity: 1, transition: { delay: 0.15 } },
+};
+
+const Category = styled(motion.div)`
   font-size: 30px;
   text-align: center;
   margin: 20px 0;
 `;
+
+Category.defaultProps = categoryVariants;
 
 export default Category;

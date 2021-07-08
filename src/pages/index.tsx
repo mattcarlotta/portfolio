@@ -17,15 +17,16 @@ const Home = (): ReactElement => (
     <Head title="Home" url="/" description="My personal website." />
     <Category>Applications</Category>
     <Flex data-testid="home-page" justify="center" flexwrap margin="0 0 80px 0">
-      {Apps.map(({ title, href, src, alt, ariaLabel }) => (
+      {Apps.map(({ title, href, src, alt, ariaLabel }, index) => (
         <Link
           dataTestId={title}
           ariaLabel={ariaLabel}
           key={href}
           padding="0px"
           href={`/${href}`}
+          scroll={false}
         >
-          <Card>
+          <Card custom={index}>
             <CardTitle>{title}</CardTitle>
             <Bars />
             <Image
@@ -40,7 +41,7 @@ const Home = (): ReactElement => (
     </Flex>
     <Category>Explorations</Category>
     <Flex data-testid="home-page" justify="center" flexwrap>
-      {Explorations.map(({ title, href, src, alt, ariaLabel }) => (
+      {Explorations.map(({ title, href, src, alt, ariaLabel }, index) => (
         <OutsideLink
           dataTestId={title}
           ariaLabel={ariaLabel}
@@ -49,7 +50,7 @@ const Home = (): ReactElement => (
           padding="0px"
           href={`https://codesandbox.io/s/${href}`}
         >
-          <Card>
+          <Card custom={index}>
             <CardTitle>{title}</CardTitle>
             <Bars />
             <Image
