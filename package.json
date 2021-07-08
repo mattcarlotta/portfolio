@@ -1,6 +1,6 @@
 {
   "name": "portoflio",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "My personal website.",
   "repository": "https://github.com/mattcarlotta/portfolio",
   "author": "Matt Carlotta",
@@ -88,7 +88,7 @@
     "prettier": "^2.3.2",
     "typescript": "^4.3.5",
     "url-loader": "^4.1.1",
-    "webpack": "^5.43.0",
+    "webpack": "^5.44.0",
     "webpack-bundle-analyzer": "^4.4.2"
   }
 }

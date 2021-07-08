@@ -38,7 +38,7 @@ const Card = styled(motion.div)`
       bottom,
       #73b9ff 0%,
       #005193 50%,
-      #005193 100%
+      #00284a 100%
     );
     border-image: -webkit-gradient(
       linear,
@@ -46,13 +46,13 @@ const Card = styled(motion.div)`
       left top,
       from(#73b9ff),
       color-stop(50%, #005193),
-      to(#005193)
+      to(#00284a)
     );
     border-image: linear-gradient(
       to top,
       #73b9ff 0%,
       #005193 50%,
-      #005193 100%
+      #00284a 100%
     );
     border-image-slice: 1;
   }

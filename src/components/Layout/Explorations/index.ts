@@ -1,5 +1,14 @@
 /* istanbul ignore file */
-const Explorations = [
+export type Exploration = {
+  title: string;
+  href: string;
+  description: string;
+  src: string;
+  alt: string;
+  ariaLabel: string;
+};
+
+const Explorations: Array<Exploration> = [
   {
     title: "drag & drop between lists",
     href: "ttmj3",
@@ -130,7 +139,7 @@ const Explorations = [
     ariaLabel: "Navigate to the Custom Input example codesandbox page.",
   },
   {
-    title: "blog",
+    title: "blog example",
     href: "o13bo",
     description: "An example of a blog with a read more button integration.",
     src: "explorations/blogExample",

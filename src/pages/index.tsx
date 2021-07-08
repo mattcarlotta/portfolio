@@ -9,7 +9,6 @@ import Apps from "~components/Layout/Apps";
 import Explorations from "~components/Layout/Explorations";
 import Head from "~components/Navigation/Header";
 import Link from "~components/Navigation/Link";
-import OutsideLink from "~components/Navigation/OutsideLink";
 import { ReactElement } from "~types";
 
 const Home = (): ReactElement => (
@@ -42,13 +41,13 @@ const Home = (): ReactElement => (
     <Category>Explorations</Category>
     <Flex data-testid="home-page" justify="center" flexwrap>
       {Explorations.map(({ title, href, src, alt, ariaLabel }, index) => (
-        <OutsideLink
+        <Link
           dataTestId={title}
           ariaLabel={ariaLabel}
-          textDecoration="none"
           key={href}
           padding="0px"
-          href={`https://codesandbox.io/s/${href}`}
+          href={`/explorations/${href}`}
+          scroll={false}
         >
           <Card custom={index}>
             <CardTitle>{title}</CardTitle>
@@ -60,7 +59,7 @@ const Home = (): ReactElement => (
               containerStyle="cursor: pointer;align-items: center;display: flex;width: 85%;height: 80%;float: left;margin: 15px 25px;text-align: center;"
             />
           </Card>
-        </OutsideLink>
+        </Link>
       ))}
     </Flex>
   </>

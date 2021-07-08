@@ -19,6 +19,7 @@ export { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 
 // FI
 export { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
+export { FiExternalLink } from "@react-icons/all-files/fi/FiExternalLink";
 
 // RI
 export { RiGithubLine } from "@react-icons/all-files/ri/RiGithubLine";
