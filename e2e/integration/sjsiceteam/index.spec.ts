@@ -1,15 +1,15 @@
 context("SJS Ice Team Project Page", () => {
   before(() => {
-    cy.visit("/sjs-ice-team");
+    cy.visit("/projects/sjs-ice-team");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should("have.text", "SJS Ice Team");
+    cy.findByTestId("panel-title").should("have.text", "sjs ice team");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "In Orbit");
-    cy.findByTestId("filename").should("have.text", "SJS Ice Team");
+    cy.findByTestId("filename").should("have.text", "sjs ice team");
     cy.findByTestId("location-link").should("have.text", "Demo");
     cy.findByTestId("location-link").should("have.attr", "target", "_blank");
     cy.findByTestId("source").should("have.text", "Source");

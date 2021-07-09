@@ -1,21 +1,15 @@
 context("Composable Styled Components Project Page", () => {
   before(() => {
-    cy.visit("/composable-styled-components");
+    cy.visit("/projects/composable-styled-components");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should(
-      "have.text",
-      "Composable Styled Components",
-    );
+    cy.findByTestId("panel-title").should("have.text", "composable components");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "Decommissioned");
-    cy.findByTestId("filename").should(
-      "have.text",
-      "Composable Styled Components",
-    );
+    cy.findByTestId("filename").should("have.text", "composable components");
     cy.findByTestId("location-link").should("have.text", "Demo");
     cy.findByTestId("location-link").should("have.attr", "target", "_blank");
     cy.findByTestId("source").should("have.text", "Source");

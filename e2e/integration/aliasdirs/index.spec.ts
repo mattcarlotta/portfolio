@@ -1,15 +1,15 @@
 context("Alias Dirs Project Page", () => {
   before(() => {
-    cy.visit("/alias-dirs");
+    cy.visit("/projects/alias-dirs");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should("have.text", "Alias Dirs");
+    cy.findByTestId("panel-title").should("have.text", "alias dirs");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "Decommissioned");
-    cy.findByTestId("filename").should("have.text", "Alias Dirs");
+    cy.findByTestId("filename").should("have.text", "alias dirs");
     cy.findByTestId("source").should("have.text", "Source");
     cy.findByTestId("source-link").should("have.attr", "target", "_blank");
   });

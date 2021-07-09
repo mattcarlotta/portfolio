@@ -1,15 +1,15 @@
 context("ssdtGen App Project Page", () => {
   before(() => {
-    cy.visit("/ssdtgen-app");
+    cy.visit("/projects/ssdtgen-app");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should("have.text", "ssdtGen App");
+    cy.findByTestId("panel-title").should("have.text", "ssdtgen app");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "Archived");
-    cy.findByTestId("filename").should("have.text", "ssdtGen App");
+    cy.findByTestId("filename").should("have.text", "ssdtgen app");
     cy.findByTestId("source").should("have.text", "Source");
     cy.findByTestId("source-link").should("have.attr", "target", "_blank");
   });

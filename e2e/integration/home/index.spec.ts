@@ -4,67 +4,67 @@ const Projects = [
   {
     id: "sjs ice team",
     href: "sjs-ice-team",
-    title: "SJS Ice Team",
+    title: "sjs ice team",
   },
   {
     id: "gamersnexus mock up",
     href: "gamersnexus",
-    title: "GamersNexus Mock Up",
+    title: "gamersnexus mock up",
   },
   {
-    id: "@noshot env",
+    id: "@noshot/env",
     href: "noshotenv",
     title: "@noshot/env",
   },
   {
     id: "react hooks guide",
     href: "react-hooks-guide",
-    title: "React Hooks Guide",
+    title: "react hooks guide",
   },
   {
     id: "nextjs ssr kit",
     href: "nextjs-ssr-kit",
-    title: "NextJS SSR Kit",
+    title: "nextjs ssr kit",
   },
   {
     id: "subskribble",
     href: "subskribble",
-    title: "Subskribble",
+    title: "subskribble",
   },
   {
     id: "composable components",
     href: "composable-styled-components",
-    title: "Composable Styled Components",
+    title: "composable components",
   },
   {
     id: "react smde",
     href: "react-smde",
-    title: "React SMDE",
+    title: "react smde",
   },
   {
     id: "alias dirs",
     href: "alias-dirs",
-    title: "Alias Dirs",
+    title: "alias dirs",
   },
   {
     id: "fullstack m.e.r.n. kit",
     href: "fullstack-mern-kit",
-    title: "Fullstack M.E.R.N. Kit",
+    title: "fullstack m.e.r.n. kit",
   },
   {
     id: "yelp camp",
     href: "yelp-camp",
-    title: "Yelp Camp",
+    title: "yelp camp",
   },
   {
-    id: "fan controller app",
+    id: "fan controller (nvfc) app",
     href: "nvfc-app",
-    title: "Fan Controller (nvfc) App",
+    title: "fan controller (nvfc) app",
   },
   {
     id: "ssdtgen app",
     href: "ssdtgen-app",
-    title: "ssdtGen App",
+    title: "ssdtgen app",
   },
 ];
 

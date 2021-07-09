@@ -1,12 +1,12 @@
 context("Nvidia Fan Controller (nvfc) App Project Page", () => {
   before(() => {
-    cy.visit("/nvfc-app");
+    cy.visit("/projects/nvfc-app");
   });
 
   it("displays the project page", () => {
     cy.findByTestId("panel-title").should(
       "have.text",
-      "Fan Controller (nvfc) App",
+      "fan controller (nvfc) app",
     );
   });
 
@@ -14,7 +14,7 @@ context("Nvidia Fan Controller (nvfc) App Project Page", () => {
     cy.findByTestId("status").should("have.text", "Archived");
     cy.findByTestId("filename").should(
       "have.text",
-      "Fan Controller (nvfc) App",
+      "fan controller (nvfc) app",
     );
     cy.findByTestId("source").should("have.text", "Source");
     cy.findByTestId("source-link").should("have.attr", "target", "_blank");

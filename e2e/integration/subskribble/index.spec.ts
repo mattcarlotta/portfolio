@@ -1,15 +1,15 @@
 context("Subskribble Project Page", () => {
   before(() => {
-    cy.visit("/subskribble");
+    cy.visit("/projects/subskribble");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should("have.text", "Subskribble");
+    cy.findByTestId("panel-title").should("have.text", "subskribble");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "Decommissioned");
-    cy.findByTestId("filename").should("have.text", "Subskribble");
+    cy.findByTestId("filename").should("have.text", "subskribble");
     cy.findByTestId("source").should("have.text", "Source");
     cy.findByTestId("source-link").should("have.attr", "target", "_blank");
   });

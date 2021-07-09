@@ -1,18 +1,18 @@
 context("Fullstack M.E.R.N. Kit Project Page", () => {
   before(() => {
-    cy.visit("/fullstack-mern-kit");
+    cy.visit("/projects/fullstack-mern-kit");
   });
 
   it("displays the project page", () => {
     cy.findByTestId("panel-title").should(
       "have.text",
-      "Fullstack M.E.R.N. Kit",
+      "fullstack m.e.r.n. kit",
     );
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "Archived");
-    cy.findByTestId("filename").should("have.text", "Fullstack M.E.R.N. Kit");
+    cy.findByTestId("filename").should("have.text", "fullstack m.e.r.n. kit");
     cy.findByTestId("source").should("have.text", "Source");
     cy.findByTestId("source-link").should("have.attr", "target", "_blank");
   });
