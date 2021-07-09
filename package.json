@@ -1,6 +1,6 @@
 {
   "name": "portoflio",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "My personal website.",
   "repository": "https://github.com/mattcarlotta/portfolio",
   "author": "Matt Carlotta",
@@ -38,7 +38,7 @@
     "framer-motion": "^4.1.17",
     "lodash.get": "^4.4.2",
     "lodash.isempty": "^4.4.0",
-    "next": "^10.2.3",
+    "next": "^11.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0"

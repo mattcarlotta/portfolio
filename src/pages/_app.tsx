@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Fragment } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
@@ -17,7 +17,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
   };
 
   return (
-    <>
+    <Fragment>
       <Head>
         <meta
           name="viewport"
@@ -34,7 +34,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
         <Footer />
       </Main>
       <GlobalStylesheet />
-    </>
+    </Fragment>
   );
 };
 

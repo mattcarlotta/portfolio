@@ -15,7 +15,13 @@ const Header = ({
   url,
 }: HeaderProps): ReactElement => (
   <Head>
-    <title>{title} - Matt Carlotta</title>
+    <title>
+      {title
+        .split(" ")
+        .map(str => str.charAt(0).toUpperCase().concat(str.slice(1)))
+        .join(" ")}
+      &nbsp;- Matt Carlotta
+    </title>
     <link rel="canonical" href={`${process.env.NEXT_PUBLIC_CLIENT}${url}`} />
     <meta name="description" content={description} />
     <meta property="og:description" content={description} />

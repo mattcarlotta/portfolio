@@ -1,5 +1,6 @@
-import * as React from "react";
+import { Fragment } from "react";
 import { css } from "@emotion/react";
+import ApplicationDescriptions from "~components/Layout/AppsDescriptions";
 import CardTitle from "~components/Layout/CardTitle";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import Image from "~components/Layout/Image";
@@ -16,39 +17,17 @@ import PanelTitle from "~components/Layout/PanelTitle";
 import SnapshotContainer from "~components/Layout/SnapshotContainer";
 import Home from "~components/Navigation/Home";
 import Head from "~components/Navigation/Header";
-import { ReactNode } from "~types";
-
-export type PageProps = {
-  description: ReactNode;
-  head: {
-    title: string;
-    url: string;
-    description: string;
-  };
-  filedetails: {
-    active: boolean;
-    location?: string;
-    status: string;
-    source: string;
-  };
-  snapshots: Array<{
-    src: string;
-    alt: string;
-    title: string;
-  }>;
-  snapshotdirectory?: string;
-  tech: string[];
-};
+import type { Application } from "~components/Layout/Apps";
 
 const Page = ({
-  description,
+  id,
   head,
   filedetails,
   snapshotdirectory,
   snapshots,
   tech,
-}: PageProps): JSX.Element => (
-  <>
+}: Application): JSX.Element => (
+  <Fragment>
     <Head {...head} />
     <ModalContainer>
       {(isOpen, selected, toggleModal) => (
@@ -59,7 +38,11 @@ const Page = ({
               <DetailHeadline>Details:</DetailHeadline>
               <FileDetails {...filedetails} fileName={head.title} />
               <DetailHeadline>Description:</DetailHeadline>
-              <SubTitle data-testid="description">{description}</SubTitle>
+              <SubTitle data-testid="description">
+                {ApplicationDescriptions.map(({ appId, description }) =>
+                  id === appId ? description : null,
+                )}
+              </SubTitle>
               <DetailHeadline>Tech Specs:</DetailHeadline>
               <ul data-testid="tech">
                 {tech.map(item => (
@@ -77,25 +60,27 @@ const Page = ({
                 ))}
               </ul>
               {snapshotdirectory && <DetailHeadline>Snapshots:</DetailHeadline>}
-              <SnapshotContainer data-testid="snapshots">
-                <Flex justify="center" flexwrap>
-                  {snapshots.map(({ src, alt, title }) => (
-                    <PreviewCard
-                      data-testid={title}
-                      key={src}
-                      onClick={() =>
-                        toggleModal(`projects/${snapshotdirectory}/${src}`)
-                      }
-                    >
-                      <CardTitle>{title}</CardTitle>
-                      <Image
-                        src={`projects/${snapshotdirectory}/${src}Min`}
-                        alt={alt}
-                      />
-                    </PreviewCard>
-                  ))}
-                </Flex>
-              </SnapshotContainer>
+              {snapshots && snapshots.length > 0 && (
+                <SnapshotContainer data-testid="snapshots">
+                  <Flex justify="center" flexwrap>
+                    {snapshots.map(({ src, alt, title }) => (
+                      <PreviewCard
+                        data-testid={title}
+                        key={src}
+                        onClick={() =>
+                          toggleModal(`projects/${snapshotdirectory}/${src}`)
+                        }
+                      >
+                        <CardTitle>{title}</CardTitle>
+                        <Image
+                          src={`projects/${snapshotdirectory}/${src}Min`}
+                          alt={alt}
+                        />
+                      </PreviewCard>
+                    ))}
+                  </Flex>
+                </SnapshotContainer>
+              )}
             </Text>
           </Panel>
           <Modal isOpen={isOpen} onClick={toggleModal}>
@@ -109,7 +94,7 @@ const Page = ({
       )}
     </ModalContainer>
     <Home />
-  </>
+  </Fragment>
 );
 
 Page.defaultProps = {
