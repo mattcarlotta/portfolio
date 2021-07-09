@@ -1,15 +1,15 @@
 context("React Hooks Guide Project Page", () => {
   before(() => {
-    cy.visit("/react-hooks-guide");
+    cy.visit("/projects/react-hooks-guide");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should("have.text", "React Hooks Guide");
+    cy.findByTestId("panel-title").should("have.text", "react hooks guide");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "Decommissioned");
-    cy.findByTestId("filename").should("have.text", "React Hooks Guide");
+    cy.findByTestId("filename").should("have.text", "react hooks guide");
     cy.findByTestId("source").should("have.text", "Source");
     cy.findByTestId("source-link").should("have.attr", "target", "_blank");
   });

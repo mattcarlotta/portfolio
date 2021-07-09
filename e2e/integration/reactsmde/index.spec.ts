@@ -1,15 +1,15 @@
 context("React SMDE Project Page", () => {
   before(() => {
-    cy.visit("/react-smde");
+    cy.visit("/projects/react-smde");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should("have.text", "React SMDE");
+    cy.findByTestId("panel-title").should("have.text", "react smde");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "Decommissioned");
-    cy.findByTestId("filename").should("have.text", "React SMDE");
+    cy.findByTestId("filename").should("have.text", "react smde");
     cy.findByTestId("location-link").should("have.text", "Demo");
     cy.findByTestId("location-link").should("have.attr", "target", "_blank");
 

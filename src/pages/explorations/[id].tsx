@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Fragment } from "react";
 import get from "lodash.get";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import Explorations, { Exploration } from "~components/Layout/Explorations";
@@ -17,16 +17,15 @@ export type ExplorationsProps = {
 };
 
 const ExplorationsPage = ({
-  id,
   exploration,
-}: ExplorationsProps): ReactElement => (
-  <>
-    <Head
-      title="Explorations"
-      url={`/explorations/${id}`}
-      description="An exploration example."
-    />
-    {exploration && (
+}: ExplorationsProps): ReactElement | null =>
+  exploration ? (
+    <Fragment>
+      <Head
+        title={exploration.title}
+        url={`/explorations/${exploration.href}`}
+        description="An exploration example."
+      />
       <Project>
         <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
         <Panel>
@@ -47,7 +46,7 @@ const ExplorationsPage = ({
             <SubTitle>
               <iframe
                 src={`https://codesandbox.io/embed/${exploration.href}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
-                title="explorations"
+                title={exploration.title}
                 style={{
                   width: "100%",
                   height: "500px",
@@ -62,14 +61,13 @@ const ExplorationsPage = ({
           </Text>
         </Panel>
       </Project>
-    )}
-  </>
-);
+    </Fragment>
+  ) : null;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = get(params, ["id"]);
 
-  const exploration = Explorations.find(e => e.href === id);
+  const exploration = Explorations.find(exploration => exploration.href === id);
 
   if (!exploration)
     return {
@@ -81,14 +79,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      id,
       exploration,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: Explorations.map(e => ({ params: { id: e.href } })),
+  paths: Explorations.map(exploration => ({
+    params: { id: exploration.href },
+  })),
   fallback: true,
 });
 

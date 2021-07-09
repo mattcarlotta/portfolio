@@ -2,9 +2,9 @@ import { mount, ReactWrapper } from "enzyme";
 import Page from "../index";
 
 const initProps = {
-  description: "hi",
+  id: "alias-dirs",
   head: {
-    title: "Alias Dirs",
+    title: "alias dirs",
     url: "/alias-dirs",
     description: "Automatically creates aliased import directories for babel.",
   },
@@ -13,6 +13,11 @@ const initProps = {
     status: "Decommissioned",
     location: "https://example.com",
     source: "https://github.com/mattcarlotta/alias-dirs",
+  },
+  preview: {
+    alt: "alias-dirs-preview",
+    ariaLabel: "Navigate to the Alias Dirs project page.",
+    src: "aliasdirs/aliasdirsPreviewMin",
   },
   snapshotdirectory: "aliasdirs",
   snapshots: [
@@ -61,7 +66,7 @@ describe("Page", () => {
 
   it("populates the description details", () => {
     expect(findById("description").first().text()).toEqual(
-      initProps.description,
+      "With the help of the babel-plugin-module-resolver, this npm package traverses a project's src directory and automatically creates aliased imports for Babel.",
     );
   });
 

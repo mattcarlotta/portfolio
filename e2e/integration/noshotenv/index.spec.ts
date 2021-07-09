@@ -1,6 +1,6 @@
 context("NoShot Env Project Page", () => {
   before(() => {
-    cy.visit("/noshotenv");
+    cy.visit("/projects/noshotenv");
   });
 
   it("displays the project page", () => {

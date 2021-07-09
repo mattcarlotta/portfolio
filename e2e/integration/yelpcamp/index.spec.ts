@@ -1,15 +1,15 @@
 context("Yelp Camp Project Page", () => {
   before(() => {
-    cy.visit("/yelp-camp");
+    cy.visit("/projects/yelp-camp");
   });
 
   it("displays the project page", () => {
-    cy.findByTestId("panel-title").should("have.text", "Yelp Camp");
+    cy.findByTestId("panel-title").should("have.text", "yelp camp");
   });
 
   it("displays the project details", () => {
     cy.findByTestId("status").should("have.text", "Decommissioned");
-    cy.findByTestId("filename").should("have.text", "Yelp Camp");
+    cy.findByTestId("filename").should("have.text", "yelp camp");
     cy.findByTestId("source").should("have.text", "Source");
     cy.findByTestId("source-link").should("have.attr", "target", "_blank");
   });

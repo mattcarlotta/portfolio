@@ -1,9 +1,7 @@
-import { mount } from "enzyme";
-import { act } from "react-dom/test-utils";
 import { SyntheticEvent } from "react";
+import { mount } from "enzyme";
+import { waitForAct } from "@noshot/utils";
 import Modal from "../index";
-
-const flushPromises = () => new Promise(setImmediate);
 
 const image = new global.Image();
 image.src =
@@ -48,9 +46,8 @@ describe("Modal", () => {
   it("renders a modal with some sample content without errors", async () => {
     wrapper.setProps({ isOpen: true });
 
-    await act(async () => {
+    await waitForAct(() => {
       wrapper.find("img").props().onLoad();
-      await flushPromises();
       wrapper.update();
 
       expect(wrapper.find("Container").exists()).toBeTruthy();
