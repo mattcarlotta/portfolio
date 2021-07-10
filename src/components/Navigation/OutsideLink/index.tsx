@@ -35,7 +35,7 @@ const OutsideLink = styled(OutsideLinkComponent)<{
   padding?: string;
   textDecoration?: string;
 }>`
-  padding: 0px;
+  padding: ${({ padding }) => padding || "0px"};
   color: #008ef1;
   transition: all 0.5s;
   text-decoration: ${({ textDecoration }) => textDecoration || "underline"};

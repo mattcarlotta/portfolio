@@ -13,8 +13,8 @@ import {
   GoHome,
   GoMail,
   FaBlog,
+  FaGithub,
   FiLinkedin,
-  RiGithubLine,
   SiCodesandbox,
 } from "~icons";
 import { ReactElement } from "~types";
@@ -34,7 +34,7 @@ const HEADERLINKS = [
   },
   {
     dataTestId: "github",
-    Icon: RiGithubLine,
+    Icon: FaGithub,
     link: "https://github.com/mattcarlotta",
     description: "My github repository",
   },
@@ -60,7 +60,7 @@ const Header = (): ReactElement => (
   >
     <IconContext.Provider
       value={{
-        style: { fontSize: 18, verticalAlign: "text-top", marginRight: 5 },
+        style: { fontSize: 18, verticalAlign: "middle", marginRight: 5 },
       }}
     >
       <nav>
@@ -70,7 +70,7 @@ const Header = (): ReactElement => (
               dataTestId="go-home"
               ariaLabel="Navigate back to home page"
               href="/"
-              padding="0px"
+              padding="5px"
             >
               <GoHome />
             </Link>
@@ -80,7 +80,7 @@ const Header = (): ReactElement => (
               dataTestId="about-me"
               ariaLabel="Navigate to about page"
               href="/about"
-              padding="0px"
+              padding="5px"
             >
               <BsPersonBoundingBox
                 style={{ fontSize: 15, position: "relative", top: 2 }}
@@ -93,6 +93,7 @@ const Header = (): ReactElement => (
                 dataTestId={dataTestId}
                 ariaLabel={description}
                 href={link}
+                style={{ padding: "5px" }}
               >
                 <Icon className="icon" />
               </OutsideLink>

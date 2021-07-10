@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import CardPreview from "~components/Layout/CardPreview";
 import Apps from "~components/Layout/Apps";
 import Category from "~components/Layout/Category";
-import Explorations from "~components/Layout/Explorations";
+// import Explorations from "~components/Layout/Explorations";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
-import Link from "~components/Navigation/Link";
+// import Link from "~components/Navigation/Link";
 import { ReactElement } from "~types";
 
 const Home = (): ReactElement => (
@@ -16,37 +16,20 @@ const Home = (): ReactElement => (
       data-testid="home-page"
       justify="center"
       flexwrap
-      margin="0 0 150px 0"
+      margin="0 0 200px 0"
     >
-      {Apps.map(
-        (
-          {
-            head: { title, url, description },
-            preview: { alt, ariaLabel, src },
-          },
-          index,
-        ) => (
-          <Link
-            dataTestId={title}
-            ariaLabel={ariaLabel}
-            key={url}
-            padding="0px"
-            href={`/projects${url}`}
-            scroll={false}
-          >
-            <CardPreview
-              alt={alt}
-              idx={index}
-              description={description}
-              src={src}
-              title={title}
-            />
-          </Link>
-        ),
-      )}
+      {Apps.map(({ head, filedetails, preview }, index) => (
+        <CardPreview
+          key={head.title}
+          idx={index}
+          {...head}
+          {...preview}
+          {...filedetails}
+        />
+      ))}
     </Flex>
     <Category>Explorations</Category>
-    <Flex
+    {/* <Flex
       data-testid="home-page"
       justify="center"
       flexwrap
@@ -72,7 +55,7 @@ const Home = (): ReactElement => (
           </Link>
         ),
       )}
-    </Flex>
+    </Flex> */}
   </Fragment>
 );
 
