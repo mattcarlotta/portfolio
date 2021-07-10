@@ -4,6 +4,7 @@ const BundleAnalyzerPlugin =
 const { analyze } = process.env;
 
 module.exports = {
+  webpack5: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
