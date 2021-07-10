@@ -8,7 +8,7 @@ const PanelBody = styled.div`
   overflow: hidden;
   text-align: left;
   background-color: transparent;
-  color: #2860ab;
+  color: #0088ff;
   border-image: linear-gradient(to top, #73b9ff 0%, #005193 50%, #005193 100%);
   border-image-slice: 1;
 

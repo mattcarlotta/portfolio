@@ -1,6 +1,6 @@
 {
   "name": "portoflio",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "My personal website.",
   "repository": "https://github.com/mattcarlotta/portfolio",
   "author": "Matt Carlotta",
@@ -24,7 +24,7 @@
     "test:prod": "npm run build:prod && npm run start",
     "test:stage": "npm run build:stage && npm run stage",
     "test:watch": "jest --watch --onlyChanged",
-    "test:watchall": "jest -watchAll",
+    "test:watchall": "jest --watchAll",
     "tsc": "tsc --p ./tsconfig.json"
   },
   "dependencies": {

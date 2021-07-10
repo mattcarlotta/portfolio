@@ -20,6 +20,7 @@ const OrbitsIcon = styled(Orbits)`
     }
   }
 
+  opacity: 0.45;
   position: relative;
   top: 0;
   left: 0;

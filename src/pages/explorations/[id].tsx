@@ -24,7 +24,7 @@ const ExplorationsPage = ({
       <Head
         title={exploration.title}
         url={`/explorations/${exploration.href}`}
-        description="An exploration example."
+        description={exploration.description}
       />
       <Project>
         <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
