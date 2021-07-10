@@ -2,6 +2,7 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import CardTitle from "~components/Layout/CardTitle";
+import PlaceHolder from "~components/Layout/PlaceHolder";
 
 const cardVariants = {
   animate: (index: number) => ({
@@ -22,47 +23,37 @@ const Card = styled(motion.div)`
   width: 300px;
   height: 260px;
   margin: 5px;
-  border-radius: 4px;
   text-align: center;
   background-color: transparent;
   color: #0096ff;
+  position: relative;
   box-shadow: 0px 8px 15px -8px rgba(0, 0, 0, 0.75);
-
-  :after {
-    content: "";
-    display: block;
-    height: 90%;
-    border-width: 1px;
-    border-style: solid;
-    -o-border-image: -o-linear-gradient(
-      bottom,
-      #73b9ff 0%,
-      #005193 50%,
-      #00284a 100%
-    );
-    border-image: -webkit-gradient(
-      linear,
-      left bottom,
-      left top,
-      from(#73b9ff),
-      color-stop(50%, #005193),
-      to(#00284a)
-    );
-    border-image: linear-gradient(
-      to top,
-      #73b9ff 0%,
-      #005193 50%,
-      #00284a 100%
-    );
-    border-image-slice: 1;
-  }
+  border: 1px solid #005193;
+  overflow: hidden;
 
   :hover {
-    background-color: rgba(0, 2, 14, 1);
-    box-shadow: 0px 0px 26px -2px rgba(0, 64, 255, 1);
+    z-index: 1;
+    overflow: visible;
+    border: 0;
 
     ${CardTitle} {
       background: #0080ff;
+    }
+
+    ${PlaceHolder} {
+      display: block;
+    }
+
+    .panel-container {
+      background: rgba(0, 2, 14, 0.9);
+      top: 0;
+      left: 0;
+      height: auto;
+      opacity: 1;
+      position: absolute;
+      width: 100%;
+      box-shadow: 0px 0px 26px -2px rgba(0, 64, 255, 1);
+      border: 1px solid #0096ff;
     }
 
     .bar1,
@@ -70,32 +61,6 @@ const Card = styled(motion.div)`
     .bar3 {
       background: #73b9ff;
       opacity: 0.4;
-    }
-
-    :after {
-      border-width: 2px;
-      border-style: solid;
-      -o-border-image: -o-linear-gradient(
-        bottom,
-        #73b9ff 0%,
-        #005193 50%,
-        #005193 100%
-      );
-      border-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        from(#73b9ff),
-        color-stop(50%, #005193),
-        to(#005193)
-      );
-      border-image: linear-gradient(
-        to top,
-        #73b9ff 0%,
-        #005193 50%,
-        #005193 100%
-      );
-      border-image-slice: 1;
     }
   }
 `;

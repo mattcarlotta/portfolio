@@ -127,7 +127,7 @@ const Applications: Array<Application> = [
       title: "gamersnexus mock up",
       url: "/gamersnexus-mock-up",
       description:
-        "a mock up created in 3 days as a redesign proposal for GamersNexus.net.",
+        "A mock up created in 3 days as a redesign proposal for GamersNexus.net.",
     },
     filedetails: {
       active: true,
@@ -181,7 +181,7 @@ const Applications: Array<Application> = [
       title: "@noshot/env",
       url: "/noshotenv",
       description:
-        "A package module that automatically loads environment variables from a predefined Env variable.",
+        "An npm package that automatically loads environment variables from a predefined Env variable.",
     },
     filedetails: {
       active: true,

@@ -6,19 +6,23 @@ import { ReactElement } from "~types";
 export type ImageProps = {
   alt?: string;
   containerStyle?: string;
+  height?: string;
   handleImageLoaded: () => void;
   onClick: () => void;
   src?: string;
   styles?: string;
+  width?: string;
 };
 
 const Image = ({
   alt,
   containerStyle,
   handleImageLoaded,
+  height,
   onClick,
   src,
   styles,
+  width,
 }: ImageProps): ReactElement => {
   const [error, setError] = React.useState(false);
   const onLoad = () => {
@@ -54,6 +58,8 @@ const Image = ({
               ${styles}
             `}
             src={`/${src}.png`}
+            height={height}
+            width={width}
             onLoad={onLoad}
             onError={onError}
             alt={alt}
