@@ -26,11 +26,11 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
       </Head>
       <Main>
         <Header />
-        <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-          <Body data-testid="body">
+        <Body data-testid="body">
+          <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
             <Component {...pageProps} key={router.route} />
-          </Body>
-        </AnimatePresence>
+          </AnimatePresence>
+        </Body>
         <Footer />
       </Main>
       <GlobalStylesheet />

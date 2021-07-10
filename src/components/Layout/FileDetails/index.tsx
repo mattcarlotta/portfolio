@@ -3,7 +3,7 @@ import Info from "~components/Layout/Info";
 import {
   AiOutlineFolderOpen,
   AiOutlineCode,
-  BsFillCircleFill,
+  FiPower,
   IconContext,
   RiMapPin2Line,
 } from "~icons";
@@ -38,7 +38,7 @@ const FileDetails = ({
       `}
     >
       <Info data-testid="status">
-        <BsFillCircleFill style={{ color: active ? "limegreen" : "#2c4776" }} />
+        <FiPower style={{ color: active ? "limegreen" : "#2c4776" }} />
         {status}
       </Info>
       <Info data-testid="filename">

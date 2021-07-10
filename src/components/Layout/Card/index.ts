@@ -10,11 +10,11 @@ const cardVariants = {
     transition: { delay: 0.1 * index },
   }),
   initial: { x: -1000, opacity: 0 },
-  exit: (index: number) => ({
+  exit: {
     x: -1000,
     opacity: 0,
-    transition: { delay: 0.015 * index },
-  }),
+    transition: { delay: 0 },
+  },
   hover: { scale: 1.1 },
 };
 

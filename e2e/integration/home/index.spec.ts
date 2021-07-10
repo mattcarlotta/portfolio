@@ -189,8 +189,16 @@ context("Home Page", () => {
     cy.findByTestId("mail").should("have.attr", "target", "_blank");
   });
 
+  it("displays a link to open about me page", () => {
+    cy.findByTestId("about-me").should("exist");
+  });
+
   it("displays a link to open github", () => {
     cy.findByTestId("github").should("have.attr", "target", "_blank");
+  });
+
+  it("displays a link to open codesandbox", () => {
+    cy.findByTestId("codesandbox").should("have.attr", "target", "_blank");
   });
 
   it("displays a link to open linkedin", () => {

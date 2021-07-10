@@ -21,7 +21,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to automated microservice source page"
           href="https://github.com/mattcarlotta/SJSITAPP-Agent"
-          padding="0"
         >
           an automated microservice
         </OutsideLink>
@@ -29,7 +28,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to image microservice source page"
           href="https://github.com/mattcarlotta/SJSITAPP-Image"
-          padding="0"
         >
           an image microservice
         </OutsideLink>
@@ -51,7 +49,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to gamersnexus home page"
           href="https://www.gamersnexus.net/"
-          padding="0"
         >
           GamersNexus.net
         </OutsideLink>
@@ -67,7 +64,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to dotenv npm home page"
           href="https://www.npmjs.com/package/dotenv"
-          padding="0"
         >
           dotenv
         </OutsideLink>
@@ -75,7 +71,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to dotenv-expand npm home page"
           href="https://www.npmjs.com/package/dotenv-expand"
-          padding="0"
         >
           dotenv-expand
         </OutsideLink>
@@ -83,7 +78,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to bundle phobia @noshot/env page"
           href="https://bundlephobia.com/result?p=@noshot/env"
-          padding="0"
         >
           zero-dependency
         </OutsideLink>
@@ -94,7 +88,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to 12factor home page"
           href="https://12factor.net/config"
-          padding="0"
         >
           the twelve-factor app
         </OutsideLink>
@@ -103,7 +96,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to codecov @noshot/env page"
           href="https://codecov.io/gh/no-shot/env/branch/main"
-          padding="0"
         >
           100% test coverage
         </OutsideLink>
@@ -115,7 +107,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to noshot/env-metrics page"
           href="https://github.com/no-shot/env-metrics#metrics"
-          padding="0"
         >
           env metrics
         </OutsideLink>
@@ -167,7 +158,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to styled-components home page"
           href="https://styled-components.com/"
-          padding="0"
         >
           styled-components
         </OutsideLink>
@@ -176,7 +166,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to npm composable-styled-components package page"
           href="https://www.npmjs.com/package/composable-styled-components"
-          padding="0"
         >
           npm
         </OutsideLink>
@@ -185,7 +174,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to Algolia home page"
           href="https://www.algolia.com"
-          padding="0"
         >
           Algolia
         </OutsideLink>
@@ -210,7 +198,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to babel-plugin-module-resolver home page"
           href="https://github.com/tleunen/babel-plugin-module-resolver"
-          padding="0"
         >
           babel-plugin-module-resolver
         </OutsideLink>
@@ -231,7 +218,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
           ariaLabel="Navigate to the Next SSR Kit project page."
           dataTestId="nextjs-ssr-link"
           href="/nextjs-ssr-kit"
-          padding="0"
           showUnderline
         >
           Nextjs SSR Kit
@@ -259,7 +245,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to gcn-usb-adapter source page"
           href="https://bitbucket.org/elmassivo/gcn-usb-adapter/src/master/"
-          padding="0"
         >
           GCN USB Adapter
         </OutsideLink>
@@ -269,7 +254,6 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
         <OutsideLink
           ariaLabel="Navigate to youtube video"
           href="https://youtu.be/nA50Wlv3K_M"
-          padding="0"
         >
           video
         </OutsideLink>

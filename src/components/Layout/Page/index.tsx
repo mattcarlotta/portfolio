@@ -44,7 +44,13 @@ const Page = ({
                 )}
               </SubTitle>
               <DetailHeadline>Tech Specs:</DetailHeadline>
-              <ul data-testid="tech">
+              <ul
+                data-testid="tech"
+                css={css`
+                  list-style-type: none;
+                  padding: 0 20px;
+                `}
+              >
                 {tech.map(item => (
                   <li
                     css={css`

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "./e2e",
-    "rootDir": "./e2e",
+    "baseUrl": ".",
+    "rootDir": ".",
     "target": "es6",
     "lib": ["es6", "dom"],
     "moduleResolution": "node",

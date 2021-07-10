@@ -1,28 +1,36 @@
 import { css } from "@emotion/react";
-import FlexCenter from "~components/Layout/FlexCenter";
+import FlexSpaceAround from "~components/Layout/FlexSpaceAround";
 import ListItem from "~components/Layout/ListItem";
 import Orbits from "~components/Layout/Orbits";
 import Link from "~components/Navigation/Link";
-import OutsideLink from "~components/Navigation/OutsideLink";
 import Center from "~components/Layout/Center";
 import Headline from "~components/Layout/Headline";
 import SubHeadline from "~components/Layout/SubHeadline";
+import OutsideLink from "~components/Navigation/OutsideLink";
 import {
+  BsPersonBoundingBox,
   IconContext,
   GoHome,
   GoMail,
   FaBlog,
   FiLinkedin,
   RiGithubLine,
+  SiCodesandbox,
 } from "~icons";
 import { ReactElement } from "~types";
 
-const FOOTERLINKS = [
+const HEADERLINKS = [
   {
     dataTestId: "mail",
     Icon: GoMail,
     link: "mailto:matt@mattcarlotta.sh",
     description: "My email address",
+  },
+  {
+    dataTestId: "linkedin",
+    Icon: FiLinkedin,
+    link: "https://www.linkedin.com/in/mattcarlotta/",
+    description: "My LinkedIn profile",
   },
   {
     dataTestId: "github",
@@ -31,10 +39,10 @@ const FOOTERLINKS = [
     description: "My github repository",
   },
   {
-    dataTestId: "linkedin",
-    Icon: FiLinkedin,
-    link: "https://www.linkedin.com/in/mattcarlotta/",
-    description: "My LinkedIn profile",
+    dataTestId: "codesandbox",
+    Icon: SiCodesandbox,
+    link: "https://codesandbox.io/u/mattcarlotta/sandboxes",
+    description: "My Codesandbox profile",
   },
   {
     dataTestId: "blog",
@@ -55,22 +63,31 @@ const Header = (): ReactElement => (
         style: { fontSize: 18, verticalAlign: "text-top", marginRight: 5 },
       }}
     >
-      <nav
-        css={css`
-          margin: 0 auto;
-        `}
-      >
-        <FlexCenter breakpoint direction="row">
+      <nav>
+        <FlexSpaceAround breakpoint direction="row">
           <ListItem>
             <Link
               dataTestId="go-home"
               ariaLabel="Navigate back to home page"
               href="/"
+              padding="0px"
             >
               <GoHome />
             </Link>
           </ListItem>
-          {FOOTERLINKS.map(({ dataTestId, description, Icon, link }) => (
+          <ListItem>
+            <Link
+              dataTestId="about-me"
+              ariaLabel="Navigate to about page"
+              href="/about"
+              padding="0px"
+            >
+              <BsPersonBoundingBox
+                style={{ fontSize: 15, position: "relative", top: 2 }}
+              />
+            </Link>
+          </ListItem>
+          {HEADERLINKS.map(({ dataTestId, description, Icon, link }) => (
             <ListItem key={description}>
               <OutsideLink
                 dataTestId={dataTestId}
@@ -81,7 +98,7 @@ const Header = (): ReactElement => (
               </OutsideLink>
             </ListItem>
           ))}
-        </FlexCenter>
+        </FlexSpaceAround>
       </nav>
       <Orbits />
       <Center data-testid="header">

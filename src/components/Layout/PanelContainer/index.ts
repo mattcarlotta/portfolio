@@ -6,7 +6,7 @@ const PanelContainer = styled.div`
   font-size: 16px;
   margin-bottom: 20px;
   overflow: hidden;
-  color: #0096ff;
+  color: #0088ff;
   font-weight: bold;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;

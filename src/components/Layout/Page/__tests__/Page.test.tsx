@@ -111,9 +111,6 @@ describe("Page", () => {
 
     expect(findById("status").first().text()).toEqual(status);
 
-    expect(wrapper.find("BsFillCircleFill").first()).toHaveStyle(
-      "color",
-      "limegreen",
-    );
+    expect(wrapper.find("FiPower").first()).toHaveStyle("color", "limegreen");
   });
 });
