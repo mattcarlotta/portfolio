@@ -43,4 +43,17 @@ describe("Flex", () => {
     wrapper.setProps({ width: "10px" });
     expect(wrapper).toHaveStyleRule("width", "10px");
   });
+
+  it("sets media query when passed a 'breakpoint' prop", () => {
+    wrapper.setProps({ breakpoint: true });
+    expect(wrapper).toHaveStyleRule("display", "block", {
+      media: "(max-width: 500px)",
+    });
+    expect(wrapper).toHaveStyleRule("text-align", "center", {
+      media: "(max-width: 500px)",
+    });
+    expect(wrapper).toHaveStyleRule("width", "100%", {
+      media: "(max-width: 500px)",
+    });
+  });
 });

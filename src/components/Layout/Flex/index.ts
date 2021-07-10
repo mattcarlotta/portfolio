@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 const Flex = styled.div<{
+  breakpoint?: boolean;
   direction?: string;
   height?: string;
   justify?: string;
@@ -8,6 +9,15 @@ const Flex = styled.div<{
   flexwrap?: boolean;
   width?: string;
 }>`
+  ${({ breakpoint }) =>
+    breakpoint &&
+    `@media (max-width: 500px) {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+  `};
+
   flex-direction: ${({ direction }) => direction || "row"};
   display: flex;
   justify-content: center;

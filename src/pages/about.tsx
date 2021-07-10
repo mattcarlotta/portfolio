@@ -129,6 +129,7 @@ const About = (): ReactElement => (
                 key={technology}
               >
                 <Flex
+                  breakpoint
                   width="100%"
                   flexwrap
                   style={{
@@ -137,13 +138,14 @@ const About = (): ReactElement => (
                   }}
                 >
                   <Flex
+                    breakpoint
                     justify="flex-start"
                     width="50%"
                     style={{ color: "#0088ff" }}
                   >
-                    {technology}:
+                    {technology}
                   </Flex>
-                  <Flex justify="flex-end" width="50%">
+                  <Flex breakpoint justify="flex-end" width="50%">
                     {[
                       Array.from({ length: level }, (_, i) => (
                         <AiFillStar
