@@ -442,7 +442,7 @@ const Applications: Array<Application> = [
       "reactjs",
       "typescript (website)",
       "nextjs",
-      "npmM",
+      "npm",
       "rollupjs",
       "Webpack",
     ],
