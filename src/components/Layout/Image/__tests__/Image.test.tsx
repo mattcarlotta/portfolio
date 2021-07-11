@@ -30,7 +30,7 @@ describe("Image", () => {
       expect(
         wrapper.find("[data-testid='placeholder']").first(),
       ).toHaveStyleRule("display", "none");
-    }, 2000);
+    }, 1000);
   });
 
   it("on failure displays a broken link icon", async () => {

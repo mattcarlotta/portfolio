@@ -71,7 +71,7 @@ const About = (): ReactElement => (
             alt="portrait"
             height="100%"
             width="100%"
-            styles="display: flex;margin: 0 auto;max-width: 250px;max-height: 250px;border-radius: 10px;"
+            styles="margin: 0 auto;max-width: 250px;max-height: 250px;border-radius: 10px;"
           />
         </div>
         <Text>
