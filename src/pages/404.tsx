@@ -1,54 +1,30 @@
+import { Fragment } from "react";
 import Head from "next/head";
-import { css } from "@emotion/react";
-import Center from "~components/Layout/Center";
 import Flex from "~components/Layout/Flex";
+import Panel from "~components/Layout/Panel";
+import PanelTitle from "~components/Layout/PanelTitle";
+import Project from "~components/Layout/Project";
+import Text from "~components/Layout/Text";
 import Home from "~components/Navigation/Home";
+import { GiExplodingPlanet } from "~icons";
 import { ReactElement } from "~types";
 
 const NotFound = (): ReactElement => (
-  <Flex
-    data-testid="not-found-page"
-    justify="center"
-    direction="column"
-    height="50vh"
-  >
+  <Fragment>
     <Head>
       <title>Not Found - Matt Carlotta</title>
     </Head>
-    <Center
-      style={{
-        border: "1px solid #888",
-        background: "rgba(0, 128, 255, 0.8)",
-        boxShadow: "0px 0px 26px 0px rgb(0 64 255)",
-        borderRadius: 10,
-        padding: "20px 40px",
-        marginBottom: 20,
-      }}
-    >
-      <div
-        data-testid="status-code"
-        css={css`
-          font-size: 40px;
-          margin-bottom: 0;
-          padding: 0px;
-        `}
-      >
-        404
-      </div>
-      <div
-        data-testid="page-response"
-        css={css`
-          font-size: 20px;
-          font-weight: bold;
-          letter-spacing: 2px;
-          padding-bottom: 10px;
-        `}
-      >
-        page not found!
-      </div>
-    </Center>
+    <Project>
+      <PanelTitle data-testid="panel-title">file not found</PanelTitle>
+      <Panel>
+        <Flex justify="center" height="700px" direction="column">
+          <GiExplodingPlanet style={{ fontSize: 250, marginBottom: 40 }} />
+          <Text>Unable to locate the requested file.</Text>
+        </Flex>
+      </Panel>
+    </Project>
     <Home />
-  </Flex>
+  </Fragment>
 );
 
 export default NotFound;
