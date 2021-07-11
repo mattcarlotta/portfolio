@@ -14,7 +14,7 @@ const ErrorPage = (): ReactElement => (
     <Head>
       <title>Server Error - Matt Carlotta</title>
     </Head>
-    <Project>
+    <Project data-testid="server-error-page">
       <PanelTitle data-testid="panel-title">internal server error</PanelTitle>
       <Panel>
         <Flex justify="center" height="700px" direction="column">

@@ -14,7 +14,7 @@ const NotFound = (): ReactElement => (
     <Head>
       <title>Not Found - Matt Carlotta</title>
     </Head>
-    <Project>
+    <Project data-testid="not-found-page">
       <PanelTitle data-testid="panel-title">file not found</PanelTitle>
       <Panel>
         <Flex justify="center" height="700px" direction="column">
