@@ -1,39 +1,33 @@
+import { Fragment } from "react";
 import Head from "next/head";
-import { css } from "@emotion/react";
-import Center from "~components/Layout/Center";
 import Flex from "~components/Layout/Flex";
+import Panel from "~components/Layout/Panel";
+import PanelTitle from "~components/Layout/PanelTitle";
+import Project from "~components/Layout/Project";
+import Text from "~components/Layout/Text";
 import Home from "~components/Navigation/Home";
+import { GiExplodingPlanet } from "~icons";
 import { ReactElement } from "~types";
 
-const NotFound = (): ReactElement => (
-  <Flex justify="center" height="50vh">
+const ErrorPage = (): ReactElement => (
+  <Fragment>
     <Head>
       <title>Server Error - Matt Carlotta</title>
     </Head>
-    <Center>
-      <div
-        css={css`
-          font-size: 40px;
-          margin-bottom: 0;
-          padding: 0px;
-        `}
-      >
-        500
-      </div>
-      <div
-        css={css`
-          font-size: 20px;
-          font-weight: bold;
-          margin-top: -5px;
-          margin-bottom: 20px;
-          letter-spacing: 2px;
-        `}
-      >
-        uh oh! the server encountered an error!
-      </div>
-      <Home />
-    </Center>
-  </Flex>
+    <Project>
+      <PanelTitle data-testid="panel-title">internal server error</PanelTitle>
+      <Panel>
+        <Flex justify="center" height="700px" direction="column">
+          <GiExplodingPlanet style={{ fontSize: 250, marginBottom: 40 }} />
+          <Text>
+            The server ran into an issue. Please wait a few minutes and refresh
+            the page.
+          </Text>
+        </Flex>
+      </Panel>
+    </Project>
+    <Home />
+  </Fragment>
 );
 
-export default NotFound;
+export default ErrorPage;

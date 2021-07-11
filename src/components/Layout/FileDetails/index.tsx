@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
 import Info from "~components/Layout/Info";
+import NormalText from "~components/Layout/NormalText";
 import {
   AiOutlineFolderOpen,
   FaLink,
@@ -25,18 +25,10 @@ const FileDetails = ({
 }: FileDetailsProps): JSX.Element => (
   <IconContext.Provider
     value={{
-      style: { fontSize: 20, verticalAlign: "text-top", marginRight: 7 },
+      style: { fontSize: 20, verticalAlign: "middle", marginRight: 10 },
     }}
   >
-    <div
-      css={css`
-        font-family: "Mukta", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
-          "Helvetica Neue", sans-serif;
-        margin-bottom: 20px;
-        padding-left: 20px;
-      `}
-    >
+    <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
       <Info data-testid="status">
         <FiPower style={{ color: active ? "limegreen" : "#2c4776" }} />
         {status}
@@ -71,7 +63,7 @@ const FileDetails = ({
           Source
         </a>
       </Info>
-    </div>
+    </NormalText>
   </IconContext.Provider>
 );
 

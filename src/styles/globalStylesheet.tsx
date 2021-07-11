@@ -29,7 +29,7 @@ export const GlobalStylesheet = (): JSX.Element => (
 
       body {
         margin: 0;
-        background: url("./bg.webp");
+        background: url("/bg.webp");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;

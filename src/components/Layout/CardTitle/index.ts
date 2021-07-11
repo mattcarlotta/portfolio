@@ -8,7 +8,7 @@ const CardTitle = styled.div`
   padding: 2px;
   margin: 0;
   font-weight: bold;
-  background-color: #00284a;
+  background: #00264d;
 `;
 
 export default CardTitle;

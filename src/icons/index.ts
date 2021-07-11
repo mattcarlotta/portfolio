@@ -8,6 +8,7 @@ export { AiOutlineFolderOpen } from "@react-icons/all-files/ai/AiOutlineFolderOp
 export { AiOutlineStar } from "@react-icons/all-files/ai/AiOutlineStar";
 
 // GI
+export { GiExplodingPlanet } from "@react-icons/all-files/gi/GiExplodingPlanet";
 export { GiRank3 } from "@react-icons/all-files/gi/GiRank3";
 
 // GO

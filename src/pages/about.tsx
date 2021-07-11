@@ -53,7 +53,7 @@ const TechSpecs = [
 const About = (): ReactElement => (
   <IconContext.Provider
     value={{
-      style: { fontSize: 20, verticalAlign: "text-top", marginRight: 7 },
+      style: { fontSize: 20, verticalAlign: "middle", marginRight: 10 },
     }}
   >
     <Head title="About" url="about" description="An exploration example." />
@@ -76,7 +76,7 @@ const About = (): ReactElement => (
         </div>
         <Text>
           <DetailHeadline>Details:</DetailHeadline>
-          <NormalText margin="0 0 0 20px">
+          <NormalText margin="0 0 0 15px" fontSize="16px">
             <Info data-testid="status">
               <FiPower style={{ color: "limegreen" }} />
               Activated in September 2016
@@ -113,7 +113,8 @@ const About = (): ReactElement => (
             and CSS3+ stylesheets across multiplatform devices while
             understanding cross-platform limitations. I actively deploy and
             maintain applications running on remote Linux servers. <br />
-            <br />A quick learner that is adaptable to emerging languages,
+            <br />
+            I&apos;m a quick learner that is adaptable to emerging languages,
             technologies, and frameworks. An excellent communicator who is very
             patient, whether its breaking-down complex technical information to
             the needs of a client or accepting/providing feedback to a team.
