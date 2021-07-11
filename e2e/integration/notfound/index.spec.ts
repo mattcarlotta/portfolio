@@ -6,8 +6,7 @@ context("Not Found Page", () => {
   it("displays a 404 message", () => {
     cy.findByTestId("not-found-page").should("exist");
 
-    cy.findByTestId("status-code").should("have.text", "404");
-    cy.findByTestId("page-response").should("have.text", "page not found!");
+    cy.findByTestId("panel-title").should("have.text", "file not found");
   });
 
   it("allows a user to navigate back to the home page", () => {
