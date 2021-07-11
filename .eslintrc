@@ -21,6 +21,7 @@
         "allowTemplateLiterals": true
       }
     ],
+    "react/display-name": 0,
     "no-use-before-define": 0,
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/react-in-jsx-scope": 0,
