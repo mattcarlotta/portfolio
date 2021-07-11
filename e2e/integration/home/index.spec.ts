@@ -185,9 +185,9 @@ context("Home Page", () => {
       .should("have.text", "fullstack web developer and commercial artist");
   });
 
-  it("displays a link to open email", () => {
-    cy.findByTestId("mail").should("have.attr", "target", "_blank");
-  });
+  // it("displays a link to open email", () => {
+  //   cy.findByTestId("mail").should("have.attr", "target", "_blank");
+  // });
 
   it("displays a link to open about me page", () => {
     cy.findByTestId("about-me").should("exist");
@@ -205,12 +205,12 @@ context("Home Page", () => {
     cy.findByTestId("linkedin").should("have.attr", "target", "_blank");
   });
 
-  it("displays a link to open blogger", () => {
-    cy.findByTestId("blog").should("have.attr", "target", "_blank");
-  });
+  // it("displays a link to open blogger", () => {
+  //   cy.findByTestId("blog").should("have.attr", "target", "_blank");
+  // });
 
   it("displays 39 project and exploration links", () => {
-    cy.findByTestId("body").find("a").should("have.length", 39);
+    cy.get(".panel-container").should("have.length", 39);
   });
 
   it("navigates to all projects", () => {

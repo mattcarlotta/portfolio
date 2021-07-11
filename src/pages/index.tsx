@@ -2,10 +2,9 @@ import { Fragment } from "react";
 import CardPreview from "~components/Layout/CardPreview";
 import Apps from "~components/Layout/Apps";
 import Category from "~components/Layout/Category";
-// import Explorations from "~components/Layout/Explorations";
+import Explorations from "~components/Layout/Explorations";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
-// import Link from "~components/Navigation/Link";
 import { ReactElement } from "~types";
 
 const Home = (): ReactElement => (
@@ -22,6 +21,7 @@ const Home = (): ReactElement => (
         <CardPreview
           key={head.title}
           idx={index}
+          href="projects"
           {...head}
           {...preview}
           {...filedetails}
@@ -29,33 +29,27 @@ const Home = (): ReactElement => (
       ))}
     </Flex>
     <Category>Explorations</Category>
-    {/* <Flex
+    <Flex
       data-testid="home-page"
       justify="center"
       flexwrap
-      margin="0 0 150px 0"
+      margin="0 0 200px 0"
     >
-      {Explorations.map(
-        ({ title, description, href, src, alt, ariaLabel }, index) => (
-          <Link
-            dataTestId={title}
-            ariaLabel={ariaLabel}
-            key={href}
-            padding="0px"
-            href={`/explorations/${href}`}
-            scroll={false}
-          >
-            <CardPreview
-              alt={alt}
-              idx={index}
-              description={description}
-              src={src}
-              title={title}
-            />
-          </Link>
-        ),
-      )}
-    </Flex> */}
+      {Explorations.map(({ title, href, ...rest }, index) => (
+        <CardPreview
+          active
+          {...rest}
+          key={title}
+          idx={index}
+          location={`https://${href}.csb.app`}
+          href="explorations"
+          source={`https://codesandbox.io/s/${href}`}
+          status="In Orbit"
+          title={title}
+          url={`/${href}`}
+        />
+      ))}
+    </Flex>
   </Fragment>
 );
 

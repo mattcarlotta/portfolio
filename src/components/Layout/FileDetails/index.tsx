@@ -2,10 +2,10 @@ import { css } from "@emotion/react";
 import Info from "~components/Layout/Info";
 import {
   AiOutlineFolderOpen,
-  AiOutlineCode,
+  FaLink,
+  FaRegFileCode,
   FiPower,
   IconContext,
-  RiMapPin2Line,
 } from "~icons";
 
 export type FileDetailsProps = {
@@ -47,7 +47,7 @@ const FileDetails = ({
       </Info>
       {location && (
         <Info data-testid="location">
-          <RiMapPin2Line />
+          <FaLink />
           <a
             data-testid="location-link"
             href={location}
@@ -60,7 +60,7 @@ const FileDetails = ({
         </Info>
       )}
       <Info data-testid="source">
-        <AiOutlineCode />
+        <FaRegFileCode />
         <a
           data-testid="source-link"
           href={source}

@@ -8,11 +8,11 @@ import Headline from "~components/Layout/Headline";
 import SubHeadline from "~components/Layout/SubHeadline";
 import OutsideLink from "~components/Navigation/OutsideLink";
 import {
-  BsPersonBoundingBox,
+  ImInfo,
   IconContext,
   GoHome,
-  GoMail,
-  FaBlog,
+  // GoMail,
+  // FaBlog,
   FaGithub,
   FiLinkedin,
   SiCodesandbox,
@@ -20,12 +20,12 @@ import {
 import { ReactElement } from "~types";
 
 const HEADERLINKS = [
-  {
-    dataTestId: "mail",
-    Icon: GoMail,
-    link: "mailto:matt@mattcarlotta.sh",
-    description: "My email address",
-  },
+  // {
+  //   dataTestId: "mail",
+  //   Icon: GoMail,
+  //   link: "mailto:matt@mattcarlotta.sh",
+  //   description: "My email address",
+  // },
   {
     dataTestId: "linkedin",
     Icon: FiLinkedin,
@@ -44,12 +44,12 @@ const HEADERLINKS = [
     link: "https://codesandbox.io/u/mattcarlotta/sandboxes",
     description: "My Codesandbox profile",
   },
-  {
-    dataTestId: "blog",
-    Icon: FaBlog,
-    link: "https://mattcarlotta.blogspot.com",
-    description: "My personal blog",
-  },
+  // {
+  //   dataTestId: "blog",
+  //   Icon: FaBlog,
+  //   link: "https://mattcarlotta.blogspot.com",
+  //   description: "My personal blog",
+  // },
 ];
 
 const Header = (): ReactElement => (
@@ -71,6 +71,7 @@ const Header = (): ReactElement => (
               ariaLabel="Navigate back to home page"
               href="/"
               padding="5px"
+              margin="0 5px"
             >
               <GoHome />
             </Link>
@@ -81,10 +82,9 @@ const Header = (): ReactElement => (
               ariaLabel="Navigate to about page"
               href="/about"
               padding="5px"
+              margin="0 5px"
             >
-              <BsPersonBoundingBox
-                style={{ fontSize: 15, position: "relative", top: 2 }}
-              />
+              <ImInfo />
             </Link>
           </ListItem>
           {HEADERLINKS.map(({ dataTestId, description, Icon, link }) => (
@@ -93,7 +93,8 @@ const Header = (): ReactElement => (
                 dataTestId={dataTestId}
                 ariaLabel={description}
                 href={link}
-                style={{ padding: "5px" }}
+                padding="5px"
+                margin="0 5px"
               >
                 <Icon className="icon" />
               </OutsideLink>
