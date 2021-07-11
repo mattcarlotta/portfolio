@@ -8,24 +8,24 @@ import Headline from "~components/Layout/Headline";
 import SubHeadline from "~components/Layout/SubHeadline";
 import OutsideLink from "~components/Navigation/OutsideLink";
 import {
-  BsPersonBoundingBox,
+  ImInfo,
   IconContext,
   GoHome,
-  GoMail,
-  FaBlog,
+  // GoMail,
+  // FaBlog,
+  FaGithub,
   FiLinkedin,
-  RiGithubLine,
   SiCodesandbox,
 } from "~icons";
 import { ReactElement } from "~types";
 
 const HEADERLINKS = [
-  {
-    dataTestId: "mail",
-    Icon: GoMail,
-    link: "mailto:matt@mattcarlotta.sh",
-    description: "My email address",
-  },
+  // {
+  //   dataTestId: "mail",
+  //   Icon: GoMail,
+  //   link: "mailto:matt@mattcarlotta.sh",
+  //   description: "My email address",
+  // },
   {
     dataTestId: "linkedin",
     Icon: FiLinkedin,
@@ -34,7 +34,7 @@ const HEADERLINKS = [
   },
   {
     dataTestId: "github",
-    Icon: RiGithubLine,
+    Icon: FaGithub,
     link: "https://github.com/mattcarlotta",
     description: "My github repository",
   },
@@ -44,12 +44,12 @@ const HEADERLINKS = [
     link: "https://codesandbox.io/u/mattcarlotta/sandboxes",
     description: "My Codesandbox profile",
   },
-  {
-    dataTestId: "blog",
-    Icon: FaBlog,
-    link: "https://mattcarlotta.blogspot.com",
-    description: "My personal blog",
-  },
+  // {
+  //   dataTestId: "blog",
+  //   Icon: FaBlog,
+  //   link: "https://mattcarlotta.blogspot.com",
+  //   description: "My personal blog",
+  // },
 ];
 
 const Header = (): ReactElement => (
@@ -60,7 +60,7 @@ const Header = (): ReactElement => (
   >
     <IconContext.Provider
       value={{
-        style: { fontSize: 18, verticalAlign: "text-top", marginRight: 5 },
+        style: { fontSize: 18, verticalAlign: "middle", marginRight: 5 },
       }}
     >
       <nav>
@@ -70,7 +70,8 @@ const Header = (): ReactElement => (
               dataTestId="go-home"
               ariaLabel="Navigate back to home page"
               href="/"
-              padding="0px"
+              padding="5px"
+              margin="0 5px"
             >
               <GoHome />
             </Link>
@@ -80,11 +81,10 @@ const Header = (): ReactElement => (
               dataTestId="about-me"
               ariaLabel="Navigate to about page"
               href="/about"
-              padding="0px"
+              padding="5px"
+              margin="0 5px"
             >
-              <BsPersonBoundingBox
-                style={{ fontSize: 15, position: "relative", top: 2 }}
-              />
+              <ImInfo />
             </Link>
           </ListItem>
           {HEADERLINKS.map(({ dataTestId, description, Icon, link }) => (
@@ -93,6 +93,8 @@ const Header = (): ReactElement => (
                 dataTestId={dataTestId}
                 ariaLabel={description}
                 href={link}
+                padding="5px"
+                margin="0 5px"
               >
                 <Icon className="icon" />
               </OutsideLink>

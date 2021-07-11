@@ -1,7 +1,10 @@
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const address = require("address");
 
 const { analyze } = process.env;
+
+console.log(`Remote URL http://${address.ip()}:3000`);
 
 module.exports = {
   webpack5: false,

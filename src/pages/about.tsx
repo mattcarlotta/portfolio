@@ -13,6 +13,7 @@ import Head from "~components/Navigation/Header";
 import OutsideLink from "~components/Navigation/OutsideLink";
 import {
   AiFillStar,
+  AiOutlineStar,
   GiRank3,
   FiPower,
   HiOutlineMail,
@@ -159,7 +160,7 @@ const About = (): ReactElement => (
                       ]}
                       {5 - level > 0
                         ? Array.from({ length: 5 - level }, (_, i) => (
-                            <AiFillStar
+                            <AiOutlineStar
                               key={`not-${technology}-${i}`}
                               style={{
                                 verticalAlign: "middle",
