@@ -3,6 +3,7 @@ import { waitForAct } from "@noshot/utils";
 import Image from "../index";
 
 const initProps = {
+  placeholder: true,
   alt: "example",
   src: "example",
 };
@@ -17,11 +18,22 @@ describe("Image", () => {
     expect(wrapper.find("[data-testid='picture']")).toExist();
   });
 
-  it("calls onClick", () => {
-    wrapper.find("[data-testid='picture']").first().simulate("click");
+  it("renders a placeholder", () => {
+    expect(wrapper.find("[data-testid='placeholder']")).toExist();
   });
 
-  it("calls handleImageLoaded on failure and displays the broken link icon", async () => {
+  it("on success loads an image", async () => {
+    await waitForAct(() => {
+      wrapper.find("img").props().onLoad();
+      wrapper.update();
+
+      expect(
+        wrapper.find("[data-testid='placeholder']").first(),
+      ).toHaveStyleRule("display", "none");
+    }, 2000);
+  });
+
+  it("on failure displays a broken link icon", async () => {
     await waitForAct(() => {
       wrapper.find("img").props().onError();
       wrapper.update();

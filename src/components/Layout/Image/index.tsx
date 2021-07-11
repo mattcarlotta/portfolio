@@ -1,12 +1,14 @@
 import * as React from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
+import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
 import { ReactElement } from "~types";
 
 export type ImageProps = {
   alt?: string;
   containerStyle?: string;
   height?: string;
+  placeholder?: boolean;
   src?: string;
   styles?: string;
   width?: string;
@@ -16,18 +18,29 @@ const Image = ({
   alt,
   containerStyle,
   height,
+  placeholder,
   src,
   styles,
   width,
 }: ImageProps): ReactElement => {
-  const [error, setError] = React.useState(false);
+  const [state, setState] = React.useState({ error: false, isLoading: true });
+  const { error, isLoading } = state;
+  const isBrowser = typeof document !== "undefined";
 
   const onError = () => {
-    setError(true);
+    setState({ error: true, isLoading: false });
+  };
+
+  const onLoad = async () => {
+    await new Promise(res => setTimeout(res, 1000));
+    setState({ error: false, isLoading: false });
   };
 
   const handleImageRef = (node: HTMLImageElement | null) => {
-    if (node) node.onerror = onError;
+    if (node) {
+      node.onload = onLoad;
+      node.onerror = onError;
+    }
   };
 
   return (
@@ -39,6 +52,12 @@ const Image = ({
     >
       {!error ? (
         <>
+          {placeholder && (
+            <LoadingPlaceholder
+              data-testid="placeholder"
+              isLoading={isBrowser && isLoading}
+            />
+          )}
           <source srcSet={`/${src}.webp`} type="image/webp" />
           <img
             ref={handleImageRef}
@@ -48,6 +67,7 @@ const Image = ({
             src={`/${src}.png`}
             height={height}
             width={width}
+            onLoad={onLoad}
             onError={onError}
             alt={alt}
           />

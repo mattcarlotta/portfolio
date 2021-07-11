@@ -40,6 +40,18 @@ export const GlobalStylesheet = (): JSX.Element => (
           "Helvetica Neue", sans-serif;
       }
 
+      @keyframes pulse {
+        0% {
+          background-color: #eee;
+        }
+        50% {
+          background-color: #e4e4e4;
+        }
+        100% {
+          background-color: #eee;
+        }
+      }
+
       * {
         box-sizing: border-box;
         -ms-overflow-style: none;
