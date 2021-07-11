@@ -24,11 +24,13 @@ const Card = styled(motion.div)`
   height: 260px;
   margin: 5px;
   text-align: center;
-  background-color: transparent;
+  background: transparent;
   color: #0096ff;
   position: relative;
-  box-shadow: 0px 8px 15px -8px rgba(0, 0, 0, 0.75);
-  border: 1px solid #005193;
+  box-shadow: -1px -1px 24px -9px rgba(114, 158, 255, 0.5) inset;
+  border: 1px solid #003366;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
   overflow: hidden;
 
   :hover {
@@ -52,8 +54,11 @@ const Card = styled(motion.div)`
       opacity: 1;
       position: absolute;
       width: 100%;
-      box-shadow: 0px 0px 26px -2px rgba(0, 64, 255, 1);
+      box-shadow: inset -1px -1px 24px -9px rgba(101, 130, 255, 0.5),
+        0px 0px 26px -2px rgba(0, 64, 255, 1);
       border: 1px solid #0096ff;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
     }
 
     .bar1,

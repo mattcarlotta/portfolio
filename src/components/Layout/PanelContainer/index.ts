@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 const PanelContainer = styled.div`
   width: 100%;
   font-size: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 150px;
   overflow: hidden;
   color: #0088ff;
   font-weight: bold;

@@ -72,7 +72,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!exploration)
     return {
       redirect: {
-        destination: "/404",
+        destination: "/",
         permanent: false,
       },
     };
