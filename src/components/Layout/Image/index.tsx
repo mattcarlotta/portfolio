@@ -7,8 +7,6 @@ export type ImageProps = {
   alt?: string;
   containerStyle?: string;
   height?: string;
-  handleImageLoaded: () => void;
-  onClick: () => void;
   src?: string;
   styles?: string;
   width?: string;
@@ -17,28 +15,19 @@ export type ImageProps = {
 const Image = ({
   alt,
   containerStyle,
-  handleImageLoaded,
   height,
-  onClick,
   src,
   styles,
   width,
 }: ImageProps): ReactElement => {
   const [error, setError] = React.useState(false);
-  const onLoad = () => {
-    handleImageLoaded();
-  };
 
   const onError = () => {
     setError(true);
-    handleImageLoaded();
   };
 
   const handleImageRef = (node: HTMLImageElement | null) => {
-    if (node) {
-      node.onload = onLoad;
-      node.onerror = onError;
-    }
+    if (node) node.onerror = onError;
   };
 
   return (
@@ -47,7 +36,6 @@ const Image = ({
       css={css`
         ${containerStyle}
       `}
-      onClick={onClick}
     >
       {!error ? (
         <>
@@ -60,7 +48,6 @@ const Image = ({
             src={`/${src}.png`}
             height={height}
             width={width}
-            onLoad={onLoad}
             onError={onError}
             alt={alt}
           />
@@ -70,12 +57,6 @@ const Image = ({
       )}
     </picture>
   );
-};
-
-/* istanbul ignore next */
-Image.defaultProps = {
-  handleImageLoaded: () => null,
-  onClick: () => null,
 };
 
 export default Image;

@@ -1,3 +1,4 @@
+import { waitForAct } from "@noshot/utils";
 import { mount, ReactWrapper } from "enzyme";
 import Page from "../index";
 
@@ -91,9 +92,20 @@ describe("Page", () => {
     );
   });
 
-  it("displays a modal", () => {
+  it("opens and closes a modal", async () => {
     wrapper.find("PreviewCard").first().simulate("click");
-    expect(wrapper.find("Modal").first().prop("isOpen")).toBeTruthy();
+
+    await waitForAct(() => {
+      wrapper.update();
+      expect(findById("modal-title")).toExist();
+    });
+
+    findById("close-modal").first().simulate("click");
+
+    await waitForAct(() => {
+      wrapper.update();
+      expect(findById("modal-title")).not.toExist();
+    });
   });
 
   it("populates the file details with active project", () => {
