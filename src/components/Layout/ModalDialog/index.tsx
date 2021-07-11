@@ -103,7 +103,8 @@ const ModalDialog = ({
         </CloseModalButton>
         <Padding top="10px" right="40px" bottom="40px" left="40px">
           <Image
-            styles="width: 100%;max-width: 1800px;margin: 0 auto;display: block;box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);border-radius: 4px;"
+            placeholder
+            styles="width: 100%;max-width: 1800px;margin: 0 auto;box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.75);border-radius: 4px;"
             src={source}
             alt={source}
           />

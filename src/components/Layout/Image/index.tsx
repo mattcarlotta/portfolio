@@ -32,7 +32,6 @@ const Image = ({
   };
 
   const onLoad = async () => {
-    await new Promise(res => setTimeout(res, 1000));
     setState({ error: false, isLoading: false });
   };
 
@@ -61,6 +60,9 @@ const Image = ({
           <source srcSet={`/${src}.webp`} type="image/webp" />
           <img
             ref={handleImageRef}
+            style={{
+              display: placeholder && isBrowser && isLoading ? "none" : "flex",
+            }}
             css={css`
               ${styles}
             `}
