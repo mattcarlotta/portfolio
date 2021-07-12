@@ -17,6 +17,8 @@ export { GoHome } from "@react-icons/all-files/go/GoHome";
 
 // FA
 // export { FaBlog } from "@react-icons/all-files/fa/FaBlog";
+export { FaChevronLeft } from "@react-icons/all-files/fa/FaChevronLeft";
+export { FaChevronRight } from "@react-icons/all-files/fa/FaChevronRight";
 export { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 export { FaLink } from "@react-icons/all-files/fa/FaLink";
 export { FaRegFileCode } from "@react-icons/all-files/fa/FaRegFileCode";

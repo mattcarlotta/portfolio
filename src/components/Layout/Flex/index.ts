@@ -3,9 +3,11 @@ import styled from "@emotion/styled";
 const Flex = styled.div<{
   breakpoint?: boolean;
   direction?: string;
+  flex?: string;
   height?: string;
   justify?: string;
   margin?: string;
+  padding?: string;
   flexwrap?: boolean;
   width?: string;
 }>`
@@ -20,12 +22,14 @@ const Flex = styled.div<{
 
   flex-direction: ${({ direction }) => direction || "row"};
   display: flex;
+  flex: ${({ flex }) => flex};
   justify-content: center;
   align-items: center;
   height: ${({ height }) => height || "auto"};
   width: ${({ width }) => width || "100%"};
   flex-wrap: ${({ flexwrap }) => (flexwrap ? "wrap" : "nowrap")};
   justify-content: ${({ justify }) => justify || "start"};
+  padding: ${({ padding }) => padding};
   margin: ${({ margin }) => margin};
 `;
 
