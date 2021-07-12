@@ -7,7 +7,7 @@ const ImageTitle = styled.h2`
     font-size: 18px;
   }
 
-  color: #fff;
+  color: #0080ff;
   margin: 0;
   padding: 20px;
 `;

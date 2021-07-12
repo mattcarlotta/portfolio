@@ -1,5 +1,4 @@
 import * as React from "react";
-// import { css } from "@emotion/react";
 import { Slide, Dialog, withStyles } from "@material-ui/core";
 import { AppSnapshots } from "~components/Layout/Apps";
 import Button from "~components/Layout/Button";
@@ -31,7 +30,7 @@ const SlideTransition = React.forwardRef(
 
 export type ModalDialogProps = {
   snapshotdirectory?: string;
-  snapshots?: AppSnapshots;
+  snapshots: AppSnapshots;
 };
 
 export type ModalDialogState = {
@@ -56,50 +55,78 @@ const ModalDialog = ({
 }: ModalDialogProps): ReactElement => {
   const [image, setImage] = React.useState<ModalDialogState>(initialImageState);
   const { open, index, alt, src, title } = image;
-  const snaps = snapshots as AppSnapshots;
-  const snapsLength = snaps.length - 1;
+  const snapsLength = snapshots.length;
+  const hasSnaps = snapsLength > 0;
 
-  const handleClick = (index: number): void => {
-    const image = snaps[index];
-    setImage({ open: true, index, ...image });
+  const selectImage = (selectedIndex: number): void => {
+    const image = snapshots[selectedIndex];
+    setImage(prevState => ({ ...prevState, index: selectedIndex, ...image }));
+  };
+
+  const handleImageClick = (index: number): void => {
+    setImage({ open: true, index, ...snapshots[index] });
   };
 
   const handleNextImage = (nextIndex: number): void => {
+    const snapsIndexLength = snapsLength - 1;
+
     const selectedIndex =
-      nextIndex >= 0 && nextIndex <= snapsLength
+      nextIndex >= 0 && nextIndex <= snapsIndexLength
         ? nextIndex
         : nextIndex < 0
-        ? snapsLength
+        ? snapsIndexLength
         : 0;
 
-    const image = snaps[selectedIndex];
-    setImage(prevState => ({ ...prevState, index: selectedIndex, ...image }));
+    selectImage(selectedIndex);
   };
 
-  const selectImage = (selectedIndex: number): void => {
-    const image = snaps[selectedIndex];
-    setImage(prevState => ({ ...prevState, index: selectedIndex, ...image }));
-  };
-
-  const handleExit = (): void => {
+  const handleModalExit = (): void => {
     setImage(initialImageState);
   };
 
-  const handleClose = (): void => {
+  const handleModalClose = (): void => {
     setImage(prevState => ({ ...prevState, open: false }));
   };
+
+  const handleKeyDown = ({ key }: { key: string }): void => {
+    switch (key) {
+      case "Tab":
+      case "ArrowRight": {
+        handleNextImage(index + 1);
+        break;
+      }
+      case "ArrowLeft": {
+        handleNextImage(index - 1);
+        break;
+      }
+      case "Escape": {
+        handleModalExit();
+        break;
+      }
+      default:
+        break;
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  });
 
   return (
     <>
       {snapshotdirectory && <DetailHeadline>Snapshots:</DetailHeadline>}
-      {snapshots && snapshots.length > 0 && (
+      {hasSnaps && (
         <SnapshotContainer data-testid="snapshots">
           <Flex justify="center" flexwrap>
             {snapshots.map(({ src, alt, title }, index) => (
               <PreviewCard
                 data-testid={title}
                 key={src}
-                onClick={() => handleClick(index)}
+                onClick={() => handleImageClick(index)}
               >
                 <CardTitle>{title}</CardTitle>
                 <Image
@@ -116,63 +143,81 @@ const ModalDialog = ({
         scroll="body"
         id="modal"
         open={open}
-        onClose={handleClose}
+        onClose={handleModalClose}
         aria-labelledby="actions-dialog"
         TransitionComponent={SlideTransition}
-        TransitionProps={{ onExited: handleExit }}
+        TransitionProps={{ onExited: handleModalExit }}
       >
-        <Flex direction="column" height="100vh">
-          <Flex justify="center" direction="row" height="80px">
-            <ImageTitle>
-              <Center data-testid="modal-title">{title}</Center>
-            </ImageTitle>
-            <CloseModalButton
-              data-testid="close-modal"
-              aria-label="close modal"
-              type="button"
-              onClick={handleClose}
-            >
-              <FaTimes style={{ fontSize: 25 }} />
-            </CloseModalButton>
-          </Flex>
-          <Flex justify="space-around" direction="row" padding="20px">
-            <Button type="button" onClick={() => handleNextImage(index - 1)}>
-              <FaChevronLeft />
-            </Button>
-            <Flex justify="center" width="90%">
-              <Image
-                placeholder
-                styles="width: 80%;margin: 0 auto;"
-                src={`projects/${snapshotdirectory}/${src}`}
-                alt={alt}
-              />
-            </Flex>
-            <Button type="button" onClick={() => handleNextImage(index + 1)}>
-              <FaChevronRight />
-            </Button>
-          </Flex>
-          <Flex justify="center" height="80px">
-            {snapshots &&
-              snapshots.length > 0 &&
-              snapshots.map(({ title, src, alt }, idx) => (
-                <ImagePreviewButton
-                  type="button"
-                  onClick={() => selectImage(idx)}
-                  active={idx === index}
-                  key={title}
-                >
-                  <Image
-                    styles="height: 75px;margin: 0 auto;align-self: center;"
-                    src={`projects/${snapshotdirectory}/${src}`}
-                    alt={alt}
-                  />
-                </ImagePreviewButton>
-              ))}
-          </Flex>
+        <Flex justify="center" direction="row" height="80px">
+          <ImageTitle>
+            <Center data-testid="modal-title">{title}</Center>
+          </ImageTitle>
+          <CloseModalButton
+            data-testid="close-modal"
+            aria-label="close modal"
+            type="button"
+            onClick={handleModalClose}
+          >
+            <FaTimes />
+          </CloseModalButton>
         </Flex>
+        <Flex
+          justify="space-around"
+          direction="row"
+          padding="20px"
+          margin="0 0 20px 0"
+        >
+          <Button
+            data-testid="previous-image"
+            type="button"
+            clickable={snapsLength > 1}
+            onClick={() => handleNextImage(index - 1)}
+          >
+            <FaChevronLeft />
+          </Button>
+          <Flex justify="center">
+            <Image
+              placeholder
+              styles="width: 100%;max-width: 1400px;"
+              src={`projects/${snapshotdirectory}/${src}`}
+              alt={alt}
+            />
+          </Flex>
+          <Button
+            data-testid="next-image"
+            type="button"
+            clickable={snapsLength > 1}
+            onClick={() => handleNextImage(index + 1)}
+          >
+            <FaChevronRight />
+          </Button>
+        </Flex>
+        <Center>
+          {hasSnaps &&
+            snapshots.map(({ title, src, alt }, idx) => (
+              <ImagePreviewButton
+                type="button"
+                tabIndex={-1}
+                aria-selected={idx === index}
+                onClick={() => selectImage(idx)}
+                active={idx === index}
+                key={title}
+              >
+                <Image
+                  styles="height: 75px;margin: 0 auto;align-self: center;"
+                  src={`projects/${snapshotdirectory}/${src}`}
+                  alt={alt}
+                />
+              </ImagePreviewButton>
+            ))}
+        </Center>
       </ImageViewer>
     </>
   );
+};
+
+ModalDialog.defaultProps = {
+  snapshots: [],
 };
 
 export default ModalDialog;

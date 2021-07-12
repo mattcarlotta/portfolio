@@ -1,7 +1,10 @@
-/* istanbul ignore file */
 import styled from "@emotion/styled";
 
-const Button = styled.button<{ height?: string; width?: string }>`
+const Button = styled.button<{
+  clickable?: boolean;
+  height?: string;
+  width?: string;
+}>`
   @media (max-width: 550px) {
     svg {
       font-size: 20px !important;
@@ -13,7 +16,7 @@ const Button = styled.button<{ height?: string; width?: string }>`
   padding: 15px;
   outline: 0;
   border: 0;
-  color: #fff;
+  color: ${({ clickable }) => (clickable ? "#0080ff" : "#1f1f1f")};
   height: ${({ height }) => height || "auto"};
   width: ${({ width }) => width || "auto"};
   transition: color 300ms ease-in-out;
@@ -23,7 +26,7 @@ const Button = styled.button<{ height?: string; width?: string }>`
   }
 
   :hover {
-    color: #0080ff;
+    color: ${({ clickable }) => (clickable ? "#ddd" : "#1f1f1f")};
   }
 `;
 

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import styled from "@emotion/styled";
 
 const CloseModalButton = styled.button`
@@ -12,6 +13,10 @@ const CloseModalButton = styled.button`
   transition: background-color 0.2s ease-in-out;
   margin-right: 10px;
   margin-top: 10px;
+
+  svg {
+    font-size: 25px;
+  }
 
   :hover {
     color: #f5222d;
