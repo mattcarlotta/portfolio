@@ -109,10 +109,10 @@ const ModalDialog = ({
   };
 
   React.useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   });
 
@@ -197,6 +197,7 @@ const ModalDialog = ({
             snapshots.map(({ title, src, alt }, idx) => (
               <ImagePreviewButton
                 type="button"
+                data-testid={`button-${title}`}
                 tabIndex={-1}
                 aria-selected={idx === index}
                 onClick={() => selectImage(idx)}
