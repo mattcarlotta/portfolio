@@ -47,7 +47,7 @@ const Card = styled(motion.div)`
     }
 
     .panel-container {
-      background: rgba(0, 2, 14, 1);
+      background: #00020e;
       top: 0;
       left: 0;
       height: auto;

@@ -35,15 +35,19 @@ context("Yelp Camp Project Page", () => {
 
       const src = `/projects/yelpcamp/yelpcamp${name}`;
 
-      cy.get("#modal").find("[data-testid='picture']").should("have.length", 1);
+      cy.get("#modal")
+        .find("[data-testid='modal-title']")
+        .should("have.text", id.toLowerCase());
 
       cy.get("#modal")
         .find("[data-testid='picture']")
+        .first()
         .find("source")
         .should("have.attr", "srcset", `${src}.webp`);
 
       cy.get("#modal")
         .find("[data-testid='picture']")
+        .first()
         .find("img")
         .should("have.attr", "src", `${src}.png`);
 
