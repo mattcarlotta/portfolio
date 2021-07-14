@@ -33,26 +33,16 @@ context("Fullstack M.E.R.N. Kit Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    [{ id: "logo", name: "Preview" }].forEach(({ id, name }) => {
+    ["Logo"].forEach(id => {
       cy.findByTestId(id.toLowerCase()).click();
-
-      const src = `/projects/mernkit/mernkit${name}`;
 
       cy.get("#modal")
         .find("[data-testid='modal-title']")
         .should("have.text", id.toLowerCase());
 
       cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("source")
-        .should("have.attr", "srcset", `${src}.webp`);
-
-      cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("img")
-        .should("have.attr", "src", `${src}.png`);
+        .find(`[data-testid='image-${id.toLowerCase()}']`)
+        .should("exist");
 
       cy.findByTestId("close-modal").click();
     });

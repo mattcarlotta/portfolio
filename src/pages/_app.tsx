@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
 import Body from "~components/Layout/Body";
 import Header from "~components/Layout/Header";
+import ImageContext from "~components/ImageContext";
 import Footer from "~components/Layout/Footer";
 import Main from "~components/Layout/Main";
 import GlobalStylesheet from "~styles/globalStylesheet";
@@ -29,15 +30,20 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
       </Head>
-      <Main>
-        <Header />
-        <Body data-testid="body">
-          <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-            <Component {...pageProps} key={router.route} />
-          </AnimatePresence>
-        </Body>
-        <Footer />
-      </Main>
+      <ImageContext>
+        <Main>
+          <Header />
+          <Body data-testid="body">
+            <AnimatePresence
+              exitBeforeEnter
+              onExitComplete={handleExitComplete}
+            >
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+          </Body>
+          <Footer />
+        </Main>
+      </ImageContext>
       <GlobalStylesheet />
     </>
   );

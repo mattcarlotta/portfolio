@@ -30,30 +30,16 @@ context("ssdtGen App Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    [
-      { id: "logo", name: "Logo" },
-      { id: "app", name: "Preview" },
-      { id: "ex. ssdt", name: "Example" },
-    ].forEach(({ id, name }) => {
+    ["logo", "app", "ex. ssdt"].forEach(id => {
       cy.findByTestId(id).click();
-
-      const src = `/projects/ssdtgenapp/ssdtgenapp${name}`;
 
       cy.get("#modal")
         .find("[data-testid='modal-title']")
         .should("have.text", id.toLowerCase());
 
       cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("source")
-        .should("have.attr", "srcset", `${src}.webp`);
-
-      cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("img")
-        .should("have.attr", "src", `${src}.png`);
+        .find(`[data-testid='image-${id.toLowerCase()}']`)
+        .should("exist");
 
       cy.findByTestId("close-modal").click();
     });

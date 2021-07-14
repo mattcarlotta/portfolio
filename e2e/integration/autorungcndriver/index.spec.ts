@@ -21,4 +21,20 @@ context("Autorun GCN Driver Project Page", () => {
   it("displays the project tech specs", () => {
     cy.findByTestId("tech").should("exist");
   });
+
+  it("displays a modal for individual project snapshots", () => {
+    ["Logo"].forEach(id => {
+      cy.findByTestId(id.toLowerCase()).click();
+
+      cy.get("#modal")
+        .find("[data-testid='modal-title']")
+        .should("have.text", id.toLowerCase());
+
+      cy.get("#modal")
+        .find(`[data-testid='image-${id.toLowerCase()}']`)
+        .should("exist");
+
+      cy.findByTestId("close-modal").click();
+    });
+  });
 });

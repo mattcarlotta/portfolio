@@ -23,6 +23,8 @@ window.addEventListener = (event: any, cb: any) => {
   events[event] = cb;
 };
 
+window.document.getElementById = jest.fn();
+
 describe("ModalDialog", () => {
   let wrapper: ReactWrapper;
   let findById: (id: string) => ReactWrapper;

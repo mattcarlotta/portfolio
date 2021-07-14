@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const ImageTitle = styled.h2`
   @media (max-width: 550px) {
-    margin-top: 60px;
+    margin-top: 30px;
     font-size: 18px;
   }
 

@@ -5,7 +5,7 @@ const Button = styled.button<{
   height?: string;
   width?: string;
 }>`
-  @media (max-width: 550px) {
+  @media (max-width: 1000px) {
     svg {
       font-size: 20px !important;
     }

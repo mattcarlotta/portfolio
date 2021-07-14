@@ -30,43 +30,16 @@ context("NextJS SSR Kit Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    [
-      {
-        id: "home",
-        name: "Home",
-      },
-      {
-        id: "ex. api",
-        name: "ExampleAPI",
-      },
-      {
-        id: "ex. api create",
-        name: "ExampleAPICreate",
-      },
-      {
-        id: "ex. api edit",
-        name: "ExampleAPIEdit",
-      },
-    ].forEach(({ id, name }) => {
+    ["home", "ex. api", "ex. api create", "ex. api edit"].forEach(id => {
       cy.findByTestId(id.toLowerCase()).click();
-
-      const src = `/projects/nextssrkit/nextssrkit${name}`;
 
       cy.get("#modal")
         .find("[data-testid='modal-title']")
         .should("have.text", id.toLowerCase());
 
       cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("source")
-        .should("have.attr", "srcset", `${src}.webp`);
-
-      cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("img")
-        .should("have.attr", "src", `${src}.png`);
+        .find(`[data-testid='image-${id.toLowerCase()}']`)
+        .should("exist");
 
       cy.findByTestId("close-modal").click();
     });

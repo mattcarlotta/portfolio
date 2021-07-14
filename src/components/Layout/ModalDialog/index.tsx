@@ -14,6 +14,8 @@ import PreviewCard from "~components/Layout/PreviewCard";
 import SnapshotContainer from "~components/Layout/SnapshotContainer";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "~icons";
 import { ReactElement, Ref, TransitionProps } from "~types";
+import BackgroundImageViewer from "../BackgroundImage";
+import Fixed from "../Fixed";
 
 const ImageViewer = withStyles(() => ({
   paper: {
@@ -54,7 +56,7 @@ const ModalDialog = ({
   snapshots,
 }: ModalDialogProps): ReactElement => {
   const [image, setImage] = React.useState<ModalDialogState>(initialImageState);
-  const { open, index, alt, src, title } = image;
+  const { open, index, src, title } = image;
   const snapsLength = snapshots.length;
   const hasSnaps = snapsLength > 0;
 
@@ -116,6 +118,19 @@ const ModalDialog = ({
     };
   });
 
+  React.useEffect(() => {
+    const previewImage = title
+      ? document.getElementById(`button-preview-${title}`)
+      : null;
+    /* istanbul ignore next */
+    if (previewImage)
+      previewImage.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+  }, [title]);
+
   return (
     <>
       {snapshotdirectory && <DetailHeadline>Snapshots:</DetailHeadline>}
@@ -148,7 +163,7 @@ const ModalDialog = ({
         TransitionComponent={SlideTransition}
         TransitionProps={{ onExited: handleModalExit }}
       >
-        <Flex justify="center" direction="row" height="80px">
+        <Fixed top="0px" width="100%">
           <ImageTitle>
             <Center data-testid="modal-title">{title}</Center>
           </ImageTitle>
@@ -160,58 +175,67 @@ const ModalDialog = ({
           >
             <FaTimes />
           </CloseModalButton>
-        </Flex>
-        <Flex
-          justify="space-around"
-          direction="row"
-          padding="20px"
-          margin="0 0 20px 0"
-        >
-          <Button
-            data-testid="previous-image"
-            type="button"
-            clickable={snapsLength > 1}
-            onClick={() => handleNextImage(index - 1)}
-          >
-            <FaChevronLeft />
-          </Button>
+        </Fixed>
+        <Fixed top="calc(50% - 35px)" left="0px">
+          <Flex justify="flex-start" width="120px">
+            <Button
+              data-testid="previous-image"
+              type="button"
+              clickable={snapsLength > 1}
+              onClick={() => handleNextImage(index - 1)}
+            >
+              <FaChevronLeft />
+            </Button>
+          </Flex>
+        </Fixed>
+        <Fixed bottom="100px" left="80px" right="80px" top="80px">
           <Flex justify="center">
-            <Image
-              placeholder
-              styles="width: 100%;max-width: 1400px;"
-              src={`projects/${snapshotdirectory}/${src}`}
-              alt={alt}
+            <BackgroundImageViewer
+              dataTestId={`image-${title}`}
+              src={`/projects/${snapshotdirectory}/${src}`}
             />
           </Flex>
-          <Button
-            data-testid="next-image"
-            type="button"
-            clickable={snapsLength > 1}
-            onClick={() => handleNextImage(index + 1)}
+        </Fixed>
+        <Fixed top="calc(50% - 35px)" right="0px">
+          <Flex justify="flex-end" width="120px">
+            <Button
+              data-testid="next-image"
+              type="button"
+              clickable={snapsLength > 1}
+              onClick={() => handleNextImage(index + 1)}
+            >
+              <FaChevronRight />
+            </Button>
+          </Flex>
+        </Fixed>
+        <Fixed left="0px" bottom="0px" width="100%">
+          <Center
+            style={{
+              overflowY: "auto",
+              whiteSpace: "nowrap",
+            }}
           >
-            <FaChevronRight />
-          </Button>
-        </Flex>
-        <Center>
-          {hasSnaps &&
-            snapshots.map(({ title, src, alt }, idx) => (
-              <ImagePreviewButton
-                type="button"
-                data-testid={`button-${title}`}
-                tabIndex={-1}
-                aria-selected={idx === index}
-                onClick={() => selectImage(idx)}
-                active={idx === index}
-                key={title}
-              >
-                <Image
-                  styles="height: 75px;margin: 0 auto;align-self: center;"
-                  src={`projects/${snapshotdirectory}/${src}`}
-                  alt={alt}
-                />
-              </ImagePreviewButton>
-            ))}
-        </Center>
+            {hasSnaps &&
+              snapshots.map(({ title, src, alt }, idx) => (
+                <ImagePreviewButton
+                  type="button"
+                  id={`button-preview-${title}`}
+                  data-testid={`button-${title}`}
+                  tabIndex={-1}
+                  aria-selected={idx === index}
+                  onClick={() => selectImage(idx)}
+                  active={idx === index}
+                  key={title}
+                >
+                  <Image
+                    styles="height: 75px;margin: 0 auto;align-self: center;"
+                    src={`projects/${snapshotdirectory}/${src}`}
+                    alt={alt}
+                  />
+                </ImagePreviewButton>
+              ))}
+          </Center>
+        </Fixed>
       </ImageViewer>
     </>
   );

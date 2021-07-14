@@ -33,39 +33,16 @@ context("React SMDE Project Page", () => {
   });
 
   it("displays a modal for individual project snapshots", () => {
-    [
-      {
-        id: "ex. code",
-        name: "Code",
-      },
-      {
-        id: "ex. code preview",
-        name: "CodePreview",
-      },
-      {
-        id: "ex. code source",
-        name: "Source",
-      },
-    ].forEach(({ id, name }) => {
+    ["ex. code", "ex. code preview", "ex. code source"].forEach(id => {
       cy.findByTestId(id).click();
-
-      const src = `/projects/reactsmde/reactsmde${name}`;
 
       cy.get("#modal")
         .find("[data-testid='modal-title']")
         .should("have.text", id.toLowerCase());
 
       cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("source")
-        .should("have.attr", "srcset", `${src}.webp`);
-
-      cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("img")
-        .should("have.attr", "src", `${src}.png`);
+        .find(`[data-testid='image-${id.toLowerCase()}']`)
+        .should("exist");
 
       cy.findByTestId("close-modal").click();
     });
