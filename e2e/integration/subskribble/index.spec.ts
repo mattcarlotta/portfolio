@@ -31,66 +31,26 @@ context("Subskribble Project Page", () => {
 
   it("displays a modal for individual project snapshots", () => {
     [
-      {
-        id: "create plan",
-        name: "CreatePlan",
-      },
-      {
-        id: "create template",
-        name: "CreateTemplate",
-      },
-      {
-        id: "dashboard",
-        name: "Dashboard",
-      },
-      {
-        id: "notifications",
-        name: "Notes",
-      },
-      {
-        id: "profile",
-        name: "Profile",
-      },
-      {
-        id: "registration",
-        name: "SubRegister",
-      },
-      {
-        id: "refunds",
-        name: "RefundTrans",
-      },
-      {
-        id: "send message",
-        name: "SendMessage",
-      },
-      {
-        id: "subscribers",
-        name: "Subs",
-      },
-      {
-        id: "transactions",
-        name: "Transactions",
-      },
-    ].forEach(({ id, name }) => {
+      "create plan",
+      "create template",
+      "dashboard",
+      "notifications",
+      "profile",
+      "registration",
+      "refunds",
+      "send message",
+      "subscribers",
+      "transactions",
+    ].forEach(id => {
       cy.findByTestId(id).click();
-
-      const src = `/projects/subskribble/subskribble${name}`;
 
       cy.get("#modal")
         .find("[data-testid='modal-title']")
         .should("have.text", id.toLowerCase());
 
       cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("source")
-        .should("have.attr", "srcset", `${src}.webp`);
-
-      cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("img")
-        .should("have.attr", "src", `${src}.png`);
+        .find(`[data-testid='image-${id.toLowerCase()}']`)
+        .should("exist");
 
       cy.findByTestId("close-modal").click();
     });

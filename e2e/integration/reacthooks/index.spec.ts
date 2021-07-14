@@ -33,23 +33,13 @@ context("React Hooks Guide Project Page", () => {
     ["Home", "API", "Examples"].forEach(id => {
       cy.findByTestId(id.toLowerCase()).click();
 
-      const src = `/projects/reacthooks/reacthooks${id}`;
-
       cy.get("#modal")
         .find("[data-testid='modal-title']")
         .should("have.text", id.toLowerCase());
 
       cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("source")
-        .should("have.attr", "srcset", `${src}.webp`);
-
-      cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("img")
-        .should("have.attr", "src", `${src}.png`);
+        .find(`[data-testid='image-${id.toLowerCase()}']`)
+        .should("exist");
 
       cy.findByTestId("close-modal").click();
     });

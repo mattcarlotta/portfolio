@@ -33,76 +33,26 @@ context("SJS Ice Team Project Page", () => {
 
   it("displays a modal for individual project snapshots", () => {
     [
-      {
-        id: "dashboard",
-        dir: "newdesign/dashboard",
-        name: "Dashboard",
-      },
-      {
-        id: "email event",
-        dir: "email",
-        name: "EmailEventReminder",
-      },
-      {
-        id: "email schedule",
-        dir: "email",
-        name: "EmailScheduleReminder",
-      },
-      {
-        id: "event calendar",
-        dir: "newdesign/schedule",
-        name: "Schedule",
-      },
-      {
-        id: "event",
-        dir: "newdesign/event",
-        name: "Event",
-      },
-      {
-        id: "help",
-        dir: "newdesign/help",
-        name: "Help",
-      },
-      {
-        id: "home",
-        dir: "newdesign/home",
-        name: "Home",
-      },
-      {
-        id: "my availability",
-        dir: "newdesign/availability",
-        name: "Availability",
-      },
-      {
-        id: "my response",
-        dir: "newdesign/settings",
-        name: "MyResponse",
-      },
-      {
-        id: "settings",
-        dir: "newdesign/settings",
-        name: "Settings",
-      },
-    ].forEach(({ id, dir, name }) => {
+      "dashboard",
+      "email event",
+      "email schedule",
+      "event calendar",
+      "event",
+      "help",
+      "home",
+      "my availability",
+      "my response",
+      "settings",
+    ].forEach(id => {
       cy.findByTestId(id).click();
-
-      const src = `/projects/sjsit/${dir}/sjsiceteam${name}`;
 
       cy.get("#modal")
         .find("[data-testid='modal-title']")
         .should("have.text", id.toLowerCase());
 
       cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("source")
-        .should("have.attr", "srcset", `${src}.webp`);
-
-      cy.get("#modal")
-        .find("[data-testid='picture']")
-        .first()
-        .find("img")
-        .should("have.attr", "src", `${src}.png`);
+        .find(`[data-testid='image-${id.toLowerCase()}']`)
+        .should("exist");
 
       cy.findByTestId("close-modal").click();
     });
