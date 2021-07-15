@@ -30,6 +30,10 @@ export const GlobalStylesheet = (): JSX.Element => (
       body {
         margin: 0;
         color: #fff;
+        background: url("/bg.webp");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
         background-color: #010007;
         font-family: "Elemental", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
@@ -45,6 +49,15 @@ export const GlobalStylesheet = (): JSX.Element => (
         }
         100% {
           background-color: #eee;
+        }
+      }
+
+      @keyframes solar-rotate {
+        0% {
+          transform: rotateX(0) rotateY(0) rotateZ(0);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
         }
       }
 
