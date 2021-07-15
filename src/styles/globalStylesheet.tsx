@@ -30,6 +30,7 @@ export const GlobalStylesheet = (): JSX.Element => (
       body {
         margin: 0;
         color: #fff;
+        background-color: #010007;
         font-family: "Elemental", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
           "Helvetica Neue", sans-serif;
