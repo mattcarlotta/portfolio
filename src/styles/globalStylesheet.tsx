@@ -48,6 +48,15 @@ export const GlobalStylesheet = (): JSX.Element => (
         }
       }
 
+      @keyframes solar-rotate {
+        0% {
+          transform: rotateX(0) rotateY(0) rotateZ(0);
+        }
+        100% {
+          transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+        }
+      }
+
       * {
         box-sizing: border-box;
         -ms-overflow-style: none;

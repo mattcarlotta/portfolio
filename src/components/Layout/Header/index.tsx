@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import FlexSpaceAround from "~components/Layout/FlexSpaceAround";
 import ListItem from "~components/Layout/ListItem";
-import Orbits from "~components/Layout/Orbits";
+// import Orbits from "~components/Layout/Orbits";
 import Link from "~components/Navigation/Link";
 import Center from "~components/Layout/Center";
 import Headline from "~components/Layout/Headline";
@@ -102,7 +102,6 @@ const Header = (): ReactElement => (
           ))}
         </FlexSpaceAround>
       </nav>
-      <Orbits />
       <Center data-testid="header">
         <Headline>MATT CARLOTTA</Headline>
         <SubHeadline>fullstack web developer and commercial artist</SubHeadline>

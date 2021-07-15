@@ -11,27 +11,18 @@ const Orbits = ({ className }: { className?: string }): JSX.Element => (
 );
 
 const OrbitsIcon = styled(Orbits)`
-  @keyframes solar-rotate {
-    0% {
-      transform: rotateX(0) rotateY(0) rotateZ(0);
-    }
-    100% {
-      transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
-    }
+  @media (max-width: 650px) {
+    display: none;
   }
 
-  opacity: 0.45;
+  opacity: 0.25;
   position: relative;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  perspective: 400;
-  z-index: -1;
 
   .container {
     position: absolute;
-    top: 60px;
+    top: 50px;
     left: 0;
     right: 0;
     bottom: 0;

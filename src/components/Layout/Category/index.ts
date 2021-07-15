@@ -9,6 +9,10 @@ const categoryVariants = {
 };
 
 const Category = styled(motion.div)`
+  @media (max-width: 350px) {
+    font-size: 20px;
+  }
+
   font-size: 30px;
   text-align: center;
   margin: 20px 0;
