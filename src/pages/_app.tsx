@@ -7,6 +7,7 @@ import Header from "~components/Layout/Header";
 import ImageContext from "~components/ImageContext";
 import Footer from "~components/Layout/Footer";
 import Main from "~components/Layout/Main";
+import Wrapper from "~components/Layout/Wrapper";
 import GlobalStylesheet from "~styles/globalStylesheet";
 import { AppProps, ReactElement } from "~types";
 
@@ -31,18 +32,20 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
         />
       </Head>
       <ImageContext>
-        <Main>
-          <Header />
-          <Body data-testid="body">
-            <AnimatePresence
-              exitBeforeEnter
-              onExitComplete={handleExitComplete}
-            >
-              <Component {...pageProps} key={router.route} />
-            </AnimatePresence>
-          </Body>
-          <Footer />
-        </Main>
+        <Wrapper>
+          <Main>
+            <Header />
+            <Body data-testid="body">
+              <AnimatePresence
+                exitBeforeEnter
+                onExitComplete={handleExitComplete}
+              >
+                <Component {...pageProps} key={router.route} />
+              </AnimatePresence>
+            </Body>
+            <Footer />
+          </Main>
+        </Wrapper>
       </ImageContext>
       <GlobalStylesheet />
     </>
