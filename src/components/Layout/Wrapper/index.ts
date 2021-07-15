@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-color: #010007;
   width: 100%;
   overflow-x: hidden;
 `;

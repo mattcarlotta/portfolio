@@ -155,12 +155,12 @@ const Applications: Array<Application> = [
       {
         src: "gamernexusTweet",
         alt: "gn-tweet-preview",
-        title: "embeddable tweet",
+        title: "embeded tweet",
       },
       {
         src: "gamernexusVideo",
         alt: "gn-video-preview",
-        title: "embeddable video",
+        title: "embeded video",
       },
       {
         src: "gamernexusHome",
