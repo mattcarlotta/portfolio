@@ -30,6 +30,10 @@ export const GlobalStylesheet = (): JSX.Element => (
       body {
         margin: 0;
         color: #fff;
+        background: url("/bg.webp");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
         background-color: #010007;
         font-family: "Elemental", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",

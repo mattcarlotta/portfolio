@@ -15,14 +15,15 @@ const OrbitsIcon = styled(Orbits)`
     display: none;
   }
 
-  opacity: 0.25;
+  opacity: 0.45;
   position: relative;
   top: 0;
   left: 0;
+  z-index: -1;
 
   .container {
     position: absolute;
-    top: 50px;
+    top: 60px;
     left: 0;
     right: 0;
     bottom: 0;
