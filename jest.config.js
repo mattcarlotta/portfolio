@@ -19,6 +19,7 @@ module.exports = {
     "<rootDir>/config",
     "<rootDir>/e2e",
     "<rootDir>/node_modules",
+    "<rootDir>/src/polyfills",
     "<rootDir>/public",
     "<rootDir>/src/middlewares",
     "<rootDir>/babel.config.js",
