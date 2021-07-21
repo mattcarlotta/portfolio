@@ -1,5 +1,5 @@
-<a target="_blank" rel="noopener noreferrer" href="https://mattcarlotta.sh" alt="logo.png">
-  <img src="https://i.imgur.com/BfZtZV0.png" />
+<a target="_blank" rel="noopener noreferrer" href="https://mattcarlotta.sh" alt="websiteHeader.png">
+  <img src="https://i.imgur.com/JNqLbpA.png" />
 </a>
 
 Current browser support:
