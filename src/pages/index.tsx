@@ -37,7 +37,7 @@ const HomePages = [
     id: "about",
     head: {
       title: "background",
-      url: "about",
+      url: "background",
       description: "The journey to become a fullstack web developer.",
     },
     preview: {
