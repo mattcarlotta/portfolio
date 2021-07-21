@@ -104,9 +104,8 @@ const Background = (): ReactElement => (
           <SubTitle data-testid="brief">
             Up until 2012 I was a commercial artist, but in September 2016 I
             started the journey to become a fullstack developer who is
-            passionate background open-source projects, helping the web
-            development community, and building SEO optimized applications.{" "}
-            <br />
+            passionate about open-source projects, helping the web development
+            community, and building SEO optimized applications. <br />
             <br />
             Over the years I have become a self-taught, self-disciplined, and
             self-driven fullstack web developer in MongoDB, PostgreSQL,
