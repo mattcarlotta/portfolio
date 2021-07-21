@@ -50,15 +50,15 @@ const TechSpecs = [
   { technology: "Nginx", level: 3 },
 ];
 
-const About = (): ReactElement => (
+const Background = (): ReactElement => (
   <IconContext.Provider
     value={{
       style: { fontSize: 20, verticalAlign: "middle", marginRight: 10 },
     }}
   >
-    <Head title="About" url="about" description="An exploration example." />
+    <Head title="Background" url="background" />
     <Project>
-      <PanelTitle data-testid="panel-title">about me</PanelTitle>
+      <PanelTitle data-testid="panel-title">background</PanelTitle>
       <Panel>
         <div
           css={css`
@@ -92,7 +92,7 @@ const About = (): ReactElement => (
             <Info data-testid="source">
               <HiOutlineMail />
               <OutsideLink
-                dataTestId="about-me-email-link"
+                dataTestId="send-email-link"
                 ariaLabel="Click to send me an email."
                 href="mailto:matt@mattcarlotta.sh"
               >
@@ -104,8 +104,9 @@ const About = (): ReactElement => (
           <SubTitle data-testid="brief">
             Up until 2012 I was a commercial artist, but in September 2016 I
             started the journey to become a fullstack developer who is
-            passionate about open-source projects, helping the web development
-            community, and building SEO optimized applications. <br />
+            passionate background open-source projects, helping the web
+            development community, and building SEO optimized applications.{" "}
+            <br />
             <br />
             Over the years I have become a self-taught, self-disciplined, and
             self-driven fullstack web developer in MongoDB, PostgreSQL,
@@ -182,4 +183,4 @@ const About = (): ReactElement => (
   </IconContext.Provider>
 );
 
-export default About;
+export default Background;

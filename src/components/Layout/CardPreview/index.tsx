@@ -16,10 +16,11 @@ export type CardPreviewProps = {
   alt: string;
   ariaLabel: string;
   description: string;
-  href: string;
+  href?: string;
   idx: number;
   location?: string;
-  source: string;
+  showInfo: boolean;
+  source?: string;
   src: string;
   status?: string;
   title: string;
@@ -34,6 +35,7 @@ const CardPreview = ({
   href,
   idx,
   location,
+  showInfo,
   source,
   src,
   status,
@@ -89,18 +91,20 @@ const CardPreview = ({
               </Link>
             </Tooltip>
           )}
-          <Tooltip title="More Info">
-            <Link
-              dataTestId={`info-${title}`}
-              ariaLabel={ariaLabel}
-              padding="5px"
-              margin="0 5px"
-              href={`/${href}${url}`}
-              scroll={false}
-            >
-              <ImInfo />
-            </Link>
-          </Tooltip>
+          {showInfo && (
+            <Tooltip title="More Info">
+              <Link
+                dataTestId={`info-${title}`}
+                ariaLabel={ariaLabel}
+                padding="5px"
+                margin="0 5px"
+                href={`/${href}${url}`}
+                scroll={false}
+              >
+                <ImInfo />
+              </Link>
+            </Tooltip>
+          )}
           {location && (
             <Tooltip title="Demo">
               <OutsideLink
@@ -113,21 +117,28 @@ const CardPreview = ({
               </OutsideLink>
             </Tooltip>
           )}
-          <Tooltip title="Source">
-            <OutsideLink
-              ariaLabel={`Navigate to ${title} source page.`}
-              href={source}
-              padding="5px"
-              margin="0 5px"
-            >
-              <FaRegFileCode style={{ fontSize: 24 }} />
-            </OutsideLink>
-          </Tooltip>
+          {source && (
+            <Tooltip title="Source">
+              <OutsideLink
+                ariaLabel={`Navigate to ${title} source page.`}
+                href={source}
+                padding="5px"
+                margin="0 5px"
+              >
+                <FaRegFileCode style={{ fontSize: 24 }} />
+              </OutsideLink>
+            </Tooltip>
+          )}
         </Flex>
       </IconContext.Provider>
       <NormalText padding="0px 10px 15px 10px">{description}</NormalText>
     </div>
   </Card>
 );
+
+CardPreview.defaultProps = {
+  href: "",
+  showInfo: true,
+};
 
 export default CardPreview;

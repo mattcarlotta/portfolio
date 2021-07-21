@@ -78,9 +78,9 @@ const Header = (): ReactElement => (
           </ListItem>
           <ListItem>
             <Link
-              dataTestId="about-me"
-              ariaLabel="Navigate to about page"
-              href="/about"
+              dataTestId="background"
+              ariaLabel="Navigate to my background page"
+              href="/background"
               padding="5px"
               margin="0 5px"
             >

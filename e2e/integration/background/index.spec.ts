@@ -1,10 +1,10 @@
-context("About Me Page", () => {
+context("Background Page", () => {
   before(() => {
-    cy.visit("/about");
+    cy.visit("/background");
   });
 
-  it("displays the about page", () => {
-    cy.findByTestId("panel-title").should("have.text", "about me");
+  it("displays the background page", () => {
+    cy.findByTestId("panel-title").should("have.text", "background");
   });
 
   it("displays the project details", () => {
@@ -17,11 +17,7 @@ context("About Me Page", () => {
       "Small town in Oregon, USA",
     );
     cy.findByTestId("level").should("have.text", "Mid-Level Developer");
-    cy.findByTestId("about-me-email-link").should(
-      "have.attr",
-      "target",
-      "_blank",
-    );
+    cy.findByTestId("send-email-link").should("have.attr", "target", "_blank");
   });
 
   it("displays my brief", () => {
