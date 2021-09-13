@@ -37,7 +37,7 @@ class CustomDocument extends Document {
         <link
           rel="apple-touch-icon"
           sizes="192x192"
-          href="/ITLogo_192x192.png"
+          href="/logo_192x192.png"
         />
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
