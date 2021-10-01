@@ -24,7 +24,7 @@
     "test:stage": "npm run build:stage && npm run stage",
     "test:watch": "jest --watch --onlyChanged",
     "test:watchall": "jest --watchAll",
-    "tsc": "tsc --p ./tsconfig.json"
+    "types": "tsc --p ./tsconfig.json"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.2.0",
