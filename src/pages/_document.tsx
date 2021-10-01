@@ -34,11 +34,7 @@ class CustomDocument extends Document {
       <Head>
         <meta name="theme-color" content="#000000" />
         <meta name="build version" content={packageJson.version} />
-        <link
-          rel="apple-touch-icon"
-          sizes="192x192"
-          href="/logo_192x192.png"
-        />
+        <link rel="apple-touch-icon" sizes="192x192" href="/logo_192x192.png" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <link
