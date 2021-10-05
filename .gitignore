@@ -14,6 +14,7 @@ coverage
 
 # production
 /build
+start.json
 
 # eslint caches
 .caches
