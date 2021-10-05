@@ -56,4 +56,4 @@ jobs:
             ./ ${{env.REMOTE}}:${{secrets.DESTINATION}}
 
       - name: Restart Application
-        run: ssh -i ./deploy_key -o 'StrictHostKeyChecking no' -v ${{env.REMOTE}} 'cd ${{secrets.DESTINATION}};yarn;pm2 restart 0'
+        run: ssh -i ./deploy_key -o 'StrictHostKeyChecking no' -v ${{env.REMOTE}} 'cd ${{secrets.DESTINATION}};/usr/bin/yarn;pm2 restart 0'
