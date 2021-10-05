@@ -137,7 +137,7 @@ const ModalDialog = ({
       {hasSnaps && (
         <SnapshotContainer data-testid="snapshots">
           <Flex justify="center" flexwrap>
-            {snapshots.map(({ src, alt, title }, index) => (
+            {snapshots.map(({ src, alt, title, ratio }, index) => (
               <PreviewCard
                 data-testid={title}
                 key={src}
@@ -145,7 +145,8 @@ const ModalDialog = ({
               >
                 <CardTitle>{title}</CardTitle>
                 <Image
-                  src={`projects/${snapshotdirectory}/${src}Min`}
+                  src={`projects/${snapshotdirectory}/${src}`}
+                  ratio={ratio}
                   alt={alt}
                 />
               </PreviewCard>
@@ -192,7 +193,7 @@ const ModalDialog = ({
           <Flex justify="center">
             <BackgroundImageViewer
               dataTestId={`image-${title}`}
-              src={`/projects/${snapshotdirectory}/${src}`}
+              src={`${process.env.NEXT_PUBLIC_IMAGE}/projects/${snapshotdirectory}/${src}`}
             />
           </Flex>
         </Fixed>
@@ -231,6 +232,7 @@ const ModalDialog = ({
                     styles="height: 75px;margin: 0 auto;align-self: center;"
                     src={`projects/${snapshotdirectory}/${src}`}
                     alt={alt}
+                    ratio="10"
                   />
                 </ImagePreviewButton>
               ))}

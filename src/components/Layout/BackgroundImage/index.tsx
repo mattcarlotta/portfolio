@@ -7,7 +7,7 @@ export const BackgroundImage = styled.div<{
   supportsWebp: boolean;
 }>`
   background-image: ${({ supportsWebp, src }) =>
-    supportsWebp ? `url(${src}.webp)` : `url(${src}.png)`};
+    supportsWebp ? `url(${src}.png?ext=webp)` : `url(${src}.png)`};
   align-items: center;
   background-position: center;
   background-repeat: no-repeat;

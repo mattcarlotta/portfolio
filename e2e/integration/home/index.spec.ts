@@ -1,4 +1,4 @@
-const dayjs = require("dayjs");
+import dayjs from "dayjs";
 
 context("Home Page", () => {
   beforeEach(() => {
@@ -11,7 +11,7 @@ context("Home Page", () => {
     cy.findByTestId("header").find("h1").should("have.text", "MATT CARLOTTA");
     cy.findByTestId("header")
       .find("p")
-      .should("have.text", "fullstack web developer and commercial artist");
+      .should("have.text", "fullstack web developer");
   });
 
   // it("displays a link to open email", () => {

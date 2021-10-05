@@ -16,6 +16,7 @@ export type AppSnapshots = Array<{
   src: string;
   alt: string;
   title: string;
+  ratio?: string;
 }>;
 
 export type AppTech = Array<string>;
@@ -54,59 +55,69 @@ const Applications: Array<Application> = [
     preview: {
       alt: "sjsiceteam-preview",
       ariaLabel: "Navigate to the SJS Ice Team project page.",
-      src: "sjsit/newdesign/sjsiceteamPreviewMin",
+      src: "sjsit/sjsiceteamPreview",
     },
     snapshotdirectory: "sjsit",
     snapshots: [
       {
-        src: "newdesign/dashboard/sjsiceteamDashboard",
+        src: "dashboard/sjsiceteamDashboard",
         alt: "dashboard-preview",
         title: "dashboard",
+        ratio: "20",
       },
       {
-        src: "email/sjsiceteamEmailEventReminder",
+        src: "email-event/sjsiceteamEmailEventReminder",
         alt: "email-upcoming-event-preview",
         title: "email event",
+        ratio: "20",
       },
       {
-        src: "email/sjsiceteamEmailScheduleReminder",
+        src: "email-schedule/sjsiceteamEmailScheduleReminder",
         alt: "email-upcoming-schedule-preview",
         title: "email schedule",
+        ratio: "20",
       },
       {
-        src: "newdesign/schedule/sjsiceteamSchedule",
+        src: "schedule/sjsiceteamSchedule",
         alt: "schedule-calendar-preview",
         title: "event calendar",
+        ratio: "20",
       },
       {
-        src: "newdesign/event/sjsiceteamEvent",
+        src: "event/sjsiceteamEvent",
         alt: "event-preview",
         title: "event",
+        ratio: "20",
       },
       {
-        src: "newdesign/help/sjsiceteamHelp",
+        src: "help/sjsiceteamHelp",
         alt: "help-preview",
         title: "help",
+        ratio: "20",
       },
       {
-        src: "newdesign/home/sjsiceteamHome",
+        src: "home/sjsiceteamHome",
         alt: "home-preview",
         title: "home",
+        ratio: "20",
       },
       {
-        src: "newdesign/availability/sjsiceteamAvailability",
+        src: "availability/sjsiceteamAvailability",
         alt: "member-availability-preview",
         title: "my availability",
+        ratio: "20",
       },
       {
-        src: "newdesign/settings/sjsiceteamMyResponse",
+        src: "settings-response/sjsiceteamMyResponse",
         alt: "member-response-preview",
         title: "my response",
+        ratio: "20",
       },
       {
-        src: "newdesign/settings/sjsiceteamSettings",
+        src: "settings/sjsiceteamSettings",
         alt: "member-settings-preview",
         title: "settings",
+        ratio: "20",
       },
     ],
     tech: [
@@ -138,39 +149,45 @@ const Applications: Array<Application> = [
     preview: {
       alt: "gamersnexus-preview",
       ariaLabel: "Navigate to the gamersnexus project page.",
-      src: "gamersnexus/gamernexusLogoMin",
+      src: "gamersnexus/gamernexusLogo",
     },
     snapshotdirectory: "gamersnexus",
     snapshots: [
       {
-        src: "gamernexusChart",
+        src: "chart/gamernexusChart",
         alt: "gn-chart-preview",
         title: "chart",
+        ratio: "20",
       },
       {
-        src: "gamernexusInteractiveChart",
+        src: "interactive-chart/gamernexusInteractiveChart",
         alt: "gn-ichart-preview",
         title: "chart filtered",
+        ratio: "20",
       },
       {
-        src: "gamernexusTweet",
+        src: "tweet/gamernexusTweet",
         alt: "gn-tweet-preview",
         title: "embeded tweet",
+        ratio: "20",
       },
       {
-        src: "gamernexusVideo",
+        src: "video/gamernexusVideo",
         alt: "gn-video-preview",
         title: "embeded video",
+        ratio: "20",
       },
       {
-        src: "gamernexusHome",
+        src: "home/gamernexusHome",
         alt: "gn-home-preview",
         title: "home",
+        ratio: "20",
       },
       {
-        src: "gamernexusNews",
+        src: "news/gamernexusNews",
         alt: "gn-news-preview",
         title: "news",
+        ratio: "20",
       },
     ],
     tech: ["emotion-styled", "reactjs", "nextjs", "typescript"],
@@ -192,14 +209,15 @@ const Applications: Array<Application> = [
     preview: {
       alt: "noshotenv-preview",
       ariaLabel: "Navigate to the @noshot/env project page.",
-      src: "noshotenv/noshotenvLogoMin",
+      src: "noshotenv/noshotenvLogoPreview",
     },
     snapshotdirectory: "noshotenv",
     snapshots: [
       {
-        src: "noshotenvLogo",
+        src: "logo/noshotenvLogo",
         alt: "noshotenv-logo-preview",
         title: "logo",
+        ratio: "20",
       },
     ],
     tech: ["enzyme", "github actions", "jest", "npm", "typescript"],
@@ -220,34 +238,39 @@ const Applications: Array<Application> = [
     preview: {
       alt: "react-hooks-guide-preview",
       ariaLabel: "Navigate to the React Hooks Guide project page.",
-      src: "reacthooks/reacthooksPreviewMin",
+      src: "reacthooks/reacthooksPreview",
     },
     snapshotdirectory: "reacthooks",
     snapshots: [
       {
-        src: "reacthooksAPI",
+        src: "api/reacthooksAPI",
         alt: "api-preview",
         title: "api",
+        ratio: "20",
       },
       {
-        src: "reacthooksExamples",
+        src: "examples/reacthooksExamples",
         alt: "examples-preview",
         title: "examples",
+        ratio: "20",
       },
       {
-        src: "reacthooksHome",
+        src: "home/reacthooksHome",
         alt: "home-preview",
         title: "home",
+        ratio: "20",
       },
       {
-        src: "reacthooksMobile",
+        src: "mobile/reacthooksMobile",
         alt: "mobile-preview",
         title: "mobile layout",
+        ratio: "35",
       },
       {
-        src: "reacthooksPad",
+        src: "pad/reacthooksPad",
         alt: "pad-preview",
         title: "ipad layout",
+        ratio: "20",
       },
     ],
     tech: [
@@ -276,29 +299,33 @@ const Applications: Array<Application> = [
     preview: {
       alt: "nextjs-ssr-kit-preview",
       ariaLabel: "Navigate to the Next SSR Kit project page.",
-      src: "nextssrkit/nextssrkitPreviewMin",
+      src: "nextssrkit/nextssrkitPreview",
     },
     snapshotdirectory: "nextssrkit",
     snapshots: [
       {
-        src: "nextssrkitExampleAPI",
+        src: "api/nextssrkitExampleAPI",
         alt: "next-ssr-kit-example-preview",
         title: "ex. api",
+        ratio: "20",
       },
       {
-        src: "nextssrkitExampleAPICreate",
+        src: "create/nextssrkitExampleAPICreate",
         alt: "next-ssr-kit-example-create-preview",
         title: "ex. api create",
+        ratio: "20",
       },
       {
-        src: "nextssrkitExampleAPIEdit",
+        src: "edit/nextssrkitExampleAPIEdit",
         alt: "next-ssr-kit-example-create-preview",
         title: "ex. api edit",
+        ratio: "20",
       },
       {
-        src: "nextssrkitHome",
+        src: "home/nextssrkitHome",
         alt: "next-ssr-kit-home-preview",
         title: "home",
+        ratio: "20",
       },
     ],
     tech: [
@@ -331,59 +358,69 @@ const Applications: Array<Application> = [
     preview: {
       alt: "subskribble-preview",
       ariaLabel: "Navigate to the Subskribble project page.",
-      src: "subskribble/subskribblePreviewMin",
+      src: "subskribble/subskribblePreview",
     },
     snapshotdirectory: "subskribble",
     snapshots: [
       {
-        src: "subskribbleCreatePlan",
+        src: "plan/subskribbleCreatePlan",
         alt: "create-plan-preview",
         title: "create plan",
+        ratio: "35",
       },
       {
-        src: "subskribbleCreateTemplate",
+        src: "template/subskribbleCreateTemplate",
         alt: "create-template-preview",
         title: "create template",
+        ratio: "20",
       },
       {
-        src: "subskribbleDashboard",
+        src: "dashboard/subskribbleDashboard",
         alt: "dashboard-preview",
         title: "dashboard",
+        ratio: "20",
       },
       {
-        src: "subskribbleNotes",
+        src: "notes/subskribbleNotes",
         alt: "notifications-preview",
         title: "notifications",
+        ratio: "20",
       },
       {
-        src: "subskribbleProfile",
+        src: "profile/subskribbleProfile",
         alt: "profile-preview",
         title: "profile",
+        ratio: "20",
       },
       {
-        src: "subskribbleSubRegister",
+        src: "register/subskribbleSubRegister",
         alt: "subcriber-registration-preview",
         title: "registration",
+        ratio: "20",
       },
       {
-        src: "subskribbleRefundTrans",
+        src: "refunds/subskribbleRefundTrans",
         alt: "refund-transactions-preview",
         title: "refunds",
+        ratio: "35",
       },
       {
-        src: "subskribbleSendMessage",
+        src: "message/subskribbleSendMessage",
         alt: "send-message-preview",
         title: "send message",
+        ratio: "20",
       },
       {
-        src: "subskribbleSubs",
+        src: "subs/subskribbleSubs",
         alt: "subscribers-preview",
         title: "subscribers",
+        ratio: "20",
       },
       {
-        src: "subskribbleTransactions",
+        src: "transactions/subskribbleTransactions",
         alt: "subskribble-transactions-preview",
         title: "transactions",
+        ratio: "20",
       },
     ],
     tech: ["mongodb", "expressjs", "reactjs", "nodejs"],
@@ -404,34 +441,39 @@ const Applications: Array<Application> = [
     preview: {
       alt: "composable-preview",
       ariaLabel: "Navigate to the Composable Styled Components project page.",
-      src: "composable/composablePreviewMin",
+      src: "composable/composablePreview",
     },
     snapshotdirectory: "composable",
     snapshots: [
       {
-        src: "composableAPI",
+        src: "api/composableAPI",
         alt: "api-preview",
         title: "api",
+        ratio: "20",
       },
       {
-        src: "composableDemos",
+        src: "demos/composableDemos",
         alt: "demo-preview",
         title: "demos",
+        ratio: "20",
       },
       {
-        src: "composableHome",
+        src: "home/composableHome",
         alt: "home-preview",
         title: "home",
+        ratio: "20",
       },
       {
-        src: "composableReleases",
+        src: "releases/composableReleases",
         alt: "releases-preview",
         title: "releases",
+        ratio: "20",
       },
       {
-        src: "composableSearch",
+        src: "search/composableSearch",
         alt: "search-preview",
         title: "search",
+        ratio: "20",
       },
     ],
     tech: [
@@ -463,24 +505,27 @@ const Applications: Array<Application> = [
     preview: {
       alt: "react-smde-preview",
       ariaLabel: "Navigate to the React SMDE project page.",
-      src: "reactsmde/reactsmdePreviewMin",
+      src: "reactsmde/reactsmdePreview",
     },
     snapshotdirectory: "reactsmde",
     snapshots: [
       {
-        src: "reactsmdeCode",
+        src: "code/reactsmdeCode",
         alt: "example-code-preview",
         title: "ex. code",
+        ratio: "20",
       },
       {
-        src: "reactsmdeCodePreview",
+        src: "preview/reactsmdeCodePreview",
         alt: "example-code-syntax-preview",
         title: "ex. code preview",
+        ratio: "20",
       },
       {
-        src: "reactsmdeSource",
+        src: "source/reactsmdeSource",
         alt: "example-code-source-preview",
         title: "ex. code source",
+        ratio: "20",
       },
     ],
     tech: [
@@ -506,7 +551,7 @@ const Applications: Array<Application> = [
     preview: {
       alt: "alias-dirs-preview",
       ariaLabel: "Navigate to the Alias Dirs project page.",
-      src: "aliasdirs/aliasdirsPreviewMin",
+      src: "aliasdirs/aliasdirsPreview",
     },
     filedetails: {
       active: false,
@@ -531,14 +576,15 @@ const Applications: Array<Application> = [
     preview: {
       alt: "fs-mern-kit-preview",
       ariaLabel: "Navigate to the Fullstack M.E.R.N. Kit project page.",
-      src: "mernkit/mernkitPreviewMin",
+      src: "mernkit/mernkitPreview",
     },
     snapshotdirectory: "mernkit",
     snapshots: [
       {
-        src: "mernkitPreview",
+        src: "logo/mernkitLogo",
         alt: "mernkit-preview",
         title: "logo",
+        ratio: "20",
       },
     ],
     tech: ["mongdb", "expressjs", "reactjs", "nodejs"],
@@ -559,14 +605,15 @@ const Applications: Array<Application> = [
     preview: {
       alt: "yelp-camp-preview",
       ariaLabel: "Navigate to the Yelp Camp project page.",
-      src: "yelpcamp/yelpcampPreviewMin",
+      src: "yelpcamp/yelpcampPreview",
     },
     snapshotdirectory: "yelpcamp",
     snapshots: [
       {
-        src: "yelpcampPreview",
+        src: "app/yelpcampPreview",
         alt: "yelp-camp-preview",
         title: "ex. campground",
+        ratio: "35",
       },
     ],
     tech: ["mongodb", "expressjs", "reactjs", "nodejs"],
@@ -587,14 +634,15 @@ const Applications: Array<Application> = [
     preview: {
       alt: "autorun-gcn-preview",
       ariaLabel: "Navigate to the Autorun GCN project page.",
-      src: "autorungcn/autorunGCNPreviewMin",
+      src: "autorungcn/autorunGCNPreview",
     },
     snapshotdirectory: "autorungcn",
     snapshots: [
       {
-        src: "autorunGCNPreview",
+        src: "logo/autorunGCNLogo",
         alt: "autorunGCN-logo-preview",
         title: "logo",
+        ratio: "35",
       },
     ],
     tech: ["AutoIt", "GCN USB Adapter"],
@@ -615,19 +663,21 @@ const Applications: Array<Application> = [
     preview: {
       alt: "nvfc-app-preview",
       ariaLabel: "Navigate to the Nvidia Fan Controller App project page.",
-      src: "nvfcapp/nvfcappLogoMin",
+      src: "nvfcapp/nvfcappPreview",
     },
     snapshotdirectory: "nvfcapp",
     snapshots: [
       {
-        src: "nvfcappLogo",
+        src: "logo/nvfcappLogo",
         alt: "logo-preview",
         title: "logo",
+        ratio: "35",
       },
       {
-        src: "nvfcappPreview",
+        src: "settings/nvfcappSettings",
         alt: "system-info-preview",
         title: "system info",
+        ratio: "35",
       },
     ],
     tech: ["python3", "matplotlib", "pip3", "pygtk", "nvidia drivers"],
@@ -648,24 +698,27 @@ const Applications: Array<Application> = [
     preview: {
       alt: "sddtgen-app-preview",
       ariaLabel: "Navigate to the ssdtGen App project page.",
-      src: "ssdtgenapp/ssdtgenappLogoMin",
+      src: "ssdtgenapp/ssdtgenappPreview",
     },
     snapshotdirectory: "ssdtgenapp",
     snapshots: [
       {
-        src: "ssdtgenappPreview",
+        src: "app/ssdtgenappPreview",
         alt: "app-preview",
         title: "app",
+        ratio: "35",
       },
       {
-        src: "ssdtgenappExample",
+        src: "example/ssdtgenappExample",
         alt: "example-preview",
         title: "ex. ssdt",
+        ratio: "20",
       },
       {
-        src: "ssdtgenappLogo",
+        src: "logo/ssdtgenappLogo",
         alt: "logo-preview",
         title: "logo",
+        ratio: "20",
       },
     ],
     tech: ["bash", "swift", "asl"],
