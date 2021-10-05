@@ -1,7 +1,7 @@
 const securityHeaders = [
   {
-    key: "X-XSS-Protection",
-    value: "1; mode=block",
+    key: "Content-Security-Policy",
+    value: "default-src 'self' mattcarlotta.sh *.mattcarlotta.sh",
   },
   {
     key: "X-Frame-Options",
