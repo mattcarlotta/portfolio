@@ -3,19 +3,24 @@ import Link from "~components/Navigation/Link";
 import { GoHome } from "~icons";
 import { ReactElement } from "~types";
 
-const Home = (): ReactElement => (
+export type GoBackProps = {
+  href: string;
+  title: string;
+};
+
+const GoBack = ({ href, title }: GoBackProps): ReactElement => (
   <Center>
     <Link
       dataTestId="navigate-home"
       ariaLabel="Navigate back to home page"
-      href="/"
+      href={href}
       fontSize="15px"
       showUnderline
     >
       <GoHome style={{ marginRight: 5, position: "relative", top: 2 }} />
-      Go Back Home
+      go back to {title}
     </Link>
   </Center>
 );
 
-export default Home;
+export default GoBack;

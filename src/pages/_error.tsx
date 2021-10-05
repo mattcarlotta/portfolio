@@ -5,7 +5,7 @@ import Panel from "~components/Layout/Panel";
 import PanelTitle from "~components/Layout/PanelTitle";
 import Project from "~components/Layout/Project";
 import Text from "~components/Layout/Text";
-import Home from "~components/Navigation/Home";
+import GoBack from "~components/Navigation/GoBack";
 import { GiExplodingPlanet } from "~icons";
 import { ReactElement } from "~types";
 
@@ -26,7 +26,7 @@ const ErrorPage = (): ReactElement => (
         </Flex>
       </Panel>
     </Project>
-    <Home />
+    <GoBack href="/" title="home" />
   </Fragment>
 );
 

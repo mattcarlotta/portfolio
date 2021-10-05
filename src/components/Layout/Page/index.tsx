@@ -9,7 +9,7 @@ import FileDetails from "~components/Layout/FileDetails";
 import SubTitle from "~components/Layout/SubTitle";
 import Text from "~components/Layout/Text";
 import PanelTitle from "~components/Layout/PanelTitle";
-import Home from "~components/Navigation/Home";
+import GoBack from "~components/Navigation/GoBack";
 import Head from "~components/Navigation/Header";
 import type { Application } from "~components/Layout/Apps";
 
@@ -64,7 +64,7 @@ const Page = ({
         </Text>
       </Panel>
     </Project>
-    <Home />
+    <GoBack href="/projects" title="projects" />
   </Fragment>
 );
 

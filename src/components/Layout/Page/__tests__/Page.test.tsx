@@ -18,7 +18,7 @@ const initProps = {
   preview: {
     alt: "alias-dirs-preview",
     ariaLabel: "Navigate to the Alias Dirs project page.",
-    src: "aliasdirs/aliasdirsPreviewMin",
+    src: "aliasdirs/aliasdirsPreview",
   },
   snapshotdirectory: "aliasdirs",
   snapshots: [
@@ -85,7 +85,7 @@ describe("Page", () => {
       snapshots[0].title,
     );
     expect(snapshot.find("Image").first().props().src).toEqual(
-      `projects/${snapshotdirectory}/${snapshots[0].src}Min`,
+      `projects/${snapshotdirectory}/${snapshots[0].src}`,
     );
     expect(snapshot.find("Image").first().props().alt).toEqual(
       snapshots[0].alt,
