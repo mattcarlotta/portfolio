@@ -584,7 +584,7 @@ const Applications: Array<Application> = [
         src: "logo/mernkitLogo",
         alt: "mernkit-preview",
         title: "logo",
-        ratio: "20",
+        ratio: "35",
       },
     ],
     tech: ["mongdb", "expressjs", "reactjs", "nodejs"],
