@@ -23,8 +23,10 @@ import {
 import { ReactElement } from "~types";
 
 const TechSpecs = [
+  { technology: "Rust", level: 3 },
   { technology: "Javascript", level: 4 },
   { technology: "Typescript", level: 4 },
+  { technology: "Bash Script", level: 4 },
   { technology: "NodeJS", level: 5 },
   { technology: "NextJS", level: 5 },
   { technology: "ReactJS", level: 5 },
@@ -48,6 +50,85 @@ const TechSpecs = [
   { technology: "Git", level: 4 },
   { technology: "Github Actions", level: 3 },
   { technology: "Nginx", level: 3 },
+];
+
+const additionalEdu = [
+  {
+    title: "Learn and Understand NodeJS – Anthony Alicea - Udemy",
+    url: "https://www.udemy.com/course/understand-nodejs",
+  },
+  {
+    title: "The Web Developer Bootcamp – Colt Steele - Udemy",
+    url: "https://www.udemy.com/course/the-web-developer-bootcamp",
+  },
+  {
+    title: "Modern React with Redux – Stephen Grider - Udemy",
+    url: "https://www.udemy.com/course/react-redux/",
+  },
+  {
+    title: "Advanced React and Redux – Stephen Grider - Udemy",
+    url: "https://www.udemy.com/course/react-redux-tutorial/",
+  },
+  {
+    title: "The Complete React Web App Developer Course – Andrew Mead - Udemy",
+    url: "https://www.udemy.com/course/the-complete-react-web-app-developer-course/",
+  },
+  {
+    title: "Accelerated ES6 Javascript Training – Max Schwarzmuller - Udemy",
+    url: "https://www.udemy.com/course/es6-bootcamp-next-generation-javascript/",
+  },
+  {
+    title: "The Complete Developers Guide to MongoDB – Stephen Grider - Udemy",
+    url: "https://www.udemy.com/course/the-complete-developers-guide-to-mongodb",
+  },
+  {
+    title:
+      "Node with React: Fullstack Web Development – Stephen Grider - Udemy",
+    url: "https://www.udemy.com/course/node-with-react-fullstack-web-development/",
+  },
+  {
+    title:
+      "The Complete React Developer Course (2nd edition) – Andrew Mead - Udemy",
+    url: "https://www.udemy.com/course/react-2nd-edition",
+  },
+  {
+    title: "React Testing with Jest and Enzyme – Bonnie Schulkin - Udemy",
+    url: "https://www.udemy.com/course/react-testing-with-jest-and-enzyme",
+  },
+  {
+    title: "Understanding TypeScript - Max Schwarzmuller - Udemy",
+    url: "https://www.udemy.com/course/understanding-typescript/",
+  },
+  {
+    title: "Introduction to MongoDB - Scott Moss - Front End Masters",
+    url: "https://frontendmasters.com/courses/mongodb/",
+  },
+  {
+    title: "VIM Fundamentals - ThePrimeagen - Front End Masters",
+    url: "https://frontendmasters.com/courses/vim-fundamentals/",
+  },
+  {
+    title: "Developer Productivity - ThePrimeagen - Front End Masters",
+    url: "https://frontendmasters.com/workshops/dev-productivity/",
+  },
+  {
+    title: "Git & Github Master Course - Mohit Uniyal - Udemy",
+    url: "https://www.udemy.com/course/git-github-master-course/",
+  },
+  {
+    title:
+      "The Rust Programming Language - Richard Feldman - Front End Masters",
+    url: "https://frontendmasters.com/courses/rust/",
+  },
+  {
+    title: "Ultimate Rust Crash Course - Nathan Stocks - Udemy",
+    url: "https://www.udemy.com/course/ultimate-rust-crash-course/",
+  },
+  {
+    title:
+      "Learn Rust by Building Real Applications - Lyubomir Gavadinov - Udemy",
+    url: "https://www.udemy.com/course/rust-fundamentals/",
+  },
 ];
 
 const Background = (): ReactElement => (
@@ -79,7 +160,7 @@ const Background = (): ReactElement => (
           <NormalText margin="0 0 0 15px" fontSize="16px">
             <Info data-testid="status">
               <FiPower style={{ color: "limegreen" }} />
-              Activated in September 2016
+              Deployed in September 2016
             </Info>
             <Info data-testid="location">
               <RiMapPin2Line />
@@ -102,22 +183,15 @@ const Background = (): ReactElement => (
           </NormalText>
           <DetailHeadline>Brief:</DetailHeadline>
           <SubTitle data-testid="brief">
-            Up until 2012 I was a commercial artist, but in September 2016 I
-            started the journey to become a fullstack developer who is
-            passionate about open-source projects, helping the web development
-            community, and building SEO optimized applications. <br />
+            In September 2016, I embarked on the journey to become a fullstack
+            developer who is passionate about open-source projects, helping the
+            web development community, and building SEO optimized applications.
             <br />
-            Over the years I have become a self-taught, self-disciplined, and
-            self-driven fullstack web developer in MongoDB, PostgreSQL,
-            ExpressJS, ReactJS/ReduxJS and NodeJS. I&apos;m proﬁcient in HTML
-            and CSS3+ stylesheets across multiplatform devices while
-            understanding cross-platform limitations. I actively deploy and
-            maintain applications running on remote Linux servers. <br />
             <br />
-            I&apos;m a quick learner that is adaptable to emerging languages,
-            technologies, and frameworks. An excellent communicator who is very
-            patient, whether its breaking-down complex technical information to
-            the needs of a client or accepting/providing feedback to a team.
+            As the years have gone by, I have primarily focused my efforts in
+            MongoDB, ExpressJS, ReactJS/ReduxJS and NodeJS. The apps I build are
+            test-driven, cross-platform, and production-ready. I deploy and
+            actively maintain them on remote headless Linux servers.
           </SubTitle>
           <DetailHeadline>Tech Specs:</DetailHeadline>
           <ul
@@ -172,6 +246,31 @@ const Background = (): ReactElement => (
                         : null}
                     </Flex>
                   </Flex>
+                </NormalText>
+              </li>
+            ))}
+          </ul>
+          <DetailHeadline>formal Education:</DetailHeadline>
+          <SubTitle data-testid="brief">
+            San Jose State University | 2005-2012 | 3.5GPA
+          </SubTitle>
+          <DetailHeadline>Online Education:</DetailHeadline>
+          <ul
+            data-testid="re-education"
+            css={css`
+              list-style-type: none;
+              padding: 0 10px;
+            `}
+          >
+            {additionalEdu.map(({ title, url }, index) => (
+              <li
+                style={{ background: index % 2 ? "#001b56" : "transparent" }}
+                key={title}
+              >
+                <NormalText style={{ padding: "0 10px" }} fontSize="20px">
+                  <OutsideLink ariaLabel={`Navigate to ${title}`} href={url}>
+                    {title}
+                  </OutsideLink>
                 </NormalText>
               </li>
             ))}

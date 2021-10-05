@@ -16,7 +16,7 @@ const HomePages = [
     preview: {
       alt: "projects-preview",
       ariaLabel: "Navigate to the Projects page.",
-      src: "planets/projectsMin",
+      src: "planets/projects",
     },
   },
   {
@@ -30,7 +30,7 @@ const HomePages = [
     preview: {
       alt: "explorations-preview",
       ariaLabel: "Navigate to the Explorations page.",
-      src: "planets/explorationsMin",
+      src: "planets/explorations",
     },
   },
   {
@@ -43,7 +43,7 @@ const HomePages = [
     preview: {
       alt: "about-preview",
       ariaLabel: "Navigate to the About page.",
-      src: "planets/aboutMin",
+      src: "planets/about",
     },
   },
 ];

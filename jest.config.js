@@ -31,5 +31,8 @@ module.exports = {
     "<rootDir>/src/pages",
     "<rootDir>/src/utils/toHaveStyleRule",
   ],
-  setupFilesAfterEnv: ["<rootDir>/src/utils/setupTests/index.ts"],
+  setupFilesAfterEnv: [
+    "<rootDir>/src/utils/setupEnv/index.ts",
+    "<rootDir>/src/utils/setupTests/index.ts",
+  ],
 };

@@ -8,6 +8,7 @@ import PanelTitle from "~components/Layout/PanelTitle";
 import Project from "~components/Layout/Project";
 import SubTitle from "~components/Layout/SubTitle";
 import Text from "~components/Layout/Text";
+import GoBack from "~components/Navigation/GoBack";
 import Head from "~components/Navigation/Header";
 import { GetStaticPaths, GetStaticProps, ReactElement } from "~types";
 
@@ -61,6 +62,7 @@ const ExplorationsPage = ({
           </Text>
         </Panel>
       </Project>
+      <GoBack href="/explorations" title="Explorations" />
     </Fragment>
   ) : null;
 

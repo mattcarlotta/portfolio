@@ -1,12 +1,15 @@
-name: Deployment
+name: PreDeployment
 
 on:
   push:
     branches:
+      - development
+  pull_request:
+    branches:
       - master
 
 jobs:
-  deploy:
+  predeploy:
     if: "!contains(github.event.commits[0].message, '[skip-ci]')"
     runs-on: ubuntu-20.04
 
@@ -37,23 +40,16 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      - name: Create Local Build
-        id: build
-        run: yarn build
+      - name: Check Types
+        id: types
+        run: yarn tsc
 
-      - name: Deploy Build
-        if: steps.build.exit_code == 0
-        run: |
-          echo '${{secrets.DEPLOYKEY}}' > deploy_key
-          chmod 600 ./deploy_key
-          rsync -chav --delete --exclude start.json --exclude='$(yarn cache dir)' \
-            -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
-            --exclude /deploy_key \
-            --exclude /.git/ \
-            --exclude /node_modules/ \
-            --exclude /start.json/ \
-            --exclude '$(yarn cache dir)' \
-            ./ ${{env.REMOTE}}:${{secrets.DESTINATION}}
+      - name: Run Lint
+        if: steps.types.exit_code == 0
+        id: lint
+        run: yarn types
 
-      - name: Restart Application
-        run: ssh -i ./deploy_key -o 'StrictHostKeyChecking no' -v ${{env.REMOTE}} 'cd ${{secrets.DESTINATION}};/usr/bin/yarn;pm2 restart 0'
+      - name: Run Tests
+        if: steps.lint.exit_code == 0
+        id: tests
+        run: yarn test

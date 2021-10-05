@@ -19,6 +19,7 @@ export type CardPreviewProps = {
   href?: string;
   idx: number;
   location?: string;
+  ratio?: string;
   showInfo: boolean;
   source?: string;
   src: string;
@@ -35,6 +36,7 @@ const CardPreview = ({
   href,
   idx,
   location,
+  ratio,
   showInfo,
   source,
   src,
@@ -66,7 +68,7 @@ const CardPreview = ({
             <Image
               src={`projects/${src}`}
               alt={alt}
-              height="180px"
+              ratio={ratio}
               width="auto"
               styles="max-width: 250px;border-radius: 4px;"
             />

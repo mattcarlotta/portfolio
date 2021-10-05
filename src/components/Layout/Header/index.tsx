@@ -105,7 +105,7 @@ const Header = (): ReactElement => (
       <Orbits />
       <Center data-testid="header">
         <Headline>MATT CARLOTTA</Headline>
-        <SubHeadline>fullstack web developer and commercial artist</SubHeadline>
+        <SubHeadline>fullstack web developer</SubHeadline>
       </Center>
     </IconContext.Provider>
   </header>

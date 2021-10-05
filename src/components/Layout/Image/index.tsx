@@ -9,6 +9,7 @@ export type ImageProps = {
   containerStyle?: string;
   height?: string;
   placeholder?: boolean;
+  ratio?: string;
   src?: string;
   styles?: string;
   width?: string;
@@ -19,6 +20,7 @@ const Image = ({
   containerStyle,
   height,
   placeholder,
+  ratio,
   src,
   styles,
   width,
@@ -57,7 +59,10 @@ const Image = ({
               isLoading={isBrowser && isLoading}
             />
           )}
-          <source srcSet={`/${src}.webp`} type="image/webp" />
+          <source
+            srcSet={`${process.env.NEXT_PUBLIC_IMAGE}/${src}.png?&ext=webp&ratio=${ratio}`}
+            type="image/webp"
+          />
           <img
             ref={handleImageRef}
             style={{
@@ -66,7 +71,7 @@ const Image = ({
             css={css`
               ${styles}
             `}
-            src={`/${src}.png`}
+            src={`${process.env.NEXT_PUBLIC_IMAGE}/${src}.png?ratio=${ratio}`}
             height={height}
             width={width}
             onLoad={onLoad}
@@ -79,6 +84,10 @@ const Image = ({
       )}
     </picture>
   );
+};
+
+Image.defaultProps = {
+  ratio: "0",
 };
 
 export default Image;

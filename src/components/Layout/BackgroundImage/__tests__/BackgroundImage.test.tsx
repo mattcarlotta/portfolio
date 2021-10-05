@@ -11,7 +11,10 @@ describe("BackgroundImage", () => {
 
   it("renders without errors", () => {
     expect(wrapper).toExist();
-    expect(wrapper).toHaveStyleRule("background-image", `url(${src}.webp)`);
+    expect(wrapper).toHaveStyleRule(
+      "background-image",
+      `url(${src}.png?ext=webp)`,
+    );
   });
 
   it("adjusts the background image when 'supportsWebp' is false", () => {
