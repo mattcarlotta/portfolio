@@ -14,48 +14,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Yarn Cache Directory
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Utilize Yarn Cache Directory
-        uses: actions/cache@v2
-        id: yarn-cache
+      - name: Build and Restart Application
+        uses: appleboy/ssh-action@master
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Utilize Next Cache Directory
-        uses: actions/cache@v2
-        with:
-          path: ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.DEPLOYKEY }}
-          known_hosts: ${{ secrets.HOST }}
-
-      - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install
-
-      - name: Create Local Build
-        id: build
-        run: yarn build
-
-      - name: Deploy Build
-        if: steps.build.exit_code == 0
-        run: |
-          rsync -chav --delete --exclude start.json --exclude='$(yarn cache dir)' \
-            --exclude /.git/ \
-            --exclude /node_modules/ \
-            --exclude /start.json/ \
-            --exclude '$(yarn cache dir)' \
-            ./ ${{env.REMOTE}}:${{secrets.DESTINATION}}
-
-      - name: Restart Application
-        run: ssh -v ${{env.REMOTE}} 'cd ${{secrets.DESTINATION}};/usr/bin/yarn;pm2 restart 0'
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ${{ secrets.DESTINATION }}
+            git restore .
+            git pull origin master
+            yarn install
+            yarn build
+            pm2 restart 0
