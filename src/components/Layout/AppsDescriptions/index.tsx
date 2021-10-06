@@ -10,6 +10,52 @@ export type ApplicationDescription = {
 
 export const ApplicationDescriptions: Array<ApplicationDescription> = [
   {
+    appId: "rusty-bucket",
+    description: (
+      <Fragment key="rusty-bucket-description">
+        Window aspect ratios vary from device to device, therefore serving a
+        3840×2160 pixel image to a 640x480 client viewport is a waste of
+        bandwidth and may result in image distortion or extremely large client
+        windows. However, utilizing a HTML&nbsp;
+        <OutsideLink
+          ariaLabel="Navigate to Mozilla MDN Web Docs about the picture element page"
+          href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture"
+        >
+          picture
+        </OutsideLink>
+        &nbsp;element or an image&nbsp;
+        <OutsideLink
+          ariaLabel="Navigate to Mozilla MDN Web Docs about the image element's src-set page"
+          href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset"
+        >
+          src-set
+        </OutsideLink>
+        &nbsp;attribute, the browser can dynamically choose which image to load
+        based upon the client&apos;s viewport.
+        <br />
+        <br /> This custom built API aims to utilize the above by offering
+        on-the-fly image manipulation. By requesting an image with some
+        additional URL queries, the API interprets the provided queries and
+        downsamples/converts the image at request time. All unique image
+        requests are then stored into a LRU cache on initial request; therefore,
+        any subsequent requests will be served an encoded image from this cache
+        instead of reading/encoding the file from disk. As a result, creating
+        dynamically resized images can be viewed in milliseconds! No more wasted
+        bandwidth serving large images to the client; meanwhile, the client
+        downloads and views an optimized resolution for their view port!
+        <br />
+        <br /> To visualize how the API works, take a look at this&nbsp;
+        <OutsideLink
+          ariaLabel="Navigate to Rusty Bucket flow chart page"
+          href="https://github.com/mattcarlotta/image-api#flow-chart"
+        >
+          flow chart
+        </OutsideLink>
+        ,&nbsp;which breaks down the client to API interaction.
+      </Fragment>
+    ),
+  },
+  {
     appId: "sjs-ice-team",
     description: (
       <Fragment key="sjs-ice-team-description">
