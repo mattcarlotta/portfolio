@@ -39,6 +39,27 @@ export type Application = {
 
 const Applications: Array<Application> = [
   {
+    id: "rusty-bucket",
+    head: {
+      title: "rusty bucket",
+      url: "/rusty-bucket",
+      description:
+        "A custom built Rust API server to dynamically resize images based upon a URL query. ",
+    },
+    filedetails: {
+      active: true,
+      location: "https://static.mattcarlotta.sh",
+      status: "In Orbit",
+      source: "https://github.com/mattcarlotta/image-api",
+    },
+    preview: {
+      alt: "rustybucket-preview",
+      ariaLabel: "Navigate to the Rusty Bucket project page.",
+      src: "rustybucket/rustybucketPreview",
+    },
+    tech: ["rust", "nginx", "pm2"],
+  },
+  {
     id: "sjs-ice-team",
     head: {
       title: "sjs ice team",
