@@ -237,6 +237,18 @@ export const ApplicationDescriptions: Array<ApplicationDescription> = [
     ),
   },
   {
+    appId: "git-gnome-terminal",
+    description: (
+      <Fragment key="git-gnome-terminal-description">
+        A lightweight script to display the git details of a tracked folder
+        within Gnome-Terminal. The script works by traversing each directory
+        from the current working directory and checks if a &apos;.git&apos;
+        folder is present. If present, it displays the checked out branch, its
+        status, and what commit is currently at the HEAD.
+      </Fragment>
+    ),
+  },
+  {
     appId: "alias-dirs",
     description: (
       <Fragment key="alias-dirs-description">

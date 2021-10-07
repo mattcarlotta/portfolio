@@ -562,6 +562,54 @@ const Applications: Array<Application> = [
     ],
   },
   {
+    id: "git-gnome-terminal",
+    head: {
+      title: "git gnome terminal",
+      url: "/git-gnome-terminal",
+      description:
+        "A bash script to display git status of a git tracked folder",
+    },
+    preview: {
+      alt: "git-gnome-preview",
+      ariaLabel: "Navigate to the Git Gnome-Terminal project page.",
+      src: "gitgnometerm/gitgnomePreview",
+    },
+    filedetails: {
+      active: true,
+      status: "In Orbit",
+      source:
+        "https://gist.github.com/mattcarlotta/38a350ac259bf381f0e84df8fecb9508",
+    },
+    snapshotdirectory: "gitgnometerm",
+    snapshots: [
+      {
+        src: "clean/gitgnomeClean",
+        alt: "gitgnome-clean-preview",
+        title: "clean folder",
+        ratio: "20",
+      },
+      {
+        src: "unstaged/gitgnomeUnstaged",
+        alt: "gitgnome-unstaged-preview",
+        title: "unstaged files",
+        ratio: "20",
+      },
+      {
+        src: "staged/gitgnomeStaged",
+        alt: "gitgnome-staged-preview",
+        title: "staged files",
+        ratio: "20",
+      },
+      {
+        src: "committed/gitgnomeCommitted",
+        alt: "gitgnome-committed-preview",
+        title: "committed files",
+        ratio: "20",
+      },
+    ],
+    tech: ["gnome-terminal", "bash", "shell"],
+  },
+  {
     id: "alias-dirs",
     head: {
       title: "alias dirs",
