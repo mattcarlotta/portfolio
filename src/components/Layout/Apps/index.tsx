@@ -163,7 +163,7 @@ const Applications: Array<Application> = [
     },
     filedetails: {
       active: true,
-      location: "https://gamersnexus.mattcarlotta.sh/",
+      location: "https://gamersnexus.vercel.app/",
       status: "In Orbit",
       source: "https://github.com/mattcarlotta/gamersnexus",
     },
@@ -455,7 +455,8 @@ const Applications: Array<Application> = [
     },
     filedetails: {
       active: false,
-      location: "https://composable.mattcarlotta.sh",
+      location:
+        "https://composable-styled-components-website-carlottamatt.vercel.app/",
       status: "Decommissioned",
       source: "https://github.com/mattcarlotta/composable-styled-components",
     },
