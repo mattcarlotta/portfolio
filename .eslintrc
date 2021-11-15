@@ -22,6 +22,8 @@
       }
     ],
     "react/display-name": 0,
+    "react/function-component-definition": 0,
+    "react/no-invalid-html-attribute": 0,
     "no-use-before-define": 0,
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/react-in-jsx-scope": 0,

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { css } from "@emotion/react";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import Flex from "~components/Layout/Flex";
@@ -17,10 +18,9 @@ import {
   GiRank3,
   FiPower,
   HiOutlineMail,
-  IconContext,
   RiMapPin2Line,
 } from "~icons";
-import { ReactElement } from "~types";
+import type { CSSProperties, ReactElement } from "~types";
 
 const TechSpecs = [
   { technology: "Rust", level: 3 },
@@ -131,12 +131,14 @@ const additionalEdu = [
   },
 ];
 
+const style = {
+  fontSize: 20,
+  verticalAlign: "middle",
+  marginRight: 10,
+} as CSSProperties;
+
 const Background = (): ReactElement => (
-  <IconContext.Provider
-    value={{
-      style: { fontSize: 20, verticalAlign: "middle", marginRight: 10 },
-    }}
-  >
+  <Fragment>
     <Head />
     <Project>
       <PanelTitle data-testid="panel-title">background</PanelTitle>
@@ -159,19 +161,19 @@ const Background = (): ReactElement => (
           <DetailHeadline>Details:</DetailHeadline>
           <NormalText margin="0 0 0 15px" fontSize="16px">
             <Info data-testid="status">
-              <FiPower style={{ color: "limegreen" }} />
+              <FiPower style={{ color: "limegreen", ...style }} />
               Deployed in September 2016
             </Info>
             <Info data-testid="location">
-              <RiMapPin2Line />
+              <RiMapPin2Line style={style} />
               Small town in Oregon, USA
             </Info>
             <Info data-testid="level">
-              <GiRank3 />
+              <GiRank3 style={style} />
               Mid-Level Developer
             </Info>
             <Info data-testid="source">
-              <HiOutlineMail />
+              <HiOutlineMail style={style} />
               <OutsideLink
                 dataTestId="send-email-link"
                 ariaLabel="Click to send me an email."
@@ -229,6 +231,7 @@ const Background = (): ReactElement => (
                             style={{
                               verticalAlign: "middle",
                               color: "#0088ff",
+                              ...style,
                             }}
                           />
                         )),
@@ -240,6 +243,7 @@ const Background = (): ReactElement => (
                               style={{
                                 verticalAlign: "middle",
                                 color: "#4a4a4a",
+                                ...style,
                               }}
                             />
                           ))
@@ -278,7 +282,7 @@ const Background = (): ReactElement => (
         </Text>
       </Panel>
     </Project>
-  </IconContext.Provider>
+  </Fragment>
 );
 
 export default Background;
