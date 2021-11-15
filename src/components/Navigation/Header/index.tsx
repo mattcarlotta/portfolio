@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 export type HeaderProps = {
   description: string;

@@ -15,8 +15,7 @@ import {
   FiLinkedin,
   SiCodesandbox,
 } from "~icons";
-import { ReactElement } from "~types";
-import Flex from "../Flex";
+import type { ReactElement } from "~types";
 
 const HEADERLINKS = [
   // {
@@ -63,9 +62,7 @@ const Header = (): ReactElement => (
         ariaLabel="Navigate back to home page"
         href="/"
       >
-        <Flex justify="center">
-          <GoHome />
-        </Flex>
+        <GoHome />
       </LinkIcon>
       <LinkIcon
         dataTestId="background"

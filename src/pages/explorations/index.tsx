@@ -4,7 +4,7 @@ import Category from "~components/Layout/Category";
 import Explorations from "~components/Layout/Explorations";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 const ExplorationsPage = (): ReactElement => (
   <Fragment>

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Link from "~components/Navigation/Link";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 export type ApplicationDescription = {
   appId: string;

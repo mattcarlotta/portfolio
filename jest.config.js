@@ -4,14 +4,11 @@ module.exports = {
   moduleDirectories: ["<rootDir>/src", "node_modules"],
   moduleNameMapper: {
     "~(.*)$": "<rootDir>/src/$1",
-    ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/src/utils/__mocks__/fileMock.ts",
-    "\\.(css|scss)$": "identity-obj-proxy",
   },
   transform: {
     "^.+\\.(ts|tsx)$": "babel-jest",
-    ".+\\.(css|styl|less|sass|scss)$":
-      "./node_modules/jest-css-modules-transform",
+    ".+\\.(css|styl|less|sass|scss|gif|ico|png|jpg|jpeg|svg|ttf|webp|woff2)$":
+      "jest-transform-stub",
   },
   testPathIgnorePatterns: [
     "<rootDir>/.next",

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { CSSProperties, ReactNode } from "~types";
+import type { CSSProperties, ReactNode } from "~types";
 
 export type OutsideLinkProps = {
   ariaLabel: string;

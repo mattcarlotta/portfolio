@@ -10,7 +10,7 @@ import SubTitle from "~components/Layout/SubTitle";
 import Text from "~components/Layout/Text";
 import GoBack from "~components/Navigation/GoBack";
 import Head from "~components/Navigation/Header";
-import { GetStaticPaths, GetStaticProps, ReactElement } from "~types";
+import type { GetStaticPaths, GetStaticProps, ReactElement } from "~types";
 
 export type ExplorationsProps = {
   id: string;

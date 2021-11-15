@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Slide, Dialog, withStyles } from "@material-ui/core";
 import { AppSnapshots } from "~components/Layout/Apps";
+import BackgroundImageViewer from "~components/Layout/BackgroundImage";
 import Button from "~components/Layout/Button";
 import CardTitle from "~components/Layout/CardTitle";
 import Center from "~components/Layout/Center";
 import CloseModalButton from "~components/Layout/CloseModalButton";
 import DetailHeadline from "~components/Layout/DetailHeadline";
+import Fixed from "~components/Layout/Fixed";
 import Flex from "~components/Layout/Flex";
 import Image from "~components/Layout/Image";
 import ImagePreviewButton from "~components/Layout/ImagePreviewButton";
@@ -13,9 +15,7 @@ import ImageTitle from "~components/Layout/ImageTitle";
 import PreviewCard from "~components/Layout/PreviewCard";
 import SnapshotContainer from "~components/Layout/SnapshotContainer";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "~icons";
-import { ReactElement, Ref, TransitionProps } from "~types";
-import BackgroundImageViewer from "../BackgroundImage";
-import Fixed from "../Fixed";
+import type { ReactElement, Ref, TransitionProps } from "~types";
 
 const ImageViewer = withStyles(() => ({
   paper: {

@@ -9,7 +9,7 @@ import Tooltip from "~components/Layout/Tooltip";
 import Link from "~components/Navigation/Link";
 import OutsideLink from "~components/Navigation/OutsideLink";
 import { FaLink, FaRegFileCode, FiPower, ImInfo } from "~icons";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 export type CardPreviewProps = {
   active?: boolean;

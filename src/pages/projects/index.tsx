@@ -4,7 +4,7 @@ import Apps from "~components/Layout/Apps";
 import Category from "~components/Layout/Category";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 const Projects = (): ReactElement => (
   <Fragment>

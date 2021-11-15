@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useImageContext } from "~components/ImageContext";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 export const BackgroundImage = styled.div<{
   src: string;

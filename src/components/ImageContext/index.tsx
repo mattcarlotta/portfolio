@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import * as React from "react";
-import { ReactElement, ReactNode } from "~types";
+import type { ReactElement, ReactNode } from "~types";
 
 export const ImageContext = React.createContext({ supportsWebp: false });
 

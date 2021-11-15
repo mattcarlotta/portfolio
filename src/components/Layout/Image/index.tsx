@@ -2,7 +2,7 @@ import * as React from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 export type ImageProps = {
   alt?: string;
