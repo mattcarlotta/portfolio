@@ -42,14 +42,15 @@ const OutsideLink = styled(OutsideLinkComponent)<{
   transition: all 0.5s;
   text-decoration: ${({ textDecoration }) => textDecoration || "underline"};
   cursor: pointer;
+  outline: 0;
 
   :hover {
     color: #fff;
   }
 
   :focus {
-    color: #008ef1;
-    outline: none !important;
+    color: #fff;
+    text-decoration: ${({ textDecoration }) => textDecoration || "underline"};
   }
 `;
 

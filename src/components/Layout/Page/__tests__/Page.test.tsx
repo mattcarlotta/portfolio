@@ -2,6 +2,17 @@ import { waitForAct } from "@noshot/utils";
 import { mount, ReactWrapper } from "enzyme";
 import Page from "../index";
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return {
+      route: "/",
+      pathname: "",
+      query: "",
+      asPath: "",
+    };
+  },
+}));
+
 const initProps = {
   id: "alias-dirs",
   head: {

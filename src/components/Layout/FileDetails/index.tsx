@@ -1,5 +1,6 @@
 import Info from "~components/Layout/Info";
 import NormalText from "~components/Layout/NormalText";
+import OutsideLink from "~components/Navigation/OutsideLink";
 import {
   AiOutlineFolderOpen,
   FaLink,
@@ -40,28 +41,24 @@ const FileDetails = ({
       {location && (
         <Info data-testid="location">
           <FaLink />
-          <a
+          <OutsideLink
             data-testid="location-link"
             href={location}
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label="Link to hosted website"
+            ariaLabel="Navigate to hosted website"
           >
             Demo
-          </a>
+          </OutsideLink>
         </Info>
       )}
       <Info data-testid="source">
         <FaRegFileCode />
-        <a
+        <OutsideLink
           data-testid="source-link"
           href={source}
-          rel="noopener noreferrer"
-          target="_blank"
-          aria-label="Link to source code"
+          ariaLabel="Navigate to source code"
         >
           Source
-        </a>
+        </OutsideLink>
       </Info>
     </NormalText>
   </IconContext.Provider>

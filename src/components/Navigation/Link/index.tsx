@@ -57,8 +57,9 @@ const StyledLink = styled(LinkComponent)<{
   }
 
   :focus {
-    color: #1295f3;
-    text-decoration: none;
+    color: #fff;
+    text-decoration: ${({ showUnderline }) =>
+      showUnderline ? "underline" : "none"};
   }
 `;
 

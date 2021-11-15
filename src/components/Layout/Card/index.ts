@@ -33,7 +33,9 @@ const Card = styled(motion.div)`
   border-bottom-left-radius: 4px;
   overflow: hidden;
 
-  :hover {
+  :hover,
+  :focus,
+  :focus-within {
     z-index: 1;
     overflow: visible;
     border: 0;
@@ -67,13 +69,6 @@ const Card = styled(motion.div)`
       background: #73b9ff;
       opacity: 0.4;
     }
-  }
-
-  :focus,
-  :focus-within {
-    border-color: #0096ff;
-    box-shadow: inset -1px -1px 24px -9px rgba(101, 130, 255, 0.5),
-      0px 0px 26px -2px rgba(0, 64, 255, 1);
   }
 `;
 
