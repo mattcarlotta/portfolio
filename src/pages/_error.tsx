@@ -12,7 +12,7 @@ import { ReactElement } from "~types";
 const ErrorPage = (): ReactElement => (
   <Fragment>
     <Head>
-      <title>Server Error - Matt Carlotta</title>
+      <title>Server Error | Matt Carlotta</title>
     </Head>
     <Project data-testid="server-error-page">
       <PanelTitle data-testid="panel-title">internal server error</PanelTitle>

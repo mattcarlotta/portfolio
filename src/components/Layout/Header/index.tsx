@@ -1,15 +1,13 @@
 import { css } from "@emotion/react";
 import FlexSpaceAround from "~components/Layout/FlexSpaceAround";
-import ListItem from "~components/Layout/ListItem";
 import Orbits from "~components/Layout/Orbits";
-import Link from "~components/Navigation/Link";
+import LinkIcon from "~components/Navigation/LinkIcon";
 import Center from "~components/Layout/Center";
 import Headline from "~components/Layout/Headline";
 import SubHeadline from "~components/Layout/SubHeadline";
-import OutsideLink from "~components/Navigation/OutsideLink";
+import OutsideLinkIcon from "~components/Navigation/OutsideLinkIcon";
 import {
   ImInfo,
-  IconContext,
   GoHome,
   // GoMail,
   // FaBlog,
@@ -18,6 +16,7 @@ import {
   SiCodesandbox,
 } from "~icons";
 import { ReactElement } from "~types";
+import Flex from "../Flex";
 
 const HEADERLINKS = [
   // {
@@ -58,57 +57,93 @@ const Header = (): ReactElement => (
       padding-top: 60px;
     `}
   >
-    <IconContext.Provider
-      value={{
-        style: { fontSize: 18, verticalAlign: "middle", marginRight: 5 },
-      }}
-    >
-      <nav>
-        <FlexSpaceAround breakpoint direction="row">
-          <ListItem>
-            <Link
-              dataTestId="go-home"
-              ariaLabel="Navigate back to home page"
-              href="/"
-              padding="5px"
-              margin="0 5px"
-            >
-              <GoHome />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link
-              dataTestId="background"
-              ariaLabel="Navigate to my background page"
-              href="/background"
-              padding="5px"
-              margin="0 5px"
-            >
-              <ImInfo />
-            </Link>
-          </ListItem>
-          {HEADERLINKS.map(({ dataTestId, description, Icon, link }) => (
-            <ListItem key={description}>
-              <OutsideLink
-                dataTestId={dataTestId}
-                ariaLabel={description}
-                href={link}
-                padding="5px"
-                margin="0 5px"
-              >
-                <Icon className="icon" />
-              </OutsideLink>
-            </ListItem>
-          ))}
-        </FlexSpaceAround>
-      </nav>
-      <Orbits />
-      <Center data-testid="header">
-        <Headline>MATT CARLOTTA</Headline>
-        <SubHeadline>fullstack web developer</SubHeadline>
-      </Center>
-    </IconContext.Provider>
+    <FlexSpaceAround breakpoint direction="row">
+      <LinkIcon
+        dataTestId="go-home"
+        ariaLabel="Navigate back to home page"
+        href="/"
+      >
+        <Flex justify="center">
+          <GoHome />
+        </Flex>
+      </LinkIcon>
+      <LinkIcon
+        dataTestId="background"
+        ariaLabel="Navigate to my background page"
+        href="/background"
+      >
+        <ImInfo />
+      </LinkIcon>
+      {HEADERLINKS.map(({ dataTestId, description, Icon, link }) => (
+        <OutsideLinkIcon
+          key={description}
+          dataTestId={dataTestId}
+          ariaLabel={description}
+          href={link}
+        >
+          <Icon className="icon" />
+        </OutsideLinkIcon>
+      ))}
+    </FlexSpaceAround>
+    <Orbits />
+    <Center data-testid="header">
+      <Headline>MATT CARLOTTA</Headline>
+      <SubHeadline>fullstack web developer</SubHeadline>
+    </Center>
   </header>
 );
+
+// const Header = (): ReactElement => (
+//   <header
+//     css={css`
+//       padding-top: 60px;
+//     `}
+//   >
+//     <FlexSpaceAround breakpoint direction="row">
+//       <ListItem>
+//         <LinkIcon
+//           dataTestId="go-home"
+//           ariaLabel="Navigate back to home page"
+//           href="/"
+//           padding="5px"
+//           margin="0 5px"
+//         >
+//           <Flex justify="center">
+//             <GoHome />
+//           </Flex>
+//         </LinkIcon>
+//       </ListItem>
+//       <ListItem>
+//         <LinkIcon
+//           dataTestId="background"
+//           ariaLabel="Navigate to my background page"
+//           href="/background"
+//           padding="5px"
+//           margin="0 5px"
+//         >
+//           <ImInfo />
+//         </LinkIcon>
+//       </ListItem>
+//       {HEADERLINKS.map(({ dataTestId, description, Icon, link }) => (
+//         <ListItem key={description}>
+//           <OutsideLink
+//             dataTestId={dataTestId}
+//             ariaLabel={description}
+//             href={link}
+//             padding="5px"
+//             margin="0 5px"
+//           >
+//             <Icon className="icon" />
+//           </OutsideLink>
+//         </ListItem>
+//       ))}
+//     </FlexSpaceAround>
+//     <Orbits />
+//     <Center data-testid="header">
+//       <Headline>MATT CARLOTTA</Headline>
+//       <SubHeadline>fullstack web developer</SubHeadline>
+//     </Center>
+//   </header>
+// );
 
 export default Header;

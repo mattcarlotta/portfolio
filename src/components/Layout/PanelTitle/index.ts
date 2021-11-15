@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
 
-const PanelTitle = styled.div`
+const PanelTitle = styled.h1`
   color: #fff;
   font-size: 18px;
   letter-spacing: 1px;

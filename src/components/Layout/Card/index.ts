@@ -68,6 +68,13 @@ const Card = styled(motion.div)`
       opacity: 0.4;
     }
   }
+
+  :focus,
+  :focus-within {
+    border-color: #0096ff;
+    box-shadow: inset -1px -1px 24px -9px rgba(101, 130, 255, 0.5),
+      0px 0px 26px -2px rgba(0, 64, 255, 1);
+  }
 `;
 
 Card.defaultProps = {

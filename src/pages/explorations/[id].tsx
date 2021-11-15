@@ -22,11 +22,7 @@ const ExplorationsPage = ({
 }: ExplorationsProps): ReactElement | null =>
   exploration ? (
     <Fragment>
-      <Head
-        title={exploration.title}
-        url={`/explorations/${exploration.href}`}
-        description={exploration.description}
-      />
+      <Head title={exploration.title} description={exploration.description} />
       <Project>
         <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
         <Panel>

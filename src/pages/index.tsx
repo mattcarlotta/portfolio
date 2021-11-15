@@ -50,7 +50,7 @@ const HomePages = [
 
 const Home = (): ReactElement => (
   <Fragment>
-    <Head title="Home" url="/" />
+    <Head />
     <Flex data-testid="home-page" margin="75px 0 0 0" justify="center" flexwrap>
       {HomePages.map(({ id, head, preview }, index) => (
         <CardPreview

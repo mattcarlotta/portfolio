@@ -44,7 +44,7 @@ const Applications: Array<Application> = [
       title: "rusty bucket",
       url: "/rusty-bucket",
       description:
-        "A custom built Rust API server to dynamically resize images based upon a URL query. ",
+        "A custom built Rust API server to dynamically resize images based upon a URL query",
     },
     filedetails: {
       active: true,
@@ -54,7 +54,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "rustybucket-preview",
-      ariaLabel: "Navigate to the Rusty Bucket project page.",
+      ariaLabel: "Navigate to the Rusty Bucket project page",
       src: "rustybucket/rustybucketPreview",
     },
     tech: ["rust", "nginx", "pm2"],
@@ -65,7 +65,7 @@ const Applications: Array<Application> = [
       title: "sjs ice team",
       url: "/sjs-ice-team",
       description:
-        "An application to manage the San Jose Sharks Ice Team scheduling.",
+        "An application to manage the San Jose Sharks Ice Team scheduling",
     },
     filedetails: {
       active: true,
@@ -75,7 +75,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "sjsiceteam-preview",
-      ariaLabel: "Navigate to the SJS Ice Team project page.",
+      ariaLabel: "Navigate to the SJS Ice Team project page",
       src: "sjsit/sjsiceteamPreview",
     },
     snapshotdirectory: "sjsit",
@@ -159,7 +159,7 @@ const Applications: Array<Application> = [
       title: "gamersnexus mock up",
       url: "/gamersnexus-mock-up",
       description:
-        "A mock up created in 3 days as a redesign proposal for GamersNexus.net.",
+        "A mock up created in 3 days as a redesign proposal for GamersNexus.net",
     },
     filedetails: {
       active: true,
@@ -169,7 +169,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "gamersnexus-preview",
-      ariaLabel: "Navigate to the gamersnexus project page.",
+      ariaLabel: "Navigate to the gamersnexus project page",
       src: "gamersnexus/gamernexusLogo",
     },
     snapshotdirectory: "gamersnexus",
@@ -219,7 +219,7 @@ const Applications: Array<Application> = [
       title: "@noshot/env",
       url: "/noshotenv",
       description:
-        "An npm package that automatically loads environment variables from a predefined Env variable.",
+        "An npm package that automatically loads environment variables from a predefined Env variable",
     },
     filedetails: {
       active: true,
@@ -229,7 +229,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "noshotenv-preview",
-      ariaLabel: "Navigate to the @noshot/env project page.",
+      ariaLabel: "Navigate to the @noshot/env project page",
       src: "noshotenv/noshotenvLogoPreview",
     },
     snapshotdirectory: "noshotenv",
@@ -249,7 +249,7 @@ const Applications: Array<Application> = [
       title: "react hooks guide",
       url: "/react-hooks-guide",
       description:
-        "An educational website to help up-and-coming developers understand React’s newly introduced hooks.",
+        "An educational website to help up-and-coming developers understand React’s newly introduced hooks",
     },
     filedetails: {
       active: false,
@@ -258,7 +258,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "react-hooks-guide-preview",
-      ariaLabel: "Navigate to the React Hooks Guide project page.",
+      ariaLabel: "Navigate to the React Hooks Guide project page",
       src: "reacthooks/reacthooksPreview",
     },
     snapshotdirectory: "reacthooks",
@@ -310,7 +310,7 @@ const Applications: Array<Application> = [
       title: "nextjs ssr kit",
       url: "/nextjs-ssr-kit",
       description:
-        "A fully-loaded custom NextJS boilerplate for server-side solutions.",
+        "A fully-loaded custom NextJS boilerplate for server-side solutions",
     },
     filedetails: {
       active: false,
@@ -319,7 +319,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "nextjs-ssr-kit-preview",
-      ariaLabel: "Navigate to the Next SSR Kit project page.",
+      ariaLabel: "Navigate to the Next SSR Kit project page",
       src: "nextssrkit/nextssrkitPreview",
     },
     snapshotdirectory: "nextssrkit",
@@ -369,7 +369,7 @@ const Applications: Array<Application> = [
       title: "subskribble",
       url: "/subskribble",
       description:
-        "A web application to create, manage, and send personalized updates to a list of subscribers.",
+        "A web application to create, manage, and send personalized updates to a list of subscribers",
     },
     filedetails: {
       active: false,
@@ -378,7 +378,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "subskribble-preview",
-      ariaLabel: "Navigate to the Subskribble project page.",
+      ariaLabel: "Navigate to the Subskribble project page",
       src: "subskribble/subskribblePreview",
     },
     snapshotdirectory: "subskribble",
@@ -516,7 +516,7 @@ const Applications: Array<Application> = [
     head: {
       title: "react smde",
       url: "/react-smde",
-      description: "A lightweight, simple, markdown editor for React.",
+      description: "A lightweight, simple, markdown editor for React",
     },
     filedetails: {
       active: false,
@@ -526,7 +526,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "react-smde-preview",
-      ariaLabel: "Navigate to the React SMDE project page.",
+      ariaLabel: "Navigate to the React SMDE project page",
       src: "reactsmde/reactsmdePreview",
     },
     snapshotdirectory: "reactsmde",
@@ -572,7 +572,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "git-gnome-preview",
-      ariaLabel: "Navigate to the Git Gnome-Terminal project page.",
+      ariaLabel: "Navigate to the Git Gnome-Terminal project page",
       src: "gitgnometerm/gitgnomePreview",
     },
     filedetails: {
@@ -616,11 +616,11 @@ const Applications: Array<Application> = [
       title: "alias dirs",
       url: "/alias-dirs",
       description:
-        "Automatically creates aliased import directories for babel.",
+        "A utility function that automatically creates aliased import directories for babel",
     },
     preview: {
       alt: "alias-dirs-preview",
-      ariaLabel: "Navigate to the Alias Dirs project page.",
+      ariaLabel: "Navigate to the Alias Dirs project page",
       src: "aliasdirs/aliasdirsPreview",
     },
     filedetails: {
@@ -636,7 +636,7 @@ const Applications: Array<Application> = [
       title: "fullstack m.e.r.n. kit",
       url: "/fullstack-mern-kit",
       description:
-        "A fully-loaded custom boilerplate using MongoDB, Express, React/Redux and Node for client-side solutions.",
+        "A fully-loaded custom boilerplate using MongoDB, Express, React/Redux and Node for client-side solutions",
     },
     filedetails: {
       active: false,
@@ -645,7 +645,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "fs-mern-kit-preview",
-      ariaLabel: "Navigate to the Fullstack M.E.R.N. Kit project page.",
+      ariaLabel: "Navigate to the Fullstack M.E.R.N. Kit project page",
       src: "mernkit/mernkitPreview",
     },
     snapshotdirectory: "mernkit",
@@ -665,7 +665,7 @@ const Applications: Array<Application> = [
       title: "yelp camp",
       url: "/yelp-camp",
       description:
-        "An experimental website for creating, editing, and reviewing campground sites from all over California.",
+        "An experimental website for creating, editing, and reviewing campground sites from all over California",
     },
     filedetails: {
       active: false,
@@ -674,7 +674,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "yelp-camp-preview",
-      ariaLabel: "Navigate to the Yelp Camp project page.",
+      ariaLabel: "Navigate to the Yelp Camp project page",
       src: "yelpcamp/yelpcampPreview",
     },
     snapshotdirectory: "yelpcamp",
@@ -758,7 +758,7 @@ const Applications: Array<Application> = [
       title: "ssdtgen app",
       url: "/ssdtgen-app",
       description:
-        "A standalone Mac OS application that builds and compiles custom SSDTs for X99, Z170, Z97, and H97 systems running Mac OS.",
+        "A standalone Mac OS application that builds and compiles custom SSDTs for X99, Z170, Z97, and H97 systems running Mac OS",
     },
     filedetails: {
       active: false,
@@ -767,7 +767,7 @@ const Applications: Array<Application> = [
     },
     preview: {
       alt: "sddtgen-app-preview",
-      ariaLabel: "Navigate to the ssdtGen App project page.",
+      ariaLabel: "Navigate to the ssdtGen App project page",
       src: "ssdtgenapp/ssdtgenappPreview",
     },
     snapshotdirectory: "ssdtgenapp",

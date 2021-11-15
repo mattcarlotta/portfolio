@@ -8,7 +8,7 @@ import { ReactElement } from "~types";
 
 const Projects = (): ReactElement => (
   <Fragment>
-    <Head title="Projects" url="/" />
+    <Head description="A collection of personal and professional projects that I've created over the years" />
     <Category data-testid="category">projects</Category>
     <Flex
       data-testid="projects-page"
