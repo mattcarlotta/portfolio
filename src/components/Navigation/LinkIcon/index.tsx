@@ -49,8 +49,8 @@ const LinkIcon = styled(LinkIconComponent)`
   transition: all 0.5s;
   text-decoration: none;
   outline: none;
-  border: 1px solid transparent;
-  border-radius: 3px;
+  border: 2px solid transparent;
+  border-radius: 50px;
   outline: 0;
   font-size: 18px;
 
