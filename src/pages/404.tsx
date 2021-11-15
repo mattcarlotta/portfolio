@@ -12,7 +12,7 @@ import { ReactElement } from "~types";
 const NotFound = (): ReactElement => (
   <Fragment>
     <Head>
-      <title>Not Found - Matt Carlotta</title>
+      <title>Page Not Found | Matt Carlotta</title>
     </Head>
     <Project data-testid="not-found-page">
       <PanelTitle data-testid="panel-title">file not found</PanelTitle>

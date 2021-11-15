@@ -165,9 +165,7 @@ const ModalDialog = ({
         TransitionProps={{ onExited: handleModalExit }}
       >
         <Fixed top="0px" width="100%">
-          <ImageTitle>
-            <Center data-testid="modal-title">{title}</Center>
-          </ImageTitle>
+          <ImageTitle data-testid="modal-title">{title}</ImageTitle>
           <CloseModalButton
             data-testid="close-modal"
             aria-label="close modal"
@@ -180,6 +178,7 @@ const ModalDialog = ({
         <Fixed top="calc(50% - 35px)" left="0px">
           <Flex justify="flex-start" width="120px">
             <Button
+              aria-label="View previous image"
               data-testid="previous-image"
               type="button"
               clickable={snapsLength > 1}
@@ -201,6 +200,7 @@ const ModalDialog = ({
           <Flex justify="flex-end" width="120px">
             <Button
               data-testid="next-image"
+              aria-label="View next image"
               type="button"
               clickable={snapsLength > 1}
               onClick={() => handleNextImage(index + 1)}
@@ -220,6 +220,7 @@ const ModalDialog = ({
               snapshots.map(({ title, src, alt }, idx) => (
                 <ImagePreviewButton
                   type="button"
+                  aria-label={`View the ${title} image`}
                   id={`button-preview-${title}`}
                   data-testid={`button-${title}`}
                   tabIndex={-1}

@@ -12,7 +12,7 @@ const GoBack = ({ href, title }: GoBackProps): ReactElement => (
   <Center>
     <Link
       dataTestId="navigate-home"
-      ariaLabel="Navigate back to home page"
+      ariaLabel={`Navigate back to ${title} page`}
       href={href}
       fontSize="15px"
       showUnderline

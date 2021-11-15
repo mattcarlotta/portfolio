@@ -33,7 +33,9 @@ const Card = styled(motion.div)`
   border-bottom-left-radius: 4px;
   overflow: hidden;
 
-  :hover {
+  :hover,
+  :focus,
+  :focus-within {
     z-index: 1;
     overflow: visible;
     border: 0;

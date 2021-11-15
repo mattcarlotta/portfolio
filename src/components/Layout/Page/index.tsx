@@ -24,18 +24,20 @@ const Page = ({
   <Fragment>
     <Head {...head} />
     <Project>
-      <PanelTitle data-testid="panel-title">{head.title}</PanelTitle>
+      <PanelTitle id="title" data-testid="panel-title">
+        {head.title}
+      </PanelTitle>
       <Panel>
         <Text>
-          <DetailHeadline>Details:</DetailHeadline>
+          <DetailHeadline id="details">Details:</DetailHeadline>
           <FileDetails {...filedetails} fileName={head.title} />
-          <DetailHeadline>Description:</DetailHeadline>
+          <DetailHeadline id="description">Description:</DetailHeadline>
           <SubTitle data-testid="description">
             {ApplicationDescriptions.map(({ appId, description }) =>
               id === appId ? description : null,
             )}
           </SubTitle>
-          <DetailHeadline>Tech Specs:</DetailHeadline>
+          <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
           <ul
             data-testid="tech"
             css={css`

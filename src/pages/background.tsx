@@ -137,7 +137,7 @@ const Background = (): ReactElement => (
       style: { fontSize: 20, verticalAlign: "middle", marginRight: 10 },
     }}
   >
-    <Head title="Background" url="background" />
+    <Head />
     <Project>
       <PanelTitle data-testid="panel-title">background</PanelTitle>
       <Panel>

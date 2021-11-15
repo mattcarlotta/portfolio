@@ -55,7 +55,7 @@ const CardPreview = ({
           },
         }}
       >
-        <CardTitle>{title}</CardTitle>
+        <CardTitle id={title}>{title}</CardTitle>
         <Bars />
         <Flex justify="center" height="230px" width="100%">
           <Link
@@ -133,7 +133,13 @@ const CardPreview = ({
           )}
         </Flex>
       </IconContext.Provider>
-      <NormalText padding="0px 10px 15px 10px">{description}</NormalText>
+      <NormalText
+        as="h2"
+        id={`${title} description`}
+        padding="0px 10px 15px 10px"
+      >
+        {description}
+      </NormalText>
     </div>
   </Card>
 );

@@ -10,6 +10,7 @@ const ImageTitle = styled.h2`
   color: #fff;
   margin: 0;
   padding: 20px;
+  text-align: center;
 `;
 
 export default ImageTitle;

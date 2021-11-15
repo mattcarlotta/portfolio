@@ -31,18 +31,24 @@ const OutsideLinkComponent = ({
   </a>
 );
 
-const OutsideLink = styled(OutsideLinkComponent)<{
-  padding?: string;
-  margin?: string;
-  textDecoration?: string;
-}>`
-  padding: ${({ padding }) => padding || "0px"};
-  margin: ${({ margin }) => margin};
+const OutsideLink = styled(OutsideLinkComponent)`
+  @media (max-width: 650px) {
+    margin: 0 5px;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin: 0 10px;
   color: #008ef1;
   transition: all 0.5s;
-  text-decoration: ${({ textDecoration }) => textDecoration || "underline"};
-  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
   outline: 0;
+  font-size: 18px;
 
   :hover {
     color: #fff;
@@ -50,7 +56,9 @@ const OutsideLink = styled(OutsideLinkComponent)<{
 
   :focus {
     color: #fff;
-    text-decoration: ${({ textDecoration }) => textDecoration || "underline"};
+    border-color: #0096ff;
+    box-shadow: inset -1px -1px 24px -9px rgba(101, 130, 255, 0.5),
+      0px 0px 26px -2px rgba(0, 64, 255, 1);
   }
 `;
 

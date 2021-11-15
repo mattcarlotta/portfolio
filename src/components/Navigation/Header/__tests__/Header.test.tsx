@@ -1,6 +1,17 @@
 import { mount } from "enzyme";
 import Header from "../index";
 
+jest.mock("next/router", () => ({
+  useRouter() {
+    return {
+      route: "/",
+      pathname: "",
+      query: "",
+      asPath: "",
+    };
+  },
+}));
+
 const initProps = {
   title: "Home",
   url: "/",
