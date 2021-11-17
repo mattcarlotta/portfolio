@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import CardPreview from "~components/Layout/CardPreview";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 const HomePages = [
   {

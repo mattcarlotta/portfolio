@@ -1,15 +1,18 @@
-import { mount } from "enzyme";
+import { render } from "@testing-library/react";
 import Header from "../index";
 
 jest.mock("next/router", () => ({
-  useRouter() {
-    return {
-      route: "/",
-      pathname: "",
-      query: "",
-      asPath: "",
-    };
-  },
+  useRouter: () => ({
+    route: "/",
+    pathname: "",
+    query: "",
+    asPath: "",
+  }),
+}));
+
+jest.mock("next/head", () => ({
+  __esModule: true,
+  default: ({ children }: { children: Array<React.ReactElement> }) => children,
 }));
 
 const initProps = {
@@ -17,10 +20,10 @@ const initProps = {
   url: "/",
 };
 
-const wrapper = mount(<Header {...initProps} />);
+const { getByTestId } = render(<Header {...initProps} />);
 
 describe("Header", () => {
   it("renders without errors", () => {
-    expect(wrapper.find("Head")).toExist();
+    expect(getByTestId("head-title")).toBeInTheDocument();
   });
 });

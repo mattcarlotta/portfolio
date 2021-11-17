@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Slide, Dialog, withStyles } from "@material-ui/core";
 import { AppSnapshots } from "~components/Layout/Apps";
+import BackgroundImageViewer from "~components/Layout/BackgroundImage";
 import Button from "~components/Layout/Button";
 import CardTitle from "~components/Layout/CardTitle";
 import Center from "~components/Layout/Center";
 import CloseModalButton from "~components/Layout/CloseModalButton";
 import DetailHeadline from "~components/Layout/DetailHeadline";
+import Fixed from "~components/Layout/Fixed";
 import Flex from "~components/Layout/Flex";
 import Image from "~components/Layout/Image";
 import ImagePreviewButton from "~components/Layout/ImagePreviewButton";
@@ -13,9 +15,7 @@ import ImageTitle from "~components/Layout/ImageTitle";
 import PreviewCard from "~components/Layout/PreviewCard";
 import SnapshotContainer from "~components/Layout/SnapshotContainer";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "~icons";
-import { ReactElement, Ref, TransitionProps } from "~types";
-import BackgroundImageViewer from "../BackgroundImage";
-import Fixed from "../Fixed";
+import type { ReactElement, Ref, TransitionProps } from "~types";
 
 const ImageViewer = withStyles(() => ({
   paper: {
@@ -101,10 +101,16 @@ const ModalDialog = ({
         handleNextImage(index - 1);
         break;
       }
-      case "Escape": {
-        handleModalExit();
+      default:
         break;
-      }
+    }
+  };
+
+  const handleSelectImage = ({ key }: { key: string }, index: number): void => {
+    switch (key) {
+      case "Enter":
+        handleImageClick(index);
+        break;
       default:
         break;
     }
@@ -123,7 +129,7 @@ const ModalDialog = ({
       ? document.getElementById(`button-preview-${title}`)
       : null;
     /* istanbul ignore next */
-    if (previewImage)
+    if (previewImage?.scrollIntoView)
       previewImage.scrollIntoView({
         behavior: "smooth",
         block: "center",
@@ -136,22 +142,22 @@ const ModalDialog = ({
       {snapshotdirectory && <DetailHeadline>Snapshots:</DetailHeadline>}
       {hasSnaps && (
         <SnapshotContainer data-testid="snapshots">
-          <Flex justify="center" flexwrap>
-            {snapshots.map(({ src, alt, title, ratio }, index) => (
-              <PreviewCard
-                data-testid={title}
-                key={src}
-                onClick={() => handleImageClick(index)}
-              >
-                <CardTitle>{title}</CardTitle>
-                <Image
-                  src={`projects/${snapshotdirectory}/${src}`}
-                  ratio={ratio}
-                  alt={alt}
-                />
-              </PreviewCard>
-            ))}
-          </Flex>
+          {snapshots.map(({ src, alt, title, ratio }, index) => (
+            <PreviewCard
+              data-testid={title}
+              key={src}
+              tabIndex={0}
+              onClick={() => handleImageClick(index)}
+              onKeyDown={event => handleSelectImage(event, index)}
+            >
+              <CardTitle>{title}</CardTitle>
+              <Image
+                src={`projects/${snapshotdirectory}/${src}`}
+                ratio={ratio}
+                alt={alt}
+              />
+            </PreviewCard>
+          ))}
         </SnapshotContainer>
       )}
       <ImageViewer

@@ -1,12 +1,10 @@
-import { mount } from "enzyme";
+import { render } from "@testing-library/react";
 import BrokenImage from "../index";
 
-const wrapper = mount(<BrokenImage />);
+const { getByText } = render(<BrokenImage />);
 
 describe("Broken Image", () => {
   it("renders without errors", () => {
-    const node = wrapper.find("[data-testid='broken-image']");
-    expect(node).toExist();
-    expect(node.text()).toContain("Unable to load image");
+    expect(getByText("Unable to load image")).toBeInTheDocument();
   });
 });

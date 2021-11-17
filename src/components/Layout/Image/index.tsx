@@ -1,8 +1,9 @@
+/* eslint-disable no-param-reassign */
 import * as React from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 export type ImageProps = {
   alt?: string;
@@ -64,6 +65,7 @@ const Image = ({
             type="image/webp"
           />
           <img
+            data-testid="image"
             ref={handleImageRef}
             style={{
               display: placeholder && isBrowser && isLoading ? "none" : "flex",
@@ -80,7 +82,7 @@ const Image = ({
           />
         </>
       ) : (
-        <BrokenImage />
+        <BrokenImage data-testid="broken-image" />
       )}
     </picture>
   );

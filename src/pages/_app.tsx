@@ -9,7 +9,7 @@ import Footer from "~components/Layout/Footer";
 import Main from "~components/Layout/Main";
 import Wrapper from "~components/Layout/Wrapper";
 import GlobalStylesheet from "~styles/globalStylesheet";
-import { AppProps, ReactElement } from "~types";
+import type { AppProps, ReactElement } from "~types";
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
   const router = useRouter();

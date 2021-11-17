@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Tooltip, makeStyles } from "@material-ui/core";
-import { CSSProperties, ReactNode } from "~types";
+import type { CSSProperties, ReactNode } from "~types";
 
 const TooltipText = styled.div`
   text-align: center;

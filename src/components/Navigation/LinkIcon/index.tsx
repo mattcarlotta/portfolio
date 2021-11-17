@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
-import { CSSProperties, ReactElement, ReactNode } from "~types";
+import type { CSSProperties, ReactElement, ReactNode } from "~types";
 
 export type LinkIconProps = {
   ariaLabel: string;
@@ -49,8 +49,8 @@ const LinkIcon = styled(LinkIconComponent)`
   transition: all 0.5s;
   text-decoration: none;
   outline: none;
-  border: 1px solid transparent;
-  border-radius: 3px;
+  border: 2px solid transparent;
+  border-radius: 50px;
   outline: 0;
   font-size: 18px;
 

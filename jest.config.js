@@ -1,17 +1,14 @@
 module.exports = {
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-environment-jsdom",
   clearMocks: true,
-  moduleDirectories: ["<rootDir>/src", "node_modules"],
+  moduleDirectories: ["<rootDir>", "node_modules"],
   moduleNameMapper: {
     "~(.*)$": "<rootDir>/src/$1",
-    ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "<rootDir>/src/utils/__mocks__/fileMock.ts",
-    "\\.(css|scss)$": "identity-obj-proxy",
   },
   transform: {
     "^.+\\.(ts|tsx)$": "babel-jest",
-    ".+\\.(css|styl|less|sass|scss)$":
-      "./node_modules/jest-css-modules-transform",
+    ".+\\.(css|styl|less|sass|scss|gif|ico|png|jpg|jpeg|svg|ttf|webp|woff2)$":
+      "jest-transform-stub",
   },
   testPathIgnorePatterns: [
     "<rootDir>/.next",
@@ -27,12 +24,11 @@ module.exports = {
   ],
   collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*d.ts"],
   coveragePathIgnorePatterns: [
-    "<rootDir>/src/middlewares",
+    "<rootDir>/src/icons",
     "<rootDir>/src/pages",
-    "<rootDir>/src/utils/toHaveStyleRule",
+    "<rootDir>/src/styles",
+    "<rootDir>/src/types",
+    "<rootDir>/src/index.tsx",
   ],
-  setupFilesAfterEnv: [
-    "<rootDir>/src/utils/setupEnv/index.ts",
-    "<rootDir>/src/utils/setupTests/index.ts",
-  ],
+  setupFilesAfterEnv: ["<rootDir>/src/utils/setupTests.ts"],
 };

@@ -7,7 +7,7 @@ import Project from "~components/Layout/Project";
 import Text from "~components/Layout/Text";
 import GoBack from "~components/Navigation/GoBack";
 import { GiExplodingPlanet } from "~icons";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 const ErrorPage = (): ReactElement => (
   <Fragment>

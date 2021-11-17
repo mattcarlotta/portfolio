@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
-import { CSSProperties, ReactElement, ReactNode } from "~types";
+import type { CSSProperties, ReactElement, ReactNode } from "~types";
 
 export type LinkProps = {
   ariaLabel: string;

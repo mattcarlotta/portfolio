@@ -1,10 +1,10 @@
-import { mount } from "enzyme";
+import { render } from "@testing-library/react";
 import Header from "../index";
 
-const wrapper = mount(<Header />);
+const { getByTestId } = render(<Header />);
 
 describe("Header", () => {
   it("renders without errors", () => {
-    expect(wrapper.find("Header").exists()).toBeTruthy();
+    expect(getByTestId("head")).toBeInTheDocument();
   });
 });

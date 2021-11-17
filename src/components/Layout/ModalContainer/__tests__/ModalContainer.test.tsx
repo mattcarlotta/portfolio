@@ -1,32 +1,39 @@
-import { mount } from "enzyme";
+import { render, fireEvent, waitFor } from "@testing-library/react";
+import { within } from "@testing-library/dom";
 import ModalContainer from "../index";
 
-const wrapper = mount(
-  <ModalContainer>
-    {(isOpen, selected, toggleModal) => (
-      <>
-        <button type="button" onClick={() => toggleModal("abc")}>
-          Click me
-        </button>
-        <span data-testid="isopen">{String(isOpen)}</span>
-        <span data-testid="selected">{selected}</span>
-      </>
-    )}
-  </ModalContainer>,
-);
-
 describe("Modal Container", () => {
-  it("it renders without errors", () => {
-    expect(wrapper.find("button").exists()).toBeTruthy();
-  });
+  it("toggled isOpen state", async () => {
+    const { getByTestId } = render(
+      <ModalContainer>
+        {(isOpen, selected, toggleModal) => (
+          <>
+            <button
+              data-testid="button"
+              type="button"
+              onClick={() => toggleModal("abc")}
+            >
+              Click me
+            </button>
+            <span data-testid="isopen">{String(isOpen)}</span>
+            <span data-testid="selected">{selected}</span>
+          </>
+        )}
+      </ModalContainer>,
+    );
 
-  it("toggled isOpen state", () => {
-    wrapper.find("button").simulate("click");
-    expect(wrapper.find("[data-testid='isopen']").text()).toEqual("true");
-    expect(wrapper.find("[data-testid='selected']").text()).toEqual("abc");
+    fireEvent.click(getByTestId("button"));
+    await waitFor(() => {
+      const isOpenNode = getByTestId("isopen");
+      expect(within(isOpenNode).getByText("true")).toBeInTheDocument();
+      const isSelectedNode = getByTestId("selected");
+      expect(within(isSelectedNode).getByText("abc")).toBeInTheDocument();
+    });
 
-    wrapper.find("button").simulate("click");
-    expect(wrapper.find("[data-testid='isopen']").text()).toEqual("false");
-    expect(wrapper.find("[data-testid='selected']").text()).toEqual("");
+    fireEvent.click(getByTestId("button"));
+    await waitFor(() => {
+      const isOpenNode = getByTestId("isopen");
+      expect(within(isOpenNode).getByText("false")).toBeInTheDocument();
+    });
   });
 });

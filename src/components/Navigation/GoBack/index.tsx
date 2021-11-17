@@ -1,7 +1,7 @@
 import Center from "~components/Layout/Center";
 import Link from "~components/Navigation/Link";
 import { GoHome } from "~icons";
-import { ReactElement } from "~types";
+import type { ReactElement } from "~types";
 
 export type GoBackProps = {
   href: string;

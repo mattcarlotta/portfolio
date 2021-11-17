@@ -13,8 +13,11 @@ const PreviewCard = styled.div`
   border: 1px solid #16487a;
   color: #0096ff;
   cursor: pointer;
+  outline: 0;
 
-  :hover {
+  :hover,
+  :focus,
+  :focus-within {
     background-color: rgba(2, 28, 48, 0.4);
     transform: scale(1.1);
     transition: transform 200ms ease-in-out;

@@ -1,4 +1,4 @@
-import { mount } from "enzyme";
+import { render } from "@testing-library/react";
 import CardPreview from "../index";
 
 const initProps = {
@@ -16,15 +16,16 @@ const initProps = {
   url: "123456",
 };
 
-const wrapper = mount(<CardPreview {...initProps} />);
-
 describe("Image", () => {
   it("renders without errors", () => {
-    expect(wrapper.find("[data-testid='picture']")).toExist();
+    const { getByTestId } = render(<CardPreview {...initProps} />);
+    expect(getByTestId("picture")).toBeInTheDocument();
   });
 
   it("renders inactive projects", () => {
-    wrapper.setProps({ active: false });
-    expect(wrapper.find("FiPower")).toHaveStyle("color", "#2c4776");
+    const { getByTestId } = render(
+      <CardPreview {...initProps} active={false} />,
+    );
+    expect(getByTestId("fipower")).toHaveStyle("color:#2c4776");
   });
 });

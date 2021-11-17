@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import * as React from "react";
-import { ReactElement, ReactNode } from "~types";
+import type { ReactElement, ReactNode } from "~types";
 
 export const ImageContext = React.createContext({ supportsWebp: false });
 
@@ -15,7 +15,11 @@ export const useImageContext = (): { supportsWebp: boolean } => {
 };
 
 const ImageProvider = ({ children }: { children: ReactNode }): ReactElement => {
-  const [supportsWebp, setSupport] = React.useState(false);
+  const [webpSupport, setSupport] = React.useState(false);
+  const supportsWebp = React.useMemo(
+    () => ({ supportsWebp: webpSupport }),
+    [webpSupport],
+  );
 
   React.useEffect(() => {
     const testWebP = () => {
@@ -34,7 +38,7 @@ const ImageProvider = ({ children }: { children: ReactNode }): ReactElement => {
   });
 
   return (
-    <ImageContext.Provider value={{ supportsWebp }}>
+    <ImageContext.Provider value={supportsWebp}>
       {children}
     </ImageContext.Provider>
   );

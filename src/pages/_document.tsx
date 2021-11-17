@@ -1,3 +1,4 @@
+/* eslint-disable react/no-invalid-html-attribute */
 import * as React from "react";
 import Document, {
   DocumentContext,

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { CSSProperties, ReactNode } from "~types";
+import type { CSSProperties, ReactNode } from "~types";
 
 export type OutsideLinkProps = {
   ariaLabel: string;
@@ -45,8 +45,8 @@ const OutsideLink = styled(OutsideLinkComponent)`
   transition: all 0.5s;
   text-decoration: none;
   outline: none;
-  border: 1px solid transparent;
-  border-radius: 3px;
+  border: 2px solid transparent;
+  border-radius: 50px;
   outline: 0;
   font-size: 18px;
 

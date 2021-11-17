@@ -1,7 +1,7 @@
 import get from "lodash.get";
 import Applications, { Application } from "~components/Layout/Apps";
 import Page from "~components/Layout/Page";
-import { GetStaticPaths, GetStaticProps, ReactElement } from "~types";
+import type { GetStaticPaths, GetStaticProps, ReactElement } from "~types";
 
 export type ApplicationProps = {
   application: Application;

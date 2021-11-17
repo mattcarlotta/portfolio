@@ -23,7 +23,6 @@ const Flex = styled.div<{
   flex-direction: ${({ direction }) => direction || "row"};
   display: flex;
   flex: ${({ flex }) => flex};
-  justify-content: center;
   align-items: center;
   height: ${({ height }) => height || "auto"};
   width: ${({ width }) => width || "100%"};

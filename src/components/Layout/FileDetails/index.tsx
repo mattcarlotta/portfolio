@@ -1,13 +1,8 @@
 import Info from "~components/Layout/Info";
 import NormalText from "~components/Layout/NormalText";
 import OutsideLink from "~components/Navigation/OutsideLink";
-import {
-  AiOutlineFolderOpen,
-  FaLink,
-  FaRegFileCode,
-  FiPower,
-  IconContext,
-} from "~icons";
+import { AiOutlineFolderOpen, FaLink, FaRegFileCode, FiPower } from "~icons";
+import type { CSSProperties } from "~types";
 
 export type FileDetailsProps = {
   active: boolean;
@@ -17,6 +12,12 @@ export type FileDetailsProps = {
   source: string;
 };
 
+const style = {
+  fontSize: 20,
+  verticalAlign: "middle",
+  marginRight: 10,
+} as CSSProperties;
+
 const FileDetails = ({
   active,
   location,
@@ -24,44 +25,41 @@ const FileDetails = ({
   source,
   status,
 }: FileDetailsProps): JSX.Element => (
-  <IconContext.Provider
-    value={{
-      style: { fontSize: 20, verticalAlign: "middle", marginRight: 10 },
-    }}
-  >
-    <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
-      <Info data-testid="status">
-        <FiPower style={{ color: active ? "limegreen" : "#2c4776" }} />
-        {status}
-      </Info>
-      <Info data-testid="filename">
-        <AiOutlineFolderOpen />
-        {fileName}
-      </Info>
-      {location && (
-        <Info data-testid="location">
-          <FaLink />
-          <OutsideLink
-            data-testid="location-link"
-            href={location}
-            ariaLabel="Navigate to hosted website"
-          >
-            Demo
-          </OutsideLink>
-        </Info>
-      )}
-      <Info data-testid="source">
-        <FaRegFileCode />
+  <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
+    <Info data-testid="status">
+      <FiPower
+        data-testid="fipower"
+        style={{ color: active ? "limegreen" : "#2c4776", ...style }}
+      />
+      {status}
+    </Info>
+    <Info data-testid="filename">
+      <AiOutlineFolderOpen style={style} />
+      {fileName}
+    </Info>
+    {location && (
+      <Info data-testid="location">
+        <FaLink style={style} />
         <OutsideLink
-          data-testid="source-link"
-          href={source}
-          ariaLabel="Navigate to source code"
+          data-testid="location-link"
+          href={location}
+          ariaLabel="Navigate to hosted website"
         >
-          Source
+          Demo
         </OutsideLink>
       </Info>
-    </NormalText>
-  </IconContext.Provider>
+    )}
+    <Info data-testid="source">
+      <FaRegFileCode style={style} />
+      <OutsideLink
+        data-testid="source-link"
+        href={source}
+        ariaLabel="Navigate to source code"
+      >
+        Source
+      </OutsideLink>
+    </Info>
+  </NormalText>
 );
 
 FileDetails.defaultProps = {
