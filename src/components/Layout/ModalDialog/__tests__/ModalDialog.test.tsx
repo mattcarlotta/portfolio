@@ -214,4 +214,24 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
   });
+
+  it("opens the modal when pressing enter key on a snapshot preview", async () => {
+    const { getByTestId } = render(<ModalDialog {...props} />);
+
+    fireEvent.keyDown(getByTestId("example 123"), { key: "Enter" });
+
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
+    });
+  });
+
+  it("doesn't open the modal when pressing an invalid key on a snapshot preview", async () => {
+    const { getByTestId } = render(<ModalDialog {...props} />);
+
+    fireEvent.keyDown(getByTestId("example 123"), { key: "ArrowUp" });
+
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).not.toBeInTheDocument();
+    });
+  });
 });

@@ -106,6 +106,16 @@ const ModalDialog = ({
     }
   };
 
+  const handleSelectImage = ({ key }: { key: string }, index: number): void => {
+    switch (key) {
+      case "Enter":
+        handleImageClick(index);
+        break;
+      default:
+        break;
+    }
+  };
+
   React.useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
@@ -132,22 +142,22 @@ const ModalDialog = ({
       {snapshotdirectory && <DetailHeadline>Snapshots:</DetailHeadline>}
       {hasSnaps && (
         <SnapshotContainer data-testid="snapshots">
-          <Flex justify="center" flexwrap>
-            {snapshots.map(({ src, alt, title, ratio }, index) => (
-              <PreviewCard
-                data-testid={title}
-                key={src}
-                onClick={() => handleImageClick(index)}
-              >
-                <CardTitle>{title}</CardTitle>
-                <Image
-                  src={`projects/${snapshotdirectory}/${src}`}
-                  ratio={ratio}
-                  alt={alt}
-                />
-              </PreviewCard>
-            ))}
-          </Flex>
+          {snapshots.map(({ src, alt, title, ratio }, index) => (
+            <PreviewCard
+              data-testid={title}
+              key={src}
+              tabIndex={0}
+              onClick={() => handleImageClick(index)}
+              onKeyDown={event => handleSelectImage(event, index)}
+            >
+              <CardTitle>{title}</CardTitle>
+              <Image
+                src={`projects/${snapshotdirectory}/${src}`}
+                ratio={ratio}
+                alt={alt}
+              />
+            </PreviewCard>
+          ))}
         </SnapshotContainer>
       )}
       <ImageViewer
