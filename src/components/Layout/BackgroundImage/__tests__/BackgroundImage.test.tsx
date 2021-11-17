@@ -1,25 +1,27 @@
-import { mount, ReactWrapper } from "enzyme";
+import { render } from "@testing-library/react";
 import { BackgroundImage } from "../index";
 
 const src = "/projects/123";
 
 describe("BackgroundImage", () => {
-  let wrapper: ReactWrapper;
-  beforeEach(() => {
-    wrapper = mount(<BackgroundImage src={src} supportsWebp />);
-  });
-
   it("renders without errors", () => {
-    expect(wrapper).toExist();
-    expect(wrapper).toHaveStyleRule(
+    const { getByTestId } = render(
+      <BackgroundImage data-testid="image" src={src} supportsWebp />,
+    );
+    expect(getByTestId("image")).toHaveStyleRule(
       "background-image",
       `url(${src}.png?ext=webp)`,
     );
   });
 
   it("adjusts the background image when 'supportsWebp' is false", () => {
-    wrapper.setProps({ supportsWebp: false });
+    const { getByTestId } = render(
+      <BackgroundImage data-testid="image" src={src} supportsWebp={false} />,
+    );
 
-    expect(wrapper).toHaveStyleRule("background-image", `url(${src}.png)`);
+    expect(getByTestId("image")).toHaveStyleRule(
+      "background-image",
+      `url(${src}.png)`,
+    );
   });
 });

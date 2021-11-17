@@ -12,7 +12,7 @@ const Header = ({ description, title, type }: HeaderProps): ReactElement => {
   const { asPath } = useRouter();
   return (
     <Head>
-      <title>
+      <title data-testid="head-title">
         {title
           .split(" ")
           .map(str => str.charAt(0).toUpperCase().concat(str.slice(1)))

@@ -1,19 +1,16 @@
-import { mount, ReactWrapper } from "enzyme";
+import { render } from "@testing-library/react";
 import FlexCenter from "../index";
 
 describe("FlexCenter", () => {
-  let wrapper: ReactWrapper;
-  beforeEach(() => {
-    wrapper = mount(<FlexCenter />);
-  });
-
   it("renders without errors", () => {
-    expect(wrapper).toExist();
-    expect(wrapper).toHaveStyleRule("flex-direction", "column");
+    const { getByTestId } = render(<FlexCenter data-testid="flex" />);
+    expect(getByTestId("flex")).toHaveStyleRule("flex-direction", "column");
   });
 
   it("sets 'flex-direction' to a 'row' when passed a 'direction' prop", () => {
-    wrapper.setProps({ direction: "row" });
-    expect(wrapper).toHaveStyleRule("flex-direction", "row");
+    const { getByTestId } = render(
+      <FlexCenter data-testid="flex" direction="row" />,
+    );
+    expect(getByTestId("flex")).toHaveStyleRule("flex-direction", "row");
   });
 });

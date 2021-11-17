@@ -1,7 +1,7 @@
 module.exports = {
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-environment-jsdom",
   clearMocks: true,
-  moduleDirectories: ["<rootDir>/src", "node_modules"],
+  moduleDirectories: ["<rootDir>", "node_modules"],
   moduleNameMapper: {
     "~(.*)$": "<rootDir>/src/$1",
   },
@@ -24,12 +24,11 @@ module.exports = {
   ],
   collectCoverageFrom: ["src/**/*.{ts,tsx}", "!src/**/*d.ts"],
   coveragePathIgnorePatterns: [
-    "<rootDir>/src/middlewares",
+    "<rootDir>/src/icons",
     "<rootDir>/src/pages",
-    "<rootDir>/src/utils/toHaveStyleRule",
+    "<rootDir>/src/styles",
+    "<rootDir>/src/types",
+    "<rootDir>/src/index.tsx",
   ],
-  setupFilesAfterEnv: [
-    "<rootDir>/src/utils/setupEnv/index.ts",
-    "<rootDir>/src/utils/setupTests/index.ts",
-  ],
+  setupFilesAfterEnv: ["<rootDir>/src/utils/setupTests.ts"],
 };

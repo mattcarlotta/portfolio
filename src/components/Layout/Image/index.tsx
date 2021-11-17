@@ -65,6 +65,7 @@ const Image = ({
             type="image/webp"
           />
           <img
+            data-testid="image"
             ref={handleImageRef}
             style={{
               display: placeholder && isBrowser && isLoading ? "none" : "flex",
@@ -81,7 +82,7 @@ const Image = ({
           />
         </>
       ) : (
-        <BrokenImage />
+        <BrokenImage data-testid="broken-image" />
       )}
     </picture>
   );

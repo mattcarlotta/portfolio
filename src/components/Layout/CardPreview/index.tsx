@@ -78,6 +78,7 @@ const CardPreview = ({
               scroll={false}
             >
               <FiPower
+                data-testid="fipower"
                 style={{
                   color: active ? "limegreen" : "#2c4776",
                   fontSize: 22,

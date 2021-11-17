@@ -1,5 +1,4 @@
-import { mount } from "enzyme";
-import { waitForAct } from "@noshot/utils";
+import { render, waitFor } from "@testing-library/react";
 import Image from "../index";
 
 const initProps = {
@@ -9,36 +8,39 @@ const initProps = {
 };
 
 describe("Image", () => {
-  let wrapper: any;
-  beforeEach(() => {
-    wrapper = mount(<Image {...initProps} />);
-  });
-
   it("renders without errors", () => {
-    expect(wrapper.find("[data-testid='picture']")).toExist();
+    const { getByTestId } = render(<Image {...initProps} />);
+    expect(getByTestId("picture")).toBeInTheDocument();
   });
 
   it("renders a placeholder", () => {
-    expect(wrapper.find("[data-testid='placeholder']")).toExist();
+    const { getByTestId } = render(<Image {...initProps} />);
+    expect(getByTestId("placeholder")).toBeInTheDocument();
   });
 
   it("on success loads an image", async () => {
-    await waitForAct(() => {
-      wrapper.find("img").props().onLoad();
-      wrapper.update();
+    const { getByTestId } = render(<Image {...initProps} />);
 
-      expect(
-        wrapper.find("[data-testid='placeholder']").first(),
-      ).toHaveStyleRule("display", "none");
-    }, 1000);
+    const node = getByTestId("image");
+
+    await waitFor(() => {
+      // @ts-ignore
+      node?.onload();
+
+      expect(getByTestId("placeholder")).toHaveStyleRule("display", "none");
+    });
   });
 
   it("on failure displays a broken link icon", async () => {
-    await waitForAct(() => {
-      wrapper.find("img").props().onError();
-      wrapper.update();
+    const { getByTestId } = render(<Image {...initProps} />);
 
-      expect(wrapper.find("BrokenImage")).toExist();
+    const node = getByTestId("image");
+
+    await waitFor(() => {
+      // @ts-ignore
+      node?.onerror();
+
+      expect(getByTestId("broken-image")).toBeInTheDocument();
     });
   });
 });

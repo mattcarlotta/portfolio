@@ -1,34 +1,37 @@
-import { mount, ReactWrapper } from "enzyme";
+import { render } from "@testing-library/react";
 import Button from "../index";
 
 describe("Button", () => {
-  let wrapper: ReactWrapper;
-  beforeEach(() => {
-    wrapper = mount(<Button data-testid="flex" />);
-  });
-
   it("renders without errors", () => {
-    expect(wrapper).toExist();
-    expect(wrapper).toHaveStyleRule("color", "#1f1f1f");
-    expect(wrapper).toHaveStyleRule("height", "auto");
-    expect(wrapper).toHaveStyleRule("width", "auto");
-    expect(wrapper).toHaveStyleRule("color", "#1f1f1f", { target: "hover" });
+    const { getByTestId } = render(<Button data-testid="custom-btn" />);
+    const btnNode = getByTestId("custom-btn");
+    expect(btnNode).toHaveStyleRule("color", "#1f1f1f");
+    expect(btnNode).toHaveStyleRule("height", "auto");
+    expect(btnNode).toHaveStyleRule("width", "auto");
+    expect(btnNode).toHaveStyleRule("color", "#1f1f1f", { target: "hover" });
   });
 
   it("sets 'color' when passed a 'clickable' prop", () => {
-    wrapper.setProps({ clickable: true });
+    const { getByTestId } = render(
+      <Button data-testid="custom-btn" clickable />,
+    );
+    const btnNode = getByTestId("custom-btn");
 
-    expect(wrapper).toHaveStyleRule("color", "#fff");
-    expect(wrapper).toHaveStyleRule("color", "#0080ff", { target: "hover" });
+    expect(btnNode).toHaveStyleRule("color", "#fff");
+    expect(btnNode).toHaveStyleRule("color", "#0080ff", { target: "hover" });
   });
 
   it("sets height when passed a 'height' prop", () => {
-    wrapper.setProps({ height: "10px" });
-    expect(wrapper).toHaveStyleRule("height", "10px");
+    const { getByTestId } = render(
+      <Button data-testid="custom-btn" height="10px" />,
+    );
+    expect(getByTestId("custom-btn")).toHaveStyleRule("height", "10px");
   });
 
   it("sets width when passed a 'width' prop", () => {
-    wrapper.setProps({ width: "10px" });
-    expect(wrapper).toHaveStyleRule("width", "10px");
+    const { getByTestId } = render(
+      <Button data-testid="custom-btn" width="10px" />,
+    );
+    expect(getByTestId("custom-btn")).toHaveStyleRule("width", "10px");
   });
 });

@@ -101,10 +101,6 @@ const ModalDialog = ({
         handleNextImage(index - 1);
         break;
       }
-      case "Escape": {
-        handleModalExit();
-        break;
-      }
       default:
         break;
     }
@@ -123,7 +119,7 @@ const ModalDialog = ({
       ? document.getElementById(`button-preview-${title}`)
       : null;
     /* istanbul ignore next */
-    if (previewImage)
+    if (previewImage?.scrollIntoView)
       previewImage.scrollIntoView({
         behavior: "smooth",
         block: "center",

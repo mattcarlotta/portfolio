@@ -1,10 +1,10 @@
-import { mount } from "enzyme";
+import { render } from "@testing-library/react";
 import Footer from "../index";
 
-const wrapper = mount(<Footer />);
+const { getByTestId } = render(<Footer data-testid="footer" />);
 
 describe("Footer", () => {
   it("renders without errors", () => {
-    expect(wrapper.find("[data-testid='footer']")).toExist();
+    expect(getByTestId("footer")).toBeInTheDocument();
   });
 });

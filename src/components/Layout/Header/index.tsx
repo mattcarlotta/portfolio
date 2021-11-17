@@ -52,6 +52,7 @@ const HEADERLINKS = [
 
 const Header = (): ReactElement => (
   <header
+    data-testid="head"
     css={css`
       padding-top: 60px;
     `}

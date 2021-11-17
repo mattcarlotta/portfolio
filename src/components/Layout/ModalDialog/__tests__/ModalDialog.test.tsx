@@ -1,5 +1,6 @@
-import { mount, ReactWrapper } from "enzyme";
-import { waitForAct } from "@noshot/utils";
+import { fireEvent, render, waitFor } from "@testing-library/react";
+import { within } from "@testing-library/dom";
+import userEvent from "@testing-library/user-event";
 import ModalDialog from "../index";
 
 const props = {
@@ -18,197 +19,199 @@ const props = {
   ],
 };
 
-const events = { keydown: null } as any;
-window.addEventListener = (event: any, cb: any) => {
-  events[event] = cb;
-};
+// const events = { keydown: null } as any;
+// window.addEventListener = (event: any, cb: any) => {
+//   events[event] = cb;
+// };
 
-window.document.getElementById = jest.fn();
+// window.document.getElementById = jest.fn();
 
 describe("ModalDialog", () => {
-  let wrapper: ReactWrapper;
-  let findById: (id: string) => ReactWrapper;
-  beforeEach(() => {
-    wrapper = mount(<ModalDialog {...props} />);
-    findById = id => wrapper.find(`[data-testid='${id}']`);
-  });
+  //   let wrapper: ReactWrapper;
+  //   let findById: (id: string) => ReactWrapper;
+  //   beforeEach(() => {
+  //     wrapper = mount(<ModalDialog {...props} />);
+  //     findById = id => wrapper.find(`[data-testid='${id}']`);
+  //   });
 
   it("renders without errors", () => {
-    expect(findById("snapshots")).toExist();
+    const { getByTestId } = render(<ModalDialog {...props} />);
+    expect(getByTestId("snapshots")).toBeInTheDocument();
   });
 
-  it("clicking on a snapshot opens a modal dialog", async () => {
-    findById("example 123").first().simulate("click");
+  it("opens a modal dialog when clicking on a snapshot", async () => {
+    const { getByTestId } = render(<ModalDialog {...props} />);
 
-    await waitForAct(() => {
-      wrapper.update();
+    fireEvent.click(getByTestId("example 123"));
 
-      expect(wrapper.find("#modal")).toExist();
-    });
-  });
-
-  it("clicking on the 'next-image' or 'previous-image' navigates the snapshots", async () => {
-    findById("example 123").first().simulate("click");
-
-    await waitForAct(() => {
-      wrapper.update();
-
-      expect(wrapper.find("#modal")).toExist();
-    });
-
-    findById("next-image").first().simulate("click");
-
-    await waitForAct(() => {
-      wrapper.update();
-
-      expect(findById("modal-title").at(1)).toHaveText("example 456");
-    });
-
-    findById("previous-image").first().simulate("click");
-
-    await waitForAct(() => {
-      wrapper.update();
-
-      expect(findById("modal-title").at(1)).toHaveText("example 123");
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
   });
 
-  it("clicking on the 'next-image' wraps around to the first image", async () => {
-    findById("example 456").first().simulate("click");
+  it("navigates the snapshots when clicking on the 'next-image' or 'previous-image' buttons", async () => {
+    const { getByTestId } = render(<ModalDialog {...props} />);
 
-    await waitForAct(() => {
-      wrapper.update();
+    fireEvent.click(getByTestId("example 123"));
 
-      expect(wrapper.find("#modal")).toExist();
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    findById("next-image").first().simulate("click");
+    fireEvent.click(getByTestId("next-image"));
 
-    await waitForAct(() => {
-      wrapper.update();
-
-      expect(findById("modal-title").at(1)).toHaveText("example 123");
-    });
-  });
-
-  it("clicking on the 'previous-image' wraps around to the last image", async () => {
-    findById("example 123").first().simulate("click");
-
-    await waitForAct(() => {
-      wrapper.update();
-
-      expect(wrapper.find("#modal")).toExist();
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 456"),
+      ).toBeInTheDocument();
     });
 
-    findById("previous-image").first().simulate("click");
+    fireEvent.click(getByTestId("previous-image"));
 
-    await waitForAct(() => {
-      wrapper.update();
-
-      expect(findById("modal-title").at(1)).toHaveText("example 456");
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 123"),
+      ).toBeInTheDocument();
     });
   });
 
-  it("clicking on a preview image navigates to it", async () => {
-    findById("example 123").first().simulate("click");
+  it("wraps around to the first image when clicking on the 'next-image' button", async () => {
+    const { getByTestId } = render(<ModalDialog {...props} />);
 
-    await waitForAct(() => {
-      wrapper.update();
+    fireEvent.click(getByTestId("example 456"));
 
-      expect(wrapper.find("#modal")).toExist();
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    findById("button-example 456").first().simulate("click");
+    fireEvent.click(getByTestId("next-image"));
 
-    await waitForAct(() => {
-      wrapper.update();
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 123"),
+      ).toBeInTheDocument();
+    });
+  });
 
-      expect(findById("modal-title").at(1)).toHaveText("example 456");
+  it("wraps around to the last image clicking on the 'previous-image' button", async () => {
+    const { getByTestId } = render(<ModalDialog {...props} />);
+
+    fireEvent.click(getByTestId("example 123"));
+
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
+    });
+
+    fireEvent.click(getByTestId("previous-image"));
+
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 456"),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it("navigates to an image when clicking on a preview of it", async () => {
+    const { getByTestId } = render(<ModalDialog {...props} />);
+
+    fireEvent.click(getByTestId("example 123"));
+
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
+    });
+
+    fireEvent.click(getByTestId("button-example 456"));
+
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 456"),
+      ).toBeInTheDocument();
     });
   });
 
   it("pressing tab navigates to next image", async () => {
-    findById("example 123").first().simulate("click");
+    const { getByTestId } = render(<ModalDialog {...props} />);
 
-    await waitForAct(() => {
-      wrapper.update();
+    fireEvent.click(getByTestId("example 123"));
 
-      expect(wrapper.find("#modal")).toExist();
-      events.keydown({ key: "Tab" });
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitForAct(() => {
-      wrapper.update();
+    userEvent.tab();
 
-      expect(findById("modal-title").at(1)).toHaveText("example 456");
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 456"),
+      ).toBeInTheDocument();
     });
   });
 
   it("pressing arrowright key navigates to next image", async () => {
-    findById("example 123").first().simulate("click");
+    const { getByTestId } = render(<ModalDialog {...props} />);
 
-    await waitForAct(() => {
-      wrapper.update();
+    fireEvent.click(getByTestId("example 123"));
 
-      expect(wrapper.find("#modal")).toExist();
-      events.keydown({ key: "ArrowRight" });
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitForAct(() => {
-      wrapper.update();
+    userEvent.keyboard("{arrowright}");
 
-      expect(findById("modal-title").at(1)).toHaveText("example 456");
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 456"),
+      ).toBeInTheDocument();
     });
   });
 
   it("pressing arrowleft key navigates to previous image", async () => {
-    findById("example 123").first().simulate("click");
+    const { getByTestId } = render(<ModalDialog {...props} />);
 
-    await waitForAct(() => {
-      wrapper.update();
+    fireEvent.click(getByTestId("example 123"));
 
-      expect(wrapper.find("#modal")).toExist();
-      events.keydown({ key: "ArrowLeft" });
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitForAct(() => {
-      wrapper.update();
+    userEvent.keyboard("{arrowleft}");
 
-      expect(findById("modal-title").at(1)).toHaveText("example 456");
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 456"),
+      ).toBeInTheDocument();
     });
   });
 
   it("pressing esc key closes the modal", async () => {
-    findById("example 123").first().simulate("click");
+    const { getByTestId } = render(<ModalDialog {...props} />);
 
-    await waitForAct(() => {
-      wrapper.update();
+    fireEvent.click(getByTestId("example 123"));
 
-      expect(wrapper.find("#modal")).toExist();
-      events.keydown({ key: "Escape" });
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitForAct(() => {
-      wrapper.update();
+    userEvent.keyboard("{esc}");
 
-      expect(findById("modal-title")).not.toExist();
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).not.toBeInTheDocument();
     });
   });
 
   it("pressing arrowup key does nothing", async () => {
-    findById("example 123").first().simulate("click");
+    const { getByTestId } = render(<ModalDialog {...props} />);
 
-    await waitForAct(() => {
-      wrapper.update();
+    fireEvent.click(getByTestId("example 123"));
 
-      expect(wrapper.find("#modal")).toExist();
-      events.keydown({ key: "ArrowUp" });
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitForAct(() => {
-      wrapper.update();
+    userEvent.keyboard("{arrowup}");
 
-      expect(wrapper.find("#modal")).toExist();
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
     });
   });
 });

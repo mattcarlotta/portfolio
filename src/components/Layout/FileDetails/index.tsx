@@ -27,7 +27,10 @@ const FileDetails = ({
 }: FileDetailsProps): JSX.Element => (
   <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
     <Info data-testid="status">
-      <FiPower style={{ color: active ? "limegreen" : "#2c4776", ...style }} />
+      <FiPower
+        data-testid="fipower"
+        style={{ color: active ? "limegreen" : "#2c4776", ...style }}
+      />
       {status}
     </Info>
     <Info data-testid="filename">
