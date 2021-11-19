@@ -21,7 +21,7 @@ const HEADERLINKS = [
   // {
   //   dataTestId: "mail",
   //   Icon: GoMail,
-  //   link: "mailto:matt@mattcarlotta.sh",
+  //   link: "mailto:matt@mattcarlotta.com",
   //   description: "My email address",
   // },
   {

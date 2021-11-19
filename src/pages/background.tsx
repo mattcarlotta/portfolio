@@ -177,9 +177,9 @@ const Background = (): ReactElement => (
               <OutsideLink
                 dataTestId="send-email-link"
                 ariaLabel="Click to send me an email."
-                href="mailto:matt@mattcarlotta.sh"
+                href="mailto:matt@mattcarlotta.com"
               >
-                matt@mattcarlotta.sh
+                matt@mattcarlotta.com
               </OutsideLink>
             </Info>
           </NormalText>
