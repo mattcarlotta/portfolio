@@ -40,7 +40,7 @@ class CustomDocument extends Document {
         <link rel="manifest" href="/manifest.json" />
         <link
           rel="preload"
-          href="/fonts/elemental.ttf"
+          href="/fonts/Elemental.ttf"
           as="font"
           crossOrigin="anonymous"
         />

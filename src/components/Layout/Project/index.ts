@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const projectVariants = {
   animate: { x: 0, opacity: 1, transition: { delay: 0 } },
-  initial: { x: -1000, opacity: 0 },
-  exit: { x: -1000, opacity: 0 },
+  initial: { x: "-100vw", opacity: 0 },
+  exit: { x: "-100vw", opacity: 0 },
 };
 
 const Project = styled(motion.div)`
