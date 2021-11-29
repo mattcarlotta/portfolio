@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import styled from "@emotion/styled";
 import Center from "~components/Layout/Center";
 import SubHeadline from "~components/Layout/SubHeadline";
@@ -10,7 +9,7 @@ const FooterComponent = ({
 }): JSX.Element => (
   <footer data-testid="footer" className={className}>
     <Center>
-      <SubHeadline>©{dayjs().year()} matt carlotta</SubHeadline>
+      <SubHeadline>©{new Date().getFullYear()} matt carlotta</SubHeadline>
     </Center>
   </footer>
 );

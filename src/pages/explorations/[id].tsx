@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import get from "lodash.get";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import Explorations, { Exploration } from "~components/Layout/Explorations";
 import FileDetails from "~components/Layout/FileDetails";
@@ -63,9 +62,9 @@ const ExplorationsPage = ({
   ) : null;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = get(params, ["id"]);
-
-  const exploration = Explorations.find(exploration => exploration.href === id);
+  const exploration = Explorations.find(
+    exploration => exploration.href === params?.id,
+  );
 
   if (!exploration)
     return {

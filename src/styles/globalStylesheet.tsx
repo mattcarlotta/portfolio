@@ -9,7 +9,7 @@ export const GlobalStylesheet = (): JSX.Element => (
         font-style: normal;
         font-weight: normal;
         font-display: swap;
-        src: url("/fonts/elemental.ttf") format("truetype");
+        src: url("/fonts/Elemental.ttf") format("truetype");
       }
 
       @font-face {

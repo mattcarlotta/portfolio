@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
 const categoryVariants = {
-  initial: { x: -1000, opacity: 0 },
-  exit: { x: -1000, opacity: 0 },
+  initial: { x: "-100vw", opacity: 0 },
+  exit: { x: "-100vw", opacity: 0 },
   animate: { x: 0, opacity: 1, transition: { delay: 0.15 } },
 };
 

@@ -8,11 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -24,36 +20,15 @@
     "target": "es6",
     "jsxImportSource": "@emotion/react",
     "paths": {
-      "~components/*": [
-        "src/components/*"
-      ],
-      "~icons": [
-        "src/icons/index"
-      ],
-      "~pages/*": [
-        "src/pages/*"
-      ],
-      "~styles/*": [
-        "src/styles/*"
-      ],
-      "~types": [
-        "src/types/index"
-      ],
-      "~utils/*": [
-        "src/utils/*"
-      ]
+      "~components/*": ["src/components/*"],
+      "~icons": ["src/icons/index"],
+      "~pages/*": ["src/pages/*"],
+      "~styles/*": ["src/styles/*"],
+      "~types": ["src/types/index"],
+      "~utils/*": ["src/utils/*"]
     },
     "incremental": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    ".next",
-    "out",
-    "e2e",
-    "build"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", ".next", "out", "e2e", "build"]
 }

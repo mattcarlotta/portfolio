@@ -129,6 +129,11 @@ const additionalEdu = [
       "Learn Rust by Building Real Applications - Lyubomir Gavadinov - Udemy",
     url: "https://www.udemy.com/course/rust-fundamentals/",
   },
+  {
+    title:
+      "CSS Grid & Flexbox for Responsive Layouts, v2 - Jen Kramer - Front End Masters",
+    url: "https://frontendmasters.com/courses/css-grid-flexbox-v2/",
+  },
 ];
 
 const style = {

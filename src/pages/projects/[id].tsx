@@ -1,4 +1,3 @@
-import get from "lodash.get";
 import Applications, { Application } from "~components/Layout/Apps";
 import Page from "~components/Layout/Page";
 import type { GetStaticPaths, GetStaticProps, ReactElement } from "~types";
@@ -11,9 +10,7 @@ const AppsPage = ({ application }: ApplicationProps): ReactElement | null =>
   application ? <Page {...application} /> : null;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = get(params, ["id"]);
-
-  const application = Applications.find(app => app.id === id);
+  const application = Applications.find(app => app.id === params?.id);
 
   if (!application)
     return {

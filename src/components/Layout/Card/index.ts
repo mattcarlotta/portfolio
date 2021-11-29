@@ -10,9 +10,9 @@ const cardVariants = {
     opacity: 1,
     transition: { delay: 0.1 * index },
   }),
-  initial: { x: -1000, opacity: 0 },
+  initial: { x: "-100vw", opacity: 0 },
   exit: {
-    x: -1000,
+    x: "-100vw",
     opacity: 0,
     transition: { delay: 0 },
   },
