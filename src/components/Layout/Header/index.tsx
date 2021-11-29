@@ -34,7 +34,7 @@ const Header = (): ReactElement => (
   <header
     data-testid="head"
     css={css`
-      padding-top: 60px;
+      padding-top: 50px;
     `}
   >
     <FlexSpaceAround breakpoint direction="row">
@@ -66,7 +66,7 @@ const Header = (): ReactElement => (
     <Orbits />
     <Center data-testid="header">
       <Headline>MATT CARLOTTA</Headline>
-      <SubHeadline>web developer</SubHeadline>
+      <SubHeadline>fullstack web developer</SubHeadline>
     </Center>
   </header>
 );

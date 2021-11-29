@@ -461,7 +461,7 @@ const Applications: Array<Application> = [
       source: "https://github.com/mattcarlotta/composable-styled-components",
     },
     preview: {
-      alt: "composable-preview",
+      alt: "A centered logo of the word Composable and underneath it is some source code within a black box.",
       ariaLabel: "Navigate to the Composable Styled Components project page.",
       src: "composable/composablePreview",
     },
@@ -469,31 +469,31 @@ const Applications: Array<Application> = [
     snapshots: [
       {
         src: "api/composableAPI",
-        alt: "api-preview",
+        alt: "An API page that displays examples of the Composable functions and how to use them.",
         title: "api",
         ratio: "20",
       },
       {
         src: "demos/composableDemos",
-        alt: "demo-preview",
+        alt: "A Demo page that displays examples of the Composable functions and how to use them with example source code.",
         title: "demos",
         ratio: "20",
       },
       {
         src: "home/composableHome",
-        alt: "home-preview",
+        alt: "The Home page of the Composable website, which displays a centered logo of the word Composable and underneath it is some source code within a black box.",
         title: "home",
         ratio: "20",
       },
       {
         src: "releases/composableReleases",
-        alt: "releases-preview",
+        alt: "The Releases page of the Composable website, which displays a list of released versions and change notes.",
         title: "releases",
         ratio: "20",
       },
       {
         src: "search/composableSearch",
-        alt: "search-preview",
+        alt: "An example of the search functionality within the Composable website, which integrates with the Algolia search engine.",
         title: "search",
         ratio: "20",
       },
@@ -525,7 +525,7 @@ const Applications: Array<Application> = [
       source: "https://github.com/mattcarlotta/react-smde",
     },
     preview: {
-      alt: "react-smde-preview",
+      alt: "A screenshot of some Markdown code being previewed within the React SMDE package. React SMDE is a standalone package that allows users to edit and preview Markdown code.",
       ariaLabel: "Navigate to the React SMDE project page",
       src: "reactsmde/reactsmdePreview",
     },
@@ -533,19 +533,19 @@ const Applications: Array<Application> = [
     snapshots: [
       {
         src: "code/reactsmdeCode",
-        alt: "example-code-preview",
+        alt: "An example of how source code that is used to display syntax highlighting within React SMDE.",
         title: "ex. code",
         ratio: "20",
       },
       {
         src: "preview/reactsmdeCodePreview",
-        alt: "example-code-syntax-preview",
+        alt: "An example of what syntax highlighting looks like within React SMDE's preview.",
         title: "ex. code preview",
         ratio: "20",
       },
       {
         src: "source/reactsmdeSource",
-        alt: "example-code-source-preview",
+        alt: "A pop up modal that contains copyable source code of how to use syntax highlighting  within React SMDE.",
         title: "ex. code source",
         ratio: "20",
       },
@@ -571,7 +571,7 @@ const Applications: Array<Application> = [
         "A bash script to display git status of a git tracked folder",
     },
     preview: {
-      alt: "git-gnome-preview",
+      alt: "A preview of a terminal running a bash script that display git status of a git tracked folder.",
       ariaLabel: "Navigate to the Git Gnome-Terminal project page",
       src: "gitgnometerm/gitgnomePreview",
     },
@@ -585,25 +585,25 @@ const Applications: Array<Application> = [
     snapshots: [
       {
         src: "clean/gitgnomeClean",
-        alt: "gitgnome-clean-preview",
+        alt: "A preview of a terminal displaying the logged in user, their current directory, the git branch they've checked out, and the current branch's status.",
         title: "clean folder",
         ratio: "20",
       },
       {
         src: "unstaged/gitgnomeUnstaged",
-        alt: "gitgnome-unstaged-preview",
+        alt: "A preview of a terminal displaying the logged in user, their current directory, the git branch they've checked out, and the branch's status which is currently unstaged",
         title: "unstaged files",
         ratio: "20",
       },
       {
         src: "staged/gitgnomeStaged",
-        alt: "gitgnome-staged-preview",
+        alt: "A preview of a terminal displaying the logged in user, their current directory, the git branch they've checked out, and the branch's status which is currently staged after they have run 'git add .'.",
         title: "staged files",
         ratio: "20",
       },
       {
         src: "committed/gitgnomeCommitted",
-        alt: "gitgnome-committed-preview",
+        alt: "A preview of a terminal displaying the logged in user, their current directory, the git branch they've checked out, and the branch's status which is currently comitted and in sync with a remote branch.",
         title: "committed files",
         ratio: "20",
       },
@@ -619,7 +619,7 @@ const Applications: Array<Application> = [
         "A utility function that automatically creates aliased import directories for babel",
     },
     preview: {
-      alt: "alias-dirs-preview",
+      alt: "A screenshot of alias dirs package's READEME on npm.com.",
       ariaLabel: "Navigate to the Alias Dirs project page",
       src: "aliasdirs/aliasdirsPreview",
     },
@@ -644,7 +644,7 @@ const Applications: Array<Application> = [
       source: "https://github.com/mattcarlotta/fullstack-mern-kit",
     },
     preview: {
-      alt: "fs-mern-kit-preview",
+      alt: "A dark grey background square with a centered logo with 4 circlular logos of: Mongodb, Express, ReactJS and NodeJS. Underneath those logos is the text M, E, R, N that corresponds their respective circle logos.",
       ariaLabel: "Navigate to the Fullstack M.E.R.N. Kit project page",
       src: "mernkit/mernkitPreview",
     },
@@ -652,7 +652,7 @@ const Applications: Array<Application> = [
     snapshots: [
       {
         src: "logo/mernkitLogo",
-        alt: "mernkit-preview",
+        alt: "A dark grey background square with a centered logo with 4 circlular logos of: Mongodb, Express, ReactJS and NodeJS. Underneath those logos is the text M, E, R, N that corresponds their respective circle logos.",
         title: "logo",
         ratio: "35",
       },
@@ -673,7 +673,7 @@ const Applications: Array<Application> = [
       source: "https://github.com/mattcarlotta/campground-app-frontend",
     },
     preview: {
-      alt: "yelp-camp-preview",
+      alt: "A screenshot of a reviewed campground within the Yelp Camp application.",
       ariaLabel: "Navigate to the Yelp Camp project page",
       src: "yelpcamp/yelpcampPreview",
     },
@@ -681,7 +681,7 @@ const Applications: Array<Application> = [
     snapshots: [
       {
         src: "app/yelpcampPreview",
-        alt: "yelp-camp-preview",
+        alt: "A screenshot of White Wolf campground page that contains a navbar at the top and underneath it is an image of the White Wolf campground's sign. Underneath the image is the campground's name and a brief description of it. To the right of the image and description is a Google map pinpointing its location and the current weather for the area.",
         title: "ex. campground",
         ratio: "35",
       },
@@ -702,7 +702,7 @@ const Applications: Array<Application> = [
       source: "https://github.com/mattcarlotta/autorunGCNDriver",
     },
     preview: {
-      alt: "autorun-gcn-preview",
+      alt: "A cartoony logo of a purple Game Cube controller.",
       ariaLabel: "Navigate to the Autorun GCN project page.",
       src: "autorungcn/autorunGCNPreview",
     },
@@ -710,7 +710,7 @@ const Applications: Array<Application> = [
     snapshots: [
       {
         src: "logo/autorunGCNLogo",
-        alt: "autorunGCN-logo-preview",
+        alt: "A cartoony logo of a purple Game Cube controller.",
         title: "logo",
         ratio: "35",
       },
@@ -731,7 +731,7 @@ const Applications: Array<Application> = [
       source: "https://github.com/mattcarlotta/nvfcApp",
     },
     preview: {
-      alt: "nvfc-app-preview",
+      alt: "A white circular logo with a green fan within the center of the circle.",
       ariaLabel: "Navigate to the Nvidia Fan Controller App project page.",
       src: "nvfcapp/nvfcappPreview",
     },
@@ -739,13 +739,13 @@ const Applications: Array<Application> = [
     snapshots: [
       {
         src: "logo/nvfcappLogo",
-        alt: "logo-preview",
+        alt: "A white circular logo with a green fan within the center of the circle.",
         title: "logo",
         ratio: "35",
       },
       {
         src: "settings/nvfcappSettings",
-        alt: "system-info-preview",
+        alt: "A screenshot of the application that displays a nav bar at the top and underneath it are the current user's system details: The system information, the GPU information, the GPU utilization and the GPU's temperature and fan speed.",
         title: "system info",
         ratio: "35",
       },
@@ -766,7 +766,7 @@ const Applications: Array<Application> = [
       source: "https://github.com/mattcarlotta/ssdtGenApp",
     },
     preview: {
-      alt: "sddtgen-app-preview",
+      alt: "A circular gradient dark blue to light blue logo with white in center that states sG.",
       ariaLabel: "Navigate to the ssdtGen App project page",
       src: "ssdtgenapp/ssdtgenappPreview",
     },
@@ -774,19 +774,19 @@ const Applications: Array<Application> = [
     snapshots: [
       {
         src: "app/ssdtgenappPreview",
-        alt: "app-preview",
+        alt: "A screenshot of the application generating SSDTs for the current user's system.",
         title: "app",
         ratio: "35",
       },
       {
         src: "example/ssdtgenappExample",
-        alt: "example-preview",
+        alt: "A screenshot of a generated NVMe SSDT for the current user's system.",
         title: "ex. ssdt",
         ratio: "20",
       },
       {
         src: "logo/ssdtgenappLogo",
-        alt: "logo-preview",
+        alt: "A circular gradient dark blue to light blue logo with white in center that states sG.",
         title: "logo",
         ratio: "20",
       },
