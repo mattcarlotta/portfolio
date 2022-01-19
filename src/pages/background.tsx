@@ -191,14 +191,17 @@ const Background = (): ReactElement => (
           <DetailHeadline>Brief:</DetailHeadline>
           <SubTitle data-testid="brief">
             In September 2016, I embarked on the journey to become a fullstack
-            developer who is passionate about open-source projects, helping the
-            web development community, and building SEO optimized applications.
-            <br />
-            <br />
-            As the years have gone by, I have primarily focused my efforts in
+            developer. As the years have gone by, I have focused my efforts in:
             MongoDB, ExpressJS, ReactJS/ReduxJS and NodeJS. The apps I build are
-            test-driven, cross-platform, and production-ready. I deploy and
-            actively maintain them on remote headless Linux servers.
+            test-driven, cross-platform, and production-ready. I also deploy and
+            maintain them on remote headless Linux servers!
+            <br />
+            <br />
+            Outside of work, I love walking my dog Nico and watching
+            mystery/thriller movies. In my free time, I am passionate about
+            contributing to open-source projects. I enjoy helping the web
+            development community by asking and answering questions. And lastly,
+            I love building SEO optimized applications for fun.
           </SubTitle>
           <DetailHeadline>Tech Specs:</DetailHeadline>
           <ul
