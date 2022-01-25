@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { FiExternalLink } from "~icons";
 import type { CSSProperties, ReactNode } from "~types";
 
 export type OutsideLinkProps = {
@@ -7,6 +8,7 @@ export type OutsideLinkProps = {
   children: ReactNode;
   dataTestId?: string;
   href: string;
+  showIcon?: boolean;
   style?: CSSProperties;
 };
 
@@ -16,6 +18,7 @@ const OutsideLinkComponent = ({
   children,
   dataTestId,
   href,
+  showIcon,
   style,
 }: OutsideLinkProps) => (
   <a
@@ -28,6 +31,16 @@ const OutsideLinkComponent = ({
     style={style}
   >
     {children}
+    {showIcon && (
+      <FiExternalLink
+        style={{
+          marginLeft: 2,
+          position: "relative",
+          top: 3,
+          // fontSize: 14,
+        }}
+      />
+    )}
   </a>
 );
 

@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
 
-const SubHeadline = styled.p`
+const SubHeadline = styled.h2`
   @media (max-width: 650px) {
     font-size: 14px;
   }

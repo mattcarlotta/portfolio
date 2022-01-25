@@ -7,7 +7,7 @@ const SnapshotContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   padding: 0 10px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 `;
 
 export default SnapshotContainer;
