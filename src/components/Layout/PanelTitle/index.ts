@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const PanelTitle = styled.h1`
   color: #fff;
-  font-size: 18px;
+  font-size: 22px;
   letter-spacing: 1px;
   padding: 10px;
   text-align: center;

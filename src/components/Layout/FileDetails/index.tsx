@@ -44,6 +44,7 @@ const FileDetails = ({
           data-testid="location-link"
           href={location}
           ariaLabel="Navigate to hosted website"
+          showIcon
         >
           Demo
         </OutsideLink>
@@ -55,6 +56,7 @@ const FileDetails = ({
         data-testid="source-link"
         href={source}
         ariaLabel="Navigate to source code"
+        showIcon
       >
         Source
       </OutsideLink>

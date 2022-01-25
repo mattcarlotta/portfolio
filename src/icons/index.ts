@@ -27,6 +27,7 @@ export { FaTimes } from "@react-icons/all-files/fa/FaTimes";
 // FI
 export { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
 export { FiPower } from "@react-icons/all-files/fi/FiPower";
+export { FiExternalLink } from "@react-icons/all-files/fi/FiExternalLink";
 
 // HI
 export { HiOutlineMail } from "@react-icons/all-files/hi/HiOutlineMail";
