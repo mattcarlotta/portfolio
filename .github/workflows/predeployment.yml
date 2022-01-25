@@ -39,12 +39,12 @@ jobs:
 
       - name: Check Types
         id: types
-        run: yarn tsc
+        run: yarn types
 
       - name: Run Lint
         if: steps.types.exit_code == 0
         id: lint
-        run: yarn types
+        run: yarn lint
 
       - name: Run Tests
         if: steps.lint.exit_code == 0
