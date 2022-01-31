@@ -131,7 +131,7 @@ const additionalEdu = [
     url: "https://frontendmasters.com/courses/css-grid-flexbox-v2/",
   },
   {
-    title: "Practical Module Federation by Jack Herrington & Zack Jacson",
+    title: "Practical Module Federation by Jack Herrington & Zack Jackson",
     url: "https://module-federation.myshopify.com/products/practical-module-federation",
   },
   {
