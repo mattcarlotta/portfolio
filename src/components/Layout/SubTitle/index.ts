@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
 
-const SubTitle = styled.p`
+const SubTitle = styled.div`
   font-size: 20px;
   padding-left: 20px;
   line-height: 26px;

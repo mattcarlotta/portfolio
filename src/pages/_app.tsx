@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Fragment, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
@@ -18,13 +18,13 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
     if (typeof window !== "undefined") window.scrollTo({ top: 0 });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) jssStyles.parentElement?.removeChild(jssStyles);
   }, []);
 
   return (
-    <>
+    <Fragment>
       <Head>
         <meta
           name="viewport"
@@ -48,7 +48,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
         </Wrapper>
       </ImageContext>
       <GlobalStylesheet />
-    </>
+    </Fragment>
   );
 };
 

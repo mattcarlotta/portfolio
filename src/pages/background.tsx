@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { css } from "@emotion/react";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import Flex from "~components/Layout/Flex";
 import Image from "~components/Layout/Image";
@@ -20,125 +21,14 @@ import {
   HiOutlineMail,
   RiMapPin2Line,
 } from "~icons";
-import type { CSSProperties, ReactElement } from "~types";
-
-const TechSpecs = [
-  { technology: "Rust", level: 2 },
-  { technology: "Javascript", level: 4 },
-  { technology: "Typescript", level: 3 },
-  { technology: "Bash Script", level: 4 },
-  { technology: "NodeJS", level: 5 },
-  { technology: "NextJS", level: 5 },
-  { technology: "ReactJS", level: 5 },
-  { technology: "ReduxJS", level: 5 },
-  { technology: "MongoDB", level: 3 },
-  { technology: "PostgreSQL", level: 2 },
-  { technology: "ExpressJS", level: 4 },
-  { technology: "Webpack", level: 4 },
-  { technology: "RollupJS", level: 4 },
-  { technology: "Babel", level: 4 },
-  { technology: "Ant Design", level: 5 },
-  { technology: "Material UI", level: 5 },
-  { technology: "Bootstrap", level: 2 },
-  { technology: "Tailwind", level: 2 },
-  { technology: "Jest", level: 5 },
-  { technology: "Enzyme", level: 4 },
-  { technology: "React Testing Library", level: 3 },
-  { technology: "Cypress", level: 4 },
-  { technology: "SuperTest", level: 4 },
-  { technology: "CSS/SASS", level: 4 },
-  { technology: "Linux", level: 4 },
-  { technology: "Git", level: 4 },
-  { technology: "Github Actions", level: 3 },
-  { technology: "Nginx", level: 3 },
-];
-
-const additionalEdu = [
-  {
-    title: "Learn and Understand NodeJS by Anthony Alicea",
-    url: "https://www.udemy.com/course/understand-nodejs",
-  },
-  {
-    title: "The Web Developer Bootcamp by Colt Steele",
-    url: "https://www.udemy.com/course/the-web-developer-bootcamp",
-  },
-  {
-    title: "Modern React with Redux by Stephen Grider",
-    url: "https://www.udemy.com/course/react-redux/",
-  },
-  {
-    title: "Advanced React and Redux by Stephen Grider",
-    url: "https://www.udemy.com/course/react-redux-tutorial/",
-  },
-  {
-    title: "The Complete React Web App Developer Course by Andrew Mead",
-    url: "https://www.udemy.com/course/the-complete-react-web-app-developer-course/",
-  },
-  {
-    title: "Accelerated ES6 Javascript Training by Max Schwarzmuller",
-    url: "https://www.udemy.com/course/es6-bootcamp-next-generation-javascript/",
-  },
-  {
-    title: "The Complete Developers Guide to MongoDB by Stephen Grider",
-    url: "https://www.udemy.com/course/the-complete-developers-guide-to-mongodb",
-  },
-  {
-    title: "Node with React: Fullstack Web Development by Stephen Grider",
-    url: "https://www.udemy.com/course/node-with-react-fullstack-web-development/",
-  },
-  {
-    title: "The Complete React Developer Course (2nd edition) by Andrew Mead",
-    url: "https://www.udemy.com/course/react-2nd-edition",
-  },
-  {
-    title: "React Testing with Jest and Enzyme by Bonnie Schulkin",
-    url: "https://www.udemy.com/course/react-testing-with-jest-and-enzyme",
-  },
-  {
-    title: "Understanding TypeScript by Max Schwarzmuller",
-    url: "https://www.udemy.com/course/understanding-typescript/",
-  },
-  {
-    title: "Introduction to MongoDB by Scott Moss",
-    url: "https://frontendmasters.com/courses/mongodb/",
-  },
-  {
-    title: "VIM Fundamentals by ThePrimeagen",
-    url: "https://frontendmasters.com/courses/vim-fundamentals/",
-  },
-  {
-    title: "Developer Productivity by ThePrimeagen",
-    url: "https://frontendmasters.com/workshops/dev-productivity/",
-  },
-  {
-    title: "Git & Github Master Course by Mohit Uniyal",
-    url: "https://www.udemy.com/course/git-github-master-course/",
-  },
-  {
-    title: "The Rust Programming Language by Richard Feldman",
-    url: "https://frontendmasters.com/courses/rust/",
-  },
-  {
-    title: "Ultimate Rust Crash Course by Nathan Stocks",
-    url: "https://www.udemy.com/course/ultimate-rust-crash-course/",
-  },
-  {
-    title: "Learn Rust by Building Real Applications by Lyubomir Gavadinov",
-    url: "https://www.udemy.com/course/rust-fundamentals/",
-  },
-  {
-    title: "CSS Grid & Flexbox for Responsive Layout by Jen Kramer",
-    url: "https://frontendmasters.com/courses/css-grid-flexbox-v2/",
-  },
-  {
-    title: "Practical Module Federation by Jack Herrington & Zack Jackson",
-    url: "https://module-federation.myshopify.com/products/practical-module-federation",
-  },
-  {
-    title: "Intermediate TypeScript by Mike North",
-    url: "https://frontendmasters.com/courses/intermediate-typescript/",
-  },
-];
+import type {
+  CONTENTFUL_BACKGROUND,
+  CSSProperties,
+  GetStaticProps,
+  ReactElement,
+} from "~types";
+import { getBackground } from "~utils/contentfulApi";
+import { REVALIDATE_TIME } from "~utils/revalidate";
 
 const style = {
   fontSize: 20,
@@ -146,11 +36,15 @@ const style = {
   marginRight: 10,
 } as CSSProperties;
 
-const Background = (): ReactElement => (
+const Background = ({
+  background,
+}: {
+  background: CONTENTFUL_BACKGROUND;
+}): ReactElement => (
   <Fragment>
     <Head />
     <Project>
-      <PanelTitle data-testid="panel-title">my background</PanelTitle>
+      <PanelTitle data-testid="panel-title">{background.title}</PanelTitle>
       <Panel>
         <div
           css={css`
@@ -159,10 +53,11 @@ const Background = (): ReactElement => (
           `}
         >
           <Image
-            src="me"
-            alt="a picture of myself smiling"
-            height="100%"
-            width="100%"
+            url={background.profileImage.url}
+            alt={background.profileImage.description}
+            height={background.profileImage.height}
+            width={background.profileImage.width}
+            contentType={background.profileImage.contentType}
             styles="margin: 0 auto;max-width: 250px;max-height: 250px;border-radius: 10px;"
           />
         </div>
@@ -175,11 +70,11 @@ const Background = (): ReactElement => (
             </Info>
             <Info data-testid="location">
               <RiMapPin2Line style={style} />
-              Small town in Oregon, USA
+              {background.location}
             </Info>
             <Info data-testid="level">
               <GiRank3 style={style} />
-              Mid-Level FullStack Engineer
+              {background.rank}
             </Info>
             <Info data-testid="source">
               <HiOutlineMail style={style} />
@@ -188,25 +83,13 @@ const Background = (): ReactElement => (
                 ariaLabel="Click to send me an email."
                 href="mailto:matt@mattcarlotta.com"
               >
-                matt@mattcarlotta.com
+                {background.email}
               </OutsideLink>
             </Info>
           </NormalText>
           <DetailHeadline>Brief:</DetailHeadline>
           <SubTitle data-testid="brief">
-            In September 2016, I embarked on the journey to become a fullstack
-            engineer. As the years have gone by, I have focused my efforts in:
-            MongoDB, ExpressJS, ReactJS/ReduxJS and NodeJS. The apps I build are
-            test-driven, data-driven, cross-platform, and production-ready. I
-            also deploy and maintain them on remote headless Linux servers.
-            <br />
-            <br />
-            Outside of work, I love walking my dog Nico, building my own desktop
-            computers and watching mystery/thriller movies. In my free time, I
-            am passionate about contributing to open-source projects. I enjoy
-            helping the web development community by asking and answering
-            questions on various development platforms. And lastly, I love
-            creating web and desktop software for fun.
+            {documentToReactComponents(background.description.json)}
           </SubTitle>
           <DetailHeadline>Tech Specs:</DetailHeadline>
           <ul
@@ -216,7 +99,7 @@ const Background = (): ReactElement => (
               padding: 0 10px;
             `}
           >
-            {TechSpecs.map(({ technology, level }, index) => (
+            {background.tech.data.map(({ technology, level }, index) => (
               <li key={technology}>
                 <NormalText fontSize="20px">
                   <Flex
@@ -279,7 +162,7 @@ const Background = (): ReactElement => (
               padding: 0 10px;
             `}
           >
-            {additionalEdu.map(({ title, url }, index) => (
+            {background.education.data.map(({ title, url }, index) => (
               <li
                 style={{ background: index % 2 ? "#001031" : "transparent" }}
                 key={title}
@@ -301,5 +184,24 @@ const Background = (): ReactElement => (
     </Project>
   </Fragment>
 );
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await getBackground();
+
+  const background = res.data?.background;
+
+  if (!background) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      background,
+      revalidate: REVALIDATE_TIME,
+    },
+  };
+};
 
 export default Background;

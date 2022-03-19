@@ -30,7 +30,7 @@ export const GlobalStylesheet = (): JSX.Element => (
       body {
         margin: 0;
         color: #fff;
-        background: url("${process.env.NEXT_PUBLIC_IMAGE}/bg.png?ext=webp");
+        background: url("/bg.webp");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;

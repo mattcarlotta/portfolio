@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import * as React from "react";
+import { Fragment, useState } from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
@@ -8,27 +8,35 @@ import type { ReactElement } from "~types";
 export type ImageProps = {
   alt?: string;
   containerStyle?: string;
-  height?: string;
+  contentType: string;
+  height: number;
   placeholder?: boolean;
-  ratio?: string;
-  src?: string;
+  scale?: number;
   styles?: string;
-  width?: string;
+  width: number;
+  url: string;
 };
 
 const Image = ({
   alt,
   containerStyle,
+  contentType,
   height,
   placeholder,
-  ratio,
-  src,
+  scale = 0,
   styles,
+  url,
   width,
 }: ImageProps): ReactElement => {
-  const [state, setState] = React.useState({ error: false, isLoading: true });
+  const [state, setState] = useState({ error: false, isLoading: true });
   const { error, isLoading } = state;
   const isBrowser = typeof document !== "undefined";
+  const rescale =
+    scale !== 0
+      ? `&fit=scale&h=${Math.round(height * (scale / 100))}&w=${Math.round(
+          width * (scale / 100),
+        )}`
+      : "";
 
   const onError = () => {
     setState({ error: true, isLoading: false });
@@ -53,7 +61,7 @@ const Image = ({
       `}
     >
       {!error ? (
-        <>
+        <Fragment>
           {placeholder && (
             <LoadingPlaceholder
               data-testid="placeholder"
@@ -61,8 +69,12 @@ const Image = ({
             />
           )}
           <source
-            srcSet={`${process.env.NEXT_PUBLIC_IMAGE}/${src}.png?&ext=webp&ratio=${ratio}`}
+            srcSet={`${url}?fm=webp${Boolean(rescale) ? `&${rescale}` : ""}`}
             type="image/webp"
+          />
+          <source
+            srcSet={`${url}${Boolean(rescale) ? `?${rescale}` : ""}`}
+            type={contentType}
           />
           <img
             data-testid="image"
@@ -73,23 +85,19 @@ const Image = ({
             css={css`
               ${styles}
             `}
-            src={`${process.env.NEXT_PUBLIC_IMAGE}/${src}.png?ratio=${ratio}`}
+            src={url}
             height={height}
             width={width}
             onLoad={onLoad}
             onError={onError}
             alt={alt}
           />
-        </>
+        </Fragment>
       ) : (
         <BrokenImage data-testid="broken-image" />
       )}
     </picture>
   );
-};
-
-Image.defaultProps = {
-  ratio: "0",
 };
 
 export default Image;
