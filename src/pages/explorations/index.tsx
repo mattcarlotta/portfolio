@@ -39,7 +39,7 @@ const ExplorationsPage = ({
           href="explorations"
           source={`https://codesandbox.io/s/${sandboxId}`}
           status="In Orbit"
-          alt=""
+          alt={preview.description}
         />
       ))}
     </Flex>

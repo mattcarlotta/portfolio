@@ -25,7 +25,7 @@ const Home = ({
           ariaLabel={`Navigate to my ${slug} page`}
           href={slug}
           showInfo={false}
-          alt=""
+          alt={preview.description}
         />
       ))}
     </Flex>
