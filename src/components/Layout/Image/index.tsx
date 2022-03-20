@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
@@ -27,10 +27,10 @@ const Image = ({
   styles,
   url,
   width,
-}: ImageProps): ReactElement => {
+}: ImageProps): ReactElement | null => {
   const [state, setState] = useState({ error: false, isLoading: true });
+  const [isBrowser, setBrowser] = useState(false);
   const { error, isLoading } = state;
-  const isBrowser = typeof document !== "undefined";
   const isRescaled = scale !== 0;
   const newHeight = isRescaled ? Math.round(height * (scale / 100)) : height;
   const newWidth = isRescaled ? Math.round(width * (scale / 100)) : width;
@@ -51,7 +51,11 @@ const Image = ({
     }
   };
 
-  return (
+  useEffect(() => {
+    setBrowser(true);
+  }, []);
+
+  return isBrowser ? (
     <picture
       data-testid="picture"
       css={css`
@@ -63,7 +67,9 @@ const Image = ({
           {placeholder && (
             <LoadingPlaceholder
               data-testid="placeholder"
-              isLoading={isBrowser && isLoading}
+              height={height}
+              width={width}
+              isLoading={isLoading}
             />
           )}
           <source
@@ -78,7 +84,7 @@ const Image = ({
             data-testid="image"
             ref={handleImageRef}
             style={{
-              display: placeholder && isBrowser && isLoading ? "none" : "flex",
+              display: placeholder && isLoading ? "none" : "flex",
             }}
             css={css`
               ${styles}
@@ -95,7 +101,7 @@ const Image = ({
         <BrokenImage data-testid="broken-image" />
       )}
     </picture>
-  );
+  ) : null;
 };
 
 export default Image;

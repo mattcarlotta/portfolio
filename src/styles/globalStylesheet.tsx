@@ -43,13 +43,13 @@ export const GlobalStylesheet = (): JSX.Element => (
 
       @keyframes pulse {
         0% {
-          background-color: #eee;
+          background-color: #00020e;
         }
         50% {
-          background-color: #e4e4e4;
+          background-color: #00264d;
         }
         100% {
-          background-color: #eee;
+          background-color: #00020e;
         }
       }
 

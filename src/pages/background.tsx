@@ -47,6 +47,7 @@ const Background = ({
       <Panel>
         <Image
           {...background.profileImage}
+          placeholder
           alt={background.profileImage.description}
           styles="margin: 30px auto auto;border-radius: 10px;"
         />

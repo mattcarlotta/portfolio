@@ -62,6 +62,7 @@ const CardPreview = ({
           href={`/${href}/${slug}`}
         >
           <Image
+            placeholder
             url={url}
             alt={alt}
             scale={scale}

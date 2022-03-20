@@ -176,7 +176,7 @@ const ModalDialog = ({
             onKeyDown={event => handleSelectImage(event, idx)}
           >
             <CardTitle>{title}</CardTitle>
-            <Image scale={35} {...rest} />
+            <Image placeholder scale={25} {...rest} styles="margin: 0 auto;" />
           </PreviewCard>
         ))}
       </SnapshotContainer>
@@ -253,7 +253,8 @@ const ModalDialog = ({
               >
                 <Image
                   {...rest}
-                  styles="height: 75px;margin: 0 auto;align-self: center;"
+                  placeholder
+                  styles="height: 75px;margin: 0 auto;align-self: center;background: black;"
                   scale={10}
                 />
               </ImagePreviewButton>
