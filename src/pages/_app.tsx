@@ -1,7 +1,5 @@
 import { Fragment, useEffect } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { AnimatePresence } from "framer-motion";
 import Body from "~components/Layout/Body";
 import Header from "~components/Layout/Header";
 import ImageContext from "~components/ImageContext";
@@ -12,12 +10,6 @@ import GlobalStylesheet from "~styles/globalStylesheet";
 import type { AppProps, ReactElement } from "~types";
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
-  const router = useRouter();
-
-  const handleExitComplete = () => {
-    if (typeof window !== "undefined") window.scrollTo({ top: 0 });
-  };
-
   useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) jssStyles.parentElement?.removeChild(jssStyles);
@@ -36,12 +28,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
           <Main>
             <Header />
             <Body data-testid="body">
-              <AnimatePresence
-                exitBeforeEnter
-                onExitComplete={handleExitComplete}
-              >
-                <Component {...pageProps} key={router.route} />
-              </AnimatePresence>
+              <Component {...pageProps} />
             </Body>
             <Footer />
           </Main>
