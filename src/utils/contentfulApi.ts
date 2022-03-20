@@ -73,6 +73,19 @@ export function getAllExplorations() {
   );
 }
 
+export function getProjectBySlug(slug: string) {
+  return fetchGraphQL(
+    `query {
+      projectsCollection(where: { slug: "${slug}" }) {
+        items {
+          ${PROJECTS}
+        }
+      }
+    }
+    `,
+  );
+}
+
 export function getAllProjects() {
   return fetchGraphQL(
     `query {

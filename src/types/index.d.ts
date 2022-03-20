@@ -84,8 +84,8 @@ export type CONTENTFUL_PROJECTS_PAGE = {
   source: string;
   preview: CONTENTFUL_IMAGE;
   tech: Array<string>;
-  snapshots?: {
-    items?: Array<CONTENTFUL_IMAGE>;
+  snapshotsCollection: {
+    items: Array<CONTENTFUL_IMAGE>;
   };
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE &

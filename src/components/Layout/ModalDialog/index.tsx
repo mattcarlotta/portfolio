@@ -1,6 +1,5 @@
-import * as React from "react";
+import { forwardRef, Fragment, useEffect, useCallback, useState } from "react";
 import { Slide, Dialog, withStyles } from "@material-ui/core";
-import { AppSnapshots } from "~components/Layout/Apps";
 import BackgroundImageViewer from "~components/Layout/BackgroundImage";
 import Button from "~components/Layout/Button";
 import CardTitle from "~components/Layout/CardTitle";
@@ -15,7 +14,12 @@ import ImageTitle from "~components/Layout/ImageTitle";
 import PreviewCard from "~components/Layout/PreviewCard";
 import SnapshotContainer from "~components/Layout/SnapshotContainer";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "~icons";
-import type { ReactElement, Ref, TransitionProps } from "~types";
+import type {
+  CONTENTFUL_IMAGE,
+  ReactElement,
+  Ref,
+  TransitionProps,
+} from "~types";
 
 const ImageViewer = withStyles(() => ({
   paper: {
@@ -23,108 +27,130 @@ const ImageViewer = withStyles(() => ({
   },
 }))(Dialog);
 
-const SlideTransition = React.forwardRef(
+const SlideTransition = forwardRef(
   (
     props: TransitionProps & { children?: ReactElement<any, any> },
     ref: Ref<unknown>,
   ) => <Slide direction="right" ref={ref} {...props} />,
 );
 
-export type ModalDialogProps = {
-  snapshotdirectory?: string;
-  snapshots: AppSnapshots;
-};
-
 export type ModalDialogState = {
   open: boolean;
-  index: number;
-  alt: string;
-  src: string;
+  currentIndex: number;
+  url: string;
+  description: string;
+  contentType: string;
+  height: number;
+  width: number;
   title: string;
 };
 
 const initialImageState = {
   open: false,
-  index: 0,
-  alt: "",
-  src: "",
+  currentIndex: 0,
+  url: "",
+  description: "",
+  contentType: "",
+  height: 0,
+  width: 0,
   title: "",
 };
 
 const ModalDialog = ({
-  snapshotdirectory,
   snapshots,
-}: ModalDialogProps): ReactElement => {
-  const [image, setImage] = React.useState<ModalDialogState>(initialImageState);
-  const { open, index, src, title } = image;
+}: {
+  snapshots: Array<CONTENTFUL_IMAGE>;
+}): ReactElement => {
+  const [state, setState] = useState<ModalDialogState>(initialImageState);
+  const { open, currentIndex, url, title } = state;
   const snapsLength = snapshots.length;
-  const hasSnaps = snapsLength > 0;
 
   const selectImage = (selectedIndex: number): void => {
     const image = snapshots[selectedIndex];
-    setImage(prevState => ({ ...prevState, index: selectedIndex, ...image }));
+    setState(prevState => ({
+      ...prevState,
+      currentIndex: selectedIndex,
+      ...image,
+    }));
   };
 
-  const handleImageClick = (index: number): void => {
-    setImage({ open: true, index, ...snapshots[index] });
+  const handleImageClick = (selectedIndex: number): void => {
+    const image = snapshots[selectedIndex];
+    setState({
+      open: true,
+      currentIndex: selectedIndex,
+      ...image,
+    });
   };
 
-  const handleNextImage = (nextIndex: number): void => {
-    const snapsIndexLength = snapsLength - 1;
+  const handleNextImage = useCallback(
+    (nextIndex: number): void => {
+      const snapsIndexLength = snapsLength - 1;
+      let selectedIndex = currentIndex;
 
-    const selectedIndex =
-      nextIndex >= 0 && nextIndex <= snapsIndexLength
-        ? nextIndex
-        : nextIndex < 0
-        ? snapsIndexLength
-        : 0;
+      if (nextIndex >= 0 && nextIndex <= snapsIndexLength) {
+        selectedIndex = nextIndex;
+      } else if (nextIndex < 0) {
+        selectedIndex = snapsIndexLength;
+      } else {
+        selectedIndex = 0;
+      }
 
-    selectImage(selectedIndex);
-  };
+      selectImage(selectedIndex);
+    },
+    [currentIndex, snapsLength],
+  );
 
   const handleModalExit = (): void => {
-    setImage(initialImageState);
+    setState(initialImageState);
   };
 
   const handleModalClose = (): void => {
-    setImage(prevState => ({ ...prevState, open: false }));
+    setState(prevState => ({ ...prevState, open: false }));
   };
 
-  const handleKeyDown = ({ key }: { key: string }): void => {
-    switch (key) {
-      case "Tab":
-      case "ArrowRight": {
-        handleNextImage(index + 1);
-        break;
-      }
-      case "ArrowLeft": {
-        handleNextImage(index - 1);
-        break;
-      }
-      default:
-        break;
-    }
-  };
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent): void => {
+      if (!open) return;
 
-  const handleSelectImage = ({ key }: { key: string }, index: number): void => {
+      const { key, shiftKey } = event;
+      const tabKeyPressed = key === "Tab";
+      const arrowLeftPressed = key === "ArrowLeft";
+      const arrowRightPressed = key === "ArrowRight";
+
+      if ((shiftKey && tabKeyPressed) || arrowLeftPressed) {
+        handleNextImage(currentIndex - 1);
+        return;
+      } else if (tabKeyPressed || arrowRightPressed) {
+        handleNextImage(currentIndex + 1);
+        return;
+      }
+    },
+    [open, handleNextImage, currentIndex],
+  );
+
+  const handleSelectImage = (
+    { key }: { key: string },
+    selectedIndex: number,
+  ): void => {
     switch (key) {
       case "Enter":
-        handleImageClick(index);
+        handleImageClick(selectedIndex);
         break;
       default:
         break;
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [handleKeyDown]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const previewImage = title
       ? document.getElementById(`button-preview-${title}`)
       : null;
@@ -138,28 +164,22 @@ const ModalDialog = ({
   }, [title]);
 
   return (
-    <>
-      {snapshotdirectory && <DetailHeadline>Snapshots:</DetailHeadline>}
-      {hasSnaps && (
-        <SnapshotContainer data-testid="snapshots">
-          {snapshots.map(({ src, alt, title, ratio }, index) => (
-            <PreviewCard
-              data-testid={title}
-              key={src}
-              tabIndex={0}
-              onClick={() => handleImageClick(index)}
-              onKeyDown={event => handleSelectImage(event, index)}
-            >
-              <CardTitle>{title}</CardTitle>
-              <Image
-                src={`projects/${snapshotdirectory}/${src}`}
-                ratio={ratio}
-                alt={alt}
-              />
-            </PreviewCard>
-          ))}
-        </SnapshotContainer>
-      )}
+    <Fragment>
+      <DetailHeadline>Snapshots:</DetailHeadline>
+      <SnapshotContainer data-testid="snapshots">
+        {snapshots.map(({ title, ...rest }, idx) => (
+          <PreviewCard
+            data-testid={title}
+            key={title}
+            tabIndex={0}
+            onClick={() => handleImageClick(idx)}
+            onKeyDown={event => handleSelectImage(event, idx)}
+          >
+            <CardTitle>{title}</CardTitle>
+            <Image scale={35} {...rest} />
+          </PreviewCard>
+        ))}
+      </SnapshotContainer>
       <ImageViewer
         fullScreen
         scroll="body"
@@ -188,7 +208,7 @@ const ModalDialog = ({
               data-testid="previous-image"
               type="button"
               clickable={snapsLength > 1}
-              onClick={() => handleNextImage(index - 1)}
+              onClick={() => handleNextImage(currentIndex - 1)}
             >
               <FaChevronLeft />
             </Button>
@@ -196,10 +216,7 @@ const ModalDialog = ({
         </Fixed>
         <Fixed bottom="100px" left="80px" right="80px" top="80px">
           <Flex justify="center">
-            <BackgroundImageViewer
-              dataTestId={`image-${title}`}
-              src={`${process.env.NEXT_PUBLIC_IMAGE}/projects/${snapshotdirectory}/${src}`}
-            />
+            <BackgroundImageViewer dataTestId={`image-${title}`} src={url} />
           </Flex>
         </Fixed>
         <Fixed top="calc(50% - 35px)" right="0px">
@@ -209,7 +226,7 @@ const ModalDialog = ({
               aria-label="View next image"
               type="button"
               clickable={snapsLength > 1}
-              onClick={() => handleNextImage(index + 1)}
+              onClick={() => handleNextImage(currentIndex + 1)}
             >
               <FaChevronRight />
             </Button>
@@ -222,36 +239,30 @@ const ModalDialog = ({
               whiteSpace: "nowrap",
             }}
           >
-            {hasSnaps &&
-              snapshots.map(({ title, src, alt }, idx) => (
-                <ImagePreviewButton
-                  type="button"
-                  aria-label={`View the ${title} image`}
-                  id={`button-preview-${title}`}
-                  data-testid={`button-${title}`}
-                  tabIndex={-1}
-                  aria-selected={idx === index}
-                  onClick={() => selectImage(idx)}
-                  active={idx === index}
-                  key={title}
-                >
-                  <Image
-                    styles="height: 75px;margin: 0 auto;align-self: center;"
-                    src={`projects/${snapshotdirectory}/${src}`}
-                    alt={alt}
-                    ratio="10"
-                  />
-                </ImagePreviewButton>
-              ))}
+            {snapshots.map(({ title, ...rest }, idx) => (
+              <ImagePreviewButton
+                type="button"
+                aria-label={`View the ${title} image`}
+                id={`button-preview-${title}`}
+                data-testid={`button-${title}`}
+                tabIndex={-1}
+                aria-selected={idx === currentIndex}
+                onClick={() => selectImage(idx)}
+                active={idx === currentIndex}
+                key={`preview${title}`}
+              >
+                <Image
+                  {...rest}
+                  styles="height: 75px;margin: 0 auto;align-self: center;"
+                  scale={10}
+                />
+              </ImagePreviewButton>
+            ))}
           </Center>
         </Fixed>
       </ImageViewer>
-    </>
+    </Fragment>
   );
-};
-
-ModalDialog.defaultProps = {
-  snapshots: [],
 };
 
 export default ModalDialog;

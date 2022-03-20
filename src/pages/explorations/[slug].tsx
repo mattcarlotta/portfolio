@@ -98,7 +98,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: explorations.map(({ slug }) => ({
       params: { slug },
     })),
-    fallback: true,
+    fallback: "blocking",
   };
 };
 

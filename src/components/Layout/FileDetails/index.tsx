@@ -26,11 +26,11 @@ const FileDetails = ({
   status,
 }: FileDetailsProps): JSX.Element => (
   <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
-    <Info data-testid="status">
-      <FiPower
-        data-testid="fipower"
-        style={{ color: active ? "limegreen" : "#2c4776", ...style }}
-      />
+    <Info
+      style={{ color: active ? "limegreen" : "yellow" }}
+      data-testid="status"
+    >
+      <FiPower data-testid="fipower" style={style} />
       {status}
     </Info>
     <Info style={{ textTransform: "uppercase" }} data-testid="filename">
@@ -43,7 +43,7 @@ const FileDetails = ({
         <OutsideLink
           data-testid="location-link"
           href={location}
-          ariaLabel="Navigate to hosted website"
+          ariaLabel="Navigate to demo website"
           showIcon
         >
           Demo

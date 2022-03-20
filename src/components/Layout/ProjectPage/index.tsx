@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { css } from "@emotion/react";
-import ApplicationDescriptions from "~components/Layout/AppsDescriptions";
+import ContentfulRichText from "~components/Layout/ContentfulRichText";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import ModalDialog from "~components/Layout/ModalDialog";
 import Panel from "~components/Layout/Panel";
@@ -11,31 +11,31 @@ import Text from "~components/Layout/Text";
 import PanelTitle from "~components/Layout/PanelTitle";
 import GoBack from "~components/Navigation/GoBack";
 import Head from "~components/Navigation/Header";
-import type { Application } from "~components/Layout/Apps";
+import { IoPlanet } from "~icons";
+import type { CONTENTFUL_PROJECTS_PAGE } from "~types";
 
-const Page = ({
-  id,
-  head,
-  filedetails,
-  snapshotdirectory,
-  snapshots,
+const ProjectPage = ({
+  sys,
+  title,
+  seoDescription,
+  description,
+  snapshotsCollection,
   tech,
-}: Application): JSX.Element => (
+  ...rest
+}: CONTENTFUL_PROJECTS_PAGE): JSX.Element => (
   <Fragment>
-    <Head {...head} />
+    <Head title={title} description={seoDescription} />
     <Project>
       <PanelTitle id="title" data-testid="panel-title">
-        {head.title}
+        {title}
       </PanelTitle>
       <Panel>
         <Text>
           <DetailHeadline id="details">Details:</DetailHeadline>
-          <FileDetails {...filedetails} fileName={head.title} />
+          <FileDetails fileName={title} {...rest} />
           <DetailHeadline id="description">Description:</DetailHeadline>
           <SubTitle data-testid="description">
-            {ApplicationDescriptions.map(({ appId, description }) =>
-              id === appId ? description : null,
-            )}
+            <ContentfulRichText json={description.json} />
           </SubTitle>
           <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
           <ul
@@ -45,24 +45,32 @@ const Page = ({
               padding: 0 20px;
             `}
           >
-            {tech.map(item => (
+            {tech.map((item, idx) => (
               <li
                 css={css`
                   font-size: 20px;
                   font-family: "Mukta", -apple-system, BlinkMacSystemFont,
                     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
                     "Droid Sans", "Helvetica Neue", sans-serif;
+                  background: ${idx % 2 ? "#001031" : "transparent"};
                 `}
                 key={item}
               >
+                <IoPlanet
+                  style={{
+                    position: "relative",
+                    top: 3,
+                    marginRight: 10,
+                    fontSize: 15,
+                  }}
+                />
                 {item}
               </li>
             ))}
           </ul>
-          <ModalDialog
-            snapshotdirectory={snapshotdirectory}
-            snapshots={snapshots}
-          />
+          {Boolean((snapshotsCollection.items.length ?? 0) > 0) ? (
+            <ModalDialog snapshots={snapshotsCollection!.items} />
+          ) : null}
         </Text>
       </Panel>
     </Project>
@@ -70,8 +78,4 @@ const Page = ({
   </Fragment>
 );
 
-Page.defaultProps = {
-  snapshots: [],
-};
-
-export default Page;
+export default ProjectPage;

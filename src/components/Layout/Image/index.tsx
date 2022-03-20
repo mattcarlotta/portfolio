@@ -31,12 +31,10 @@ const Image = ({
   const [state, setState] = useState({ error: false, isLoading: true });
   const { error, isLoading } = state;
   const isBrowser = typeof document !== "undefined";
-  const rescale =
-    scale !== 0
-      ? `fit=scale&h=${Math.round(height * (scale / 100))}&w=${Math.round(
-          width * (scale / 100),
-        )}`
-      : "";
+  const isRescaled = scale !== 0;
+  const newHeight = isRescaled ? Math.round(height * (scale / 100)) : height;
+  const newWidth = isRescaled ? Math.round(width * (scale / 100)) : width;
+  const rescale = isRescaled ? `fit=scale&h=${newHeight}&w=${newWidth}` : "";
 
   const onError = () => {
     setState({ error: true, isLoading: false });
@@ -69,11 +67,11 @@ const Image = ({
             />
           )}
           <source
-            srcSet={`${url}?fm=webp${Boolean(rescale) ? `&${rescale}` : ""}`}
+            srcSet={`${url}?fm=webp${isRescaled ? `&${rescale}` : ""}`}
             type="image/webp"
           />
           <source
-            srcSet={`${url}${Boolean(rescale) ? `?${rescale}` : ""}`}
+            srcSet={`${url}${isRescaled ? `?${rescale}` : ""}`}
             type={contentType}
           />
           <img
@@ -86,8 +84,8 @@ const Image = ({
               ${styles}
             `}
             src={url}
-            height={height}
-            width={width}
+            height={newHeight}
+            width={newWidth}
             onLoad={onLoad}
             onError={onError}
             alt={alt}
