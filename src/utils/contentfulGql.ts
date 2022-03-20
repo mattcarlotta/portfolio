@@ -3,6 +3,7 @@ sys {
   id
 }
 `;
+
 const image = `
 url
 description
@@ -18,6 +19,12 @@ preview {
 }
 `;
 
+const description = `
+description {
+  json
+}
+`;
+
 export const PROJECTS = `
 ${sys}
 title
@@ -26,9 +33,7 @@ active
 status
 location
 source
-description {
-  json
-}
+${description}
 tech
 snapshotsCollection {
  items {
@@ -49,9 +54,7 @@ location
 rank
 email
 location
-description {
-  json
-}
+${description}
 tech
 education
 `;
@@ -59,12 +62,9 @@ education
 export const EXPLORATIONS = `
 ${sys}
 title
-alt
 sandboxId
-description {
-  json
-}
 ${preview}
+slug
 `;
 
 export const HOMEPAGE_CARDS = `

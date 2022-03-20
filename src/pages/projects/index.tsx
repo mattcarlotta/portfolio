@@ -34,6 +34,7 @@ const Projects = ({
           key={sys.id}
           idx={index}
           href="projects"
+          alt={preview.description}
         />
       ))}
     </Flex>

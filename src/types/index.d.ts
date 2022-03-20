@@ -62,6 +62,13 @@ export type CONTENTFUL_BACKGROUND_PAGE = {
   CONTENTFUL_TITLE &
   CONTENTFUL_DESCRIPTION;
 
+export type CONTENTFUL_EXPLORATIONS_PAGE = {
+  sandboxId: string;
+  preview: CONTENTFUL_IMAGE;
+} & CONTENTFUL_ID &
+  CONTENTFUL_TITLE &
+  CONTENTFUL_SLUG;
+
 export type CONTENTFUL_PAGE_CARD = {
   description: string;
   preview: CONTENTFUL_IMAGE;

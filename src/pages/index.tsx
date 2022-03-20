@@ -27,6 +27,7 @@ const Home = ({
           idx={index}
           href={slug}
           showInfo={false}
+          alt={preview.description}
         />
       ))}
     </Flex>
