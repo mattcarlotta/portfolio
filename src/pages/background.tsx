@@ -53,7 +53,7 @@ const Background = ({
         />
         <Text>
           <DetailHeadline margin="20px 0 0 0">Details:</DetailHeadline>
-          <NormalText margin="0 0 0 15px" fontSize="16px">
+          <NormalText margin="15px 0 0 15px" fontSize="16px">
             <Info data-testid="status">
               <FiPower style={{ color: "limegreen", ...style }} />
               Activated in September 2016
