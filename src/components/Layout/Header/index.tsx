@@ -57,7 +57,7 @@ const Header = (): ReactElement => (
           ariaLabel="Navigate back to my projects page"
           href="/projects"
         >
-          <IoPlanet style={{ fontSize: 22 }} />
+          <IoPlanet />
         </LinkIcon>
       </Tooltip>
       <Tooltip title="explorations">

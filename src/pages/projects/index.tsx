@@ -20,7 +20,7 @@ const Projects = ({
   <Fragment>
     <Head description="A collection of personal and professional projects that I've created over the years" />
     <Category data-testid="category">
-      <IoPlanet style={{ fontSize: 22, marginRight: 10 }} />
+      <IoPlanet style={{ fontSize: 26, marginRight: 10 }} />
       projects
     </Category>
     <Flex
