@@ -36,7 +36,7 @@ const Projects = ({
           description={seoDescription}
           key={sys.id}
           href="projects"
-          alt={preview.description}
+          alt=""
         />
       ))}
     </Flex>
