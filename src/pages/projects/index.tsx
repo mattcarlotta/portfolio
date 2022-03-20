@@ -3,6 +3,7 @@ import CardPreview from "~components/Layout/CardPreview";
 import Category from "~components/Layout/Category";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
+import { IoPlanet } from "~icons";
 import { getAllProjects } from "~utils/contentfulApi";
 import { REVALIDATE_TIME } from "~utils/revalidate";
 import type {
@@ -18,7 +19,10 @@ const Projects = ({
 }): ReactElement => (
   <Fragment>
     <Head description="A collection of personal and professional projects that I've created over the years" />
-    <Category data-testid="category">projects</Category>
+    <Category data-testid="category">
+      <IoPlanet style={{ fontSize: 22, marginRight: 10 }} />
+      projects
+    </Category>
     <Flex
       data-testid="projects-page"
       justify="center"

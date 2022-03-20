@@ -3,6 +3,7 @@ import CardPreview from "~components/Layout/CardPreview";
 import Category from "~components/Layout/Category";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
+import { GiPlanetCore } from "~icons";
 import { getAllExplorations } from "~utils/contentfulApi";
 import { REVALIDATE_TIME } from "~utils/revalidate";
 import type {
@@ -18,7 +19,10 @@ const ExplorationsPage = ({
 }): ReactElement => (
   <Fragment>
     <Head description="A small collection of codesandbox explorations I've created over the years" />
-    <Category data-testid="category">explorations</Category>
+    <Category data-testid="category">
+      <GiPlanetCore style={{ fontSize: 22, marginRight: 10 }} />
+      explorations
+    </Category>
     <Flex
       data-testid="home-page"
       justify="center"
