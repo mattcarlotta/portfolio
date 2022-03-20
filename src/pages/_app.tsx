@@ -1,4 +1,5 @@
 import { Fragment, useEffect } from "react";
+import Script from "next/script";
 import Head from "next/head";
 import Body from "~components/Layout/Body";
 import Header from "~components/Layout/Header";
@@ -17,6 +18,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
 
   return (
     <Fragment>
+      <Script>{`window.history.scrollRestoration = "manual"`}</Script>
       <Head>
         <meta
           name="viewport"
