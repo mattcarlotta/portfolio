@@ -29,23 +29,20 @@ const ExplorationsPage = ({
       flexwrap
       margin="0 0 200px 0"
     >
-      {explorations.map(
-        ({ sys, title, sandboxId, preview, ...rest }, index) => (
-          <CardPreview
-            {...preview}
-            {...rest}
-            active
-            key={sys.id}
-            idx={index}
-            location={`https://${sandboxId}.csb.app`}
-            ariaLabel={`Navigate to my ${title} exploration page`}
-            href="explorations"
-            source={`https://codesandbox.io/s/${sandboxId}`}
-            status="In Orbit"
-            alt={preview.description}
-          />
-        ),
-      )}
+      {explorations.map(({ sys, title, sandboxId, preview, ...rest }) => (
+        <CardPreview
+          {...preview}
+          {...rest}
+          active
+          key={sys.id}
+          location={`https://${sandboxId}.csb.app`}
+          ariaLabel={`Navigate to my ${title} exploration page`}
+          href="explorations"
+          source={`https://codesandbox.io/s/${sandboxId}`}
+          status="In Orbit"
+          alt={preview.description}
+        />
+      ))}
     </Flex>
   </Fragment>
 );

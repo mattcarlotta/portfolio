@@ -29,14 +29,13 @@ const Projects = ({
       flexwrap
       margin="0 0 200px 0"
     >
-      {projects.map(({ sys, preview, seoDescription, ...rest }, index) => (
+      {projects.map(({ sys, preview, seoDescription, ...rest }) => (
         <CardPreview
           {...preview}
           {...rest}
           ariaLabel={`Navigate to my ${rest.title} project page`}
           description={seoDescription}
           key={sys.id}
-          idx={index}
           href="projects"
           alt={preview.description}
         />

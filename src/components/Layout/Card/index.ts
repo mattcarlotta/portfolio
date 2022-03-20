@@ -23,8 +23,8 @@ const Card = styled.div`
     z-index: 1;
     overflow: visible;
     border: 0;
-    scale: 1.1;
-    transition: scale 200ms ease-in-out;
+    transform: scale(1.1);
+    transition: transform 200ms ease-in-out;
 
     ${CardTitle} {
       background: #0080ff;

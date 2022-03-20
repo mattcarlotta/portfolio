@@ -20,7 +20,6 @@ export type CardPreviewProps = {
   contentType: string;
   height: number;
   href?: string;
-  idx: number;
   location?: string;
   scale?: number;
   showInfo: boolean;
@@ -40,7 +39,6 @@ const CardPreview = ({
   description,
   height,
   href,
-  idx,
   location,
   scale,
   showInfo,
@@ -51,7 +49,7 @@ const CardPreview = ({
   url,
   width,
 }: CardPreviewProps): ReactElement => (
-  <Card custom={idx}>
+  <Card>
     <PlaceHolder />
     <div className="panel-container">
       <CardTitle id={title}>{title}</CardTitle>
