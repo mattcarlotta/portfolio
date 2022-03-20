@@ -4,9 +4,17 @@ import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
 import { getHomepageCards } from "~utils/contentfulApi";
 import { REVALIDATE_TIME } from "~utils/revalidate";
-import type { CONTENTFUL_CARDS, GetStaticProps, ReactElement } from "~types";
+import type {
+  CONTENTFUL_PAGE_CARD,
+  GetStaticProps,
+  ReactElement,
+} from "~types";
 
-const Home = ({ cards }: { cards: Array<CONTENTFUL_CARDS> }): ReactElement => (
+const Home = ({
+  cards,
+}: {
+  cards: Array<CONTENTFUL_PAGE_CARD>;
+}): ReactElement => (
   <Fragment>
     <Head />
     <Flex data-testid="home-page" margin="75px 0 0 0" justify="center" flexwrap>

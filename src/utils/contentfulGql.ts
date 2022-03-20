@@ -9,6 +9,20 @@ status
 location
 source
 description {
+  links {
+    assets {
+      block {
+        sys {
+          id
+        }
+        url
+        description
+        height
+        width
+        contentType
+      }
+    }
+  }
   json
 }
 tech

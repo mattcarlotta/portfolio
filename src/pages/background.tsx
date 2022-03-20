@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { css } from "@emotion/react";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import ContentfulRichText from "~components/Layout/ContentfulRichText";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import Flex from "~components/Layout/Flex";
 import Image from "~components/Layout/Image";
@@ -24,7 +24,7 @@ import {
 import { getBackground } from "~utils/contentfulApi";
 import { REVALIDATE_TIME } from "~utils/revalidate";
 import type {
-  CONTENTFUL_BACKGROUND,
+  CONTENTFUL_BACKGROUND_PAGE,
   CSSProperties,
   GetStaticProps,
   ReactElement,
@@ -39,7 +39,7 @@ const style = {
 const Background = ({
   background,
 }: {
-  background: CONTENTFUL_BACKGROUND;
+  background: CONTENTFUL_BACKGROUND_PAGE;
 }): ReactElement => (
   <Fragment>
     <Head />
@@ -47,11 +47,8 @@ const Background = ({
       <PanelTitle data-testid="panel-title">{background.title}</PanelTitle>
       <Panel>
         <Image
-          url={background.profileImage.url}
+          {...background.profileImage}
           alt={background.profileImage.description}
-          height={background.profileImage.height}
-          width={background.profileImage.width}
-          contentType={background.profileImage.contentType}
           styles="margin: 30px auto auto;border-radius: 10px;"
         />
         <Text>
@@ -82,7 +79,7 @@ const Background = ({
           </NormalText>
           <DetailHeadline>Brief:</DetailHeadline>
           <SubTitle data-testid="brief">
-            {documentToReactComponents(background.description.json)}
+            <ContentfulRichText json={background.description.json} />
           </SubTitle>
           <DetailHeadline>Tech Specs:</DetailHeadline>
           <ul

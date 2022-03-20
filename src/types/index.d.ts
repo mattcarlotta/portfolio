@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import type { Document } from "@contentful/rich-text-types";
+import type { Document, NodeData } from "@contentful/rich-text-types";
 export type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 export type { AppProps } from "next/app";
 export type {
@@ -38,7 +38,7 @@ export type CONTENTFUL_SLUG = {
   slug: string;
 };
 
-export type CONTENTFUL_BACKGROUND = {
+export type CONTENTFUL_BACKGROUND_PAGE = {
   profileImage: CONTENTFUL_IMAGE;
   location: string;
   rank: string;
@@ -55,9 +55,11 @@ export type CONTENTFUL_BACKGROUND = {
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE;
 
-export type CONTENTFUL_CARDS = {
+export type CONTENTFUL_PAGE_CARD = {
   description: string;
   preview: CONTENTFUL_IMAGE;
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE &
   CONTENTFUL_SLUG;
+
+export { Document, NodeData };
