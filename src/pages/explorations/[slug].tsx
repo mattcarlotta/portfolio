@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import FileDetails from "~components/Layout/FileDetails";
 import Panel from "~components/Layout/Panel";
@@ -21,51 +20,50 @@ const ExplorationsPage = ({
   exploration,
 }: {
   exploration: CONTENTFUL_EXPLORATIONS_PAGE;
-}): ReactElement | null =>
-  exploration ? (
-    <Fragment>
-      <Head
-        title={exploration.title}
-        description={exploration.preview.description}
-      />
-      <Project>
-        <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
-        <Panel>
-          <Text>
-            <DetailHeadline>Details:</DetailHeadline>
-            <FileDetails
-              active
-              location={`https://${exploration.sandboxId}.csb.app/`}
-              fileName={exploration.title}
-              source={`https://codesandbox.io/s/${exploration.sandboxId}`}
-              status="In Orbit"
+}): ReactElement => (
+  <>
+    <Head
+      title={exploration.title}
+      description={exploration.preview.description}
+    />
+    <Project>
+      <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
+      <Panel>
+        <Text>
+          <DetailHeadline>Details:</DetailHeadline>
+          <FileDetails
+            active
+            location={`https://${exploration.sandboxId}.csb.app/`}
+            fileName={exploration.title}
+            source={`https://codesandbox.io/s/${exploration.sandboxId}`}
+            status="In Orbit"
+          />
+          <DetailHeadline>Description:</DetailHeadline>
+          <SubTitle style={{ marginTop: 20 }} data-testid="description">
+            {exploration.preview.description}
+          </SubTitle>
+          <DetailHeadline>Playground:</DetailHeadline>
+          <SubTitle style={{ margin: "20px 0", padding: "0 10px" }}>
+            <iframe
+              src={`https://codesandbox.io/embed/${exploration.sandboxId}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
+              title={exploration.title}
+              style={{
+                width: "100%",
+                height: "500px",
+                border: 0,
+                borderRadius: 4,
+                overflow: "hidden",
+              }}
+              allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+              sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
             />
-            <DetailHeadline>Description:</DetailHeadline>
-            <SubTitle style={{ marginTop: 20 }} data-testid="description">
-              {exploration.preview.description}
-            </SubTitle>
-            <DetailHeadline>Playground:</DetailHeadline>
-            <SubTitle style={{ margin: "20px 0", padding: "0 10px" }}>
-              <iframe
-                src={`https://codesandbox.io/embed/${exploration.sandboxId}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
-                title={exploration.title}
-                style={{
-                  width: "100%",
-                  height: "500px",
-                  border: 0,
-                  borderRadius: 4,
-                  overflow: "hidden",
-                }}
-                allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-                sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-              />
-            </SubTitle>
-          </Text>
-        </Panel>
-      </Project>
-      <GoBack href="/explorations" title="Explorations" />
-    </Fragment>
-  ) : null;
+          </SubTitle>
+        </Text>
+      </Panel>
+    </Project>
+    <GoBack href="/explorations" title="Explorations" />
+  </>
+);
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string;

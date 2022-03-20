@@ -1,6 +1,5 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { INLINES } from "@contentful/rich-text-types";
-import { Fragment } from "react";
 import OutsideLink from "~components/Navigation/OutsideLink";
 import type { Document, NodeData } from "~types";
 
@@ -24,7 +23,7 @@ const customMarkdownOptions = {
 };
 
 const ContentfulRichText = ({ json }: { json: Document }) => (
-  <Fragment>{documentToReactComponents(json, customMarkdownOptions)}</Fragment>
+  <>{documentToReactComponents(json, customMarkdownOptions)}</>
 );
 
 export default ContentfulRichText;

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import Body from "~components/Layout/Body";
 import Header from "~components/Layout/Header";
@@ -16,7 +16,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <Head>
         <meta
           name="viewport"
@@ -35,7 +35,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
         </Wrapper>
         <GlobalStylesheet />
       </ImageContext>
-    </Fragment>
+    </>
   );
 };
 

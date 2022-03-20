@@ -1,4 +1,4 @@
-import { forwardRef, Fragment, useEffect, useCallback, useState } from "react";
+import { forwardRef, useEffect, useCallback, useState } from "react";
 import { Slide, Dialog, withStyles } from "@material-ui/core";
 import BackgroundImageViewer from "~components/Layout/BackgroundImage";
 import Button from "~components/Layout/Button";
@@ -164,7 +164,7 @@ const ModalDialog = ({
   }, [title]);
 
   return (
-    <Fragment>
+    <>
       <DetailHeadline>Snapshots:</DetailHeadline>
       <SnapshotContainer data-testid="snapshots">
         {snapshots.map(({ title, ...rest }, idx) => (
@@ -261,7 +261,7 @@ const ModalDialog = ({
           </Center>
         </Fixed>
       </ImageViewer>
-    </Fragment>
+    </>
   );
 };
 

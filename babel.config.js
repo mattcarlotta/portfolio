@@ -6,15 +6,18 @@ module.exports = api => {
 
   return {
     presets: [
-      "next/babel",
       [
-        "@emotion/babel-preset-css-prop",
+        "next/babel",
         {
-          labelFormat: "[filename]",
+          "preset-react": {
+            runtime: "automatic",
+            importSource: "@emotion/react",
+          },
         },
       ],
     ],
     plugins: [
+      "@emotion/babel-plugin",
       INPRODUCTION &&
         !INSTAGING && [
           "react-remove-properties",

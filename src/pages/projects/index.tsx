@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import CardPreview from "~components/Layout/CardPreview";
 import Category from "~components/Layout/Category";
 import Flex from "~components/Layout/Flex";
@@ -17,7 +16,7 @@ const Projects = ({
 }: {
   projects: Array<CONTENTFUL_PROJECTS_PAGE>;
 }): ReactElement => (
-  <Fragment>
+  <>
     <Head description="A collection of personal and professional projects that I've created over the years" />
     <Category data-testid="category">
       <IoPlanet style={{ fontSize: 26, marginRight: 10 }} />
@@ -41,7 +40,7 @@ const Projects = ({
         />
       ))}
     </Flex>
-  </Fragment>
+  </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

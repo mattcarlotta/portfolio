@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import CardPreview from "~components/Layout/CardPreview";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
@@ -15,7 +14,7 @@ const Home = ({
 }: {
   cards: Array<CONTENTFUL_PAGE_CARD>;
 }): ReactElement => (
-  <Fragment>
+  <>
     <Head />
     <Flex data-testid="home-page" margin="75px 0 0 0" justify="center" flexwrap>
       {cards.map(({ sys, preview, slug, ...rest }) => (
@@ -30,7 +29,7 @@ const Home = ({
         />
       ))}
     </Flex>
-  </Fragment>
+  </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

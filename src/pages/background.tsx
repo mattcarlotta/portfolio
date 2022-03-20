@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { css } from "@emotion/react";
 import ContentfulRichText from "~components/Layout/ContentfulRichText";
 import DetailHeadline from "~components/Layout/DetailHeadline";
@@ -41,7 +40,7 @@ const Background = ({
 }: {
   background: CONTENTFUL_BACKGROUND_PAGE;
 }): ReactElement => (
-  <Fragment>
+  <>
     <Head />
     <Project>
       <PanelTitle data-testid="panel-title">{background.title}</PanelTitle>
@@ -182,7 +181,7 @@ const Background = ({
         </Text>
       </Panel>
     </Project>
-  </Fragment>
+  </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

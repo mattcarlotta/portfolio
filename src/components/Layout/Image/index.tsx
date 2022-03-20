@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
@@ -59,7 +59,7 @@ const Image = ({
       `}
     >
       {!error ? (
-        <Fragment>
+        <>
           {placeholder && (
             <LoadingPlaceholder
               data-testid="placeholder"
@@ -90,7 +90,7 @@ const Image = ({
             onError={onError}
             alt={alt}
           />
-        </Fragment>
+        </>
       ) : (
         <BrokenImage data-testid="broken-image" />
       )}

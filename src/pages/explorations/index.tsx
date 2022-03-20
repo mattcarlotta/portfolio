@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import CardPreview from "~components/Layout/CardPreview";
 import Category from "~components/Layout/Category";
 import Flex from "~components/Layout/Flex";
@@ -17,7 +16,7 @@ const ExplorationsPage = ({
 }: {
   explorations: Array<CONTENTFUL_EXPLORATIONS_PAGE>;
 }): ReactElement => (
-  <Fragment>
+  <>
     <Head description="A small collection of codesandbox explorations I've created over the years" />
     <Category data-testid="category">
       <GiPlanetCore style={{ fontSize: 22, marginRight: 10 }} />
@@ -44,7 +43,7 @@ const ExplorationsPage = ({
         />
       ))}
     </Flex>
-  </Fragment>
+  </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {

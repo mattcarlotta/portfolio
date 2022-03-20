@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { css } from "@emotion/react";
 import ContentfulRichText from "~components/Layout/ContentfulRichText";
 import DetailHeadline from "~components/Layout/DetailHeadline";
@@ -23,7 +22,7 @@ const ProjectPage = ({
   tech,
   ...rest
 }: CONTENTFUL_PROJECTS_PAGE): JSX.Element => (
-  <Fragment>
+  <>
     <Head title={title} description={seoDescription} />
     <Project>
       <PanelTitle id="title" data-testid="panel-title">
@@ -75,7 +74,7 @@ const ProjectPage = ({
       </Panel>
     </Project>
     <GoBack href="/projects" title="projects" />
-  </Fragment>
+  </>
 );
 
 export default ProjectPage;
