@@ -59,6 +59,8 @@ const Image = ({
     <picture
       data-testid="picture"
       css={css`
+        height: ${newHeight};
+        width: ${newWidth};
         ${containerStyle}
       `}
     >
