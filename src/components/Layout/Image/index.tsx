@@ -59,8 +59,6 @@ const Image = ({
     <picture
       data-testid="picture"
       css={css`
-        height: ${newHeight};
-        width: ${newWidth};
         ${containerStyle}
       `}
     >
@@ -103,7 +101,9 @@ const Image = ({
         <BrokenImage data-testid="broken-image" />
       )}
     </picture>
-  ) : null;
+  ) : (
+    <div style={{ height: newHeight, width: newWidth }} />
+  );
 };
 
 export default Image;
