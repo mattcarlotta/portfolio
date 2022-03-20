@@ -1,7 +1,25 @@
-export const PROJECTS = `
+const sys = `
 sys {
   id
 }
+`;
+const image = `
+url
+description
+contentType
+height
+width
+title
+`;
+
+const preview = `
+preview {
+  ${image}
+}
+`;
+
+export const PROJECTS = `
+${sys}
 title
 seoDescription
 active
@@ -9,56 +27,23 @@ status
 location
 source
 description {
-  links {
-    assets {
-      block {
-        sys {
-          id
-        }
-        url
-        description
-        height
-        width
-        contentType
-      }
-    }
-  }
   json
 }
 tech
 snapshotsCollection {
  items {
-  description
-  url
-  contentType
-  height
-  width
-  title
+  ${image}
  } 
 }
-preview {
-  description
-  url
-  contentType
-  height
-  width
-  title
-}
+${preview}
 slug
 `;
 
 export const BACKGROUND = `
-sys {
-  id
-}
+${sys}
 title
 profileImage {
-  description
-  url
-  contentType
-  height
-  width
-  title
+  ${image}
 }
 location
 rank
@@ -72,38 +57,20 @@ education
 `;
 
 export const EXPLORATIONS = `
-sys {
-  id
-}
+${sys}
 title
 alt
 sandboxId
 description {
   json
 }
-preview {
-  description
-  url
-  contentType
-  height
-  width
-  title
-}
+${preview}
 `;
 
 export const HOMEPAGE_CARDS = `
-sys {
-  id
-}
+${sys}
 title
 description
-preview {
-  description
-  url
-  contentType
-  height
-  width
-  title
-}
+${preview}
 slug
 `;

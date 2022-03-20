@@ -1,12 +1,21 @@
 import { Fragment } from "react";
 import CardPreview from "~components/Layout/CardPreview";
-import Apps from "~components/Layout/Apps";
 import Category from "~components/Layout/Category";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
-import type { ReactElement } from "~types";
+import { getAllProjects } from "~utils/contentfulApi";
+import { REVALIDATE_TIME } from "~utils/revalidate";
+import type {
+  CONTENTFUL_PROJECTS_PAGE,
+  GetStaticProps,
+  ReactElement,
+} from "~types";
 
-const Projects = (): ReactElement => (
+const Projects = ({
+  projects,
+}: {
+  projects: Array<CONTENTFUL_PROJECTS_PAGE>;
+}): ReactElement => (
   <Fragment>
     <Head description="A collection of personal and professional projects that I've created over the years" />
     <Category data-testid="category">projects</Category>
@@ -16,18 +25,38 @@ const Projects = (): ReactElement => (
       flexwrap
       margin="0 0 200px 0"
     >
-      {Apps.map(({ head, filedetails, preview }, index) => (
+      {projects.map(({ sys, preview, seoDescription, ...rest }, index) => (
         <CardPreview
-          key={head.title}
+          {...preview}
+          {...rest}
+          ariaLabel={`Navigate to my ${rest.title} project page`}
+          description={seoDescription}
+          key={sys.id}
           idx={index}
           href="projects"
-          {...head}
-          {...preview}
-          {...filedetails}
         />
       ))}
     </Flex>
   </Fragment>
 );
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await getAllProjects();
+
+  const projects = res.data?.projectsCollection?.items;
+
+  if (!projects) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      projects,
+      revalidate: REVALIDATE_TIME,
+    },
+  };
+};
 
 export default Projects;

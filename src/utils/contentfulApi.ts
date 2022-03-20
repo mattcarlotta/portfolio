@@ -1,4 +1,9 @@
-import { BACKGROUND, HOMEPAGE_CARDS, PROJECTS } from "~utils/contentfulGql";
+import {
+  BACKGROUND,
+  EXPLORATIONS,
+  HOMEPAGE_CARDS,
+  PROJECTS,
+} from "~utils/contentfulGql";
 
 function fetchGraphQL(query: string, preview = false) {
   return fetch(
@@ -21,7 +26,7 @@ function fetchGraphQL(query: string, preview = false) {
 export function getHomepageCards() {
   return fetchGraphQL(
     `query {
-      homepageCardCollection(order: sys_publishedAt_ASC) {
+      homepageCardCollection(order: sys_firstPublishedAt_DESC) {
         items {
           ${HOMEPAGE_CARDS}
         }
@@ -42,10 +47,23 @@ export function getBackground() {
   );
 }
 
+export function getAllExplorations() {
+  return fetchGraphQL(
+    `query {
+      explorationsCollection(order: sys_firstPublishedAt_DESC) {
+        items {
+          ${EXPLORATIONS}
+        }
+      }
+    }
+    `,
+  );
+}
+
 export function getAllProjects() {
   return fetchGraphQL(
     `query {
-      projectsCollection(order: sys_publishedAt_ASC) {
+      projectsCollection(order: sys_firstPublishedAt_DESC) {
         items {
           ${PROJECTS}
         }

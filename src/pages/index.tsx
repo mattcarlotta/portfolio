@@ -18,14 +18,13 @@ const Home = ({
   <Fragment>
     <Head />
     <Flex data-testid="home-page" margin="75px 0 0 0" justify="center" flexwrap>
-      {cards.map(({ sys, title, preview, slug, description }, index) => (
+      {cards.map(({ sys, preview, slug, ...rest }, index) => (
         <CardPreview
           {...preview}
+          {...rest}
           key={sys.id}
-          ariaLabel={`Navigate to ${slug} page`}
-          description={description}
+          ariaLabel={`Navigate to my ${slug} page`}
           idx={index}
-          title={title}
           href={slug}
           showInfo={false}
         />

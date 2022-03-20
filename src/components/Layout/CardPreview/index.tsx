@@ -9,13 +9,14 @@ import Tooltip from "~components/Layout/Tooltip";
 import Link from "~components/Navigation/Link";
 import OutsideLink from "~components/Navigation/OutsideLink";
 import { FaLink, FaRegFileCode, FiPower, ImInfo } from "~icons";
-import type { ReactElement } from "~types";
+import type { CONTENTFUL_JSON, ReactElement } from "~types";
+import ContentfulRichText from "../ContentfulRichText";
 
 export type CardPreviewProps = {
   active?: boolean;
   alt?: string;
   ariaLabel: string;
-  description: string;
+  description: string | CONTENTFUL_JSON;
   contentType: string;
   height: number;
   href?: string;
@@ -70,7 +71,7 @@ const CardPreview = ({
             height={height}
             width={width}
             contentType={contentType}
-            styles="max-width: 250px;border-radius: 4px;"
+            styles="border-radius: 4px;"
           />
         </Link>
       </Flex>
@@ -82,13 +83,13 @@ const CardPreview = ({
               ariaLabel={ariaLabel}
               padding="5px"
               margin="0 5px"
-              href={`/${href}${url}`}
+              href={`/${href}/${slug}`}
               scroll={false}
             >
               <FiPower
                 data-testid="fipower"
                 style={{
-                  color: active ? "limegreen" : "#2c4776",
+                  color: active ? "limegreen" : "yellow",
                   fontSize: 22,
                 }}
               />
@@ -102,7 +103,7 @@ const CardPreview = ({
               ariaLabel={ariaLabel}
               padding="5px"
               margin="0 5px"
-              href={`/${href}${url}`}
+              href={`/${href}/${slug}`}
               scroll={false}
             >
               <ImInfo style={{ fontSize: 22 }} />
@@ -139,7 +140,11 @@ const CardPreview = ({
         id={`${title} description`}
         padding="0px 10px 15px 10px"
       >
-        {description}
+        {typeof description === "string" ? (
+          description
+        ) : (
+          <ContentfulRichText json={description.json} />
+        )}
       </NormalText>
     </div>
   </Card>
