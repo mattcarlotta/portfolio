@@ -46,8 +46,8 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
             <Footer />
           </Main>
         </Wrapper>
+        <GlobalStylesheet />
       </ImageContext>
-      <GlobalStylesheet />
     </Fragment>
   );
 };

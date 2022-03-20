@@ -34,6 +34,10 @@ export type CONTENTFUL_TITLE = {
   title: string;
 };
 
+export type CONTENTFUL_SLUG = {
+  slug: string;
+};
+
 export type CONTENTFUL_BACKGROUND = {
   profileImage: CONTENTFUL_IMAGE;
   location: string;
@@ -50,3 +54,10 @@ export type CONTENTFUL_BACKGROUND = {
   };
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE;
+
+export type CONTENTFUL_CARDS = {
+  description: string;
+  preview: CONTENTFUL_IMAGE;
+} & CONTENTFUL_ID &
+  CONTENTFUL_TITLE &
+  CONTENTFUL_SLUG;

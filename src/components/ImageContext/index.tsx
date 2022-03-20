@@ -1,27 +1,27 @@
 /* istanbul ignore file */
-import * as React from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import type { ReactElement, ReactNode } from "~types";
 
-export const ImageContext = React.createContext({ supportsWebp: false });
+export const ImageContext = createContext({ supportsWebp: false });
 
 export const useImageContext = (): { supportsWebp: boolean } => {
-  const context = React.useContext(ImageContext);
+  const context = useContext(ImageContext);
   if (!context) {
     throw new Error(
-      `Toggle compound components cannot be rendered outside the Toggle component`,
+      "This component cannot be rendered outside the ImageContext component",
     );
   }
   return context;
 };
 
 const ImageProvider = ({ children }: { children: ReactNode }): ReactElement => {
-  const [webpSupport, setSupport] = React.useState(false);
-  const supportsWebp = React.useMemo(
+  const [webpSupport, setSupport] = useState(true);
+  const supportsWebp = useMemo(
     () => ({ supportsWebp: webpSupport }),
     [webpSupport],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     const testWebP = () => {
       const img = new Image();
       img.src =
@@ -35,7 +35,7 @@ const ImageProvider = ({ children }: { children: ReactNode }): ReactElement => {
     };
 
     testWebP();
-  });
+  }, []);
 
   return (
     <ImageContext.Provider value={supportsWebp}>

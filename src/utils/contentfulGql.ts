@@ -76,3 +76,20 @@ preview {
   title
 }
 `;
+
+export const HOMEPAGE_CARDS = `
+sys {
+  id
+}
+title
+description
+preview {
+  description
+  url
+  contentType
+  height
+  width
+  title
+}
+slug
+`;

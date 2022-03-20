@@ -1,5 +1,6 @@
 /* istanbul ignore file */
 import { css, Global } from "@emotion/react";
+import { useImageContext } from "~components/ImageContext";
 
 export const GlobalStylesheet = (): JSX.Element => (
   <Global
@@ -30,7 +31,7 @@ export const GlobalStylesheet = (): JSX.Element => (
       body {
         margin: 0;
         color: #fff;
-        background: url("/bg.webp");
+        background: ${useImageContext() ? "url('/bg.webp')" : "url('/bg.png')"};
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;

@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
 
-const Info = styled.div`
+const Info = styled.p`
   @media (max-width: 550px) {
     word-wrap: break-word;
     word-break: break-all;

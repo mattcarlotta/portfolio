@@ -122,7 +122,7 @@ const ModalDialog = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  });
+  }, []);
 
   React.useEffect(() => {
     const previewImage = title

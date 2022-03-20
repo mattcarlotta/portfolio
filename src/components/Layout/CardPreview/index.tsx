@@ -13,36 +13,42 @@ import type { ReactElement } from "~types";
 
 export type CardPreviewProps = {
   active?: boolean;
-  alt: string;
+  alt?: string;
   ariaLabel: string;
   description: string;
+  contentType: string;
+  height: number;
   href?: string;
   idx: number;
   location?: string;
-  ratio?: string;
+  scale?: number;
   showInfo: boolean;
+  slug?: string;
   source?: string;
-  src: string;
   status?: string;
   title: string;
   url: string;
+  width: number;
 };
 
 const CardPreview = ({
   active,
-  alt,
+  alt = "",
   ariaLabel,
+  contentType,
   description,
+  height,
   href,
   idx,
   location,
-  ratio,
+  scale,
   showInfo,
+  slug = "",
   source,
-  src,
   status,
   title,
   url,
+  width,
 }: CardPreviewProps): ReactElement => (
   <Card custom={idx}>
     <PlaceHolder />
@@ -54,14 +60,16 @@ const CardPreview = ({
           dataTestId={title}
           ariaLabel={ariaLabel}
           padding="0px"
-          href={`/${href}${url}`}
+          href={`/${href}/${slug}`}
           scroll={false}
         >
           <Image
-            src={`projects/${src}`}
+            url={url}
             alt={alt}
-            ratio={ratio}
-            width="auto"
+            scale={scale}
+            height={height}
+            width={width}
+            contentType={contentType}
             styles="max-width: 250px;border-radius: 4px;"
           />
         </Link>

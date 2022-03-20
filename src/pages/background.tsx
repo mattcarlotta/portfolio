@@ -21,14 +21,14 @@ import {
   HiOutlineMail,
   RiMapPin2Line,
 } from "~icons";
+import { getBackground } from "~utils/contentfulApi";
+import { REVALIDATE_TIME } from "~utils/revalidate";
 import type {
   CONTENTFUL_BACKGROUND,
   CSSProperties,
   GetStaticProps,
   ReactElement,
 } from "~types";
-import { getBackground } from "~utils/contentfulApi";
-import { REVALIDATE_TIME } from "~utils/revalidate";
 
 const style = {
   fontSize: 20,
@@ -46,23 +46,16 @@ const Background = ({
     <Project>
       <PanelTitle data-testid="panel-title">{background.title}</PanelTitle>
       <Panel>
-        <div
-          css={css`
-            margin: 40px 0 0 0;
-            padding: 0 20px;
-          `}
-        >
-          <Image
-            url={background.profileImage.url}
-            alt={background.profileImage.description}
-            height={background.profileImage.height}
-            width={background.profileImage.width}
-            contentType={background.profileImage.contentType}
-            styles="margin: 0 auto;max-width: 250px;max-height: 250px;border-radius: 10px;"
-          />
-        </div>
+        <Image
+          url={background.profileImage.url}
+          alt={background.profileImage.description}
+          height={background.profileImage.height}
+          width={background.profileImage.width}
+          contentType={background.profileImage.contentType}
+          styles="margin: 30px auto auto;border-radius: 10px;"
+        />
         <Text>
-          <DetailHeadline>Details:</DetailHeadline>
+          <DetailHeadline margin="20px 0 0 0">Details:</DetailHeadline>
           <NormalText margin="0 0 0 15px" fontSize="16px">
             <Info data-testid="status">
               <FiPower style={{ color: "limegreen", ...style }} />
@@ -113,13 +106,23 @@ const Background = ({
                   >
                     <Flex
                       breakpoint
+                      as="p"
+                      padding="0"
+                      margin="0"
                       justify="flex-start"
                       width="50%"
                       style={{ color: "#0088ff" }}
                     >
                       {technology}
                     </Flex>
-                    <Flex breakpoint justify="flex-end" width="50%">
+                    <Flex
+                      as="p"
+                      breakpoint
+                      padding="0"
+                      margin="0"
+                      justify="flex-end"
+                      width="50%"
+                    >
                       {[
                         Array.from({ length: level }, (_, i) => (
                           <AiFillStar
@@ -151,7 +154,7 @@ const Background = ({
             ))}
           </ul>
           <DetailHeadline>formal Education:</DetailHeadline>
-          <SubTitle data-testid="brief">
+          <SubTitle as="p" data-testid="brief">
             San Jose State University | 2005-2012 | 3.5GPA
           </SubTitle>
           <DetailHeadline>Online Education:</DetailHeadline>

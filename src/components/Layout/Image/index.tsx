@@ -33,7 +33,7 @@ const Image = ({
   const isBrowser = typeof document !== "undefined";
   const rescale =
     scale !== 0
-      ? `&fit=scale&h=${Math.round(height * (scale / 100))}&w=${Math.round(
+      ? `fit=scale&h=${Math.round(height * (scale / 100))}&w=${Math.round(
           width * (scale / 100),
         )}`
       : "";
@@ -42,7 +42,7 @@ const Image = ({
     setState({ error: true, isLoading: false });
   };
 
-  const onLoad = async () => {
+  const onLoad = () => {
     setState({ error: false, isLoading: false });
   };
 
