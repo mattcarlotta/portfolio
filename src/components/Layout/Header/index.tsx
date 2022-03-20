@@ -19,18 +19,36 @@ import type { ReactElement } from "~types";
 
 const HEADERLINKS = [
   {
-    dataTestId: "linkedin",
-    Icon: FiLinkedin,
-    link: "https://www.linkedin.com/in/mattcarlotta/",
-    description: "My LinkedIn profile",
-    title: "linkedin",
+    page: "home",
+    href: "/",
+    Icon: GoHome,
   },
   {
-    dataTestId: "github",
+    page: "projects",
+    href: "/projects",
+    Icon: IoPlanet,
+  },
+  {
+    page: "explorations",
+    href: "/explorations",
+    Icon: GiPlanetCore,
+  },
+  {
+    page: "background",
+    href: "/background",
+    Icon: ImInfo,
+  },
+  {
+    page: "linkedIn",
+    href: "https://www.linkedin.com/in/mattcarlotta/",
+    Icon: FiLinkedin,
+    external: true,
+  },
+  {
+    page: "github",
+    href: "https://github.com/mattcarlotta",
     Icon: FaGithub,
-    link: "https://github.com/mattcarlotta",
-    description: "My github repository",
-    title: "github",
+    external: true,
   },
 ];
 
@@ -42,51 +60,25 @@ const Header = (): ReactElement => (
     `}
   >
     <FlexSpaceAround breakpoint direction="row">
-      <Tooltip title="home">
-        <LinkIcon
-          dataTestId="go-home"
-          ariaLabel="Navigate back to my home page"
-          href="/"
-        >
-          <GoHome />
-        </LinkIcon>
-      </Tooltip>
-      <Tooltip title="projects">
-        <LinkIcon
-          dataTestId="go-to-projects"
-          ariaLabel="Navigate back to my projects page"
-          href="/projects"
-        >
-          <IoPlanet />
-        </LinkIcon>
-      </Tooltip>
-      <Tooltip title="explorations">
-        <LinkIcon
-          dataTestId="go-to-explorations"
-          ariaLabel="Navigate back to my explorations page"
-          href="/explorations"
-        >
-          <GiPlanetCore />
-        </LinkIcon>
-      </Tooltip>
-      <Tooltip title="background">
-        <LinkIcon
-          dataTestId="background"
-          ariaLabel="Navigate to my background page"
-          href="/background"
-        >
-          <ImInfo />
-        </LinkIcon>
-      </Tooltip>
-      {HEADERLINKS.map(({ dataTestId, description, Icon, link, title }) => (
-        <Tooltip key={title} title={title}>
-          <OutsideLinkIcon
-            dataTestId={dataTestId}
-            ariaLabel={description}
-            href={link}
-          >
-            <Icon className="icon" />
-          </OutsideLinkIcon>
+      {HEADERLINKS.map(({ href, page, Icon, external }) => (
+        <Tooltip key={page} title={page}>
+          {!external ? (
+            <LinkIcon
+              dataTestId={`go-to-${page}`}
+              ariaLabel={`Navigate to my ${page} page`}
+              href={href}
+            >
+              <Icon />
+            </LinkIcon>
+          ) : (
+            <OutsideLinkIcon
+              dataTestId={`go-to-${page}`}
+              ariaLabel={`Navigate to my ${page} page`}
+              href={href}
+            >
+              <Icon />
+            </OutsideLinkIcon>
+          )}
         </Tooltip>
       ))}
     </FlexSpaceAround>

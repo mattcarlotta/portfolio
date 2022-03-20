@@ -47,6 +47,19 @@ export function getBackground() {
   );
 }
 
+export function getExplorationBySlug(slug: string) {
+  return fetchGraphQL(
+    `query {
+      explorationsCollection(where: { slug: "${slug}" }) {
+        items {
+          ${EXPLORATIONS}
+        }
+      }
+    }
+    `,
+  );
+}
+
 export function getAllExplorations() {
   return fetchGraphQL(
     `query {

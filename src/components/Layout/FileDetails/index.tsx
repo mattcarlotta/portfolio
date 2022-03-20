@@ -33,7 +33,7 @@ const FileDetails = ({
       />
       {status}
     </Info>
-    <Info data-testid="filename">
+    <Info style={{ textTransform: "uppercase" }} data-testid="filename">
       <AiOutlineFolderOpen style={style} />
       {fileName}
     </Info>

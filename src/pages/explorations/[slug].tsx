@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import DetailHeadline from "~components/Layout/DetailHeadline";
-import Explorations, { Exploration } from "~components/Layout/Explorations";
 import FileDetails from "~components/Layout/FileDetails";
 import Panel from "~components/Layout/Panel";
 import PanelTitle from "~components/Layout/PanelTitle";
@@ -9,19 +8,26 @@ import SubTitle from "~components/Layout/SubTitle";
 import Text from "~components/Layout/Text";
 import GoBack from "~components/Navigation/GoBack";
 import Head from "~components/Navigation/Header";
-import type { GetStaticPaths, GetStaticProps, ReactElement } from "~types";
-
-export type ExplorationsProps = {
-  id: string;
-  exploration: Exploration;
-};
+import { getAllExplorations, getExplorationBySlug } from "~utils/contentfulApi";
+import { REVALIDATE_TIME } from "~utils/revalidate";
+import type {
+  CONTENTFUL_EXPLORATIONS_PAGE,
+  GetStaticPaths,
+  GetStaticProps,
+  ReactElement,
+} from "~types";
 
 const ExplorationsPage = ({
   exploration,
-}: ExplorationsProps): ReactElement | null =>
+}: {
+  exploration: CONTENTFUL_EXPLORATIONS_PAGE;
+}): ReactElement | null =>
   exploration ? (
     <Fragment>
-      <Head title={exploration.title} description={exploration.description} />
+      <Head
+        title={exploration.title}
+        description={exploration.preview.description}
+      />
       <Project>
         <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
         <Panel>
@@ -29,19 +35,19 @@ const ExplorationsPage = ({
             <DetailHeadline>Details:</DetailHeadline>
             <FileDetails
               active
-              location={`https://${exploration.href}.csb.app/`}
+              location={`https://${exploration.sandboxId}.csb.app/`}
               fileName={exploration.title}
-              source={`https://codesandbox.io/s/${exploration.href}`}
+              source={`https://codesandbox.io/s/${exploration.sandboxId}`}
               status="In Orbit"
             />
             <DetailHeadline>Description:</DetailHeadline>
-            <SubTitle data-testid="description">
-              {exploration.description}
+            <SubTitle style={{ marginTop: 20 }} data-testid="description">
+              {exploration.preview.description}
             </SubTitle>
             <DetailHeadline>Playground:</DetailHeadline>
-            <SubTitle>
+            <SubTitle style={{ margin: "20px 0", padding: "0 10px" }}>
               <iframe
-                src={`https://codesandbox.io/embed/${exploration.href}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
+                src={`https://codesandbox.io/embed/${exploration.sandboxId}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
                 title={exploration.title}
                 style={{
                   width: "100%",
@@ -62,30 +68,38 @@ const ExplorationsPage = ({
   ) : null;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const exploration = Explorations.find(
-    exploration => exploration.href === params?.id,
-  );
+  const slug = params?.slug as string;
+  const res = await getExplorationBySlug(slug);
 
-  if (!exploration)
+  const exploration: CONTENTFUL_EXPLORATIONS_PAGE =
+    res.data?.explorationsCollection?.items?.[0];
+
+  if (!exploration) {
     return {
-      redirect: {
-        destination: "/404",
-        permanent: false,
-      },
+      notFound: true,
     };
+  }
 
   return {
     props: {
       exploration,
+      revalidate: REVALIDATE_TIME,
     },
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: Explorations.map(exploration => ({
-    params: { id: exploration.href },
-  })),
-  fallback: true,
-});
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await getAllExplorations();
+
+  const explorations: Array<CONTENTFUL_EXPLORATIONS_PAGE> =
+    res.data?.explorationsCollection?.items;
+
+  return {
+    paths: explorations.map(({ slug }) => ({
+      params: { slug },
+    })),
+    fallback: true,
+  };
+};
 
 export default ExplorationsPage;
