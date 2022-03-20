@@ -60,7 +60,6 @@ const CardPreview = ({
           ariaLabel={ariaLabel}
           padding="0px"
           href={`/${href}/${slug}`}
-          scroll={false}
         >
           <Image
             url={url}
@@ -82,7 +81,6 @@ const CardPreview = ({
               padding="5px"
               margin="0 5px"
               href={`/${href}/${slug}`}
-              scroll={false}
             >
               <FiPower
                 data-testid="fipower"
@@ -102,7 +100,6 @@ const CardPreview = ({
               padding="5px"
               margin="0 5px"
               href={`/${href}/${slug}`}
-              scroll={false}
             >
               <ImInfo style={{ fontSize: 22 }} />
             </Link>
