@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
 
-const Body = styled.div`
+const Body = styled.section`
   @media (max-width: 1000px) {
     padding-left: 5px;
     padding-right: 5px;

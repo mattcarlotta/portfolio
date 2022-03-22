@@ -25,48 +25,62 @@ const ProjectPage = ({
   <>
     <Head title={title} description={seoDescription} />
     <Project>
-      <PanelTitle id="title" data-testid="panel-title">
-        {title}
-      </PanelTitle>
+      <header>
+        <PanelTitle as="h2" id="title" data-testid="panel-title">
+          {title}
+        </PanelTitle>
+      </header>
       <Panel>
         <Text>
-          <DetailHeadline id="details">Details:</DetailHeadline>
-          <FileDetails fileName={title} {...rest} />
-          <DetailHeadline id="description">Description:</DetailHeadline>
-          <SubTitle data-testid="description">
-            <ContentfulRichText json={description.json} />
-          </SubTitle>
-          <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
-          <ul
-            data-testid="tech"
-            css={css`
-              list-style-type: none;
-              padding: 0 20px;
-            `}
-          >
-            {tech.map((item, idx) => (
-              <li
-                css={css`
-                  font-size: 20px;
-                  font-family: "Mukta", -apple-system, BlinkMacSystemFont,
-                    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
-                    "Droid Sans", "Helvetica Neue", sans-serif;
-                  background: ${idx % 2 ? "#001031" : "transparent"};
-                `}
-                key={item}
-              >
-                <IoPlanet
-                  style={{
-                    position: "relative",
-                    top: 3,
-                    marginRight: 10,
-                    fontSize: 15,
-                  }}
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
+          <section>
+            <header>
+              <DetailHeadline id="details">Details:</DetailHeadline>
+            </header>
+            <FileDetails fileName={title} {...rest} />
+          </section>
+          <section>
+            <header>
+              <DetailHeadline id="description">Description:</DetailHeadline>
+            </header>
+            <SubTitle data-testid="description">
+              <ContentfulRichText json={description.json} />
+            </SubTitle>
+          </section>
+          <section>
+            <header>
+              <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
+            </header>
+            <ul
+              data-testid="tech"
+              css={css`
+                list-style-type: none;
+                padding: 0 20px;
+              `}
+            >
+              {tech.map((item, idx) => (
+                <li
+                  css={css`
+                    font-size: 20px;
+                    font-family: "Mukta", -apple-system, BlinkMacSystemFont,
+                      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
+                      "Droid Sans", "Helvetica Neue", sans-serif;
+                    background: ${idx % 2 ? "#001031" : "transparent"};
+                  `}
+                  key={item}
+                >
+                  <IoPlanet
+                    style={{
+                      position: "relative",
+                      top: 3,
+                      marginRight: 10,
+                      fontSize: 15,
+                    }}
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
           {Boolean((snapshotsCollection.items.length ?? 0) > 0) ? (
             <ModalDialog snapshots={snapshotsCollection!.items} />
           ) : null}

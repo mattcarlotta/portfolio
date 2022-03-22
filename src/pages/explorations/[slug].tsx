@@ -27,37 +27,51 @@ const ExplorationsPage = ({
       description={exploration.preview.description}
     />
     <Project>
-      <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
+      <header>
+        <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
+      </header>
       <Panel>
         <Text>
-          <DetailHeadline>Details:</DetailHeadline>
-          <FileDetails
-            active
-            location={`https://${exploration.sandboxId}.csb.app/`}
-            fileName={exploration.title}
-            source={`https://codesandbox.io/s/${exploration.sandboxId}`}
-            status="In Orbit"
-          />
-          <DetailHeadline>Description:</DetailHeadline>
-          <SubTitle style={{ marginTop: 20 }} data-testid="description">
-            {exploration.preview.description}
-          </SubTitle>
-          <DetailHeadline>Playground:</DetailHeadline>
-          <SubTitle style={{ margin: "20px 0", padding: "0 10px" }}>
-            <iframe
-              src={`https://codesandbox.io/embed/${exploration.sandboxId}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
-              title={exploration.title}
-              style={{
-                width: "100%",
-                height: "500px",
-                border: 0,
-                borderRadius: 4,
-                overflow: "hidden",
-              }}
-              allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-              sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+          <header>
+            <DetailHeadline>Details:</DetailHeadline>
+          </header>
+          <section>
+            <FileDetails
+              active
+              location={`https://${exploration.sandboxId}.csb.app/`}
+              fileName={exploration.title}
+              source={`https://codesandbox.io/s/${exploration.sandboxId}`}
+              status="In Orbit"
             />
-          </SubTitle>
+          </section>
+          <section>
+            <header>
+              <DetailHeadline>Description:</DetailHeadline>
+            </header>
+            <SubTitle style={{ marginTop: 20 }} data-testid="description">
+              {exploration.preview.description}
+            </SubTitle>
+          </section>
+          <section>
+            <header>
+              <DetailHeadline>Playground:</DetailHeadline>
+            </header>
+            <SubTitle style={{ margin: "20px 0", padding: "0 10px" }}>
+              <iframe
+                src={`https://codesandbox.io/embed/${exploration.sandboxId}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
+                title={exploration.title}
+                style={{
+                  width: "100%",
+                  height: "500px",
+                  border: 0,
+                  borderRadius: 4,
+                  overflow: "hidden",
+                }}
+                allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+                sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+              />
+            </SubTitle>
+          </section>
         </Text>
       </Panel>
     </Project>

@@ -35,9 +35,14 @@ class CustomDocument extends Document {
     <Html lang="en">
       <Head>
         <meta name="theme-color" content="#000000" />
+        <meta
+          name="robots"
+          content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+        />
         <meta name="build version" content={packageJson.version} />
         <link rel="apple-touch-icon" sizes="192x192" href="/logo_192x192.png" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/ico" sizes="32x32" href="/favicon.ico" />
+        <link rel="icon" type="image/ico" sizes="16x16" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <link
           rel="preload"

@@ -169,21 +169,33 @@ const ModalDialog = ({
 
   return (
     <>
-      <DetailHeadline>Snapshots:</DetailHeadline>
-      <SnapshotContainer data-testid="snapshots">
-        {snapshots.map(({ title, ...rest }, idx) => (
-          <PreviewCard
-            data-testid={title}
-            key={title}
-            tabIndex={0}
-            onClick={() => handleImageClick(idx)}
-            onKeyDown={event => handleSelectImage(event, idx)}
-          >
-            <CardTitle>{title}</CardTitle>
-            <Image placeholder scale={25} {...rest} styles="margin: 0 auto;" />
-          </PreviewCard>
-        ))}
-      </SnapshotContainer>
+      <section>
+        <header>
+          <DetailHeadline>Snapshots:</DetailHeadline>
+        </header>
+        <SnapshotContainer data-testid="snapshots">
+          {snapshots.map(({ title, ...rest }, idx) => (
+            <section key={title}>
+              <PreviewCard
+                data-testid={title}
+                tabIndex={0}
+                onClick={() => handleImageClick(idx)}
+                onKeyDown={event => handleSelectImage(event, idx)}
+              >
+                <header>
+                  <CardTitle>{title}</CardTitle>
+                </header>
+                <Image
+                  placeholder
+                  scale={25}
+                  {...rest}
+                  styles="margin: 0 auto;"
+                />
+              </PreviewCard>
+            </section>
+          ))}
+        </SnapshotContainer>
+      </section>
       <ImageViewer
         fullScreen
         scroll="body"

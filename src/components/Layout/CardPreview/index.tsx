@@ -52,7 +52,9 @@ const CardPreview = ({
   <Card>
     <PlaceHolder />
     <div className="panel-container">
-      <CardTitle id={title}>{title}</CardTitle>
+      <header>
+        <CardTitle id={title}>{title}</CardTitle>
+      </header>
       <Bars />
       <Flex justify="center" height="230px" width="100%">
         <Link
@@ -131,17 +133,19 @@ const CardPreview = ({
           </Tooltip>
         )}
       </Flex>
-      <NormalText
-        as="h2"
-        id={`${title} description`}
-        padding="0px 10px 15px 10px"
-      >
-        {typeof description === "string" ? (
-          description
-        ) : (
-          <ContentfulRichText json={description.json} />
-        )}
-      </NormalText>
+      <header>
+        <NormalText
+          as="h3"
+          id={`${title} description`}
+          padding="0px 10px 15px 10px"
+        >
+          {typeof description === "string" ? (
+            description
+          ) : (
+            <ContentfulRichText json={description.json} />
+          )}
+        </NormalText>
+      </header>
     </div>
   </Card>
 );

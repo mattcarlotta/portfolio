@@ -53,41 +53,53 @@ const HEADERLINKS = [
 ];
 
 const Header = (): ReactElement => (
-  <header
+  <nav
     data-testid="head"
     css={css`
       padding-top: 60px;
     `}
   >
-    <FlexSpaceAround breakpoint direction="row">
+    <FlexSpaceAround
+      as="ul"
+      breakpoint
+      direction="row"
+      style={{ listStyle: "none", margin: "0 auto", padding: 0 }}
+    >
       {HEADERLINKS.map(({ href, page, Icon, external }) => (
-        <Tooltip key={page} title={page}>
-          {!external ? (
-            <LinkIcon
-              dataTestId={`go-to-${page}`}
-              ariaLabel={`Navigate to my ${page} page`}
-              href={href}
-            >
-              <Icon />
-            </LinkIcon>
-          ) : (
-            <OutsideLinkIcon
-              dataTestId={`go-to-${page}`}
-              ariaLabel={`Navigate to my ${page} page`}
-              href={href}
-            >
-              <Icon />
-            </OutsideLinkIcon>
-          )}
-        </Tooltip>
+        <li
+          css={css`
+            display: flex;
+          `}
+          key={page}
+        >
+          <Tooltip title={page}>
+            {!external ? (
+              <LinkIcon
+                dataTestId={`go-to-${page}`}
+                ariaLabel={`Navigate to my ${page} page`}
+                href={href}
+              >
+                <Icon />
+              </LinkIcon>
+            ) : (
+              <OutsideLinkIcon
+                dataTestId={`go-to-${page}`}
+                ariaLabel={`Navigate to my ${page} page`}
+                href={href}
+              >
+                <Icon />
+              </OutsideLinkIcon>
+            )}
+          </Tooltip>
+        </li>
       ))}
     </FlexSpaceAround>
     <Orbits />
-    <Center data-testid="header">
+    <Center as="header" data-testid="header">
       <Headline>MATT CARLOTTA</Headline>
       <SubHeadline>fullstack software engineer</SubHeadline>
     </Center>
-  </header>
+  </nav>
 );
 
 export default Header;
