@@ -11,7 +11,7 @@ import PanelTitle from "~components/Layout/PanelTitle";
 import GoBack from "~components/Navigation/GoBack";
 import Head from "~components/Navigation/Header";
 import { IoPlanet } from "~icons";
-import type { CONTENTFUL_PROJECTS_PAGE } from "~types";
+import type { CONTENTFUL_PROJECTS_PAGE, ReactElement } from "~types";
 
 const ProjectPage = ({
   sys,
@@ -21,7 +21,7 @@ const ProjectPage = ({
   snapshotsCollection,
   tech,
   ...rest
-}: CONTENTFUL_PROJECTS_PAGE): JSX.Element => (
+}: CONTENTFUL_PROJECTS_PAGE): ReactElement => (
   <>
     <Head title={title} description={seoDescription} />
     <Project>

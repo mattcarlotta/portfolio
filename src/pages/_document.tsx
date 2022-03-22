@@ -1,5 +1,5 @@
 /* eslint-disable react/no-invalid-html-attribute */
-import * as React from "react";
+import { Children } from "react";
 import Document, {
   DocumentContext,
   Html,
@@ -8,6 +8,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheets } from "@material-ui/styles";
+import type { ReactElement } from "~types";
 import packageJson from "../../package.json";
 
 class CustomDocument extends Document {
@@ -24,13 +25,13 @@ class CustomDocument extends Document {
     return {
       ...initialProps,
       styles: [
-        ...React.Children.toArray(initialProps.styles),
+        ...Children.toArray(initialProps.styles),
         sheets.getStyleElement(),
       ],
     };
   }
 
-  render = (): JSX.Element => (
+  render = (): ReactElement => (
     <Html lang="en">
       <Head>
         <meta name="theme-color" content="#000000" />

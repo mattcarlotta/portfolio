@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Tooltip, makeStyles } from "@material-ui/core";
-import type { CSSProperties, ReactNode } from "~types";
+import type { CSSProperties, ReactElement, ReactNode } from "~types";
 
 const TooltipText = styled.div`
   text-align: center;
@@ -49,7 +49,7 @@ const CustomTooltip = ({
   children,
   placement,
   title,
-}: TCustomTooltipProps): JSX.Element => {
+}: TCustomTooltipProps): ReactElement => {
   const classes = useClasses();
 
   return (

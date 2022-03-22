@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { FiExternalLink } from "~icons";
-import type { CSSProperties, ReactNode } from "~types";
+import type { CSSProperties, ReactElement, ReactNode } from "~types";
 
 export type OutsideLinkProps = {
   ariaLabel: string;
@@ -20,7 +20,7 @@ const OutsideLinkComponent = ({
   href,
   showIcon,
   style,
-}: OutsideLinkProps) => (
+}: OutsideLinkProps): ReactElement => (
   <a
     aria-label={ariaLabel}
     data-testid={dataTestId}

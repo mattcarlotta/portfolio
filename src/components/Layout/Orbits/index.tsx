@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import type { ReactElement } from "~types";
 
-const Orbits = ({ className }: { className?: string }): JSX.Element => (
+const Orbits = ({ className }: { className?: string }): ReactElement => (
   <div className={className}>
     <div className="container">
       {[0, 1, 2, 3, 4, 5].map(key => (
