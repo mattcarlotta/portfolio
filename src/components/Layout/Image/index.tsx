@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
+import { calculateScale } from "~utils/calculateScale";
 import type { ReactElement } from "~types";
 
 export type ImageProps = {
@@ -32,8 +33,8 @@ const Image = ({
   const [isBrowser, setBrowser] = useState(false);
   const { error, isLoading } = state;
   const isRescaled = scale !== 0;
-  const newHeight = isRescaled ? Math.round(height * (scale / 100)) : height;
-  const newWidth = isRescaled ? Math.round(width * (scale / 100)) : width;
+  const newHeight = isRescaled ? calculateScale(height, scale) : height;
+  const newWidth = isRescaled ? calculateScale(width, scale) : width;
   const rescale = isRescaled ? `fit=scale&h=${newHeight}&w=${newWidth}` : "";
 
   const onError = () => {

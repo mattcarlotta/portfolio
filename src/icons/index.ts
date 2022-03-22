@@ -33,7 +33,9 @@ export { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
 export { FiPower } from "@react-icons/all-files/fi/FiPower";
 export { FiExternalLink } from "@react-icons/all-files/fi/FiExternalLink";
 
+// IO
 export { IoPlanet } from "@react-icons/all-files/io5/IoPlanet";
+export { IoImages } from "@react-icons/all-files/io5/IoImages";
 
 // HI
 export { HiOutlineMail } from "@react-icons/all-files/hi/HiOutlineMail";

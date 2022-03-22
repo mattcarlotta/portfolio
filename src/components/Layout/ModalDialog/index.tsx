@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useCallback, useState } from "react";
 import { Slide, Dialog, withStyles } from "@material-ui/core";
+import { useImageContext } from "~components/ImageContext";
 import BackgroundImageViewer from "~components/Layout/BackgroundImage";
 import Button from "~components/Layout/Button";
 import CardTitle from "~components/Layout/CardTitle";
@@ -9,11 +10,13 @@ import DetailHeadline from "~components/Layout/DetailHeadline";
 import Fixed from "~components/Layout/Fixed";
 import Flex from "~components/Layout/Flex";
 import Image from "~components/Layout/Image";
+import ImageCounter from "~components/Layout/ImageCounter";
 import ImagePreviewButton from "~components/Layout/ImagePreviewButton";
 import ImageTitle from "~components/Layout/ImageTitle";
 import PreviewCard from "~components/Layout/PreviewCard";
 import SnapshotContainer from "~components/Layout/SnapshotContainer";
-import { FaChevronLeft, FaChevronRight, FaTimes } from "~icons";
+import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from "~icons";
+import { calculateScale } from "~utils/calculateScale";
 import type {
   CONTENTFUL_IMAGE,
   ReactElement,
@@ -61,6 +64,7 @@ const ModalDialog = ({
 }: {
   snapshots: Array<CONTENTFUL_IMAGE>;
 }): ReactElement => {
+  const { supportsWebp } = useImageContext();
   const [state, setState] = useState<ModalDialogState>(initialImageState);
   const { open, currentIndex, url, title } = state;
   const snapsLength = snapshots.length;
@@ -191,6 +195,12 @@ const ModalDialog = ({
         TransitionProps={{ onExited: handleModalExit }}
       >
         <Fixed top="0px" width="100%">
+          <ImageCounter>
+            <IoImages
+              style={{ position: "relative", top: 3, marginRight: 10 }}
+            />
+            {currentIndex + 1} of {snapsLength}
+          </ImageCounter>
           <ImageTitle data-testid="modal-title">{title}</ImageTitle>
           <CloseModalButton
             data-testid="close-modal"
@@ -239,25 +249,22 @@ const ModalDialog = ({
               whiteSpace: "nowrap",
             }}
           >
-            {snapshots.map(({ title, ...rest }, idx) => (
+            {snapshots.map(({ title, height, width, url }, idx) => (
               <ImagePreviewButton
+                key={`preview${title}`}
+                tabIndex={-1}
+                active={idx === currentIndex}
+                aria-selected={idx === currentIndex}
+                onClick={() => selectImage(idx)}
                 type="button"
+                supportsWebp={supportsWebp}
+                src={url}
+                height={calculateScale(height, 10)}
+                width={calculateScale(width, 10)}
                 aria-label={`View the ${title} image`}
                 id={`button-preview-${title}`}
                 data-testid={`button-${title}`}
-                tabIndex={-1}
-                aria-selected={idx === currentIndex}
-                onClick={() => selectImage(idx)}
-                active={idx === currentIndex}
-                key={`preview${title}`}
-              >
-                <Image
-                  {...rest}
-                  placeholder
-                  styles="height: 75px;margin: 0 auto;align-self: center;background: black;"
-                  scale={10}
-                />
-              </ImagePreviewButton>
+              />
             ))}
           </Center>
         </Fixed>
