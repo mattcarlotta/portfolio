@@ -4,7 +4,7 @@ import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
 import { GiPlanetCore } from "~icons";
 import { getAllExplorations } from "~utils/contentfulApi";
-import { REVALIDATE_TIME } from "~utils/revalidate";
+import REVALIDATE_TIME from "~utils/revalidate";
 import type {
   CONTENTFUL_EXPLORATIONS_PAGE,
   GetStaticProps,

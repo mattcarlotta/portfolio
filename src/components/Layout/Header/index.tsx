@@ -8,7 +8,7 @@ import SubHeadline from "~components/Layout/SubHeadline";
 import OutsideLinkIcon from "~components/Navigation/OutsideLinkIcon";
 import Tooltip from "~components/Layout/Tooltip";
 import type { ReactElement } from "~types";
-import { HEADERLINKS } from "./HEADERLINKS";
+import HEADERLINKS from "./HEADERLINKS";
 
 const Header = (): ReactElement => (
   <nav

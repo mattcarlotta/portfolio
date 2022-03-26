@@ -41,3 +41,5 @@ export const HEADERLINKS = [
     external: true,
   },
 ];
+
+export default HEADERLINKS;

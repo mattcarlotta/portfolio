@@ -8,7 +8,7 @@ import Text from "~components/Layout/Text";
 import GoBack from "~components/Navigation/GoBack";
 import Head from "~components/Navigation/Header";
 import { getAllExplorations, getExplorationBySlug } from "~utils/contentfulApi";
-import { REVALIDATE_TIME } from "~utils/revalidate";
+import REVALIDATE_TIME from "~utils/revalidate";
 import type {
   CONTENTFUL_EXPLORATIONS_PAGE,
   GetStaticPaths,

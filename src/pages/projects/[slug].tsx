@@ -1,6 +1,6 @@
 import ProjectPage from "~components/Layout/ProjectPage";
 import { getAllProjects, getProjectBySlug } from "~utils/contentfulApi";
-import { REVALIDATE_TIME } from "~utils/revalidate";
+import REVALIDATE_TIME from "~utils/revalidate";
 import type {
   CONTENTFUL_PROJECTS_PAGE,
   GetStaticPaths,

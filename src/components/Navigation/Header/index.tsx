@@ -3,14 +3,18 @@ import { useRouter } from "next/router";
 import type { ReactElement } from "~types";
 
 export type HeaderProps = {
-  description: string;
-  title: string;
-  type: string;
+  description?: string;
+  title?: string;
+  type?: string;
 };
 
 const currentDate = new Date().toISOString();
 
-const Header = ({ description, title, type }: HeaderProps): ReactElement => {
+const Header = ({
+  description = "A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications",
+  title = "",
+  type = "website",
+}: HeaderProps): ReactElement => {
   const { asPath } = useRouter();
   const newTitle = title
     .split(" ")
@@ -67,13 +71,6 @@ const Header = ({ description, title, type }: HeaderProps): ReactElement => {
       />
     </Head>
   );
-};
-
-Header.defaultProps = {
-  title: "",
-  description:
-    "A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications",
-  type: "website",
 };
 
 export default Header;

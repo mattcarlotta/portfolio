@@ -22,7 +22,7 @@ export type CardPreviewProps = {
   href?: string;
   location?: string | null;
   scale?: number;
-  showInfo: boolean;
+  showInfo?: boolean;
   slug?: string;
   source?: string;
   status?: string;
@@ -38,10 +38,10 @@ const CardPreview = ({
   contentType,
   description,
   height,
-  href,
+  href = "",
   location,
   scale,
-  showInfo,
+  showInfo = true,
   slug = "",
   source,
   status,
@@ -149,10 +149,5 @@ const CardPreview = ({
     </div>
   </Card>
 );
-
-CardPreview.defaultProps = {
-  href: "",
-  showInfo: true,
-};
 
 export default CardPreview;

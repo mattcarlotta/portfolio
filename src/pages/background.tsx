@@ -21,7 +21,7 @@ import {
   RiMapPin2Line,
 } from "~icons";
 import { getBackground } from "~utils/contentfulApi";
-import { REVALIDATE_TIME } from "~utils/revalidate";
+import REVALIDATE_TIME from "~utils/revalidate";
 import type {
   CONTENTFUL_BACKGROUND_PAGE,
   CSSProperties,

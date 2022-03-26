@@ -9,8 +9,6 @@ export type LinkProps = {
   children: ReactNode;
   className?: string;
   href: string;
-  margin?: string;
-  padding?: string;
   scroll?: boolean;
   style?: CSSProperties;
 };
@@ -40,6 +38,8 @@ const LinkComponent = ({
 const StyledLink = styled(LinkComponent)<{
   fontSize?: string;
   showUnderline?: boolean;
+  margin?: string;
+  padding?: string;
 }>`
   padding: ${({ padding }) => padding || "10px 15px"};
   margin: ${({ margin }) => margin};

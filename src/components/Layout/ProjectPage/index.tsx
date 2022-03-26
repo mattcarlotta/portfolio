@@ -14,7 +14,6 @@ import { IoPlanet } from "~icons";
 import type { CONTENTFUL_PROJECTS_PAGE, ReactElement } from "~types";
 
 const ProjectPage = ({
-  sys,
   title,
   seoDescription,
   description,
@@ -81,7 +80,7 @@ const ProjectPage = ({
               ))}
             </ul>
           </section>
-          {Boolean(snapshotsCollection.items.length > 0) ? (
+          {snapshotsCollection.items.length > 0 ? (
             <ModalDialog snapshots={snapshotsCollection!.items} />
           ) : null}
         </Text>

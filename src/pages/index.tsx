@@ -2,7 +2,7 @@ import CardPreview from "~components/Layout/CardPreview";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
 import { getHomepageCards } from "~utils/contentfulApi";
-import { REVALIDATE_TIME } from "~utils/revalidate";
+import REVALIDATE_TIME from "~utils/revalidate";
 import type {
   CONTENTFUL_PAGE_CARD,
   GetStaticProps,

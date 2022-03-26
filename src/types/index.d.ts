@@ -1,5 +1,6 @@
 /* istanbul ignore file */
 import type { Document, NodeData } from "@contentful/rich-text-types";
+
 export type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 export type { AppProps } from "next/app";
 export type {

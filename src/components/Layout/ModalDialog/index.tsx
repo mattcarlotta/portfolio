@@ -16,7 +16,7 @@ import ImageTitle from "~components/Layout/ImageTitle";
 import PreviewCard from "~components/Layout/PreviewCard";
 import SnapshotContainer from "~components/Layout/SnapshotContainer";
 import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from "~icons";
-import { calculateScale } from "~utils/calculateScale";
+import calculateScale from "~utils/calculateScale";
 import type {
   CONTENTFUL_IMAGE,
   ReactElement,
@@ -124,10 +124,8 @@ const ModalDialog = ({
 
       if ((shiftKey && tabKeyPressed) || arrowLeftPressed) {
         handleNextImage(currentIndex - 1);
-        return;
       } else if (tabKeyPressed || arrowRightPressed) {
         handleNextImage(currentIndex + 1);
-        return;
       }
     },
     [open, handleNextImage, currentIndex],

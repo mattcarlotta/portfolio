@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
-import { calculateScale } from "~utils/calculateScale";
+import calculateScale from "~utils/calculateScale";
 import type { ReactElement } from "~types";
 
 export type ImageProps = {

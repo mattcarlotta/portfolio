@@ -64,8 +64,4 @@ const FileDetails = ({
   </NormalText>
 );
 
-FileDetails.defaultProps = {
-  active: false,
-};
-
 export default FileDetails;
