@@ -31,7 +31,9 @@ export const GlobalStylesheet = (): JSX.Element => (
       body {
         margin: 0;
         color: #fff;
-        background: ${useImageContext() ? "url('/bg.webp')" : "url('/bg.png')"};
+        background: ${`url('/bg.${
+          useImageContext().supportsWebp ? "webp" : "png"
+        }')`};
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;

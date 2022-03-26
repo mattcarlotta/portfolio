@@ -12,13 +12,13 @@ const initProps = {
 describe("FileDetails", () => {
   it("renders an active project icon", () => {
     const { getByTestId } = render(<FileDetails {...initProps} />);
-    expect(getByTestId("fipower")).toHaveStyle("color: limegreen");
+    expect(getByTestId("status")).toHaveStyle("color: limegreen");
   });
 
   it("renders an inactive project icon", () => {
     const { getByTestId } = render(
       <FileDetails {...initProps} active={false} />,
     );
-    expect(getByTestId("fipower")).toHaveStyle("color: #2c4776");
+    expect(getByTestId("status")).toHaveStyle("color: yellow");
   });
 });

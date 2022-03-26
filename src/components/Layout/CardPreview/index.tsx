@@ -20,7 +20,7 @@ export type CardPreviewProps = {
   contentType: string;
   height: number;
   href?: string;
-  location?: string;
+  location?: string | null;
   scale?: number;
   showInfo: boolean;
   slug?: string;

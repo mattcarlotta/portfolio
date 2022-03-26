@@ -25,7 +25,7 @@ const initProps = {
     "A custom built Rust API server to dynamically resize images based upon a URL query.",
   active: false,
   status: "Decomissioned",
-  location: null,
+  location: "https://github.com/mattcarlotta/image-api",
   source: "https://github.com/mattcarlotta/image-api",
   description: {
     json: {
@@ -149,16 +149,35 @@ const initProps = {
   },
   tech: ["rust", "nginx", "pm2"],
   snapshotsCollection: {
-    items: [],
+    items: [
+      {
+        url: "https://images.ctfassets.net/hb5otnhwin4m/sDOSuByzAmp1FWwti4xy0/c9f454201c2d9a710952434792f3cc1e/sjsiceteamDashboard.png",
+        description:
+          "A preview of an email that contains an event reminder which contains the event's location, date and the member's call-time.",
+        contentType: "image/png",
+        height: 912,
+        width: 1828,
+        title: "dashboard",
+      },
+    ],
   },
   preview: {
     url: "https://images.ctfassets.net/hb5otnhwin4m/7lUEgIvAbRze7BvvezKPMy/d04aaa477ce728779e5e24c14c2c8356/rustybucketPreview.png",
+    description:
+      "A preview of an email that contains an event reminder which contains the event's location, date and the member's call-time.",
     contentType: "image/png",
     height: 200,
     width: 200,
     title: "rusty bucket preview",
   },
   slug: "rusty-bucket",
+};
+
+const nextProps = {
+  ...initProps,
+  snapshotsCollection: {
+    items: [],
+  },
 };
 
 describe("Project Page", () => {
@@ -171,7 +190,7 @@ describe("Project Page", () => {
   // });
 
   it("populates the panel title", () => {
-    const { getByTestId } = render(<ProjectPage {...initProps} />);
+    const { getByTestId } = render(<ProjectPage {...nextProps} />);
     expect(
       within(getByTestId("panel-title")).getByText(initProps.title),
     ).toBeInTheDocument();
@@ -201,25 +220,27 @@ describe("Project Page", () => {
   it("populates the description details", () => {
     const { getByTestId } = render(<ProjectPage {...initProps} />);
     expect(
-      within(getByTestId("description")).getByText(/With the help of the/),
+      within(getByTestId("description")).getByText(
+        /Window aspect ratios vary from device to device/,
+      ),
     ).toBeInTheDocument();
   });
 
   it("populates the tech details", () => {
     const { getByTestId } = render(<ProjectPage {...initProps} />);
-    expect(within(getByTestId("tech")).getByText(/Babel/)).toBeInTheDocument();
+    expect(within(getByTestId("tech")).getByText(/rust/)).toBeInTheDocument();
   });
 
   it("populates the snapshots", () => {
     const { queryAllByTestId } = render(<ProjectPage {...initProps} />);
-    const { snapshotdirectory, snapshots } = initProps;
+    const {
+      snapshotsCollection: { items },
+    } = initProps;
 
     const snapshot = queryAllByTestId("snapshots")[0];
-    expect(within(snapshot).getByText(snapshots[0].title)).toBeInTheDocument();
-    expect(snapshot.querySelector("img")?.src).toContain(
-      `projects/${snapshotdirectory}/${snapshots[0].src}`,
-    );
-    expect(snapshot.querySelector("img")?.alt).toContain(snapshots[0].alt);
+    expect(within(snapshot).getByText(items[0].title)).toBeInTheDocument();
+    expect(snapshot.querySelector("img")?.src).toContain(items[0].url);
+    // expect(snapshot.querySelector("img")?.alt).toContain(items[0].description);
   });
 
   // it("opens and closes a modal", async () => {

@@ -39,7 +39,7 @@ export type CONTENTFUL_SLUG = {
 };
 
 export type CONTENTFUL_JSON = {
-  json: Document;
+  json: any;
 };
 
 export type CONTENTFUL_DESCRIPTION = {
@@ -80,7 +80,7 @@ export type CONTENTFUL_PROJECTS_PAGE = {
   seoDescription: string;
   active: boolean;
   status: string;
-  location?: string;
+  location?: string | null;
   source: string;
   preview: CONTENTFUL_IMAGE;
   tech: Array<string>;

@@ -4,16 +4,23 @@ import userEvent from "@testing-library/user-event";
 import ModalDialog from "../index";
 
 const props = {
-  snapshotdirectory: "example",
   snapshots: [
     {
-      src: "example/123",
-      alt: "example-123-preview",
+      url: "https://images.ctfassets.net/hb5otnhwin4m/sDOSuByzAmp1FWwti4xy0/c9f454201c2d9a710952434792f3cc1e/sjsiceteamDashboard.png",
+      description:
+        "A dashboard that is laid out with a navbar bar that extends across the top of the page and sidebar along the right with clickable links that extends to the bottom of the page, a sidebar with clickable links that extends all the way down the left of the page. These bars frame 4 panels to the right: An Events panel, a Forms panel, an Availability panel and an Event Distribution chart panel.",
+      contentType: "image/png",
+      height: 912,
+      width: 1828,
       title: "example 123",
     },
     {
-      src: "example/456",
-      alt: "example-456-preview",
+      url: "https://images.ctfassets.net/hb5otnhwin4m/7yKDglorrZ2rF2Ygyx1ZIh/0bbf2e65890b8ffa5525625aa4b74830/sjsiceteamEmailEventReminder.png",
+      description:
+        "A preview of an email that contains an event reminder which contains the event's location, date and the member's call-time.",
+      contentType: "image/png",
+      height: 979,
+      width: 1805,
       title: "example 456",
     },
   ],
@@ -138,7 +145,9 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    userEvent.tab();
+    await waitFor(() => {
+      userEvent.tab();
+    });
 
     await waitFor(() => {
       expect(
@@ -156,7 +165,9 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    userEvent.keyboard("{arrowright}");
+    await waitFor(() => {
+      userEvent.keyboard("{arrowright}");
+    });
 
     await waitFor(() => {
       expect(
@@ -174,7 +185,29 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    userEvent.keyboard("{arrowleft}");
+    await waitFor(() => {
+      userEvent.keyboard("{arrowleft}");
+    });
+
+    await waitFor(() => {
+      expect(
+        within(getByTestId("modal-title")).getByText("example 456"),
+      ).toBeInTheDocument();
+    });
+  });
+
+  it("pressing shift+tab keys navigates to previous image", async () => {
+    const { getByTestId } = render(<ModalDialog {...props} />);
+
+    fireEvent.click(getByTestId("example 123"));
+
+    await waitFor(() => {
+      expect(document.querySelector("#modal")).toBeInTheDocument();
+    });
+
+    await waitFor(() => {
+      userEvent.tab({ shift: true });
+    });
 
     await waitFor(() => {
       expect(
@@ -192,7 +225,9 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    userEvent.keyboard("{esc}");
+    await waitFor(() => {
+      userEvent.keyboard("{esc}");
+    });
 
     await waitFor(() => {
       expect(document.querySelector("#modal")).not.toBeInTheDocument();
@@ -208,7 +243,9 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    userEvent.keyboard("{arrowup}");
+    await waitFor(() => {
+      userEvent.keyboard("{arrowup}");
+    });
 
     await waitFor(() => {
       expect(document.querySelector("#modal")).toBeInTheDocument();

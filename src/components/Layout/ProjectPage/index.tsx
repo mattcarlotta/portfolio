@@ -81,7 +81,7 @@ const ProjectPage = ({
               ))}
             </ul>
           </section>
-          {Boolean((snapshotsCollection.items.length ?? 0) > 0) ? (
+          {Boolean(snapshotsCollection.items.length > 0) ? (
             <ModalDialog snapshots={snapshotsCollection!.items} />
           ) : null}
         </Text>

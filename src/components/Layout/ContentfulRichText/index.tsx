@@ -9,7 +9,7 @@ const customMarkdownOptions = {
       const title = node.content?.[0]?.value;
       const URL = node.data?.uri;
 
-      return URL && title ? (
+      return (
         <OutsideLink
           showIcon
           ariaLabel={`Navigate to ${title} page`}
@@ -17,7 +17,7 @@ const customMarkdownOptions = {
         >
           {title}
         </OutsideLink>
-      ) : null;
+      );
     },
   },
 };

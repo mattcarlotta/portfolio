@@ -7,7 +7,7 @@ import type { CSSProperties } from "~types";
 export type FileDetailsProps = {
   active: boolean;
   fileName: string;
-  location?: string;
+  location?: string | null;
   status: string;
   source: string;
 };

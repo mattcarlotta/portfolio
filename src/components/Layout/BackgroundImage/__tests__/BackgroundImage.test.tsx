@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { BackgroundImage } from "../index";
 
-const src = "/projects/123";
+const src = "/projects/123.png";
 
 describe("BackgroundImage", () => {
   it("renders without errors", () => {
@@ -10,7 +10,7 @@ describe("BackgroundImage", () => {
     );
     expect(getByTestId("image")).toHaveStyleRule(
       "background-image",
-      `url(${src}.png?ext=webp)`,
+      `url(${src}?fm=webp)`,
     );
   });
 
@@ -21,7 +21,7 @@ describe("BackgroundImage", () => {
 
     expect(getByTestId("image")).toHaveStyleRule(
       "background-image",
-      `url(${src}.png)`,
+      `url(${src})`,
     );
   });
 });
