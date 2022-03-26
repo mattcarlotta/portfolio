@@ -18,7 +18,6 @@ const Header = (): ReactElement => (
     `}
   >
     <FlexSpaceAround
-      as="ul"
       breakpoint
       direction="row"
       style={{ listStyle: "none", margin: "0 auto", padding: 0, height: 55 }}
@@ -26,17 +25,15 @@ const Header = (): ReactElement => (
       {HEADERLINKS.map(({ href, page, Icon, external }) => {
         const LinkComponent = !external ? LinkIcon : OutsideLinkIcon;
         return (
-          <li key={page}>
-            <Tooltip title={page}>
-              <LinkComponent
-                dataTestId={`go-to-${page}`}
-                ariaLabel={`Navigate to my ${page} page`}
-                href={href}
-              >
-                <Icon />
-              </LinkComponent>
-            </Tooltip>
-          </li>
+          <Tooltip key={page} title={page}>
+            <LinkComponent
+              dataTestId={`go-to-${page}`}
+              ariaLabel={`Navigate to my ${page} page`}
+              href={href}
+            >
+              <Icon />
+            </LinkComponent>
+          </Tooltip>
         );
       })}
     </FlexSpaceAround>
