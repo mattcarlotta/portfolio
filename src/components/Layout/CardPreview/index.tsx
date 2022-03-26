@@ -9,60 +9,69 @@ import Tooltip from "~components/Layout/Tooltip";
 import Link from "~components/Navigation/Link";
 import OutsideLink from "~components/Navigation/OutsideLink";
 import { FaLink, FaRegFileCode, FiPower, ImInfo } from "~icons";
-import type { ReactElement } from "~types";
+import type { CONTENTFUL_JSON, ReactElement } from "~types";
+import ContentfulRichText from "../ContentfulRichText";
 
 export type CardPreviewProps = {
   active?: boolean;
-  alt: string;
+  alt?: string;
   ariaLabel: string;
-  description: string;
+  description: string | CONTENTFUL_JSON;
+  contentType: string;
+  height: number;
   href?: string;
-  idx: number;
-  location?: string;
-  ratio?: string;
-  showInfo: boolean;
+  location?: string | null;
+  scale?: number;
+  showInfo?: boolean;
+  slug?: string;
   source?: string;
-  src: string;
   status?: string;
   title: string;
   url: string;
+  width: number;
 };
 
 const CardPreview = ({
   active,
-  alt,
+  alt = "",
   ariaLabel,
+  contentType,
   description,
+  height,
   href,
-  idx,
   location,
-  ratio,
-  showInfo,
+  scale,
+  showInfo = true,
+  slug = "",
   source,
-  src,
   status,
   title,
   url,
+  width,
 }: CardPreviewProps): ReactElement => (
-  <Card custom={idx}>
+  <Card>
     <PlaceHolder />
     <div className="panel-container">
-      <CardTitle id={title}>{title}</CardTitle>
+      <header>
+        <CardTitle id={title}>{title}</CardTitle>
+      </header>
       <Bars />
       <Flex justify="center" height="230px" width="100%">
         <Link
           dataTestId={title}
           ariaLabel={ariaLabel}
           padding="0px"
-          href={`/${href}${url}`}
-          scroll={false}
+          href={`/${href}/${slug}`}
         >
           <Image
-            src={`projects/${src}`}
+            placeholder
+            url={url}
             alt={alt}
-            ratio={ratio}
-            width="auto"
-            styles="max-width: 250px;border-radius: 4px;"
+            scale={scale}
+            height={height}
+            width={width}
+            contentType={contentType}
+            styles="border-radius: 4px;"
           />
         </Link>
       </Flex>
@@ -74,13 +83,12 @@ const CardPreview = ({
               ariaLabel={ariaLabel}
               padding="5px"
               margin="0 5px"
-              href={`/${href}${url}`}
-              scroll={false}
+              href={`/${href}/${slug}`}
             >
               <FiPower
                 data-testid="fipower"
                 style={{
-                  color: active ? "limegreen" : "#2c4776",
+                  color: active ? "limegreen" : "yellow",
                   fontSize: 22,
                 }}
               />
@@ -94,8 +102,7 @@ const CardPreview = ({
               ariaLabel={ariaLabel}
               padding="5px"
               margin="0 5px"
-              href={`/${href}${url}`}
-              scroll={false}
+              href={`/${href}/${slug}`}
             >
               <ImInfo style={{ fontSize: 22 }} />
             </Link>
@@ -126,20 +133,21 @@ const CardPreview = ({
           </Tooltip>
         )}
       </Flex>
-      <NormalText
-        as="h2"
-        id={`${title} description`}
-        padding="0px 10px 15px 10px"
-      >
-        {description}
-      </NormalText>
+      <header>
+        <NormalText
+          as="h3"
+          id={`${title} description`}
+          padding="0px 10px 15px 10px"
+        >
+          {typeof description === "string" ? (
+            description
+          ) : (
+            <ContentfulRichText json={description.json} />
+          )}
+        </NormalText>
+      </header>
     </div>
   </Card>
 );
-
-CardPreview.defaultProps = {
-  href: "",
-  showInfo: true,
-};
 
 export default CardPreview;

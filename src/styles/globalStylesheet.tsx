@@ -1,5 +1,6 @@
 /* istanbul ignore file */
 import { css, Global } from "@emotion/react";
+import { useImageContext } from "~components/ImageContext";
 
 export const GlobalStylesheet = (): JSX.Element => (
   <Global
@@ -30,7 +31,9 @@ export const GlobalStylesheet = (): JSX.Element => (
       body {
         margin: 0;
         color: #fff;
-        background: url("${process.env.NEXT_PUBLIC_IMAGE}/bg.png?ext=webp");
+        background: ${`url('/bg.${
+          useImageContext().supportsWebp ? "webp" : "png"
+        }')`};
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;
@@ -42,13 +45,13 @@ export const GlobalStylesheet = (): JSX.Element => (
 
       @keyframes pulse {
         0% {
-          background-color: #eee;
+          background-color: #00020e;
         }
         50% {
-          background-color: #e4e4e4;
+          background-color: #00264d;
         }
         100% {
-          background-color: #eee;
+          background-color: #00020e;
         }
       }
 

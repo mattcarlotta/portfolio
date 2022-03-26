@@ -1,11 +1,12 @@
-import * as React from "react";
+import { useState } from "react";
+import type { ReactElement } from "~types";
 
 export type ModalContainerProps = {
   children: (
     isOpen: boolean,
     selected: string | undefined,
     toggleModal: (selected?: string) => void,
-  ) => JSX.Element;
+  ) => ReactElement;
 };
 
 export type ModalContainerState = {
@@ -13,8 +14,8 @@ export type ModalContainerState = {
   selected?: string;
 };
 
-const ModalContainer = ({ children }: ModalContainerProps): JSX.Element => {
-  const [state, setState] = React.useState<ModalContainerState>({
+const ModalContainer = ({ children }: ModalContainerProps): ReactElement => {
+  const [state, setState] = useState<ModalContainerState>({
     isOpen: false,
     selected: "",
   });

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Head from "next/head";
 import Flex from "~components/Layout/Flex";
 import Panel from "~components/Layout/Panel";
@@ -10,7 +9,7 @@ import { GiExplodingPlanet } from "~icons";
 import type { ReactElement } from "~types";
 
 const ErrorPage = (): ReactElement => (
-  <Fragment>
+  <>
     <Head>
       <title>Server Error | Matt Carlotta</title>
     </Head>
@@ -27,7 +26,7 @@ const ErrorPage = (): ReactElement => (
       </Panel>
     </Project>
     <GoBack href="/" title="home" />
-  </Fragment>
+  </>
 );
 
 export default ErrorPage;

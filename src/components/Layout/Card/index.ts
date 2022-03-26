@@ -1,25 +1,9 @@
 /* istanbul ignore file */
 import styled from "@emotion/styled";
-import { motion } from "framer-motion";
 import CardTitle from "~components/Layout/CardTitle";
 import PlaceHolder from "~components/Layout/PlaceHolder";
 
-const cardVariants = {
-  animate: (index: number) => ({
-    x: 0,
-    opacity: 1,
-    transition: { delay: 0.1 * index },
-  }),
-  initial: { x: "-100vw", opacity: 0 },
-  exit: {
-    x: "-100vw",
-    opacity: 0,
-    transition: { delay: 0 },
-  },
-  hover: { scale: 1.1 },
-};
-
-const Card = styled(motion.div)`
+const Card = styled.div`
   width: 300px;
   height: 260px;
   margin: 5px;
@@ -39,6 +23,8 @@ const Card = styled(motion.div)`
     z-index: 1;
     overflow: visible;
     border: 0;
+    transform: scale(1.1);
+    transition: transform 200ms ease-in-out;
 
     ${CardTitle} {
       background: #0080ff;
@@ -72,12 +58,12 @@ const Card = styled(motion.div)`
   }
 `;
 
-Card.defaultProps = {
-  whileHover: "hover",
-  initial: "initial",
-  exit: "exit",
-  animate: "animate",
-  variants: cardVariants,
-};
+// Card.defaultProps = {
+//   whileHover: "hover",
+//   initial: "initial",
+//   exit: "exit",
+//   animate: "animate",
+//   variants: cardVariants,
+// };
 
 export default Card;

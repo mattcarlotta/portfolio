@@ -3,17 +3,56 @@ import CardPreview from "../index";
 
 const initProps = {
   active: true,
-  alt: "portait",
-  ariaLabel: "Navigate to example page.",
-  description: "Example description.",
-  href: "12345",
-  idx: 1,
-  location: "https://example.com",
-  source: "http://example.com",
-  src: "me",
-  status: "In Orbit",
-  title: "example project",
-  url: "123456",
+  ariaLabel: "",
+  status: "Archived",
+  location: "https://github.com/mattcarlotta/nextjs-ssr-kit",
+  source: "https://github.com/mattcarlotta/nextjs-ssr-kit",
+  description:
+    "A fully-loaded, built from the ground up, NextJS boilerplate for server-side solutions.",
+  url: "https://images.ctfassets.net/hb5otnhwin4m/1hKVGDEuKXA82elw5sYYk1/a44befed988a8c66025a85416c2b8479/nextssrkitPreview.png",
+  contentType: "image/png",
+  height: 200,
+  width: 243,
+  title: "next ssr kit preview",
+  href: "projects",
+  slug: "nextjs-ssr-kit",
+  showInfo: true,
+};
+
+const nextProps = {
+  active: false,
+  ariaLabel: "",
+  status: "Archived",
+  location: "https://github.com/mattcarlotta/nextjs-ssr-kit",
+  source: "https://github.com/mattcarlotta/nextjs-ssr-kit",
+  description: {
+    json: {
+      nodeType: "document",
+      data: {},
+      content: [
+        {
+          nodeType: "paragraph",
+          content: [
+            {
+              nodeType: "text",
+              value:
+                "An application to consolidate google forms, excel, and manual user-generated monthly PDFs into a single, unified, semi-automated month-to-month scheduling service for 25+ members of the San Jose Sharks Ice Team.",
+              marks: [],
+              data: {},
+            },
+          ],
+          data: {},
+        },
+      ],
+    },
+  },
+
+  url: "https://images.ctfassets.net/hb5otnhwin4m/1hKVGDEuKXA82elw5sYYk1/a44befed988a8c66025a85416c2b8479/nextssrkitPreview.png",
+  contentType: "image/png",
+  height: 200,
+  width: 243,
+  title: "next ssr kit preview",
+  href: "projects",
 };
 
 describe("Image", () => {
@@ -23,9 +62,7 @@ describe("Image", () => {
   });
 
   it("renders inactive projects", () => {
-    const { getByTestId } = render(
-      <CardPreview {...initProps} active={false} />,
-    );
-    expect(getByTestId("fipower")).toHaveStyle("color:#2c4776");
+    const { getByTestId } = render(<CardPreview {...nextProps} />);
+    expect(getByTestId("fipower")).toHaveStyle("color:yellow");
   });
 });

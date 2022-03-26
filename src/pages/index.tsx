@@ -1,68 +1,54 @@
-import { Fragment } from "react";
 import CardPreview from "~components/Layout/CardPreview";
 import Flex from "~components/Layout/Flex";
 import Head from "~components/Navigation/Header";
-import type { ReactElement } from "~types";
+import { getHomepageCards } from "~utils/contentfulApi";
+import REVALIDATE_TIME from "~utils/revalidate";
+import type {
+  CONTENTFUL_PAGE_CARD,
+  GetStaticProps,
+  ReactElement,
+} from "~types";
 
-const HomePages = [
-  {
-    id: "projects",
-    head: {
-      title: "projects",
-      url: "projects",
-      description:
-        "Projects that vary from fullstack web applications, to custom NPM packages, to standalone applications.",
-    },
-    preview: {
-      alt: "projects-preview",
-      ariaLabel: "Navigate to the Projects page.",
-      src: "planets/projects",
-    },
-  },
-  {
-    id: "explorations",
-    head: {
-      title: "explorations",
-      url: "explorations",
-      description:
-        "Explorations that vary from project-specific problem solving, to ground-up custom components, to answering stackoverflow questions.",
-    },
-    preview: {
-      alt: "explorations-preview",
-      ariaLabel: "Navigate to the Explorations page.",
-      src: "planets/explorations",
-    },
-  },
-  {
-    id: "about",
-    head: {
-      title: "background",
-      url: "background",
-      description: "The journey to become a fullstack web developer.",
-    },
-    preview: {
-      alt: "about-preview",
-      ariaLabel: "Navigate to the About page.",
-      src: "planets/about",
-    },
-  },
-];
-
-const Home = (): ReactElement => (
-  <Fragment>
+const Home = ({
+  cards,
+}: {
+  cards: Array<CONTENTFUL_PAGE_CARD>;
+}): ReactElement => (
+  <>
     <Head />
     <Flex data-testid="home-page" margin="75px 0 0 0" justify="center" flexwrap>
-      {HomePages.map(({ id, head, preview }, index) => (
+      {cards.map(({ sys, preview, slug, ...rest }) => (
         <CardPreview
-          key={id}
-          idx={index}
-          {...head}
           {...preview}
+          {...rest}
+          key={sys.id}
+          ariaLabel={`Navigate to my ${slug} page`}
+          href={slug}
           showInfo={false}
+          alt={preview.description}
         />
       ))}
     </Flex>
-  </Fragment>
+  </>
 );
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await getHomepageCards();
+
+  const cards = res.data?.homepageCardCollection?.items;
+
+  if (!cards) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      cards,
+      revalidate: REVALIDATE_TIME,
+    },
+  };
+};
 
 export default Home;

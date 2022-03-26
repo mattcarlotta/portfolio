@@ -12,6 +12,9 @@ coverage
 /.next/
 /out/
 
+# env
+.env.*
+
 # production
 /build
 start.json

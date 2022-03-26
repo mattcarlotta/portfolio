@@ -6,69 +6,46 @@ import Center from "~components/Layout/Center";
 import Headline from "~components/Layout/Headline";
 import SubHeadline from "~components/Layout/SubHeadline";
 import OutsideLinkIcon from "~components/Navigation/OutsideLinkIcon";
-import { ImInfo, GoHome, FaGithub, FiLinkedin, SiCodesandbox } from "~icons";
+import Tooltip from "~components/Layout/Tooltip";
 import type { ReactElement } from "~types";
-
-const HEADERLINKS = [
-  {
-    dataTestId: "linkedin",
-    Icon: FiLinkedin,
-    link: "https://www.linkedin.com/in/mattcarlotta/",
-    description: "My LinkedIn profile",
-  },
-  {
-    dataTestId: "github",
-    Icon: FaGithub,
-    link: "https://github.com/mattcarlotta",
-    description: "My github repository",
-  },
-  {
-    dataTestId: "codesandbox",
-    Icon: SiCodesandbox,
-    link: "https://codesandbox.io/u/mattcarlotta/sandboxes",
-    description: "My Codesandbox profile",
-  },
-];
+import HEADERLINKS from "./HEADERLINKS";
 
 const Header = (): ReactElement => (
-  <header
+  <nav
     data-testid="head"
     css={css`
-      padding-top: 50px;
+      padding-top: 60px;
     `}
   >
-    <FlexSpaceAround breakpoint direction="row">
-      <LinkIcon
-        dataTestId="go-home"
-        ariaLabel="Navigate back to home page"
-        href="/"
-      >
-        <GoHome />
-      </LinkIcon>
-      <LinkIcon
-        dataTestId="background"
-        ariaLabel="Navigate to my background page"
-        href="/background"
-      >
-        <ImInfo />
-      </LinkIcon>
-      {HEADERLINKS.map(({ dataTestId, description, Icon, link }) => (
-        <OutsideLinkIcon
-          key={description}
-          dataTestId={dataTestId}
-          ariaLabel={description}
-          href={link}
-        >
-          <Icon className="icon" />
-        </OutsideLinkIcon>
-      ))}
+    <FlexSpaceAround
+      as="ul"
+      breakpoint
+      direction="row"
+      style={{ listStyle: "none", margin: "0 auto", padding: 0, height: 55 }}
+    >
+      {HEADERLINKS.map(({ href, page, Icon, external }) => {
+        const LinkComponent = !external ? LinkIcon : OutsideLinkIcon;
+        return (
+          <li key={page}>
+            <Tooltip title={page}>
+              <LinkComponent
+                dataTestId={`go-to-${page}`}
+                ariaLabel={`Navigate to my ${page} page`}
+                href={href}
+              >
+                <Icon />
+              </LinkComponent>
+            </Tooltip>
+          </li>
+        );
+      })}
     </FlexSpaceAround>
     <Orbits />
-    <Center data-testid="header">
+    <Center as="header" data-testid="header">
       <Headline>MATT CARLOTTA</Headline>
       <SubHeadline>fullstack software engineer</SubHeadline>
     </Center>
-  </header>
+  </nav>
 );
 
 export default Header;

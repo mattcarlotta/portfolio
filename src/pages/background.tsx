@@ -1,5 +1,5 @@
-import { Fragment } from "react";
 import { css } from "@emotion/react";
+import ContentfulRichText from "~components/Layout/ContentfulRichText";
 import DetailHeadline from "~components/Layout/DetailHeadline";
 import Flex from "~components/Layout/Flex";
 import Image from "~components/Layout/Image";
@@ -20,125 +20,14 @@ import {
   HiOutlineMail,
   RiMapPin2Line,
 } from "~icons";
-import type { CSSProperties, ReactElement } from "~types";
-
-const TechSpecs = [
-  { technology: "Rust", level: 2 },
-  { technology: "Javascript", level: 4 },
-  { technology: "Typescript", level: 3 },
-  { technology: "Bash Script", level: 4 },
-  { technology: "NodeJS", level: 5 },
-  { technology: "NextJS", level: 5 },
-  { technology: "ReactJS", level: 5 },
-  { technology: "ReduxJS", level: 5 },
-  { technology: "MongoDB", level: 3 },
-  { technology: "PostgreSQL", level: 2 },
-  { technology: "ExpressJS", level: 4 },
-  { technology: "Webpack", level: 4 },
-  { technology: "RollupJS", level: 4 },
-  { technology: "Babel", level: 4 },
-  { technology: "Ant Design", level: 5 },
-  { technology: "Material UI", level: 5 },
-  { technology: "Bootstrap", level: 2 },
-  { technology: "Tailwind", level: 2 },
-  { technology: "Jest", level: 5 },
-  { technology: "Enzyme", level: 4 },
-  { technology: "React Testing Library", level: 3 },
-  { technology: "Cypress", level: 4 },
-  { technology: "SuperTest", level: 4 },
-  { technology: "CSS/SASS", level: 4 },
-  { technology: "Linux", level: 4 },
-  { technology: "Git", level: 4 },
-  { technology: "Github Actions", level: 3 },
-  { technology: "Nginx", level: 3 },
-];
-
-const additionalEdu = [
-  {
-    title: "Learn and Understand NodeJS by Anthony Alicea",
-    url: "https://www.udemy.com/course/understand-nodejs",
-  },
-  {
-    title: "The Web Developer Bootcamp by Colt Steele",
-    url: "https://www.udemy.com/course/the-web-developer-bootcamp",
-  },
-  {
-    title: "Modern React with Redux by Stephen Grider",
-    url: "https://www.udemy.com/course/react-redux/",
-  },
-  {
-    title: "Advanced React and Redux by Stephen Grider",
-    url: "https://www.udemy.com/course/react-redux-tutorial/",
-  },
-  {
-    title: "The Complete React Web App Developer Course by Andrew Mead",
-    url: "https://www.udemy.com/course/the-complete-react-web-app-developer-course/",
-  },
-  {
-    title: "Accelerated ES6 Javascript Training by Max Schwarzmuller",
-    url: "https://www.udemy.com/course/es6-bootcamp-next-generation-javascript/",
-  },
-  {
-    title: "The Complete Developers Guide to MongoDB by Stephen Grider",
-    url: "https://www.udemy.com/course/the-complete-developers-guide-to-mongodb",
-  },
-  {
-    title: "Node with React: Fullstack Web Development by Stephen Grider",
-    url: "https://www.udemy.com/course/node-with-react-fullstack-web-development/",
-  },
-  {
-    title: "The Complete React Developer Course (2nd edition) by Andrew Mead",
-    url: "https://www.udemy.com/course/react-2nd-edition",
-  },
-  {
-    title: "React Testing with Jest and Enzyme by Bonnie Schulkin",
-    url: "https://www.udemy.com/course/react-testing-with-jest-and-enzyme",
-  },
-  {
-    title: "Understanding TypeScript by Max Schwarzmuller",
-    url: "https://www.udemy.com/course/understanding-typescript/",
-  },
-  {
-    title: "Introduction to MongoDB by Scott Moss",
-    url: "https://frontendmasters.com/courses/mongodb/",
-  },
-  {
-    title: "VIM Fundamentals by ThePrimeagen",
-    url: "https://frontendmasters.com/courses/vim-fundamentals/",
-  },
-  {
-    title: "Developer Productivity by ThePrimeagen",
-    url: "https://frontendmasters.com/workshops/dev-productivity/",
-  },
-  {
-    title: "Git & Github Master Course by Mohit Uniyal",
-    url: "https://www.udemy.com/course/git-github-master-course/",
-  },
-  {
-    title: "The Rust Programming Language by Richard Feldman",
-    url: "https://frontendmasters.com/courses/rust/",
-  },
-  {
-    title: "Ultimate Rust Crash Course by Nathan Stocks",
-    url: "https://www.udemy.com/course/ultimate-rust-crash-course/",
-  },
-  {
-    title: "Learn Rust by Building Real Applications by Lyubomir Gavadinov",
-    url: "https://www.udemy.com/course/rust-fundamentals/",
-  },
-  {
-    title: "CSS Grid & Flexbox for Responsive Layout by Jen Kramer",
-    url: "https://frontendmasters.com/courses/css-grid-flexbox-v2/",
-  },
-  {
-    title: "Practical Module Federation by Jack Herrington & Zack Jackson",
-    url: "https://module-federation.myshopify.com/products/practical-module-federation",
-  },
-  {
-    title: "Intermediate TypeScript by Mike North",
-    url: "https://frontendmasters.com/courses/intermediate-typescript/",
-  },
-];
+import { getBackground } from "~utils/contentfulApi";
+import REVALIDATE_TIME from "~utils/revalidate";
+import type {
+  CONTENTFUL_BACKGROUND_PAGE,
+  CSSProperties,
+  GetStaticProps,
+  ReactElement,
+} from "~types";
 
 const style = {
   fontSize: 20,
@@ -146,160 +35,193 @@ const style = {
   marginRight: 10,
 } as CSSProperties;
 
-const Background = (): ReactElement => (
-  <Fragment>
+const Background = ({
+  background,
+}: {
+  background: CONTENTFUL_BACKGROUND_PAGE;
+}): ReactElement => (
+  <>
     <Head />
     <Project>
-      <PanelTitle data-testid="panel-title">my background</PanelTitle>
+      <header>
+        <PanelTitle data-testid="panel-title">{background.title}</PanelTitle>
+      </header>
       <Panel>
-        <div
-          css={css`
-            margin: 40px 0 0 0;
-            padding: 0 20px;
-          `}
-        >
-          <Image
-            src="me"
-            alt="a picture of myself smiling"
-            height="100%"
-            width="100%"
-            styles="margin: 0 auto;max-width: 250px;max-height: 250px;border-radius: 10px;"
-          />
-        </div>
+        <Image
+          {...background.profileImage}
+          placeholder
+          alt={background.profileImage.description}
+          styles="margin: 30px auto auto;border-radius: 10px;"
+        />
         <Text>
-          <DetailHeadline>Details:</DetailHeadline>
-          <NormalText margin="0 0 0 15px" fontSize="16px">
-            <Info data-testid="status">
-              <FiPower style={{ color: "limegreen", ...style }} />
-              Activated in September 2016
-            </Info>
-            <Info data-testid="location">
-              <RiMapPin2Line style={style} />
-              Small town in Oregon, USA
-            </Info>
-            <Info data-testid="level">
-              <GiRank3 style={style} />
-              Mid-Level FullStack Engineer
-            </Info>
-            <Info data-testid="source">
-              <HiOutlineMail style={style} />
-              <OutsideLink
-                dataTestId="send-email-link"
-                ariaLabel="Click to send me an email."
-                href="mailto:matt@mattcarlotta.com"
-              >
-                matt@mattcarlotta.com
-              </OutsideLink>
-            </Info>
-          </NormalText>
-          <DetailHeadline>Brief:</DetailHeadline>
-          <SubTitle data-testid="brief">
-            In September 2016, I embarked on the journey to become a fullstack
-            engineer. As the years have gone by, I have focused my efforts in:
-            MongoDB, ExpressJS, ReactJS/ReduxJS and NodeJS. The apps I build are
-            test-driven, data-driven, cross-platform, and production-ready. I
-            also deploy and maintain them on remote headless Linux servers.
-            <br />
-            <br />
-            Outside of work, I love walking my dog Nico, building my own desktop
-            computers and watching mystery/thriller movies. In my free time, I
-            am passionate about contributing to open-source projects. I enjoy
-            helping the web development community by asking and answering
-            questions on various development platforms. And lastly, I love
-            creating web and desktop software for fun.
-          </SubTitle>
-          <DetailHeadline>Tech Specs:</DetailHeadline>
-          <ul
-            data-testid="tech"
-            css={css`
-              list-style-type: none;
-              padding: 0 10px;
-            `}
-          >
-            {TechSpecs.map(({ technology, level }, index) => (
-              <li key={technology}>
-                <NormalText fontSize="20px">
-                  <Flex
-                    breakpoint
-                    width="100%"
-                    flexwrap
-                    style={{
-                      background: index % 2 ? "#001031" : "transparent",
-                      padding: "0 10px",
-                    }}
-                  >
+          <section>
+            <header>
+              <DetailHeadline margin="20px 0 0 0">Details:</DetailHeadline>
+            </header>
+            <NormalText margin="15px 0 0 15px" fontSize="16px">
+              <Info data-testid="status">
+                <FiPower style={{ color: "limegreen", ...style }} />
+                Activated in September 2016
+              </Info>
+              <Info data-testid="location">
+                <RiMapPin2Line style={style} />
+                {background.location}
+              </Info>
+              <Info data-testid="level">
+                <GiRank3 style={style} />
+                {background.rank}
+              </Info>
+              <Info data-testid="source">
+                <HiOutlineMail style={style} />
+                <OutsideLink
+                  dataTestId="send-email-link"
+                  ariaLabel="Click to send me an email."
+                  href="mailto:matt@mattcarlotta.com"
+                >
+                  {background.email}
+                </OutsideLink>
+              </Info>
+            </NormalText>
+          </section>
+          <section>
+            <header>
+              <DetailHeadline>Brief:</DetailHeadline>
+            </header>
+            <SubTitle data-testid="brief">
+              <ContentfulRichText json={background.description.json} />
+            </SubTitle>
+          </section>
+          <section>
+            <header>
+              <DetailHeadline>Tech Specs:</DetailHeadline>
+            </header>
+            <ul
+              data-testid="tech"
+              css={css`
+                list-style-type: none;
+                padding: 0 10px;
+              `}
+            >
+              {background.tech.data.map(({ technology, level }, index) => (
+                <li key={technology}>
+                  <NormalText fontSize="20px">
                     <Flex
                       breakpoint
-                      justify="flex-start"
-                      width="50%"
-                      style={{ color: "#0088ff" }}
+                      width="100%"
+                      flexwrap
+                      style={{
+                        background: index % 2 ? "#001031" : "transparent",
+                        padding: "0 10px",
+                      }}
                     >
-                      {technology}
-                    </Flex>
-                    <Flex breakpoint justify="flex-end" width="50%">
-                      {[
-                        Array.from({ length: level }, (_, i) => (
-                          <AiFillStar
-                            key={`${technology}-${i}`}
-                            style={{
-                              verticalAlign: "middle",
-                              color: "#0088ff",
-                              ...style,
-                            }}
-                          />
-                        )),
-                      ]}
-                      {5 - level > 0
-                        ? Array.from({ length: 5 - level }, (_, i) => (
-                            <AiOutlineStar
-                              key={`not-${technology}-${i}`}
+                      <Flex
+                        breakpoint
+                        as="p"
+                        padding="0"
+                        margin="0"
+                        justify="flex-start"
+                        width="50%"
+                        style={{ color: "#0088ff" }}
+                      >
+                        {technology}
+                      </Flex>
+                      <Flex
+                        as="p"
+                        breakpoint
+                        padding="0"
+                        margin="0"
+                        justify="flex-end"
+                        width="50%"
+                      >
+                        {[
+                          Array.from({ length: level }, (_, i) => (
+                            <AiFillStar
+                              key={`${technology}-${i}`}
                               style={{
                                 verticalAlign: "middle",
-                                color: "#4a4a4a",
+                                color: "#0088ff",
                                 ...style,
                               }}
                             />
-                          ))
-                        : null}
+                          )),
+                        ]}
+                        {5 - level > 0
+                          ? Array.from({ length: 5 - level }, (_, i) => (
+                              <AiOutlineStar
+                                key={`not-${technology}-${i}`}
+                                style={{
+                                  verticalAlign: "middle",
+                                  color: "#4a4a4a",
+                                  ...style,
+                                }}
+                              />
+                            ))
+                          : null}
+                      </Flex>
                     </Flex>
-                  </Flex>
-                </NormalText>
-              </li>
-            ))}
-          </ul>
-          <DetailHeadline>formal Education:</DetailHeadline>
-          <SubTitle data-testid="brief">
-            San Jose State University | 2005-2012 | 3.5GPA
-          </SubTitle>
-          <DetailHeadline>Online Education:</DetailHeadline>
-          <ul
-            data-testid="re-education"
-            css={css`
-              list-style-type: none;
-              padding: 0 10px;
-            `}
-          >
-            {additionalEdu.map(({ title, url }, index) => (
-              <li
-                style={{ background: index % 2 ? "#001031" : "transparent" }}
-                key={title}
-              >
-                <NormalText style={{ padding: "0 10px" }} fontSize="20px">
-                  <OutsideLink
-                    ariaLabel={`Navigate to ${title}`}
-                    href={url}
-                    showIcon
-                  >
-                    {title}
-                  </OutsideLink>
-                </NormalText>
-              </li>
-            ))}
-          </ul>
+                  </NormalText>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section>
+            <header>
+              <DetailHeadline>formal Education:</DetailHeadline>
+            </header>
+            <SubTitle as="p" data-testid="brief">
+              San Jose State University | 2005-2012 | 3.5GPA
+            </SubTitle>
+          </section>
+          <section>
+            <DetailHeadline>Online Education:</DetailHeadline>
+            <ul
+              data-testid="re-education"
+              css={css`
+                list-style-type: none;
+                padding: 0 10px;
+              `}
+            >
+              {background.education.data.map(({ title, url }, index) => (
+                <li
+                  style={{ background: index % 2 ? "#001031" : "transparent" }}
+                  key={title}
+                >
+                  <NormalText style={{ padding: "0 10px" }} fontSize="20px">
+                    <OutsideLink
+                      ariaLabel={`Navigate to ${title}`}
+                      href={url}
+                      showIcon
+                    >
+                      {title}
+                    </OutsideLink>
+                  </NormalText>
+                </li>
+              ))}
+            </ul>
+          </section>
         </Text>
       </Panel>
     </Project>
-  </Fragment>
+  </>
 );
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await getBackground();
+
+  const background = res.data?.background;
+
+  if (!background) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      background,
+      revalidate: REVALIDATE_TIME,
+    },
+  };
+};
 
 export default Background;

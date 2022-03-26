@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Tooltip, makeStyles } from "@material-ui/core";
-import type { CSSProperties, ReactNode } from "~types";
+import type { ReactElement, ReactNode } from "~types";
 
 const TooltipText = styled.div`
   text-align: center;
@@ -40,16 +40,15 @@ const useClasses = makeStyles(() => ({
 
 export type TCustomTooltipProps = {
   children: ReactNode;
-  placement: TTooltipPlacement;
+  placement?: TTooltipPlacement;
   title: ReactNode;
-  styles?: CSSProperties;
 };
 
 const CustomTooltip = ({
   children,
-  placement,
+  placement = "top",
   title,
-}: TCustomTooltipProps): JSX.Element => {
+}: TCustomTooltipProps): ReactElement => {
   const classes = useClasses();
 
   return (
@@ -62,10 +61,6 @@ const CustomTooltip = ({
       <span style={{ textAlign: "center" }}>{children}</span>
     </Tooltip>
   );
-};
-
-CustomTooltip.defaultProps = {
-  placement: "top",
 };
 
 export default CustomTooltip;

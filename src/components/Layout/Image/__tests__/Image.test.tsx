@@ -2,9 +2,12 @@ import { render, waitFor } from "@testing-library/react";
 import Image from "../index";
 
 const initProps = {
+  alt: "",
+  contentType: "image/png",
   placeholder: true,
-  alt: "example",
-  src: "example",
+  url: "example",
+  height: 250,
+  width: 250,
 };
 
 describe("Image", () => {

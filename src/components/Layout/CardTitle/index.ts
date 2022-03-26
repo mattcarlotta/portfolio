@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const CardTitle = styled.h1`
+const CardTitle = styled.h2`
   color: #fff;
   font-size: 12px;
   letter-spacing: 1px;
