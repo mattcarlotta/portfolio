@@ -8,8 +8,6 @@ export type HeaderProps = {
   type?: string;
 };
 
-const currentDate = new Date().toISOString();
-
 const Header = ({
   description = "A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications",
   title = "",
@@ -48,7 +46,7 @@ const Header = ({
         property="og:site_name"
         content="Matt Carlotta - Fullstack Software Engineer"
       />
-      <meta property="og:updated_time" content={currentDate} />
+      <meta property="og:updated_time" content="2022-03-26T20:58:20.097Z" />
       <meta
         property="og:image"
         content="https://images.ctfassets.net/hb5otnhwin4m/5XlzNcNVgoachT9KBOv4TW/93e008136db547b48ce1dd4d8bfe5bf1/profile_300.png"
