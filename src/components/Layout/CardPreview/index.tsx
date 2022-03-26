@@ -38,7 +38,7 @@ const CardPreview = ({
   contentType,
   description,
   height,
-  href = "",
+  href,
   location,
   scale,
   showInfo = true,

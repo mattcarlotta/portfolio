@@ -53,7 +53,6 @@ const nextProps = {
   width: 243,
   title: "next ssr kit preview",
   href: "projects",
-  showInfo: true,
 };
 
 describe("Image", () => {

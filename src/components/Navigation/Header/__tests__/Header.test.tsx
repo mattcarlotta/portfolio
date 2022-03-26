@@ -20,10 +20,19 @@ const initProps = {
   url: "/",
 };
 
-const { getByTestId } = render(<Header {...initProps} />);
+const nextProps = {
+  description: "Example",
+  url: "/",
+};
 
 describe("Header", () => {
   it("renders without errors", () => {
+    const { getByTestId } = render(<Header {...initProps} />);
+    expect(getByTestId("head-title")).toBeInTheDocument();
+  });
+
+  it("renders without errors", () => {
+    const { getByTestId } = render(<Header {...nextProps} />);
     expect(getByTestId("head-title")).toBeInTheDocument();
   });
 });
