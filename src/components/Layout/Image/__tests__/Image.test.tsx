@@ -1,6 +1,20 @@
 import { render, waitFor } from "@testing-library/react";
 import Image from "../index";
 
+jest.mock("~components/ScrollHeightContext", () => ({
+  __esModule: true,
+  useScrollHeight: jest
+    .fn()
+    .mockReturnValueOnce({
+      clientHeight: 0,
+      scrollHeight: 0,
+    })
+    .mockReturnValue({
+      clientHeight: 1000,
+      scrollHeight: 0,
+    }),
+}));
+
 const initProps = {
   alt: "",
   contentType: "image/png",
@@ -11,39 +25,17 @@ const initProps = {
 };
 
 describe("Image", () => {
-  it("renders without errors", () => {
+  it("renders without errors and displays a placeholder", () => {
     const { getByTestId } = render(<Image {...initProps} />);
     expect(getByTestId("picture")).toBeInTheDocument();
-  });
-
-  it("renders a placeholder", () => {
-    const { getByTestId } = render(<Image {...initProps} />);
     expect(getByTestId("placeholder")).toBeInTheDocument();
   });
 
   it("on success loads an image", async () => {
     const { getByTestId } = render(<Image {...initProps} />);
 
-    const node = getByTestId("image");
-
     await waitFor(() => {
-      // @ts-ignore
-      node?.onload();
-
-      expect(getByTestId("placeholder")).toHaveStyleRule("display", "none");
-    });
-  });
-
-  it("on failure displays a broken link icon", async () => {
-    const { getByTestId } = render(<Image {...initProps} />);
-
-    const node = getByTestId("image");
-
-    await waitFor(() => {
-      // @ts-ignore
-      node?.onerror();
-
-      expect(getByTestId("broken-image")).toBeInTheDocument();
+      expect(getByTestId("image")).toBeInTheDocument();
     });
   });
 });

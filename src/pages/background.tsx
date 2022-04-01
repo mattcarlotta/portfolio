@@ -47,12 +47,13 @@ const Background = ({
         <PanelTitle data-testid="panel-title">{background.title}</PanelTitle>
       </header>
       <Panel>
-        <Image
-          {...background.profileImage}
-          placeholder
-          alt={background.profileImage.description}
-          styles="margin: 30px auto auto;border-radius: 10px;"
-        />
+        <Flex justify="center" margin="30px 0 0 0">
+          <Image
+            {...background.profileImage}
+            alt={background.profileImage.description}
+            styles="border-radius: 10px;"
+          />
+        </Flex>
         <Text>
           <section>
             <header>
