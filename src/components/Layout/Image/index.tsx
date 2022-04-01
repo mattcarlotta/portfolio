@@ -12,7 +12,6 @@ export type ImageProps = {
   containerStyle?: string;
   contentType: string;
   height: number;
-  placeholder?: boolean;
   scale?: number;
   styles?: string;
   width: number;
@@ -24,7 +23,6 @@ const Image = ({
   containerStyle,
   contentType,
   height,
-  placeholder,
   scale = 0,
   styles,
   url,
@@ -66,9 +64,6 @@ const Image = ({
           />
           <img
             data-testid="image"
-            style={{
-              display: placeholder && isLoading ? "none" : "flex",
-            }}
             css={css`
               ${styles}
             `}
