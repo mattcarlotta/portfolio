@@ -1,10 +1,11 @@
 /* eslint-disable no-param-reassign */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { css } from "@emotion/react";
-import BrokenImage from "~components/Layout/BrokenImage";
+// import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
 import calculateScale from "~utils/calculateScale";
 import type { ReactElement } from "~types";
+import { useScrollHeight } from "~components/ScrollHeightContext";
 
 export type ImageProps = {
   alt?: string;
@@ -29,50 +30,33 @@ const Image = ({
   url,
   width,
 }: ImageProps): ReactElement | null => {
-  const [state, setState] = useState({ error: false, isLoading: true });
-  const [isBrowser, setBrowser] = useState(false);
-  const { error, isLoading } = state;
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const { clientHeight, scrollHeight } = useScrollHeight();
+  const [isLoading, setLoading] = useState(true);
   const isRescaled = scale !== 0;
   const newHeight = isRescaled ? calculateScale(height, scale) : height;
   const newWidth = isRescaled ? calculateScale(width, scale) : width;
   const rescale = isRescaled ? `fit=scale&h=${newHeight}&w=${newWidth}` : "";
 
-  const onError = () => {
-    setState({ error: true, isLoading: false });
-  };
-
-  const onLoad = () => {
-    setState({ error: false, isLoading: false });
-  };
-
-  const handleImageRef = (node: HTMLImageElement | null) => {
-    if (node) {
-      node.onload = onLoad;
-      node.onerror = onError;
-    }
-  };
-
   useEffect(() => {
-    setBrowser(true);
-  }, []);
+    if (imageRef.current && clientHeight > 0) {
+      const { y: topOfImage } = imageRef.current.getBoundingClientRect();
+      if (clientHeight >= topOfImage || scrollHeight >= topOfImage) {
+        setLoading(false);
+      }
+    }
+  }, [scrollHeight, clientHeight]);
 
-  return isBrowser ? (
+  return (
     <picture
+      ref={imageRef}
       data-testid="picture"
       css={css`
         ${containerStyle}
       `}
     >
-      {!error ? (
+      {!isLoading ? (
         <>
-          {placeholder && (
-            <LoadingPlaceholder
-              data-testid="placeholder"
-              height={height}
-              width={width}
-              isLoading={isLoading}
-            />
-          )}
           <source
             srcSet={`${url}?fm=webp${isRescaled ? `&${rescale}` : ""}`}
             type="image/webp"
@@ -83,7 +67,6 @@ const Image = ({
           />
           <img
             data-testid="image"
-            ref={handleImageRef}
             style={{
               display: placeholder && isLoading ? "none" : "flex",
             }}
@@ -93,17 +76,18 @@ const Image = ({
             src={url}
             height={newHeight}
             width={newWidth}
-            onLoad={onLoad}
-            onError={onError}
             alt={alt}
           />
         </>
       ) : (
-        <BrokenImage data-testid="broken-image" />
+        <LoadingPlaceholder
+          data-testid="placeholder"
+          height={height}
+          width={width}
+          isLoading={isLoading}
+        />
       )}
     </picture>
-  ) : (
-    <div style={{ height: newHeight, width: newWidth }} />
   );
 };
 

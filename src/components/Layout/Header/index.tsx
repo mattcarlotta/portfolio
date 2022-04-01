@@ -40,7 +40,7 @@ const Header = (): ReactElement => (
     <Orbits />
     <Center as="header" data-testid="header">
       <Headline>MATT CARLOTTA</Headline>
-      <SubHeadline>fullstack software engineer</SubHeadline>
+      <SubHeadline>Fullstack Software Engineer</SubHeadline>
     </Center>
   </nav>
 );
