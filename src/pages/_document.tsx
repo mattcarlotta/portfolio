@@ -41,8 +41,6 @@ class CustomDocument extends Document {
         />
         <meta name="build version" content={packageJson.version} />
         <link rel="apple-touch-icon" sizes="192x192" href="/logo_192x192.png" />
-        <link rel="icon" type="image/ico" sizes="32x32" href="/favicon.ico" />
-        <link rel="icon" type="image/ico" sizes="16x16" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <link
           rel="preload"
