@@ -40,10 +40,9 @@ const Image = ({
 
   useEffect(() => {
     if (imageRef.current && clientHeight > 0) {
-      const { y: topOfImage } = imageRef.current.getBoundingClientRect();
-      if (clientHeight >= topOfImage || scrollHeight >= topOfImage) {
+      const { top: topOfImage } = imageRef.current.getBoundingClientRect();
+      if (clientHeight >= topOfImage || scrollHeight >= topOfImage)
         setLoading(false);
-      }
     }
   }, [scrollHeight, clientHeight]);
 

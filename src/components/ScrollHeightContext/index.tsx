@@ -23,13 +23,8 @@ const ScrollHeightProvider = ({
 }: {
   children: ReactNode;
 }): ReactElement => {
-  const isClient = typeof document !== "undefined";
-  const [scrollHeight, setScrollHeight] = useState(
-    isClient ? document.documentElement.scrollTop : 0,
-  );
-  const [clientHeight, setClientHeight] = useState(
-    isClient ? document.body.clientHeight : 0,
-  );
+  const [scrollHeight, setScrollHeight] = useState(0);
+  const [clientHeight, setClientHeight] = useState(0);
 
   const handleScroll = useRef(
     throttle(() => {
@@ -40,6 +35,7 @@ const ScrollHeightProvider = ({
 
   useEffect(() => {
     setClientHeight(document.body.clientHeight);
+    setScrollHeight(document.documentElement.scrollTop);
 
     window.addEventListener("scroll", handleScroll.current);
 
