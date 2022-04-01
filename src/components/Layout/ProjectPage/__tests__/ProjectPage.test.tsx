@@ -16,6 +16,14 @@ jest.mock("next/head", () => ({
   default: ({ children }: { children: Array<React.ReactElement> }) => children,
 }));
 
+jest.mock("~components/ScrollHeightContext", () => ({
+  __esModule: true,
+  useScrollHeight: jest.fn().mockReturnValue({
+    clientHeight: 2000,
+    scrollHeight: 0,
+  }),
+}));
+
 const initProps = {
   sys: {
     id: "3lvQ1r9GjrW1eNjuk1cbr7",

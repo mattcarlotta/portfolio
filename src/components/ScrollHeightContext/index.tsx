@@ -1,5 +1,12 @@
 /* istanbul ignore file */
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import throttle from "lodash.throttle";
 import type { ReactElement, ReactNode } from "~types";
 
@@ -26,6 +33,11 @@ const ScrollHeightProvider = ({
   const [scrollHeight, setScrollHeight] = useState(0);
   const [clientHeight, setClientHeight] = useState(0);
 
+  const context = useMemo(
+    () => ({ clientHeight, scrollHeight }),
+    [clientHeight, scrollHeight],
+  );
+
   const handleScroll = useRef(
     throttle(() => {
       setClientHeight(document.body.clientHeight);
@@ -45,9 +57,7 @@ const ScrollHeightProvider = ({
   }, []);
 
   return (
-    <ScrollHeight.Provider value={{ clientHeight, scrollHeight }}>
-      {children}
-    </ScrollHeight.Provider>
+    <ScrollHeight.Provider value={context}>{children}</ScrollHeight.Provider>
   );
 };
 

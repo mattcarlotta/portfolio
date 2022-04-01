@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { useEffect, useRef, useState } from "react";
 import { css } from "@emotion/react";
-// import BrokenImage from "~components/Layout/BrokenImage";
 import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
 import calculateScale from "~utils/calculateScale";
 import type { ReactElement } from "~types";
@@ -39,6 +38,7 @@ const Image = ({
   useEffect(() => {
     if (imageRef.current && clientHeight > 0) {
       const { top: topOfImage } = imageRef.current.getBoundingClientRect();
+      /* istanbul ignore next */
       if (clientHeight >= topOfImage || scrollHeight >= topOfImage)
         setLoading(false);
     }
