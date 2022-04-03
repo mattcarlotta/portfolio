@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
-import { AiOutlineFileImage } from "~icons";
+import styled from '@emotion/styled'
+import { AiOutlineFileImage } from '~icons'
 
 const Image = ({ className }: { className?: string }) => (
   <div data-testid="broken-image" className={className}>
     <AiOutlineFileImage />
     <p>Unable to load image</p>
   </div>
-);
+)
 
 const BrokenImage = styled(Image)`
   margin-top: 25px;
@@ -17,6 +17,6 @@ const BrokenImage = styled(Image)`
   svg {
     font-size: 40px;
   }
-`;
+`
 
-export default BrokenImage;
+export default BrokenImage

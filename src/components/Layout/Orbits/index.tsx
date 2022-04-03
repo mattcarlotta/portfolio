@@ -1,15 +1,15 @@
-import styled from "@emotion/styled";
-import type { ReactElement } from "~types";
+import styled from '@emotion/styled'
+import type { ReactElement } from '~types'
 
 const Orbits = ({ className }: { className?: string }): ReactElement => (
   <div className={className}>
     <div className="container">
-      {[0, 1, 2, 3, 4, 5].map(key => (
+      {[0, 1, 2, 3, 4, 5].map((key) => (
         <div key={key} className={`circle circle-${key}`} />
       ))}
     </div>
   </div>
-);
+)
 
 const OrbitsIcon = styled(Orbits)`
   @media (max-width: 650px) {
@@ -71,7 +71,7 @@ const OrbitsIcon = styled(Orbits)`
 
     :before,
     :after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       top: 0;
@@ -86,6 +86,6 @@ const OrbitsIcon = styled(Orbits)`
       box-shadow: 0 0 5px 2px #2c4776;
     }
   }
-`;
+`
 
-export default OrbitsIcon;
+export default OrbitsIcon

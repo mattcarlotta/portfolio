@@ -1,25 +1,25 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-import type { ReactElement } from "~types";
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import type { ReactElement } from '~types'
 
 export type HeaderProps = {
-  description?: string;
-  title?: string;
-  type?: string;
-};
+  description?: string
+  title?: string
+  type?: string
+}
 
 const Header = ({
-  description = "A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications",
-  title = "",
-  type = "website",
+  description = 'A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications',
+  title = '',
+  type = 'website'
 }: HeaderProps): ReactElement => {
-  const { asPath } = useRouter();
+  const { asPath } = useRouter()
   const newTitle = title
-    .split(" ")
-    .map(str => str.charAt(0).toUpperCase().concat(str.slice(1)))
-    .join(" ")
-    .concat(` ${title && "-"} ${description} | Matt Carlotta`)
-    .replace(/\./, "");
+    .split(' ')
+    .map((str) => str.charAt(0).toUpperCase().concat(str.slice(1)))
+    .join(' ')
+    .concat(` ${title && '-'} ${description} | Matt Carlotta`)
+    .replace(/\./, '')
   return (
     <Head>
       <title data-testid="head-title">{newTitle}</title>
@@ -68,7 +68,7 @@ const Header = ({
         color="#01406C"
       />
     </Head>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

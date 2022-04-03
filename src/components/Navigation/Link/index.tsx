@@ -1,17 +1,17 @@
-import Link from "next/link";
-import styled from "@emotion/styled";
-import type { CSSProperties, ReactElement, ReactNode } from "~types";
+import Link from 'next/link'
+import styled from '@emotion/styled'
+import type { CSSProperties, ReactElement, ReactNode } from '~types'
 
 export type LinkProps = {
-  ariaLabel: string;
-  asHref?: string;
-  dataTestId: string;
-  children: ReactNode;
-  className?: string;
-  href: string;
-  scroll?: boolean;
-  style?: CSSProperties;
-};
+  ariaLabel: string
+  asHref?: string
+  dataTestId: string
+  children: ReactNode
+  className?: string
+  href: string
+  scroll?: boolean
+  style?: CSSProperties
+}
 
 const LinkComponent = ({
   ariaLabel,
@@ -21,7 +21,7 @@ const LinkComponent = ({
   dataTestId,
   href,
   scroll,
-  style,
+  style
 }: LinkProps): ReactElement => (
   <Link href={href} as={asHref} prefetch={false} scroll={scroll} passHref>
     <a
@@ -33,15 +33,15 @@ const LinkComponent = ({
       {children}
     </a>
   </Link>
-);
+)
 
 const StyledLink = styled(LinkComponent)<{
-  fontSize?: string;
-  showUnderline?: boolean;
-  margin?: string;
-  padding?: string;
+  fontSize?: string
+  showUnderline?: boolean
+  margin?: string
+  padding?: string
 }>`
-  padding: ${({ padding }) => padding || "10px 15px"};
+  padding: ${({ padding }) => padding || '10px 15px'};
   margin: ${({ margin }) => margin};
   color: #1295f3;
   transition: all 0.5s;
@@ -52,15 +52,15 @@ const StyledLink = styled(LinkComponent)<{
   :hover {
     cursor: pointer;
     text-decoration: ${({ showUnderline }) =>
-      showUnderline ? "underline" : "none"};
+      showUnderline ? 'underline' : 'none'};
     color: #fff;
   }
 
   :focus {
     color: #fff;
     text-decoration: ${({ showUnderline }) =>
-      showUnderline ? "underline" : "none"};
+      showUnderline ? 'underline' : 'none'};
   }
-`;
+`
 
-export default StyledLink;
+export default StyledLink

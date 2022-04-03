@@ -1,6 +1,6 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
-import CardTitle from "~components/Layout/CardTitle";
+import styled from '@emotion/styled'
+import CardTitle from '~components/Layout/CardTitle'
 
 const PreviewCard = styled.div`
   width: 200px;
@@ -26,6 +26,6 @@ const PreviewCard = styled.div`
       background: #0080ff;
     }
   }
-`;
+`
 
-export default PreviewCard;
+export default PreviewCard

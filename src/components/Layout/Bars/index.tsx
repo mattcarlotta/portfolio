@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const Bars = ({ className }: { className?: string }) => (
   <div className={className}>
@@ -6,7 +6,7 @@ const Bars = ({ className }: { className?: string }) => (
     <div className="bar2" />
     <div className="bar3" />
   </div>
-);
+)
 
 const BarsIcon = styled(Bars)`
   @keyframes grow {
@@ -44,6 +44,6 @@ const BarsIcon = styled(Bars)`
     top: 12px;
     animation: grow 1.75s linear infinite;
   }
-`;
+`
 
-export default BarsIcon;
+export default BarsIcon

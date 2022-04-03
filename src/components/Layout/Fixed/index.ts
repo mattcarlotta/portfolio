@@ -1,13 +1,13 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const Fixed = styled.div<{
-  bottom?: string;
-  left?: string;
-  height?: string;
-  right?: string;
-  top?: string;
-  width?: string;
+  bottom?: string
+  left?: string
+  height?: string
+  right?: string
+  top?: string
+  width?: string
 }>`
   position: fixed;
   top: ${({ top }) => top};
@@ -16,6 +16,6 @@ const Fixed = styled.div<{
   left: ${({ left }) => left};
   height: ${({ height }) => height};
   width: ${({ width }) => width};
-`;
+`
 
-export default Fixed;
+export default Fixed

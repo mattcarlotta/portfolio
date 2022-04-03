@@ -1,39 +1,39 @@
-import Info from "~components/Layout/Info";
-import NormalText from "~components/Layout/NormalText";
-import OutsideLink from "~components/Navigation/OutsideLink";
-import { AiOutlineFolderOpen, FaLink, FaRegFileCode, FiPower } from "~icons";
-import type { CSSProperties } from "~types";
+import Info from '~components/Layout/Info'
+import NormalText from '~components/Layout/NormalText'
+import OutsideLink from '~components/Navigation/OutsideLink'
+import { AiOutlineFolderOpen, FaLink, FaRegFileCode, FiPower } from '~icons'
+import type { CSSProperties } from '~types'
 
 export type FileDetailsProps = {
-  active: boolean;
-  fileName: string;
-  location?: string | null;
-  status: string;
-  source: string;
-};
+  active: boolean
+  fileName: string
+  location?: string | null
+  status: string
+  source: string
+}
 
 const style = {
   fontSize: 20,
-  verticalAlign: "middle",
-  marginRight: 10,
-} as CSSProperties;
+  verticalAlign: 'middle',
+  marginRight: 10
+} as CSSProperties
 
 const FileDetails = ({
   active,
   location,
   fileName,
   source,
-  status,
+  status
 }: FileDetailsProps): JSX.Element => (
   <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
     <Info
-      style={{ color: active ? "limegreen" : "yellow" }}
+      style={{ color: active ? 'limegreen' : 'yellow' }}
       data-testid="status"
     >
       <FiPower data-testid="fipower" style={style} />
       {status}
     </Info>
-    <Info style={{ textTransform: "uppercase" }} data-testid="filename">
+    <Info style={{ textTransform: 'uppercase' }} data-testid="filename">
       <AiOutlineFolderOpen style={style} />
       {fileName}
     </Info>
@@ -62,6 +62,6 @@ const FileDetails = ({
       </OutsideLink>
     </Info>
   </NormalText>
-);
+)
 
-export default FileDetails;
+export default FileDetails

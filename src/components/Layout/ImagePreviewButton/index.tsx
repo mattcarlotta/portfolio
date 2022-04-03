@@ -1,12 +1,12 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const ImagePreviewButton = styled.button<{
-  active: boolean;
-  height: number;
-  src: string;
-  supportsWebp: boolean;
-  width: number;
+  active: boolean
+  height: number
+  src: string
+  supportsWebp: boolean
+  width: number
 }>`
   background-image: ${({ src, height, width, supportsWebp }) =>
     supportsWebp
@@ -23,13 +23,13 @@ const ImagePreviewButton = styled.button<{
   min-width: 75px;
   overflow: hidden;
   border-radius: 4px;
-  border: 3px solid ${({ active }) => (active ? "#0080ff" : "#ccc")};
+  border: 3px solid ${({ active }) => (active ? '#0080ff' : '#ccc')};
   opacity: ${({ active }) => (active ? 1 : 0.4)};
   transition: all 300ms ease-in-out;
 
   :hover {
     opacity: 1;
   }
-`;
+`
 
-export default ImagePreviewButton;
+export default ImagePreviewButton

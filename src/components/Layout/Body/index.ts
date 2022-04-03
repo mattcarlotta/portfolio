@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const Body = styled.section`
   @media (max-width: 1000px) {
@@ -9,6 +9,6 @@ const Body = styled.section`
 
   min-height: 700px;
   padding-top: 100px;
-`;
+`
 
-export default Body;
+export default Body

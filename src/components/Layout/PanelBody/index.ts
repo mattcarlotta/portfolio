@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import Bars from "~components/Layout/Bars";
+import styled from '@emotion/styled'
+import Bars from '~components/Layout/Bars'
 
 const PanelBody = styled.div`
   width: 100%;
@@ -21,6 +21,6 @@ const PanelBody = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
-export default PanelBody;
+export default PanelBody

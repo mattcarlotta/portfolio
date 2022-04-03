@@ -1,7 +1,7 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
-import CardTitle from "~components/Layout/CardTitle";
-import PlaceHolder from "~components/Layout/PlaceHolder";
+import styled from '@emotion/styled'
+import CardTitle from '~components/Layout/CardTitle'
+import PlaceHolder from '~components/Layout/PlaceHolder'
 
 const Card = styled.div`
   width: 300px;
@@ -56,7 +56,7 @@ const Card = styled.div`
       opacity: 0.4;
     }
   }
-`;
+`
 
 // Card.defaultProps = {
 //   whileHover: "hover",
@@ -66,4 +66,4 @@ const Card = styled.div`
 //   variants: cardVariants,
 // };
 
-export default Card;
+export default Card

@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const FlexSpaceAround = styled.div<{
-  breakpoint?: boolean;
-  direction?: string;
+  breakpoint?: boolean
+  direction?: string
 }>`
   ${({ breakpoint }) =>
     breakpoint &&
@@ -11,13 +11,13 @@ const FlexSpaceAround = styled.div<{
     }
   `};
 
-  flex-direction: ${({ direction }) => direction || "row"};
+  flex-direction: ${({ direction }) => direction || 'row'};
   display: flex;
   max-width: 400px;
   justify-content: space-around;
   margin: 10px auto;
   align-items: center;
   width: 100%;
-`;
+`
 
-export default FlexSpaceAround;
+export default FlexSpaceAround

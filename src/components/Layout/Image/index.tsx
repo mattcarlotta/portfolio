@@ -1,23 +1,23 @@
-import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
-import { css } from "@emotion/react";
-import LoadingPlaceholder from "~components/Layout/LoadingPlaceholder";
-import calculateScale from "~utils/calculateScale";
-import type { ReactElement } from "~types";
-import { useScrollHeight } from "~components/ScrollHeightContext";
-import { useImageContext } from "~components/ImageContext";
+import Head from 'next/head'
+import { useEffect, useRef, useState } from 'react'
+import { css } from '@emotion/react'
+import LoadingPlaceholder from '~components/Layout/LoadingPlaceholder'
+import calculateScale from '~utils/calculateScale'
+import type { ReactElement } from '~types'
+import { useScrollHeight } from '~components/ScrollHeightContext'
+import { useImageContext } from '~components/ImageContext'
 
 export type ImageProps = {
-  alt?: string;
-  containerStyle?: string;
-  contentType: string;
-  height: number;
-  priority?: boolean;
-  scale?: number;
-  styles?: string;
-  width: number;
-  url: string;
-};
+  alt?: string
+  containerStyle?: string
+  contentType: string
+  height: number
+  priority?: boolean
+  scale?: number
+  styles?: string
+  width: number
+  url: string
+}
 
 const Image = ({
   alt,
@@ -28,25 +28,25 @@ const Image = ({
   scale = 0,
   styles,
   url,
-  width,
+  width
 }: ImageProps): ReactElement | null => {
-  const { supportsWebp } = useImageContext();
-  const imageRef = useRef<HTMLImageElement | null>(null);
-  const { clientHeight, scrollHeight } = useScrollHeight();
-  const [isLoading, setLoading] = useState(true);
-  const isRescaled = scale !== 0;
-  const newHeight = isRescaled ? calculateScale(height, scale) : height;
-  const newWidth = isRescaled ? calculateScale(width, scale) : width;
-  const rescale = isRescaled ? `fit=scale&h=${newHeight}&w=${newWidth}` : "";
+  const { supportsWebp } = useImageContext()
+  const imageRef = useRef<HTMLImageElement | null>(null)
+  const { clientHeight, scrollHeight } = useScrollHeight()
+  const [isLoading, setLoading] = useState(true)
+  const isRescaled = scale !== 0
+  const newHeight = isRescaled ? calculateScale(height, scale) : height
+  const newWidth = isRescaled ? calculateScale(width, scale) : width
+  const rescale = isRescaled ? `fit=scale&h=${newHeight}&w=${newWidth}` : ''
 
   useEffect(() => {
     if (imageRef.current && clientHeight > 0 && isLoading) {
-      const { top: topOfImage } = imageRef.current.getBoundingClientRect();
+      const { top: topOfImage } = imageRef.current.getBoundingClientRect()
       /* istanbul ignore next */
       if (clientHeight >= topOfImage || scrollHeight >= topOfImage)
-        setLoading(false);
+        setLoading(false)
     }
-  }, [isLoading, scrollHeight, clientHeight]);
+  }, [isLoading, scrollHeight, clientHeight])
 
   return (
     <>
@@ -60,11 +60,11 @@ const Image = ({
         {!isLoading ? (
           <>
             <source
-              srcSet={`${url}?fm=webp${isRescaled ? `&${rescale}` : ""}`}
+              srcSet={`${url}?fm=webp${isRescaled ? `&${rescale}` : ''}`}
               type="image/webp"
             />
             <source
-              srcSet={`${url}${isRescaled ? `?${rescale}` : ""}`}
+              srcSet={`${url}${isRescaled ? `?${rescale}` : ''}`}
               type={contentType}
             />
             <img
@@ -94,14 +94,14 @@ const Image = ({
             as="image"
             href={
               supportsWebp
-                ? `${url}?fm=webp${isRescaled ? `&${rescale}` : ""}`
-                : `${url}${isRescaled ? `?${rescale}` : ""}`
+                ? `${url}?fm=webp${isRescaled ? `&${rescale}` : ''}`
+                : `${url}${isRescaled ? `?${rescale}` : ''}`
             }
           />
         </Head>
       ) : null}
     </>
-  );
-};
+  )
+}
 
-export default Image;
+export default Image

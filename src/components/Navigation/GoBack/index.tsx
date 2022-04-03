@@ -1,12 +1,12 @@
-import Center from "~components/Layout/Center";
-import Link from "~components/Navigation/Link";
-import { GoHome } from "~icons";
-import type { ReactElement } from "~types";
+import Center from '~components/Layout/Center'
+import Link from '~components/Navigation/Link'
+import { GoHome } from '~icons'
+import type { ReactElement } from '~types'
 
 export type GoBackProps = {
-  href: string;
-  title: string;
-};
+  href: string
+  title: string
+}
 
 const GoBack = ({ href, title }: GoBackProps): ReactElement => (
   <Center>
@@ -17,10 +17,10 @@ const GoBack = ({ href, title }: GoBackProps): ReactElement => (
       fontSize="15px"
       showUnderline
     >
-      <GoHome style={{ marginRight: 5, position: "relative", top: 2 }} />
+      <GoHome style={{ marginRight: 5, position: 'relative', top: 2 }} />
       go back to {title}
     </Link>
   </Center>
-);
+)
 
-export default GoBack;
+export default GoBack

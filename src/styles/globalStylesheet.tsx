@@ -1,24 +1,24 @@
 /* istanbul ignore file */
-import { css, Global } from "@emotion/react";
-import { useImageContext } from "~components/ImageContext";
+import { css, Global } from '@emotion/react'
+import { useImageContext } from '~components/ImageContext'
 
 export const GlobalStylesheet = (): JSX.Element => (
   <Global
     styles={css`
       @font-face {
-        font-family: "Elemental";
+        font-family: 'Elemental';
         font-style: normal;
         font-weight: normal;
         font-display: swap;
-        src: url("/fonts/Elemental.ttf") format("truetype");
+        src: url('/fonts/Elemental.ttf') format('truetype');
       }
 
       @font-face {
-        font-family: "Mukta";
+        font-family: 'Mukta';
         font-style: normal;
         font-weight: normal;
         font-display: swap;
-        src: url("/fonts/Mukta.ttf") format("truetype");
+        src: url('/fonts/Mukta.ttf') format('truetype');
       }
 
       #__next,
@@ -32,15 +32,15 @@ export const GlobalStylesheet = (): JSX.Element => (
         margin: 0;
         color: #fff;
         background: ${`url('/bg.${
-          useImageContext().supportsWebp ? "webp" : "png"
+          useImageContext().supportsWebp ? 'webp' : 'png'
         }')`};
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;
         background-color: #010007;
-        font-family: "Elemental", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
-          "Helvetica Neue", sans-serif;
+        font-family: 'Elemental', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+          'Helvetica Neue', sans-serif;
       }
 
       @keyframes pulse {
@@ -78,6 +78,6 @@ export const GlobalStylesheet = (): JSX.Element => (
       }
     `}
   />
-);
+)
 
-export default GlobalStylesheet;
+export default GlobalStylesheet

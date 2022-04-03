@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import { Tooltip, makeStyles } from "@material-ui/core";
-import type { ReactElement, ReactNode } from "~types";
+import styled from '@emotion/styled'
+import { Tooltip, makeStyles } from '@material-ui/core'
+import type { ReactElement, ReactNode } from '~types'
 
 const TooltipText = styled.div`
   text-align: center;
@@ -8,48 +8,48 @@ const TooltipText = styled.div`
   font-size: 14px;
   padding: 1px;
   margin: 0;
-  font-family: "Mukta", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: 'Mukta', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-`;
+`
 
 export type TTooltipPlacement =
-  | "bottom"
-  | "left"
-  | "right"
-  | "top"
-  | "bottom-end"
-  | "bottom-start"
-  | "left-end"
-  | "left-start"
-  | "right-end"
-  | "right-start"
-  | "top-end"
-  | "top-start"
-  | undefined;
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'top'
+  | 'bottom-end'
+  | 'bottom-start'
+  | 'left-end'
+  | 'left-start'
+  | 'right-end'
+  | 'right-start'
+  | 'top-end'
+  | 'top-start'
+  | undefined
 
 const useClasses = makeStyles(() => ({
   arrow: {
-    color: "#0096ff",
+    color: '#0096ff'
   },
   tooltip: {
-    backgroundColor: "#0096ff",
-    boxShadow: "0px 0px 8px -2px rgba(0, 64, 255, 1)",
-  },
-}));
+    backgroundColor: '#0096ff',
+    boxShadow: '0px 0px 8px -2px rgba(0, 64, 255, 1)'
+  }
+}))
 
 export type TCustomTooltipProps = {
-  children: ReactNode;
-  placement?: TTooltipPlacement;
-  title: ReactNode;
-};
+  children: ReactNode
+  placement?: TTooltipPlacement
+  title: ReactNode
+}
 
 const CustomTooltip = ({
   children,
-  placement = "top",
-  title,
+  placement = 'top',
+  title
 }: TCustomTooltipProps): ReactElement => {
-  const classes = useClasses();
+  const classes = useClasses()
 
   return (
     <Tooltip
@@ -58,9 +58,9 @@ const CustomTooltip = ({
       placement={placement}
       title={<TooltipText>{title}</TooltipText>}
     >
-      <span style={{ textAlign: "center" }}>{children}</span>
+      <span style={{ textAlign: 'center' }}>{children}</span>
     </Tooltip>
-  );
-};
+  )
+}
 
-export default CustomTooltip;
+export default CustomTooltip

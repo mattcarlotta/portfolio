@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const Headline = styled.h1`
   @media (max-width: 650px) {
@@ -12,6 +12,6 @@ const Headline = styled.h1`
   margin: 0px;
   text-shadow: 0px 0px 3px #fff;
   text-transform: uppercase;
-`;
+`
 
-export default Headline;
+export default Headline

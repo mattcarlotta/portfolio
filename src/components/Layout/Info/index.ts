@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const Info = styled.p`
   @media (max-width: 550px) {
@@ -9,6 +9,6 @@ const Info = styled.p`
 
   margin: 10px 0;
   padding: 0;
-`;
+`
 
-export default Info;
+export default Info

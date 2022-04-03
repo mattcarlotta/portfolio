@@ -1,16 +1,16 @@
-import styled from "@emotion/styled";
-import { FiExternalLink } from "~icons";
-import type { CSSProperties, ReactElement, ReactNode } from "~types";
+import styled from '@emotion/styled'
+import { FiExternalLink } from '~icons'
+import type { CSSProperties, ReactElement, ReactNode } from '~types'
 
 export type OutsideLinkProps = {
-  ariaLabel: string;
-  className?: string;
-  children: ReactNode;
-  dataTestId?: string;
-  href: string;
-  showIcon?: boolean;
-  style?: CSSProperties;
-};
+  ariaLabel: string
+  className?: string
+  children: ReactNode
+  dataTestId?: string
+  href: string
+  showIcon?: boolean
+  style?: CSSProperties
+}
 
 const OutsideLinkComponent = ({
   ariaLabel,
@@ -19,7 +19,7 @@ const OutsideLinkComponent = ({
   dataTestId,
   href,
   showIcon,
-  style,
+  style
 }: OutsideLinkProps): ReactElement => (
   <a
     aria-label={ariaLabel}
@@ -35,25 +35,25 @@ const OutsideLinkComponent = ({
       <FiExternalLink
         style={{
           marginLeft: 2,
-          position: "relative",
-          top: 3,
+          position: 'relative',
+          top: 3
           // fontSize: 14,
         }}
       />
     )}
   </a>
-);
+)
 
 const OutsideLink = styled(OutsideLinkComponent)<{
-  padding?: string;
-  margin?: string;
-  textDecoration?: string;
+  padding?: string
+  margin?: string
+  textDecoration?: string
 }>`
-  padding: ${({ padding }) => padding || "0px"};
+  padding: ${({ padding }) => padding || '0px'};
   margin: ${({ margin }) => margin};
   color: #63bfff;
   transition: all 0.5s;
-  text-decoration: ${({ textDecoration }) => textDecoration || "underline"};
+  text-decoration: ${({ textDecoration }) => textDecoration || 'underline'};
   cursor: pointer;
   outline: 0;
 
@@ -63,8 +63,8 @@ const OutsideLink = styled(OutsideLinkComponent)<{
 
   :focus {
     color: #fff;
-    text-decoration: ${({ textDecoration }) => textDecoration || "underline"};
+    text-decoration: ${({ textDecoration }) => textDecoration || 'underline'};
   }
-`;
+`
 
-export default OutsideLink;
+export default OutsideLink

@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const PanelContainer = styled.div`
   width: 100%;
@@ -11,6 +11,6 @@ const PanelContainer = styled.div`
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: rgba(2, 28, 48, 0.2);
-`;
+`
 
-export default PanelContainer;
+export default PanelContainer

@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const SnapshotContainer = styled.div`
   display: flex;
@@ -8,6 +8,6 @@ const SnapshotContainer = styled.div`
   flex-wrap: wrap;
   padding: 0 10px;
   margin: 20px 0;
-`;
+`
 
-export default SnapshotContainer;
+export default SnapshotContainer

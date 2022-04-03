@@ -1,18 +1,14 @@
-import CardPreview from "~components/Layout/CardPreview";
-import Flex from "~components/Layout/Flex";
-import Head from "~components/Navigation/Header";
-import { getHomepageCards } from "~utils/contentfulApi";
-import REVALIDATE_TIME from "~utils/revalidate";
-import type {
-  CONTENTFUL_PAGE_CARD,
-  GetStaticProps,
-  ReactElement,
-} from "~types";
+import CardPreview from '~components/Layout/CardPreview'
+import Flex from '~components/Layout/Flex'
+import Head from '~components/Navigation/Header'
+import { getHomepageCards } from '~utils/contentfulApi'
+import REVALIDATE_TIME from '~utils/revalidate'
+import type { CONTENTFUL_PAGE_CARD, GetStaticProps, ReactElement } from '~types'
 
 const Home = ({
-  cards,
+  cards
 }: {
-  cards: Array<CONTENTFUL_PAGE_CARD>;
+  cards: Array<CONTENTFUL_PAGE_CARD>
 }): ReactElement => (
   <>
     <Head />
@@ -30,25 +26,25 @@ const Home = ({
       ))}
     </Flex>
   </>
-);
+)
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await getHomepageCards();
+  const res = await getHomepageCards()
 
-  const cards = res.data?.homepageCardCollection?.items;
+  const cards = res.data?.homepageCardCollection?.items
 
   if (!cards) {
     return {
-      notFound: true,
-    };
+      notFound: true
+    }
   }
 
   return {
     props: {
       cards,
-      revalidate: REVALIDATE_TIME,
-    },
-  };
-};
+      revalidate: REVALIDATE_TIME
+    }
+  }
+}
 
-export default Home;
+export default Home

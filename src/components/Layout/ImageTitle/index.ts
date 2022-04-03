@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const ImageTitle = styled.h2`
   @media (max-width: 550px) {
@@ -11,6 +11,6 @@ const ImageTitle = styled.h2`
   margin: 0;
   padding: 20px;
   text-align: center;
-`;
+`
 
-export default ImageTitle;
+export default ImageTitle

@@ -1,20 +1,20 @@
-import CardPreview from "~components/Layout/CardPreview";
-import Category from "~components/Layout/Category";
-import Flex from "~components/Layout/Flex";
-import Head from "~components/Navigation/Header";
-import { GiPlanetCore } from "~icons";
-import { getAllExplorations } from "~utils/contentfulApi";
-import REVALIDATE_TIME from "~utils/revalidate";
+import CardPreview from '~components/Layout/CardPreview'
+import Category from '~components/Layout/Category'
+import Flex from '~components/Layout/Flex'
+import Head from '~components/Navigation/Header'
+import { GiPlanetCore } from '~icons'
+import { getAllExplorations } from '~utils/contentfulApi'
+import REVALIDATE_TIME from '~utils/revalidate'
 import type {
   CONTENTFUL_EXPLORATIONS_PAGE,
   GetStaticProps,
-  ReactElement,
-} from "~types";
+  ReactElement
+} from '~types'
 
 const ExplorationsPage = ({
-  explorations,
+  explorations
 }: {
-  explorations: Array<CONTENTFUL_EXPLORATIONS_PAGE>;
+  explorations: Array<CONTENTFUL_EXPLORATIONS_PAGE>
 }): ReactElement => (
   <>
     <Head description="A small collection of codesandbox explorations I've created over the years" />
@@ -44,25 +44,25 @@ const ExplorationsPage = ({
       ))}
     </Flex>
   </>
-);
+)
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await getAllExplorations();
+  const res = await getAllExplorations()
 
-  const explorations = res.data?.explorationsCollection?.items;
+  const explorations = res.data?.explorationsCollection?.items
 
   if (!explorations) {
     return {
-      notFound: true,
-    };
+      notFound: true
+    }
   }
 
   return {
     props: {
       explorations,
-      revalidate: REVALIDATE_TIME,
-    },
-  };
-};
+      revalidate: REVALIDATE_TIME
+    }
+  }
+}
 
-export default ExplorationsPage;
+export default ExplorationsPage

@@ -1,110 +1,110 @@
-import { render, waitFor } from "@testing-library/react";
-import Image from "../index";
+import { render, waitFor } from '@testing-library/react'
+import Image from '../index'
 
-jest.mock("~components/ScrollHeightContext", () => ({
+jest.mock('~components/ScrollHeightContext', () => ({
   __esModule: true,
   useScrollHeight: jest
     .fn()
     .mockReturnValueOnce({
       clientHeight: 0,
-      scrollHeight: 0,
+      scrollHeight: 0
     })
     .mockReturnValue({
       clientHeight: 1000,
-      scrollHeight: 0,
-    }),
-}));
+      scrollHeight: 0
+    })
+}))
 
-jest.mock("~components/ImageContext", () => ({
+jest.mock('~components/ImageContext', () => ({
   __esModule: true,
   useImageContext: jest
     .fn()
     .mockReturnValueOnce({
-      supportsWebp: false,
+      supportsWebp: false
     })
     .mockReturnValueOnce({
-      supportsWebp: false,
+      supportsWebp: false
     })
     .mockReturnValueOnce({
-      supportsWebp: false,
+      supportsWebp: false
     })
     .mockReturnValueOnce({
-      supportsWebp: false,
+      supportsWebp: false
     })
     .mockReturnValueOnce({
-      supportsWebp: false,
+      supportsWebp: false
     })
     .mockReturnValueOnce({
-      supportsWebp: false,
+      supportsWebp: false
     })
     .mockReturnValue({
-      supportsWebp: true,
-    }),
-}));
+      supportsWebp: true
+    })
+}))
 
 const initProps = {
-  alt: "",
-  contentType: "image/png",
+  alt: '',
+  contentType: 'image/png',
   placeholder: true,
-  url: "example",
+  url: 'example',
   height: 250,
-  width: 250,
-};
+  width: 250
+}
 
 const priorityProps = {
   ...initProps,
-  priority: true,
-};
+  priority: true
+}
 
 const scaleProps = {
   ...priorityProps,
-  scale: 25,
-};
+  scale: 25
+}
 
-describe("Image", () => {
-  it("renders without errors and displays a placeholder", () => {
-    const { getByTestId } = render(<Image {...initProps} />);
-    expect(getByTestId("picture")).toBeInTheDocument();
-    expect(getByTestId("placeholder")).toBeInTheDocument();
-  });
+describe('Image', () => {
+  it('renders without errors and displays a placeholder', () => {
+    const { getByTestId } = render(<Image {...initProps} />)
+    expect(getByTestId('picture')).toBeInTheDocument()
+    expect(getByTestId('placeholder')).toBeInTheDocument()
+  })
 
-  it("on success loads an image", async () => {
-    const { getByTestId } = render(<Image {...priorityProps} />);
-
-    await waitFor(() => {
-      expect(getByTestId("image")).toBeInTheDocument();
-    });
-  });
-
-  it("on success loads an image with priority png", async () => {
-    const { getByTestId } = render(<Image {...priorityProps} />);
+  it('on success loads an image', async () => {
+    const { getByTestId } = render(<Image {...priorityProps} />)
 
     await waitFor(() => {
-      expect(getByTestId("image")).toBeInTheDocument();
-    });
-  });
+      expect(getByTestId('image')).toBeInTheDocument()
+    })
+  })
 
-  it("on success loads a rescaled image with priority png", async () => {
-    const { getByTestId } = render(<Image {...scaleProps} />);
-
-    await waitFor(() => {
-      expect(getByTestId("image")).toBeInTheDocument();
-    });
-  });
-
-  it("on success loads an image with priority webp", async () => {
-    const { getByTestId } = render(<Image {...priorityProps} />);
+  it('on success loads an image with priority png', async () => {
+    const { getByTestId } = render(<Image {...priorityProps} />)
 
     await waitFor(() => {
-      expect(getByTestId("image")).toBeInTheDocument();
-    });
-  });
+      expect(getByTestId('image')).toBeInTheDocument()
+    })
+  })
 
-  it("on success loads a rescaled image with priority webp", async () => {
-    const { getByTestId } = render(<Image {...scaleProps} />);
+  it('on success loads a rescaled image with priority png', async () => {
+    const { getByTestId } = render(<Image {...scaleProps} />)
 
     await waitFor(() => {
-      expect(getByTestId("image")).toBeInTheDocument();
-    });
-  });
-});
+      expect(getByTestId('image')).toBeInTheDocument()
+    })
+  })
+
+  it('on success loads an image with priority webp', async () => {
+    const { getByTestId } = render(<Image {...priorityProps} />)
+
+    await waitFor(() => {
+      expect(getByTestId('image')).toBeInTheDocument()
+    })
+  })
+
+  it('on success loads a rescaled image with priority webp', async () => {
+    const { getByTestId } = render(<Image {...scaleProps} />)
+
+    await waitFor(() => {
+      expect(getByTestId('image')).toBeInTheDocument()
+    })
+  })
+})

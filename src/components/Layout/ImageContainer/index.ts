@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const ImageContainer = styled.div`
   align-items: center;
@@ -9,6 +9,6 @@ const ImageContainer = styled.div`
   float: left;
   margin: 15px 25px;
   text-align: center;
-`;
+`
 
-export default ImageContainer;
+export default ImageContainer

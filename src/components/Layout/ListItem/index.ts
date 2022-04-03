@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const ListItem = styled.div`
   @media (max-width: 650px) {
@@ -8,6 +8,6 @@ const ListItem = styled.div`
 
   display: flex;
   margin: 0 10px;
-`;
+`
 
-export default ListItem;
+export default ListItem

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const CardTitle = styled.h2`
   color: #fff;
@@ -9,6 +9,6 @@ const CardTitle = styled.h2`
   margin: 0;
   font-weight: bold;
   background: #00264d;
-`;
+`
 
-export default CardTitle;
+export default CardTitle

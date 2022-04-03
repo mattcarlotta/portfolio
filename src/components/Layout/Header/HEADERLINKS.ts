@@ -4,42 +4,42 @@ import {
   GoHome,
   FaGithub,
   FiLinkedin,
-  IoPlanet,
-} from "~icons";
+  IoPlanet
+} from '~icons'
 
 export const HEADERLINKS = [
   {
-    page: "home",
-    href: "/",
-    Icon: GoHome,
+    page: 'home',
+    href: '/',
+    Icon: GoHome
   },
   {
-    page: "projects",
-    href: "/projects",
-    Icon: IoPlanet,
+    page: 'projects',
+    href: '/projects',
+    Icon: IoPlanet
   },
   {
-    page: "explorations",
-    href: "/explorations",
-    Icon: GiPlanetCore,
+    page: 'explorations',
+    href: '/explorations',
+    Icon: GiPlanetCore
   },
   {
-    page: "background",
-    href: "/background",
-    Icon: ImInfo,
+    page: 'background',
+    href: '/background',
+    Icon: ImInfo
   },
   {
-    page: "linkedIn",
-    href: "https://www.linkedin.com/in/mattcarlotta/",
+    page: 'linkedIn',
+    href: 'https://www.linkedin.com/in/mattcarlotta/',
     Icon: FiLinkedin,
-    external: true,
+    external: true
   },
   {
-    page: "github",
-    href: "https://github.com/mattcarlotta",
+    page: 'github',
+    href: 'https://github.com/mattcarlotta',
     Icon: FaGithub,
-    external: true,
-  },
-];
+    external: true
+  }
+]
 
-export default HEADERLINKS;
+export default HEADERLINKS

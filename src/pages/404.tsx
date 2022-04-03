@@ -1,12 +1,12 @@
-import Head from "next/head";
-import Flex from "~components/Layout/Flex";
-import Panel from "~components/Layout/Panel";
-import PanelTitle from "~components/Layout/PanelTitle";
-import Project from "~components/Layout/Project";
-import Text from "~components/Layout/Text";
-import GoBack from "~components/Navigation/GoBack";
-import { GiExplodingPlanet } from "~icons";
-import type { ReactElement } from "~types";
+import Head from 'next/head'
+import Flex from '~components/Layout/Flex'
+import Panel from '~components/Layout/Panel'
+import PanelTitle from '~components/Layout/PanelTitle'
+import Project from '~components/Layout/Project'
+import Text from '~components/Layout/Text'
+import GoBack from '~components/Navigation/GoBack'
+import { GiExplodingPlanet } from '~icons'
+import type { ReactElement } from '~types'
 
 const NotFound = (): ReactElement => (
   <>
@@ -24,6 +24,6 @@ const NotFound = (): ReactElement => (
     </Project>
     <GoBack href="/" title="home" />
   </>
-);
+)
 
-export default NotFound;
+export default NotFound

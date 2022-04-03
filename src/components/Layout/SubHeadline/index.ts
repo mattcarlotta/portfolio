@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const SubHeadline = styled.h2`
   @media (max-width: 650px) {
@@ -12,6 +12,6 @@ const SubHeadline = styled.h2`
   padding: 0;
   margin: 0;
   font-weight: bold;
-`;
+`
 
-export default SubHeadline;
+export default SubHeadline

@@ -1,20 +1,20 @@
-import CardPreview from "~components/Layout/CardPreview";
-import Category from "~components/Layout/Category";
-import Flex from "~components/Layout/Flex";
-import Head from "~components/Navigation/Header";
-import { IoPlanet } from "~icons";
-import { getAllProjects } from "~utils/contentfulApi";
-import REVALIDATE_TIME from "~utils/revalidate";
+import CardPreview from '~components/Layout/CardPreview'
+import Category from '~components/Layout/Category'
+import Flex from '~components/Layout/Flex'
+import Head from '~components/Navigation/Header'
+import { IoPlanet } from '~icons'
+import { getAllProjects } from '~utils/contentfulApi'
+import REVALIDATE_TIME from '~utils/revalidate'
 import type {
   CONTENTFUL_PROJECTS_PAGE,
   GetStaticProps,
-  ReactElement,
-} from "~types";
+  ReactElement
+} from '~types'
 
 const Projects = ({
-  projects,
+  projects
 }: {
-  projects: Array<CONTENTFUL_PROJECTS_PAGE>;
+  projects: Array<CONTENTFUL_PROJECTS_PAGE>
 }): ReactElement => (
   <>
     <Head description="A collection of personal and professional projects that I've created over the years" />
@@ -41,25 +41,25 @@ const Projects = ({
       ))}
     </Flex>
   </>
-);
+)
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await getAllProjects();
+  const res = await getAllProjects()
 
-  const projects = res.data?.projectsCollection?.items;
+  const projects = res.data?.projectsCollection?.items
 
   if (!projects) {
     return {
-      notFound: true,
-    };
+      notFound: true
+    }
   }
 
   return {
     props: {
       projects,
-      revalidate: REVALIDATE_TIME,
-    },
-  };
-};
+      revalidate: REVALIDATE_TIME
+    }
+  }
+}
 
-export default Projects;
+export default Projects

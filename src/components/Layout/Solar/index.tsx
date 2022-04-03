@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import FlexCenter from "~components/Layout/FlexCenter";
-import type { ReactElement } from "~types";
+import styled from '@emotion/styled'
+import FlexCenter from '~components/Layout/FlexCenter'
+import type { ReactElement } from '~types'
 
 const Solar = ({ className }: { className?: string }): ReactElement => (
   <FlexCenter data-testid="solar-system" className={className}>
@@ -17,7 +17,7 @@ const Solar = ({ className }: { className?: string }): ReactElement => (
       </div>
     </div>
   </FlexCenter>
-);
+)
 
 const SolarIcon = styled(Solar)`
   @keyframes spin {
@@ -84,6 +84,6 @@ const SolarIcon = styled(Solar)`
     border-radius: 50%;
     background-color: #0096ff;
   }
-`;
+`
 
-export default SolarIcon;
+export default SolarIcon

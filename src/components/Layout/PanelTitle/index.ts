@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const PanelTitle = styled.h1`
   color: #fff;
@@ -13,6 +13,6 @@ const PanelTitle = styled.h1`
   text-shadow: 0px 0px 1px #fff;
   border-radius: 10px 10px 0 0;
   width: 100%;
-`;
+`
 
-export default PanelTitle;
+export default PanelTitle

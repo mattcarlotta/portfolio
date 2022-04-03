@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const Main = styled.main`
   height: 100%;
@@ -7,6 +7,6 @@ const Main = styled.main`
   max-width: 950px;
   margin: 0 auto;
   padding: 0 10px;
-`;
+`
 
-export default Main;
+export default Main

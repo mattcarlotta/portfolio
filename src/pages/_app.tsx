@@ -1,20 +1,21 @@
-import { useEffect } from "react";
-import Head from "next/head";
-import Body from "~components/Layout/Body";
-import Header from "~components/Layout/Header";
-import ImageContext from "~components/ImageContext";
-import ScrollHeightContext from "~components/ScrollHeightContext";
-import Footer from "~components/Layout/Footer";
-import Main from "~components/Layout/Main";
-import Wrapper from "~components/Layout/Wrapper";
-import GlobalStylesheet from "~styles/globalStylesheet";
-import type { AppProps, ReactElement } from "~types";
+import { useEffect } from 'react'
+import Head from 'next/head'
+import Body from '~components/Layout/Body'
+import Header from '~components/Layout/Header'
+import ImageContext from '~components/ImageContext'
+import ScrollHeightContext from '~components/ScrollHeightContext'
+import Footer from '~components/Layout/Footer'
+import Main from '~components/Layout/Main'
+import Wrapper from '~components/Layout/Wrapper'
+import GlobalStylesheet from '~styles/globalStylesheet'
+import type { AppProps, ReactElement } from '~types'
+import '~styles/globals.css'
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
   useEffect(() => {
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) jssStyles.parentElement?.removeChild(jssStyles);
-  }, []);
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) jssStyles.parentElement?.removeChild(jssStyles)
+  }, [])
 
   return (
     <>
@@ -39,7 +40,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
         </ImageContext>
       </ScrollHeightContext>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

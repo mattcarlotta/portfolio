@@ -1,40 +1,40 @@
-import Bars from "~components/Layout/Bars";
-import Card from "~components/Layout/Card";
-import CardTitle from "~components/Layout/CardTitle";
-import Flex from "~components/Layout/Flex";
-import Image from "~components/Layout/Image";
-import PlaceHolder from "~components/Layout/PlaceHolder";
-import NormalText from "~components/Layout/NormalText";
-import Tooltip from "~components/Layout/Tooltip";
-import Link from "~components/Navigation/Link";
-import OutsideLink from "~components/Navigation/OutsideLink";
-import { FaLink, FaRegFileCode, FiPower, ImInfo } from "~icons";
-import type { CONTENTFUL_JSON, ReactElement } from "~types";
-import ContentfulRichText from "../ContentfulRichText";
+import Bars from '~components/Layout/Bars'
+import Card from '~components/Layout/Card'
+import CardTitle from '~components/Layout/CardTitle'
+import Flex from '~components/Layout/Flex'
+import Image from '~components/Layout/Image'
+import PlaceHolder from '~components/Layout/PlaceHolder'
+import NormalText from '~components/Layout/NormalText'
+import Tooltip from '~components/Layout/Tooltip'
+import Link from '~components/Navigation/Link'
+import OutsideLink from '~components/Navigation/OutsideLink'
+import { FaLink, FaRegFileCode, FiPower, ImInfo } from '~icons'
+import type { CONTENTFUL_JSON, ReactElement } from '~types'
+import ContentfulRichText from '../ContentfulRichText'
 
 export type CardPreviewProps = {
-  active?: boolean;
-  alt?: string;
-  ariaLabel: string;
-  description: string | CONTENTFUL_JSON;
-  contentType: string;
-  height: number;
-  href?: string;
-  imagePriority?: boolean;
-  location?: string | null;
-  scale?: number;
-  showInfo?: boolean;
-  slug?: string;
-  source?: string;
-  status?: string;
-  title: string;
-  url: string;
-  width: number;
-};
+  active?: boolean
+  alt?: string
+  ariaLabel: string
+  description: string | CONTENTFUL_JSON
+  contentType: string
+  height: number
+  href?: string
+  imagePriority?: boolean
+  location?: string | null
+  scale?: number
+  showInfo?: boolean
+  slug?: string
+  source?: string
+  status?: string
+  title: string
+  url: string
+  width: number
+}
 
 const CardPreview = ({
   active,
-  alt = "",
+  alt = '',
   ariaLabel,
   contentType,
   description,
@@ -44,12 +44,12 @@ const CardPreview = ({
   location,
   scale,
   showInfo = true,
-  slug = "",
+  slug = '',
   source,
   status,
   title,
   url,
-  width,
+  width
 }: CardPreviewProps): ReactElement => (
   <Card>
     <PlaceHolder />
@@ -90,8 +90,8 @@ const CardPreview = ({
               <FiPower
                 data-testid="fipower"
                 style={{
-                  color: active ? "limegreen" : "yellow",
-                  fontSize: 22,
+                  color: active ? 'limegreen' : 'yellow',
+                  fontSize: 22
                 }}
               />
             </Link>
@@ -141,7 +141,7 @@ const CardPreview = ({
           id={`${title} description`}
           padding="0px 10px 15px 10px"
         >
-          {typeof description === "string" ? (
+          {typeof description === 'string' ? (
             description
           ) : (
             <ContentfulRichText json={description.json} />
@@ -150,6 +150,6 @@ const CardPreview = ({
       </header>
     </div>
   </Card>
-);
+)
 
-export default CardPreview;
+export default CardPreview

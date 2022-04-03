@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
-import { useImageContext } from "~components/ImageContext";
-import type { ReactElement } from "~types";
+import styled from '@emotion/styled'
+import { useImageContext } from '~components/ImageContext'
+import type { ReactElement } from '~types'
 
 export const BackgroundImage = styled.div<{
-  src: string;
-  supportsWebp: boolean;
+  src: string
+  supportsWebp: boolean
 }>`
   background-image: ${({ supportsWebp, src }) =>
     supportsWebp ? `url(${src}?fm=webp)` : `url(${src})`};
@@ -19,18 +19,18 @@ export const BackgroundImage = styled.div<{
   position: absolute;
   right: 0;
   top: 0;
-`;
+`
 
 export type BackImageViewerProps = {
-  dataTestId: string;
-  src: string;
-};
+  dataTestId: string
+  src: string
+}
 
 const BackgroundImageViewer = ({
   dataTestId,
-  src,
+  src
 }: BackImageViewerProps): ReactElement => {
-  const { supportsWebp } = useImageContext();
+  const { supportsWebp } = useImageContext()
 
   return (
     <BackgroundImage
@@ -38,7 +38,7 @@ const BackgroundImageViewer = ({
       src={src}
       supportsWebp={supportsWebp}
     />
-  );
-};
+  )
+}
 
-export default BackgroundImageViewer;
+export default BackgroundImageViewer

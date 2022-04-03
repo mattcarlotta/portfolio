@@ -1,17 +1,17 @@
-import Link from "next/link";
-import styled from "@emotion/styled";
-import type { CSSProperties, ReactElement, ReactNode } from "~types";
+import Link from 'next/link'
+import styled from '@emotion/styled'
+import type { CSSProperties, ReactElement, ReactNode } from '~types'
 
 export type LinkIconProps = {
-  ariaLabel: string;
-  asHref?: string;
-  dataTestId: string;
-  children: ReactNode;
-  className?: string;
-  href: string;
-  scroll?: boolean;
-  style?: CSSProperties;
-};
+  ariaLabel: string
+  asHref?: string
+  dataTestId: string
+  children: ReactNode
+  className?: string
+  href: string
+  scroll?: boolean
+  style?: CSSProperties
+}
 
 const LinkIconComponent = ({
   ariaLabel,
@@ -21,7 +21,7 @@ const LinkIconComponent = ({
   dataTestId,
   href,
   scroll,
-  style,
+  style
 }: LinkIconProps): ReactElement => (
   <Link href={href} as={asHref} prefetch={false} scroll={scroll} passHref>
     <a
@@ -33,7 +33,7 @@ const LinkIconComponent = ({
       {children}
     </a>
   </Link>
-);
+)
 
 const LinkIcon = styled(LinkIconComponent)`
   @media (max-width: 650px) {
@@ -64,6 +64,6 @@ const LinkIcon = styled(LinkIconComponent)`
     box-shadow: inset -1px -1px 24px -9px rgba(101, 130, 255, 0.5),
       0px 0px 26px -2px rgba(0, 64, 255, 1);
   }
-`;
+`
 
-export default LinkIcon;
+export default LinkIcon

@@ -1,169 +1,169 @@
-import { forwardRef, useEffect, useCallback, useState } from "react";
-import { Slide, Dialog, withStyles } from "@material-ui/core";
-import { useImageContext } from "~components/ImageContext";
-import BackgroundImageViewer from "~components/Layout/BackgroundImage";
-import Button from "~components/Layout/Button";
-import CardTitle from "~components/Layout/CardTitle";
-import Center from "~components/Layout/Center";
-import CloseModalButton from "~components/Layout/CloseModalButton";
-import DetailHeadline from "~components/Layout/DetailHeadline";
-import Fixed from "~components/Layout/Fixed";
-import Flex from "~components/Layout/Flex";
-import Image from "~components/Layout/Image";
-import ImageCounter from "~components/Layout/ImageCounter";
-import ImagePreviewButton from "~components/Layout/ImagePreviewButton";
-import ImageTitle from "~components/Layout/ImageTitle";
-import PreviewCard from "~components/Layout/PreviewCard";
-import SnapshotContainer from "~components/Layout/SnapshotContainer";
-import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from "~icons";
-import calculateScale from "~utils/calculateScale";
+import { forwardRef, useEffect, useCallback, useState } from 'react'
+import { Slide, Dialog, withStyles } from '@material-ui/core'
+import { useImageContext } from '~components/ImageContext'
+import BackgroundImageViewer from '~components/Layout/BackgroundImage'
+import Button from '~components/Layout/Button'
+import CardTitle from '~components/Layout/CardTitle'
+import Center from '~components/Layout/Center'
+import CloseModalButton from '~components/Layout/CloseModalButton'
+import DetailHeadline from '~components/Layout/DetailHeadline'
+import Fixed from '~components/Layout/Fixed'
+import Flex from '~components/Layout/Flex'
+import Image from '~components/Layout/Image'
+import ImageCounter from '~components/Layout/ImageCounter'
+import ImagePreviewButton from '~components/Layout/ImagePreviewButton'
+import ImageTitle from '~components/Layout/ImageTitle'
+import PreviewCard from '~components/Layout/PreviewCard'
+import SnapshotContainer from '~components/Layout/SnapshotContainer'
+import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
+import calculateScale from '~utils/calculateScale'
 import type {
   CONTENTFUL_IMAGE,
   ReactElement,
   Ref,
-  TransitionProps,
-} from "~types";
+  TransitionProps
+} from '~types'
 
 const ImageViewer = withStyles(() => ({
   paper: {
-    backgroundColor: "#00020e",
-  },
-}))(Dialog);
+    backgroundColor: '#00020e'
+  }
+}))(Dialog)
 
 const SlideTransition = forwardRef(
   (
     props: TransitionProps & { children?: ReactElement<any, any> },
-    ref: Ref<unknown>,
-  ) => <Slide direction="right" ref={ref} {...props} />,
-);
+    ref: Ref<unknown>
+  ) => <Slide direction="right" ref={ref} {...props} />
+)
 
 export type ModalDialogState = {
-  open: boolean;
-  currentIndex: number;
-  url: string;
-  description: string;
-  contentType: string;
-  height: number;
-  width: number;
-  title: string;
-};
+  open: boolean
+  currentIndex: number
+  url: string
+  description: string
+  contentType: string
+  height: number
+  width: number
+  title: string
+}
 
 const initialImageState = {
   open: false,
   currentIndex: 0,
-  url: "",
-  description: "",
-  contentType: "",
+  url: '',
+  description: '',
+  contentType: '',
   height: 0,
   width: 0,
-  title: "",
-};
+  title: ''
+}
 
 const ModalDialog = ({
-  snapshots,
+  snapshots
 }: {
-  snapshots: Array<CONTENTFUL_IMAGE>;
+  snapshots: Array<CONTENTFUL_IMAGE>
 }): ReactElement => {
-  const { supportsWebp } = useImageContext();
-  const [state, setState] = useState<ModalDialogState>(initialImageState);
-  const { open, currentIndex, url, title } = state;
-  const snapsLength = snapshots.length;
+  const { supportsWebp } = useImageContext()
+  const [state, setState] = useState<ModalDialogState>(initialImageState)
+  const { open, currentIndex, url, title } = state
+  const snapsLength = snapshots.length
 
   const selectImage = (selectedIndex: number): void => {
-    const image = snapshots[selectedIndex];
-    setState(prevState => ({
+    const image = snapshots[selectedIndex]
+    setState((prevState) => ({
       ...prevState,
       currentIndex: selectedIndex,
-      ...image,
-    }));
-  };
+      ...image
+    }))
+  }
 
   const handleImageClick = (selectedIndex: number): void => {
-    const image = snapshots[selectedIndex];
+    const image = snapshots[selectedIndex]
     setState({
       open: true,
       currentIndex: selectedIndex,
-      ...image,
-    });
-  };
+      ...image
+    })
+  }
 
   const handleNextImage = useCallback(
     (nextIndex: number): void => {
-      const snapsIndexLength = snapsLength - 1;
-      let selectedIndex = currentIndex;
+      const snapsIndexLength = snapsLength - 1
+      let selectedIndex = currentIndex
 
       if (nextIndex >= 0 && nextIndex <= snapsIndexLength) {
-        selectedIndex = nextIndex;
+        selectedIndex = nextIndex
       } else if (nextIndex < 0) {
-        selectedIndex = snapsIndexLength;
+        selectedIndex = snapsIndexLength
       } else {
-        selectedIndex = 0;
+        selectedIndex = 0
       }
 
-      selectImage(selectedIndex);
+      selectImage(selectedIndex)
     },
-    [currentIndex, snapsLength],
-  );
+    [currentIndex, snapsLength]
+  )
 
   const handleModalExit = (): void => {
-    setState(initialImageState);
-  };
+    setState(initialImageState)
+  }
 
   const handleModalClose = (): void => {
-    setState(prevState => ({ ...prevState, open: false }));
-  };
+    setState((prevState) => ({ ...prevState, open: false }))
+  }
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent): void => {
-      if (!open) return;
+      if (!open) return
 
-      const { key, shiftKey } = event;
-      const tabKeyPressed = key === "Tab";
-      const arrowLeftPressed = key === "ArrowLeft";
-      const arrowRightPressed = key === "ArrowRight";
+      const { key, shiftKey } = event
+      const tabKeyPressed = key === 'Tab'
+      const arrowLeftPressed = key === 'ArrowLeft'
+      const arrowRightPressed = key === 'ArrowRight'
 
       if ((shiftKey && tabKeyPressed) || arrowLeftPressed) {
-        handleNextImage(currentIndex - 1);
+        handleNextImage(currentIndex - 1)
       } else if (tabKeyPressed || arrowRightPressed) {
-        handleNextImage(currentIndex + 1);
+        handleNextImage(currentIndex + 1)
       }
     },
-    [open, handleNextImage, currentIndex],
-  );
+    [open, handleNextImage, currentIndex]
+  )
 
   const handleSelectImage = (
     { key }: { key: string },
-    selectedIndex: number,
+    selectedIndex: number
   ): void => {
     switch (key) {
-      case "Enter":
-        handleImageClick(selectedIndex);
-        break;
+      case 'Enter':
+        handleImageClick(selectedIndex)
+        break
       default:
-        break;
+        break
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [handleKeyDown]);
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [handleKeyDown])
 
   useEffect(() => {
     const previewImage = title
       ? document.getElementById(`button-preview-${title}`)
-      : null;
+      : null
     /* istanbul ignore next */
     if (previewImage?.scrollIntoView)
       previewImage.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      });
-  }, [title]);
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center'
+      })
+  }, [title])
 
   return (
     <>
@@ -178,7 +178,7 @@ const ModalDialog = ({
                 data-testid={title}
                 tabIndex={0}
                 onClick={() => handleImageClick(idx)}
-                onKeyDown={event => handleSelectImage(event, idx)}
+                onKeyDown={(event) => handleSelectImage(event, idx)}
               >
                 <header>
                   <CardTitle>{title}</CardTitle>
@@ -207,7 +207,7 @@ const ModalDialog = ({
         <Fixed top="0px" width="100%">
           <ImageCounter>
             <IoImages
-              style={{ position: "relative", top: 3, marginRight: 10 }}
+              style={{ position: 'relative', top: 3, marginRight: 10 }}
             />
             {currentIndex + 1} of {snapsLength}
           </ImageCounter>
@@ -255,8 +255,8 @@ const ModalDialog = ({
         <Fixed left="0px" bottom="0px" width="100%">
           <Center
             style={{
-              overflowY: "auto",
-              whiteSpace: "nowrap",
+              overflowY: 'auto',
+              whiteSpace: 'nowrap'
             }}
           >
             {snapshots.map(({ title, height, width, url }, idx) => (
@@ -280,7 +280,7 @@ const ModalDialog = ({
         </Fixed>
       </ImageViewer>
     </>
-  );
-};
+  )
+}
 
-export default ModalDialog;
+export default ModalDialog

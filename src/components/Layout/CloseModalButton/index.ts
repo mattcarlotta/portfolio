@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-import styled from "@emotion/styled";
+import styled from '@emotion/styled'
 
 const CloseModalButton = styled.button`
   position: absolute;
@@ -23,6 +23,6 @@ const CloseModalButton = styled.button`
   :focus {
     outline: none;
   }
-`;
+`
 
-export default CloseModalButton;
+export default CloseModalButton

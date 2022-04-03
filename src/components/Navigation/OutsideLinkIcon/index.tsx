@@ -1,14 +1,14 @@
-import styled from "@emotion/styled";
-import type { CSSProperties, ReactElement, ReactNode } from "~types";
+import styled from '@emotion/styled'
+import type { CSSProperties, ReactElement, ReactNode } from '~types'
 
 export type OutsideLinkProps = {
-  ariaLabel: string;
-  className?: string;
-  children: ReactNode;
-  dataTestId?: string;
-  href: string;
-  style?: CSSProperties;
-};
+  ariaLabel: string
+  className?: string
+  children: ReactNode
+  dataTestId?: string
+  href: string
+  style?: CSSProperties
+}
 
 const OutsideLinkComponent = ({
   ariaLabel,
@@ -16,7 +16,7 @@ const OutsideLinkComponent = ({
   children,
   dataTestId,
   href,
-  style,
+  style
 }: OutsideLinkProps): ReactElement => (
   <a
     aria-label={ariaLabel}
@@ -29,7 +29,7 @@ const OutsideLinkComponent = ({
   >
     {children}
   </a>
-);
+)
 
 const OutsideLink = styled(OutsideLinkComponent)`
   @media (max-width: 650px) {
@@ -60,6 +60,6 @@ const OutsideLink = styled(OutsideLinkComponent)`
     box-shadow: inset -1px -1px 24px -9px rgba(101, 130, 255, 0.5),
       0px 0px 26px -2px rgba(0, 64, 255, 1);
   }
-`;
+`
 
-export default OutsideLink;
+export default OutsideLink
