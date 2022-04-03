@@ -2,8 +2,8 @@ name: PreDeployment
 
 on:
   push:
-    branches:
-      - development
+    branches-ignore:
+      - master
 
 jobs:
   predeploy:
