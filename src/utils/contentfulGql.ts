@@ -41,6 +41,7 @@ snapshotsCollection {
  } 
 }
 ${preview}
+imagePriority
 slug
 `;
 
@@ -64,6 +65,7 @@ ${sys}
 title
 sandboxId
 ${preview}
+imagePriority
 slug
 `;
 
@@ -72,5 +74,6 @@ ${sys}
 title
 description
 ${preview}
+imagePriority
 slug
 `;

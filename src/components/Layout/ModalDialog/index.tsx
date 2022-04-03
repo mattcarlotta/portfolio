@@ -183,7 +183,12 @@ const ModalDialog = ({
                 <header>
                   <CardTitle>{title}</CardTitle>
                 </header>
-                <Image scale={25} {...rest} styles="margin: 0 auto;" />
+                <Image
+                  scale={25}
+                  alt={rest.description}
+                  {...rest}
+                  styles="margin: 0 auto;"
+                />
               </PreviewCard>
             </section>
           ))}

@@ -179,6 +179,7 @@ const initProps = {
     title: "rusty bucket preview",
   },
   slug: "rusty-bucket",
+  imagePriority: false,
 };
 
 const nextProps = {

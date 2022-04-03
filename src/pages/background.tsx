@@ -49,6 +49,7 @@ const Background = ({
       <Panel>
         <Flex justify="center" margin="30px 0 0 0">
           <Image
+            priority
             {...background.profileImage}
             alt={background.profileImage.description}
             styles="border-radius: 10px;"
