@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { FiExternalLink } from '~icons'
+import { BoxArrowUpRight } from 'react-bootstrap-icons'
 import type { CSSProperties, ReactElement, ReactNode } from '~types'
 
 export type OutsideLinkProps = {
@@ -31,16 +31,7 @@ const OutsideLinkComponent = ({
     style={style}
   >
     {children}
-    {showIcon && (
-      <FiExternalLink
-        style={{
-          marginLeft: 2,
-          position: 'relative',
-          top: 3
-          // fontSize: 14,
-        }}
-      />
-    )}
+    {showIcon && <BoxArrowUpRight className="relative ml-1 align-top" />}
   </a>
 )
 

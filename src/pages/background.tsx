@@ -1,13 +1,19 @@
 import { css } from '@emotion/react'
+import {
+  CodeSquare,
+  Github,
+  Linkedin,
+  StackOverflow
+} from 'react-bootstrap-icons'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
 import Flex from '~components/Layout/Flex'
 import Image from '~components/Layout/Image'
 import Info from '~components/Layout/Info'
+import NormalText from '~components/Layout/NormalText'
 import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
-import NormalText from '~components/Layout/NormalText'
 import SubTitle from '~components/Layout/SubTitle'
 import Text from '~components/Layout/Text'
 import Head from '~components/Navigation/Header'
@@ -15,19 +21,19 @@ import OutsideLink from '~components/Navigation/OutsideLink'
 import {
   AiFillStar,
   AiOutlineStar,
-  GiRank3,
   FiPower,
+  GiRank3,
   HiOutlineMail,
   RiMapPin2Line
 } from '~icons'
-import { getBackground } from '~utils/contentfulApi'
-import REVALIDATE_TIME from '~utils/revalidate'
 import type {
   CONTENTFUL_BACKGROUND_PAGE,
   CSSProperties,
   GetStaticProps,
   ReactElement
 } from '~types'
+import { getBackground } from '~utils/contentfulApi'
+import REVALIDATE_TIME from '~utils/revalidate'
 
 const style = {
   fontSize: 20,
@@ -81,6 +87,46 @@ const Background = ({
                   href="mailto:matt@mattcarlotta.com"
                 >
                   {background.email}
+                </OutsideLink>
+              </Info>
+              <Info>
+                <Github className="mr-2" />
+                <OutsideLink
+                  dataTestId="my-github-page"
+                  ariaLabel="Navigate to my github page."
+                  href="https://github.com/mattcarlotta"
+                >
+                  Github
+                </OutsideLink>
+              </Info>
+              <Info>
+                <Linkedin className="mr-2" />
+                <OutsideLink
+                  dataTestId="my-linkedin-page"
+                  ariaLabel="Navigate to my linkedin page."
+                  href="https://www.linkedin.com/in/mattcarlotta"
+                >
+                  Linkedin
+                </OutsideLink>
+              </Info>
+              <Info>
+                <CodeSquare className="mr-2" />
+                <OutsideLink
+                  dataTestId="my-codesandbox-page"
+                  ariaLabel="Navigate to my codesandbox page."
+                  href="https://codesandbox.io/u/mattcarlotta/sandboxes"
+                >
+                  CodeSandBox
+                </OutsideLink>
+              </Info>
+              <Info>
+                <StackOverflow className="mr-2" />
+                <OutsideLink
+                  dataTestId="my-stackoverflow-page"
+                  ariaLabel="Navigate to my stackoverflow page."
+                  href="https://stackoverflow.com/users/7376526/matt-carlotta"
+                >
+                  Stackoverflow
                 </OutsideLink>
               </Info>
             </NormalText>

@@ -2535,7 +2535,7 @@ cliui@^7.0.2:
     strip-ansi "^6.0.0"
     wrap-ansi "^7.0.0"
 
-clsx@^1.0.4:
+clsx@^1.0.4, clsx@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
   integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
@@ -5439,6 +5439,13 @@ randombytes@^2.1.0:
   integrity sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==
   dependencies:
     safe-buffer "^5.1.0"
+
+react-bootstrap-icons@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-icons/-/react-bootstrap-icons-1.8.1.tgz#9a46fb8fade3ee5d5cb166f691ee1e7f8e1b5d2c"
+  integrity sha512-DAObnN++mYt7swhJjhATXdYTbAIKklz7D7pD9U0kJlJCWllJpddhwJThZx6rEOMDvPKmJb4aLL3xxUeRIZpLDA==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-dom@^17.0.2:
   version "17.0.2"

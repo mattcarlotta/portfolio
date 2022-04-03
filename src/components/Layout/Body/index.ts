@@ -8,7 +8,6 @@ const Body = styled.section`
   }
 
   min-height: 700px;
-  padding-top: 100px;
 `
 
 export default Body

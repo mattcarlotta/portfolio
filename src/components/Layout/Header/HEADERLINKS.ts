@@ -1,45 +1,30 @@
-import {
-  ImInfo,
-  GiPlanetCore,
-  GoHome,
-  FaGithub,
-  FiLinkedin,
-  IoPlanet
-} from '~icons'
-
 export const HEADERLINKS = [
   {
     page: 'home',
-    href: '/',
-    Icon: GoHome
+    href: '/'
   },
   {
     page: 'projects',
-    href: '/projects',
-    Icon: IoPlanet
+    href: '/projects'
   },
   {
     page: 'explorations',
-    href: '/explorations',
-    Icon: GiPlanetCore
+    href: '/explorations'
   },
   {
     page: 'background',
-    href: '/background',
-    Icon: ImInfo
-  },
-  {
-    page: 'linkedIn',
-    href: 'https://www.linkedin.com/in/mattcarlotta/',
-    Icon: FiLinkedin,
-    external: true
-  },
-  {
-    page: 'github',
-    href: 'https://github.com/mattcarlotta',
-    Icon: FaGithub,
-    external: true
+    href: '/background'
   }
+  // {
+  //   page: 'linkedIn',
+  //   href: 'https://www.linkedin.com/in/mattcarlotta/',
+  //   external: true
+  // },
+  // {
+  //   page: 'github',
+  //   href: 'https://github.com/mattcarlotta',
+  //   external: true
+  // }
 ]
 
 export default HEADERLINKS

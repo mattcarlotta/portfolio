@@ -27,9 +27,9 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
       </Head>
       <ScrollHeightContext>
         <ImageContext>
+          <Header />
           <Wrapper>
             <Main>
-              <Header />
               <Body data-testid="body">
                 <Component {...pageProps} />
               </Body>

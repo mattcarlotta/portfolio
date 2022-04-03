@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import Link from 'next/link'
-import styled from '@emotion/styled'
 import type { CSSProperties, ReactElement, ReactNode } from '~types'
 
 export type LinkIconProps = {
@@ -13,11 +13,11 @@ export type LinkIconProps = {
   style?: CSSProperties
 }
 
-const LinkIconComponent = ({
+const LinkIcon = ({
   ariaLabel,
   asHref,
-  className,
   children,
+  className,
   dataTestId,
   href,
   scroll,
@@ -28,42 +28,14 @@ const LinkIconComponent = ({
       aria-label={ariaLabel}
       data-testid={dataTestId}
       style={style}
-      className={className}
+      className={clsx(
+        'flex w-full items-center justify-center rounded-[3.125rem] border-2 border-transparent text-primary no-underline outline-0 duration-300 ease-in-out hover:text-white focus:border-primary-100 focus:text-white focus:shadow-ring sm:mx-0 md:mx-1 md:w-auto md:p-2',
+        className
+      )}
     >
       {children}
     </a>
   </Link>
 )
-
-const LinkIcon = styled(LinkIconComponent)`
-  @media (max-width: 650px) {
-    margin: 0 5px;
-  }
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  margin: 0 10px;
-  color: #1295f3;
-  transition: all 0.5s;
-  text-decoration: none;
-  outline: none;
-  border: 2px solid transparent;
-  border-radius: 50px;
-  outline: 0;
-  font-size: 18px;
-
-  :hover {
-    color: #fff;
-  }
-
-  :focus {
-    color: #fff;
-    border-color: #0096ff;
-    box-shadow: inset -1px -1px 24px -9px rgba(101, 130, 255, 0.5),
-      0px 0px 26px -2px rgba(0, 64, 255, 1);
-  }
-`
 
 export default LinkIcon
