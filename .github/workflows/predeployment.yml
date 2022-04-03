@@ -3,7 +3,7 @@ name: PreDeployment
 on:
   push:
     branches:
-      - development
+      - "!master"
 
 jobs:
   predeploy:
