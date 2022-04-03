@@ -2,9 +2,8 @@ name: PreDeployment
 
 on:
   push:
-    branches:
-      - "**" # matches every branch
-      - "!master"
+    branches-ignore:
+      - master
 
 jobs:
   predeploy:
