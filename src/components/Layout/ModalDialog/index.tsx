@@ -135,20 +135,14 @@ const ModalDialog = ({
     { key }: { key: string },
     selectedIndex: number,
   ): void => {
-    switch (key) {
-      case "Enter":
-        handleImageClick(selectedIndex);
-        break;
-      default:
-        break;
-    }
+    if (key === "Enter") handleImageClick(selectedIndex);
   };
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [handleKeyDown]);
 

@@ -1,6 +1,7 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { within } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
+import { ReactElement } from "~types";
 import ModalDialog from "../index";
 
 const props = {
@@ -26,21 +27,12 @@ const props = {
   ],
 };
 
-// const events = { keydown: null } as any;
-// window.addEventListener = (event: any, cb: any) => {
-//   events[event] = cb;
-// };
-
-// window.document.getElementById = jest.fn();
+const setupUserEvent = (jsx: ReactElement) => ({
+  user: userEvent.setup(),
+  ...render(jsx),
+});
 
 describe("ModalDialog", () => {
-  //   let wrapper: ReactWrapper;
-  //   let findById: (id: string) => ReactWrapper;
-  //   beforeEach(() => {
-  //     wrapper = mount(<ModalDialog {...props} />);
-  //     findById = id => wrapper.find(`[data-testid='${id}']`);
-  //   });
-
   it("renders without errors", () => {
     const { getByTestId } = render(<ModalDialog {...props} />);
     expect(getByTestId("snapshots")).toBeInTheDocument();
@@ -137,7 +129,7 @@ describe("ModalDialog", () => {
   });
 
   it("pressing tab navigates to next image", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />);
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />);
 
     fireEvent.click(getByTestId("example 123"));
 
@@ -145,9 +137,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitFor(() => {
-      userEvent.tab();
-    });
+    await user.tab();
 
     await waitFor(() => {
       expect(
@@ -157,7 +147,7 @@ describe("ModalDialog", () => {
   });
 
   it("pressing arrowright key navigates to next image", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />);
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />);
 
     fireEvent.click(getByTestId("example 123"));
 
@@ -165,9 +155,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitFor(() => {
-      userEvent.keyboard("{arrowright}");
-    });
+    await user.keyboard("{arrowright}");
 
     await waitFor(() => {
       expect(
@@ -177,7 +165,7 @@ describe("ModalDialog", () => {
   });
 
   it("pressing arrowleft key navigates to previous image", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />);
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />);
 
     fireEvent.click(getByTestId("example 123"));
 
@@ -185,9 +173,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitFor(() => {
-      userEvent.keyboard("{arrowleft}");
-    });
+    await user.keyboard("{arrowleft}");
 
     await waitFor(() => {
       expect(
@@ -197,7 +183,7 @@ describe("ModalDialog", () => {
   });
 
   it("pressing shift+tab keys navigates to previous image", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />);
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />);
 
     fireEvent.click(getByTestId("example 123"));
 
@@ -205,9 +191,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitFor(() => {
-      userEvent.tab({ shift: true });
-    });
+    await user.tab({ shift: true });
 
     await waitFor(() => {
       expect(
@@ -217,7 +201,7 @@ describe("ModalDialog", () => {
   });
 
   it("pressing esc key closes the modal", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />);
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />);
 
     fireEvent.click(getByTestId("example 123"));
 
@@ -225,9 +209,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitFor(() => {
-      userEvent.keyboard("{esc}");
-    });
+    await user.keyboard("{esc}");
 
     await waitFor(() => {
       expect(document.querySelector("#modal")).not.toBeInTheDocument();
@@ -235,7 +217,7 @@ describe("ModalDialog", () => {
   });
 
   it("pressing arrowup key does nothing", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />);
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />);
 
     fireEvent.click(getByTestId("example 123"));
 
@@ -243,9 +225,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await waitFor(() => {
-      userEvent.keyboard("{arrowup}");
-    });
+    await user.keyboard("{arrowup}");
 
     await waitFor(() => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
