@@ -20,6 +20,7 @@ export type CardPreviewProps = {
   contentType: string;
   height: number;
   href?: string;
+  imagePriority?: boolean;
   location?: string | null;
   scale?: number;
   showInfo?: boolean;
@@ -39,6 +40,7 @@ const CardPreview = ({
   description,
   height,
   href,
+  imagePriority,
   location,
   scale,
   showInfo = true,
@@ -64,6 +66,7 @@ const CardPreview = ({
           href={`/${href}/${slug}`}
         >
           <Image
+            priority={imagePriority}
             url={url}
             alt={alt}
             scale={scale}

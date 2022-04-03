@@ -64,6 +64,7 @@ export type CONTENTFUL_BACKGROUND_PAGE = {
   CONTENTFUL_DESCRIPTION;
 
 export type CONTENTFUL_EXPLORATIONS_PAGE = {
+  imagePriority: boolean;
   sandboxId: string;
   preview: CONTENTFUL_IMAGE;
 } & CONTENTFUL_ID &
@@ -72,12 +73,14 @@ export type CONTENTFUL_EXPLORATIONS_PAGE = {
 
 export type CONTENTFUL_PAGE_CARD = {
   description: string;
+  imagePriority: boolean;
   preview: CONTENTFUL_IMAGE;
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE &
   CONTENTFUL_SLUG;
 
 export type CONTENTFUL_PROJECTS_PAGE = {
+  imagePriority: boolean;
   seoDescription: string;
   active: boolean;
   status: string;
