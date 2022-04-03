@@ -3,6 +3,7 @@ name: PreDeployment
 on:
   push:
     branches:
+      - "**" # matches every branch
       - "!master"
 
 jobs:
