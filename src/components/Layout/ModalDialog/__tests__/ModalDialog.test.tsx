@@ -155,7 +155,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await user.keyboard("{arrowright}");
+    await user.keyboard("[ArrowRight]");
 
     await waitFor(() => {
       expect(
@@ -173,7 +173,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await user.keyboard("{arrowleft}");
+    await user.keyboard("[ArrowLeft]");
 
     await waitFor(() => {
       expect(
@@ -209,7 +209,7 @@ describe("ModalDialog", () => {
       expect(document.querySelector("#modal")).toBeInTheDocument();
     });
 
-    await user.keyboard("{esc}");
+    await user.keyboard("[Escape]");
 
     await waitFor(() => {
       expect(document.querySelector("#modal")).not.toBeInTheDocument();
