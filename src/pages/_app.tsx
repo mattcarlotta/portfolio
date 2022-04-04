@@ -1,15 +1,14 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
-import Body from '~components/Layout/Body'
-import Header from '~components/Layout/Header'
+import { useEffect } from 'react'
 import ImageContext from '~components/ImageContext'
-import ScrollHeightContext from '~components/ScrollHeightContext'
+import Body from '~components/Layout/Body'
 import Footer from '~components/Layout/Footer'
+import Header from '~components/Layout/Header'
 import Main from '~components/Layout/Main'
-import Wrapper from '~components/Layout/Wrapper'
+import ScrollHeightContext from '~components/ScrollHeightContext'
+import '~styles/globals.css'
 import GlobalStylesheet from '~styles/globalStylesheet'
 import type { AppProps, ReactElement } from '~types'
-import '~styles/globals.css'
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
   useEffect(() => {
@@ -28,14 +27,12 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
       <ScrollHeightContext>
         <ImageContext>
           <Header />
-          <Wrapper>
-            <Main>
-              <Body data-testid="body">
-                <Component {...pageProps} />
-              </Body>
-              <Footer />
-            </Main>
-          </Wrapper>
+          <Main>
+            <Body data-testid="body">
+              <Component {...pageProps} />
+            </Body>
+            <Footer />
+          </Main>
           <GlobalStylesheet />
         </ImageContext>
       </ScrollHeightContext>

@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#008ef1',
+          50: 'rgba(0, 128, 255, 0.8)',
           100: '#0096ff'
         },
         accent: '#1295f3',

@@ -15,7 +15,6 @@ import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
 import SubTitle from '~components/Layout/SubTitle'
-import Text from '~components/Layout/Text'
 import Head from '~components/Navigation/Header'
 import OutsideLink from '~components/Navigation/OutsideLink'
 import {
@@ -53,15 +52,15 @@ const Background = ({
         <PanelTitle data-testid="panel-title">{background.title}</PanelTitle>
       </header>
       <Panel>
-        <Flex justify="center" margin="30px 0 0 0">
+        <div className="mt-6 flex items-center justify-center">
           <Image
             priority
             {...background.profileImage}
             alt={background.profileImage.description}
             styles="border-radius: 10px;"
           />
-        </Flex>
-        <Text>
+        </div>
+        <div className="px-4 pt-2 pb-6 tracking-wide">
           <section>
             <header>
               <DetailHeadline margin="20px 0 0 0">Details:</DetailHeadline>
@@ -95,6 +94,7 @@ const Background = ({
                   dataTestId="my-github-page"
                   ariaLabel="Navigate to my github page."
                   href="https://github.com/mattcarlotta"
+                  showIcon
                 >
                   Github
                 </OutsideLink>
@@ -105,6 +105,7 @@ const Background = ({
                   dataTestId="my-linkedin-page"
                   ariaLabel="Navigate to my linkedin page."
                   href="https://www.linkedin.com/in/mattcarlotta"
+                  showIcon
                 >
                   Linkedin
                 </OutsideLink>
@@ -115,6 +116,7 @@ const Background = ({
                   dataTestId="my-codesandbox-page"
                   ariaLabel="Navigate to my codesandbox page."
                   href="https://codesandbox.io/u/mattcarlotta/sandboxes"
+                  showIcon
                 >
                   CodeSandBox
                 </OutsideLink>
@@ -125,6 +127,7 @@ const Background = ({
                   dataTestId="my-stackoverflow-page"
                   ariaLabel="Navigate to my stackoverflow page."
                   href="https://stackoverflow.com/users/7376526/matt-carlotta"
+                  showIcon
                 >
                   Stackoverflow
                 </OutsideLink>
@@ -247,7 +250,7 @@ const Background = ({
               ))}
             </ul>
           </section>
-        </Text>
+        </div>
       </Panel>
     </Project>
   </>

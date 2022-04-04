@@ -13,9 +13,14 @@ const Home = ({
 }): ReactElement => (
   <>
     <Head />
-    <header className="mb-[7rem] pt-10 text-center" data-testid="header">
-      <h1 className="m-0 text-lg uppercase sm:text-4xl">MATT CARLOTTA</h1>
-      <h2 className="m-0 p-0 text-base text-primary sm:text-sm">
+    <header className="mb-[8rem] mt-[-0.5rem] text-center" data-testid="header">
+      <h1
+        style={{ textShadow: '0px 0px 3px #fff' }}
+        className="text-md m-0 uppercase leading-none tracking-wider sm:text-4xl"
+      >
+        MATT CARLOTTA
+      </h1>
+      <h2 className="m-0 p-0 text-[0.8rem] text-white">
         Fullstack Software Engineer
       </h2>
       <Orbits />

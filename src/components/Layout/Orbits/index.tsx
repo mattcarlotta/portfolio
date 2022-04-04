@@ -24,7 +24,7 @@ const OrbitsIcon = styled(Orbits)`
 
   .container {
     position: absolute;
-    top: -80px;
+    top: -50px;
     left: 0;
     right: 0;
     bottom: 0;
