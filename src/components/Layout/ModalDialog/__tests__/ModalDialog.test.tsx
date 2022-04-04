@@ -1,6 +1,7 @@
-import { fireEvent, render, waitFor } from '@testing-library/react'
 import { within } from '@testing-library/dom'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { ReactElement } from '~types'
 import ModalDialog from '../index'
 
 const props = {
@@ -26,30 +27,21 @@ const props = {
   ]
 }
 
-// const events = { keydown: null } as any;
-// window.addEventListener = (event: any, cb: any) => {
-//   events[event] = cb;
-// };
-
-// window.document.getElementById = jest.fn();
+const setupUserEvent = (jsx: ReactElement) => ({
+  user: userEvent.setup(),
+  ...render(jsx)
+})
 
 describe('ModalDialog', () => {
-  //   let wrapper: ReactWrapper;
-  //   let findById: (id: string) => ReactWrapper;
-  //   beforeEach(() => {
-  //     wrapper = mount(<ModalDialog {...props} />);
-  //     findById = id => wrapper.find(`[data-testid='${id}']`);
-  //   });
-
   it('renders without errors', () => {
     const { getByTestId } = render(<ModalDialog {...props} />)
     expect(getByTestId('snapshots')).toBeInTheDocument()
   })
 
   it('opens a modal dialog when clicking on a snapshot', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
@@ -57,15 +49,15 @@ describe('ModalDialog', () => {
   })
 
   it("navigates the snapshots when clicking on the 'next-image' or 'previous-image' buttons", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    fireEvent.click(getByTestId('next-image'))
+    await user.click(getByTestId('next-image'))
 
     await waitFor(() => {
       expect(
@@ -73,7 +65,7 @@ describe('ModalDialog', () => {
       ).toBeInTheDocument()
     })
 
-    fireEvent.click(getByTestId('previous-image'))
+    await user.click(getByTestId('previous-image'))
 
     await waitFor(() => {
       expect(
@@ -83,15 +75,15 @@ describe('ModalDialog', () => {
   })
 
   it("wraps around to the first image when clicking on the 'next-image' button", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 456'))
+    await user.click(getByTestId('example 456'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    fireEvent.click(getByTestId('next-image'))
+    await user.click(getByTestId('next-image'))
 
     await waitFor(() => {
       expect(
@@ -101,15 +93,15 @@ describe('ModalDialog', () => {
   })
 
   it("wraps around to the last image clicking on the 'previous-image' button", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    fireEvent.click(getByTestId('previous-image'))
+    await user.click(getByTestId('previous-image'))
 
     await waitFor(() => {
       expect(
@@ -119,15 +111,15 @@ describe('ModalDialog', () => {
   })
 
   it('navigates to an image when clicking on a preview of it', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    fireEvent.click(getByTestId('button-example 456'))
+    await user.click(getByTestId('button-example 456'))
 
     await waitFor(() => {
       expect(
@@ -137,17 +129,15 @@ describe('ModalDialog', () => {
   })
 
   it('pressing tab navigates to next image', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    await waitFor(() => {
-      userEvent.tab()
-    })
+    await user.tab()
 
     await waitFor(() => {
       expect(
@@ -157,17 +147,15 @@ describe('ModalDialog', () => {
   })
 
   it('pressing arrowright key navigates to next image', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    await waitFor(() => {
-      userEvent.keyboard('{arrowright}')
-    })
+    await user.keyboard('{ArrowRight}')
 
     await waitFor(() => {
       expect(
@@ -177,17 +165,15 @@ describe('ModalDialog', () => {
   })
 
   it('pressing arrowleft key navigates to previous image', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    await waitFor(() => {
-      userEvent.keyboard('{arrowleft}')
-    })
+    await user.keyboard('{ArrowLeft}')
 
     await waitFor(() => {
       expect(
@@ -197,17 +183,15 @@ describe('ModalDialog', () => {
   })
 
   it('pressing shift+tab keys navigates to previous image', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    await waitFor(() => {
-      userEvent.tab({ shift: true })
-    })
+    await user.tab({ shift: true })
 
     await waitFor(() => {
       expect(
@@ -217,17 +201,15 @@ describe('ModalDialog', () => {
   })
 
   it('pressing esc key closes the modal', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    await waitFor(() => {
-      userEvent.keyboard('{esc}')
-    })
+    await user.keyboard('{Escape}')
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).not.toBeInTheDocument()
@@ -235,17 +217,15 @@ describe('ModalDialog', () => {
   })
 
   it('pressing arrowup key does nothing', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
 
-    fireEvent.click(getByTestId('example 123'))
+    await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    await waitFor(() => {
-      userEvent.keyboard('{arrowup}')
-    })
+    await user.keyboard('{arrowup}')
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
