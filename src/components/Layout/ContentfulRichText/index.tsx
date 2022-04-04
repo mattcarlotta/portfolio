@@ -8,13 +8,12 @@ const customMarkdownOptions = {
   renderNode: {
     [INLINES.HYPERLINK]: (node: NodeData) => {
       const title = node.content?.[0]?.value
-      const URL = node.data?.uri
 
       return (
         <OutsideLink
           showIcon
           ariaLabel={`Navigate to ${title} page`}
-          href={URL}
+          href={node.data?.uri}
         >
           {title}
         </OutsideLink>
@@ -23,8 +22,6 @@ const customMarkdownOptions = {
   }
 }
 
-const ContentfulRichText = ({ json }: { json: Document }) => (
-  <>{documentToReactComponents(json, customMarkdownOptions)}</>
-)
-
-export default ContentfulRichText
+export default function ContentfulRichText({ json }: { json: Document }) {
+  return <>{documentToReactComponents(json, customMarkdownOptions)}</>
+}

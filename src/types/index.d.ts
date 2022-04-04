@@ -1,20 +1,31 @@
 /* istanbul ignore file */
 import type { Document, NodeData } from '@contentful/rich-text-types'
+import { ParsedUrlQuery } from 'querystring'
 
-export type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+export { TransitionProps } from '@material-ui/core/transitions'
+export type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage
+} from 'next'
 export type { AppProps } from 'next/app'
 export type {
-  ComponentType,
   ChangeEvent,
+  ComponentType,
   CSSProperties,
   FC,
   FormEvent,
   MouseEvent,
-  ReactNode,
   ReactElement,
+  ReactNode,
   Ref
 } from 'react'
-export { TransitionProps } from '@material-ui/core/transitions'
+export { Document, NodeData }
+
+export type ContextParams = {
+  params: ParsedUrlQuery
+}
 
 export type CONTENTFUL_ID = {
   sys: {
@@ -95,5 +106,3 @@ export type CONTENTFUL_PROJECTS_PAGE = {
   CONTENTFUL_TITLE &
   CONTENTFUL_DESCRIPTION &
   CONTENTFUL_SLUG
-
-export { Document, NodeData }

@@ -12,8 +12,13 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#008ef1',
+          25: '#0088ff',
           50: 'rgba(0, 128, 255, 0.8)',
-          100: '#0096ff'
+          100: '#0096ff',
+          900: '#001031'
+        },
+        gray: {
+          DEFAULT: '#4a4a4a'
         },
         accent: '#1295f3',
         'dark-blue': '#001031'

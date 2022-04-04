@@ -7,9 +7,9 @@ import Header from '~components/Layout/Header'
 import Main from '~components/Layout/Main'
 import ScrollHeightContext from '~components/ScrollHeightContext'
 import '~styles/globals.scss'
-import type { AppProps, ReactElement } from '~types'
+import type { AppProps } from '~types'
 
-const App = ({ Component, pageProps }: AppProps): ReactElement => {
+export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) jssStyles.parentElement?.removeChild(jssStyles)
@@ -37,5 +37,3 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
     </>
   )
 }
-
-export default App

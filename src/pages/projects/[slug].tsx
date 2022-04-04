@@ -1,20 +1,17 @@
 import ProjectPage from '~components/Layout/ProjectPage'
+import type { CONTENTFUL_PROJECTS_PAGE, ContextParams } from '~types'
 import { getAllProjects, getProjectBySlug } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
-import type {
-  CONTENTFUL_PROJECTS_PAGE,
-  GetStaticPaths,
-  GetStaticProps,
-  ReactElement
-} from '~types'
 
-const ProjectPageComponent = ({
+export default function ProjectPageComponent({
   project
 }: {
   project: CONTENTFUL_PROJECTS_PAGE
-}): ReactElement => <ProjectPage {...project} />
+}) {
+  return <ProjectPage {...project} />
+}
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export async function getStaticProps({ params }: ContextParams) {
   const slug = params?.slug as string
   const res = await getProjectBySlug(slug)
 
@@ -35,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export async function getStaticPaths() {
   const res = await getAllProjects()
 
   const projects: Array<CONTENTFUL_PROJECTS_PAGE> =
@@ -48,5 +45,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: 'blocking'
   }
 }
-
-export default ProjectPageComponent

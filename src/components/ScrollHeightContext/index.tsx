@@ -1,4 +1,5 @@
 /* istanbul ignore file */
+import throttle from 'lodash.throttle'
 import {
   createContext,
   useContext,
@@ -7,15 +8,11 @@ import {
   useRef,
   useState
 } from 'react'
-import throttle from 'lodash.throttle'
-import type { ReactElement, ReactNode } from '~types'
+import type { ReactNode } from '~types'
 
 export const ScrollHeight = createContext({ clientHeight: 0, scrollHeight: 0 })
 
-export const useScrollHeight = (): {
-  clientHeight: number
-  scrollHeight: number
-} => {
+export function useScrollHeight() {
   const context = useContext(ScrollHeight)
   if (!context) {
     throw new Error(
@@ -25,11 +22,11 @@ export const useScrollHeight = (): {
   return context
 }
 
-const ScrollHeightProvider = ({
+export default function ScrollHeightProvider({
   children
 }: {
   children: ReactNode
-}): ReactElement => {
+}) {
   const [scrollHeight, setScrollHeight] = useState(0)
   const [clientHeight, setClientHeight] = useState(0)
 
@@ -60,5 +57,3 @@ const ScrollHeightProvider = ({
     <ScrollHeight.Provider value={context}>{children}</ScrollHeight.Provider>
   )
 }
-
-export default ScrollHeightProvider

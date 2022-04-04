@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import type { ReactElement } from '~types'
 
 export type HeaderProps = {
   description?: string
@@ -8,11 +7,11 @@ export type HeaderProps = {
   type?: string
 }
 
-const Header = ({
+export default function Header({
   description = 'A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications',
   title = '',
   type = 'website'
-}: HeaderProps): ReactElement => {
+}: HeaderProps) {
   const { asPath } = useRouter()
   const newTitle = title
     .split(' ')
@@ -70,5 +69,3 @@ const Header = ({
     </Head>
   )
 }
-
-export default Header

@@ -1,11 +1,10 @@
+import { css } from '@emotion/react'
 import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
-import { css } from '@emotion/react'
-import LoadingPlaceholder from '~components/Layout/LoadingPlaceholder'
-import calculateScale from '~utils/calculateScale'
-import type { ReactElement } from '~types'
-import { useScrollHeight } from '~components/ScrollHeightContext'
 import { useImageContext } from '~components/ImageContext'
+import LoadingPlaceholder from '~components/Layout/LoadingPlaceholder'
+import { useScrollHeight } from '~components/ScrollHeightContext'
+import calculateScale from '~utils/calculateScale'
 
 export type ImageProps = {
   alt?: string
@@ -19,7 +18,7 @@ export type ImageProps = {
   url: string
 }
 
-const Image = ({
+export default function Image({
   alt,
   containerStyle,
   contentType,
@@ -29,7 +28,7 @@ const Image = ({
   styles,
   url,
   width
-}: ImageProps): ReactElement | null => {
+}: ImageProps) {
   const { supportsWebp } = useImageContext()
   const imageRef = useRef<HTMLImageElement | null>(null)
   const { clientHeight, scrollHeight } = useScrollHeight()
@@ -103,5 +102,3 @@ const Image = ({
     </>
   )
 }
-
-export default Image

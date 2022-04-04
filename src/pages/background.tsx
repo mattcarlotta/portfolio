@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import clsx from 'clsx'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
 import Flex from '~components/Layout/Flex'
@@ -23,234 +23,204 @@ import {
   SiStackoverflow,
   VscGithub
 } from '~icons'
-import type {
-  CONTENTFUL_BACKGROUND_PAGE,
-  CSSProperties,
-  GetStaticProps,
-  ReactElement
-} from '~types'
+import type { CONTENTFUL_BACKGROUND_PAGE } from '~types'
 import { getBackground } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
-const style = {
-  fontSize: 20,
-  verticalAlign: 'middle',
-  marginRight: 10
-} as CSSProperties
+const SocialLinks = [
+  {
+    Icon: VscGithub,
+    id: 'github',
+    title: 'Github',
+    href: 'https://github.com/mattcarlotta'
+  },
+  {
+    Icon: SiLinkedin,
+    id: 'linkedin',
+    title: 'Linkedin',
+    href: 'https://www.linkedin.com/in/mattcarlotta'
+  },
+  {
+    Icon: SiStackoverflow,
+    id: 'stackoverflow',
+    title: 'Stackoverflow',
+    href: 'https://stackoverflow.com/users/7376526/matt-carlotta'
+  },
+  {
+    Icon: SiCodesandbox,
+    id: 'codesandbox',
+    title: 'CodeSandBox',
+    href: 'https://codesandbox.io/u/mattcarlotta/sandboxes'
+  }
+]
 
-const Background = ({
+const iconClassName = 'mr-2 align-middle text-[0.9rem]'
+
+export default function Background({
   background
 }: {
   background: CONTENTFUL_BACKGROUND_PAGE
-}): ReactElement => (
-  <>
-    <Head />
-    <Project>
-      <PanelTitle id="background-title" data-testid="panel-title">
-        {background.title}
-      </PanelTitle>
-      <Panel>
-        <div className="mt-6 flex items-center justify-center">
-          <Image
-            priority
-            {...background.profileImage}
-            alt={background.profileImage.description}
-            styles="border-radius: 10px;"
-          />
-        </div>
-        <div className="px-4 pt-2 pb-6 tracking-wide">
-          <section>
-            <DetailHeadline id="details">Details:</DetailHeadline>
-            <NormalText margin="15px 0 0 15px" fontSize="16px">
-              <Info data-testid="status">
-                <FiPower style={{ color: 'limegreen', ...style }} />
-                Activated in September 2016
-              </Info>
-              <Info data-testid="location">
-                <RiMapPin2Line style={style} />
-                {background.location}
-              </Info>
-              <Info data-testid="level">
-                <GiRank3 style={style} />
-                {background.rank}
-              </Info>
-              <Info data-testid="source">
-                <HiOutlineMail style={style} />
-                <OutsideLink
-                  dataTestId="send-email-link"
-                  ariaLabel="Click to send me an email."
-                  href="mailto:matt@mattcarlotta.com"
-                >
-                  {background.email}
-                </OutsideLink>
-              </Info>
-              <Info>
-                <VscGithub className="mr-2" />
-                <OutsideLink
-                  dataTestId="my-github-page"
-                  ariaLabel="Navigate to my github page."
-                  href="https://github.com/mattcarlotta"
-                  showIcon
-                >
-                  Github
-                </OutsideLink>
-              </Info>
-              <Info>
-                <SiLinkedin className="mr-2" />
-                <OutsideLink
-                  dataTestId="my-linkedin-page"
-                  ariaLabel="Navigate to my linkedin page."
-                  href="https://www.linkedin.com/in/mattcarlotta"
-                  showIcon
-                >
-                  Linkedin
-                </OutsideLink>
-              </Info>
-              <Info>
-                <SiStackoverflow className="mr-2" />
-                <OutsideLink
-                  dataTestId="my-stackoverflow-page"
-                  ariaLabel="Navigate to my stackoverflow page."
-                  href="https://stackoverflow.com/users/7376526/matt-carlotta"
-                  showIcon
-                >
-                  Stackoverflow
-                </OutsideLink>
-              </Info>
-              <Info>
-                <SiCodesandbox className="mr-2" />
-                <OutsideLink
-                  dataTestId="my-codesandbox-page"
-                  ariaLabel="Navigate to my codesandbox page."
-                  href="https://codesandbox.io/u/mattcarlotta/sandboxes"
-                  showIcon
-                >
-                  CodeSandBox
-                </OutsideLink>
-              </Info>
-            </NormalText>
-          </section>
-          <section>
-            <DetailHeadline id="brief">Brief:</DetailHeadline>
-            <SubTitle data-testid="brief">
-              <ContentfulRichText json={background.description.json} />
-            </SubTitle>
-          </section>
-          <section>
-            <DetailHeadline id="tech-specs">Tech Specs:</DetailHeadline>
-            <ul
-              data-testid="tech"
-              css={css`
-                list-style-type: none;
-                padding: 0 10px;
-              `}
-            >
-              {background.tech.data.map(({ technology, level }, index) => (
-                <li key={technology}>
-                  <NormalText fontSize="20px">
-                    <Flex
-                      breakpoint
-                      width="100%"
-                      flexwrap
-                      style={{
-                        background: index % 2 ? '#001031' : 'transparent',
-                        padding: '0 10px'
-                      }}
-                    >
-                      <Flex
-                        breakpoint
-                        as="p"
-                        padding="0"
-                        margin="0"
-                        justify="flex-start"
-                        width="50%"
-                        style={{ color: '#0088ff' }}
-                      >
-                        {technology}
-                      </Flex>
-                      <Flex
-                        as="p"
-                        breakpoint
-                        padding="0"
-                        margin="0"
-                        justify="flex-end"
-                        width="50%"
-                      >
-                        {[
-                          Array.from({ length: level }, (_, i) => (
-                            <AiFillStar
-                              key={`${technology}-${i}`}
-                              style={{
-                                verticalAlign: 'middle',
-                                color: '#0088ff',
-                                ...style
-                              }}
-                            />
-                          ))
-                        ]}
-                        {5 - level > 0
-                          ? Array.from({ length: 5 - level }, (_, i) => (
-                              <AiOutlineStar
-                                key={`not-${technology}-${i}`}
-                                style={{
-                                  verticalAlign: 'middle',
-                                  color: '#4a4a4a',
-                                  ...style
-                                }}
-                              />
-                            ))
-                          : null}
-                      </Flex>
-                    </Flex>
-                  </NormalText>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section>
-            <DetailHeadline id="formal-education">
-              formal Education:
-            </DetailHeadline>
-            <SubTitle as="p" data-testid="brief">
-              San Jose State University | 2005-2012 | 3.5GPA
-            </SubTitle>
-          </section>
-          <section>
-            <DetailHeadline id="online-education">
-              Online Education:
-            </DetailHeadline>
-            <ul
-              data-testid="re-education"
-              css={css`
-                list-style-type: none;
-                padding: 0 10px;
-              `}
-            >
-              {background.education.data.map(({ title, url }, index) => (
-                <li
-                  style={{ background: index % 2 ? '#001031' : 'transparent' }}
-                  key={title}
-                >
-                  <NormalText style={{ padding: '0 10px' }} fontSize="20px">
+}) {
+  return (
+    <>
+      <Head />
+      <Project>
+        <PanelTitle id="background-title" data-testid="panel-title">
+          {background.title}
+        </PanelTitle>
+        <Panel>
+          <div className="mt-6 flex items-center justify-center">
+            <Image
+              {...background.profileImage}
+              alt={background.profileImage.description}
+              styles="border-radius: 10px;"
+            />
+          </div>
+          <div className="px-4 pt-2 pb-6 tracking-wide">
+            <section>
+              <DetailHeadline id="details">Details:</DetailHeadline>
+              <NormalText margin="15px 0 0 15px" fontSize="16px">
+                <Info data-testid="status">
+                  <FiPower className={`${iconClassName} text-lime-400`} />
+                  Activated in September 2016
+                </Info>
+                <Info data-testid="location">
+                  <RiMapPin2Line className={iconClassName} />
+                  {background.location}
+                </Info>
+                <Info data-testid="level">
+                  <GiRank3 className={iconClassName} />
+                  {background.rank}
+                </Info>
+                <Info data-testid="source">
+                  <HiOutlineMail className={iconClassName} />
+                  <OutsideLink
+                    dataTestId="send-email-link"
+                    ariaLabel="Click to send me an email."
+                    href="mailto:matt@mattcarlotta.com"
+                  >
+                    {background.email}
+                  </OutsideLink>
+                </Info>
+                {SocialLinks.map(({ Icon, id, title, href }) => (
+                  <Info key={id}>
+                    <Icon className={iconClassName} />
                     <OutsideLink
-                      ariaLabel={`Navigate to ${title}`}
-                      href={url}
+                      dataTestId={`my-${id}-page`}
+                      ariaLabel={`Navigate to my ${id} page`}
+                      href={href}
                       showIcon
                     >
                       {title}
                     </OutsideLink>
-                  </NormalText>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
-      </Panel>
-    </Project>
-  </>
-)
+                  </Info>
+                ))}
+              </NormalText>
+            </section>
+            <section>
+              <DetailHeadline id="brief">Brief:</DetailHeadline>
+              <SubTitle data-testid="brief">
+                <ContentfulRichText json={background.description.json} />
+              </SubTitle>
+            </section>
+            <section>
+              <DetailHeadline id="tech-specs">Tech Specs:</DetailHeadline>
+              <ul data-testid="tech" className="list-none px-2">
+                {background.tech.data.map(({ technology, level }, index) => (
+                  <li key={technology}>
+                    <NormalText fontSize="20px">
+                      <Flex
+                        breakpoint
+                        width="100%"
+                        flexwrap
+                        style={{
+                          background: index % 2 ? '#001031' : 'transparent',
+                          padding: '0 10px'
+                        }}
+                      >
+                        <Flex
+                          breakpoint
+                          as="p"
+                          padding="0"
+                          margin="0"
+                          justify="flex-start"
+                          width="50%"
+                          style={{ color: '#0088ff' }}
+                        >
+                          {technology}
+                        </Flex>
+                        <Flex
+                          as="p"
+                          breakpoint
+                          padding="0"
+                          margin="0"
+                          justify="flex-end"
+                          width="50%"
+                        >
+                          {[
+                            Array.from({ length: level }, (_, i) => (
+                              <AiFillStar
+                                key={`${technology}-${i}`}
+                                className="mr-2 align-middle text-[0.9rem] text-primary-25"
+                              />
+                            ))
+                          ]}
+                          {5 - level > 0
+                            ? Array.from({ length: 5 - level }, (_, i) => (
+                                <AiOutlineStar
+                                  key={`not-${technology}-${i}`}
+                                  className="mr-2 align-middle text-[0.9rem] text-gray"
+                                />
+                              ))
+                            : null}
+                        </Flex>
+                      </Flex>
+                    </NormalText>
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <DetailHeadline id="formal-education">
+                formal Education:
+              </DetailHeadline>
+              <SubTitle as="p" data-testid="brief">
+                San Jose State University | 2005-2012 | 3.5GPA
+              </SubTitle>
+            </section>
+            <section>
+              <DetailHeadline id="online-education">
+                Online Education:
+              </DetailHeadline>
+              <ul data-testid="re-education" className="list-none px-2">
+                {background.education.data.map(({ title, url }, index) => (
+                  <li
+                    className={clsx(
+                      index % 2 ? 'bg-primary-900' : 'bg-transparent'
+                    )}
+                    key={title}
+                  >
+                    <NormalText style={{ padding: '0 10px' }} fontSize="20px">
+                      <OutsideLink
+                        ariaLabel={`Navigate to ${title}`}
+                        href={url}
+                        showIcon
+                      >
+                        {title}
+                      </OutsideLink>
+                    </NormalText>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        </Panel>
+      </Project>
+    </>
+  )
+}
 
-export const getStaticProps: GetStaticProps = async () => {
+export async function getStaticProps() {
   const res = await getBackground()
 
   const background = res.data?.background
@@ -268,5 +238,3 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }
 }
-
-export default Background

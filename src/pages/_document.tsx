@@ -1,18 +1,17 @@
 /* eslint-disable react/no-invalid-html-attribute */
-import { Children } from 'react'
+import { ServerStyleSheets } from '@material-ui/styles'
 import Document, {
   DocumentContext,
-  Html,
   Head,
+  Html,
   Main,
   NextScript
 } from 'next/document'
-import { ServerStyleSheets } from '@material-ui/styles'
-import type { ReactElement } from '~types'
+import { Children } from 'react'
 import packageJson from '../../package.json'
 
-class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<any> {
+export default class CustomDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
     const sheets = new ServerStyleSheets()
     const originalRenderPage = ctx.renderPage
 
@@ -31,36 +30,40 @@ class CustomDocument extends Document {
     }
   }
 
-  render = (): ReactElement => (
-    <Html lang="en">
-      <Head>
-        <meta name="theme-color" content="#000000" />
-        <meta
-          name="robots"
-          content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
-        />
-        <meta name="build version" content={packageJson.version} />
-        <link rel="apple-touch-icon" sizes="192x192" href="/logo_192x192.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link
-          rel="preload"
-          href="/fonts/Elemental.ttf"
-          as="font"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Mukta.ttf"
-          as="font"
-          crossOrigin="anonymous"
-        />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  )
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <meta name="theme-color" content="#000000" />
+          <meta
+            name="robots"
+            content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+          />
+          <meta name="build version" content={packageJson.version} />
+          <link
+            rel="apple-touch-icon"
+            sizes="192x192"
+            href="/logo_192x192.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link
+            rel="preload"
+            href="/fonts/Elemental.ttf"
+            as="font"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/Mukta.ttf"
+            as="font"
+            crossOrigin="anonymous"
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
 }
-
-export default CustomDocument

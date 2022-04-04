@@ -225,7 +225,7 @@ describe('ModalDialog', () => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
     })
 
-    await user.keyboard('{arrowup}')
+    await user.keyboard('{ArrowUp}')
 
     await waitFor(() => {
       expect(document.querySelector('#modal')).toBeInTheDocument()
