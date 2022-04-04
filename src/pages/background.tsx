@@ -1,10 +1,4 @@
 import { css } from '@emotion/react'
-import {
-  CodeSquare,
-  Github,
-  Linkedin,
-  StackOverflow
-} from 'react-bootstrap-icons'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
 import Flex from '~components/Layout/Flex'
@@ -23,7 +17,11 @@ import {
   FiPower,
   GiRank3,
   HiOutlineMail,
-  RiMapPin2Line
+  RiMapPin2Line,
+  SiCodesandbox,
+  SiLinkedin,
+  SiStackoverflow,
+  VscGithub
 } from '~icons'
 import type {
   CONTENTFUL_BACKGROUND_PAGE,
@@ -48,9 +46,9 @@ const Background = ({
   <>
     <Head />
     <Project>
-      <header>
-        <PanelTitle data-testid="panel-title">{background.title}</PanelTitle>
-      </header>
+      <PanelTitle id="background-title" data-testid="panel-title">
+        {background.title}
+      </PanelTitle>
       <Panel>
         <div className="mt-6 flex items-center justify-center">
           <Image
@@ -62,9 +60,7 @@ const Background = ({
         </div>
         <div className="px-4 pt-2 pb-6 tracking-wide">
           <section>
-            <header>
-              <DetailHeadline margin="20px 0 0 0">Details:</DetailHeadline>
-            </header>
+            <DetailHeadline id="details">Details:</DetailHeadline>
             <NormalText margin="15px 0 0 15px" fontSize="16px">
               <Info data-testid="status">
                 <FiPower style={{ color: 'limegreen', ...style }} />
@@ -89,7 +85,7 @@ const Background = ({
                 </OutsideLink>
               </Info>
               <Info>
-                <Github className="mr-2" />
+                <VscGithub className="mr-2" />
                 <OutsideLink
                   dataTestId="my-github-page"
                   ariaLabel="Navigate to my github page."
@@ -100,7 +96,7 @@ const Background = ({
                 </OutsideLink>
               </Info>
               <Info>
-                <Linkedin className="mr-2" />
+                <SiLinkedin className="mr-2" />
                 <OutsideLink
                   dataTestId="my-linkedin-page"
                   ariaLabel="Navigate to my linkedin page."
@@ -111,18 +107,7 @@ const Background = ({
                 </OutsideLink>
               </Info>
               <Info>
-                <CodeSquare className="mr-2" />
-                <OutsideLink
-                  dataTestId="my-codesandbox-page"
-                  ariaLabel="Navigate to my codesandbox page."
-                  href="https://codesandbox.io/u/mattcarlotta/sandboxes"
-                  showIcon
-                >
-                  CodeSandBox
-                </OutsideLink>
-              </Info>
-              <Info>
-                <StackOverflow className="mr-2" />
+                <SiStackoverflow className="mr-2" />
                 <OutsideLink
                   dataTestId="my-stackoverflow-page"
                   ariaLabel="Navigate to my stackoverflow page."
@@ -132,20 +117,27 @@ const Background = ({
                   Stackoverflow
                 </OutsideLink>
               </Info>
+              <Info>
+                <SiCodesandbox className="mr-2" />
+                <OutsideLink
+                  dataTestId="my-codesandbox-page"
+                  ariaLabel="Navigate to my codesandbox page."
+                  href="https://codesandbox.io/u/mattcarlotta/sandboxes"
+                  showIcon
+                >
+                  CodeSandBox
+                </OutsideLink>
+              </Info>
             </NormalText>
           </section>
           <section>
-            <header>
-              <DetailHeadline>Brief:</DetailHeadline>
-            </header>
+            <DetailHeadline id="brief">Brief:</DetailHeadline>
             <SubTitle data-testid="brief">
               <ContentfulRichText json={background.description.json} />
             </SubTitle>
           </section>
           <section>
-            <header>
-              <DetailHeadline>Tech Specs:</DetailHeadline>
-            </header>
+            <DetailHeadline id="tech-specs">Tech Specs:</DetailHeadline>
             <ul
               data-testid="tech"
               css={css`
@@ -216,15 +208,17 @@ const Background = ({
             </ul>
           </section>
           <section>
-            <header>
-              <DetailHeadline>formal Education:</DetailHeadline>
-            </header>
+            <DetailHeadline id="formal-education">
+              formal Education:
+            </DetailHeadline>
             <SubTitle as="p" data-testid="brief">
               San Jose State University | 2005-2012 | 3.5GPA
             </SubTitle>
           </section>
           <section>
-            <DetailHeadline>Online Education:</DetailHeadline>
+            <DetailHeadline id="online-education">
+              Online Education:
+            </DetailHeadline>
             <ul
               data-testid="re-education"
               css={css`

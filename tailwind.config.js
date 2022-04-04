@@ -17,6 +17,36 @@ module.exports = {
         },
         accent: '#1295f3',
         'dark-blue': '#001031'
+      },
+      fontFamily: {
+        plain: [
+          'Mukta',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Oxygen',
+          'Ubuntu',
+          'Cantarell',
+          'Fira Sans',
+          'Droid Sans',
+          'Helvetica Neue',
+          'sans-serif'
+        ],
+        stylized: [
+          'Elemental',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Oxygen',
+          'Ubuntu',
+          'Cantarell',
+          'Fira Sans',
+          'Droid Sans',
+          'Helvetica Neue',
+          'sans-serif'
+        ]
       }
     }
   },

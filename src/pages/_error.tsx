@@ -14,7 +14,9 @@ const ErrorPage = (): ReactElement => (
       <title>Server Error | Matt Carlotta</title>
     </Head>
     <Project data-testid="server-error-page">
-      <PanelTitle data-testid="panel-title">internal server error</PanelTitle>
+      <PanelTitle id="internal-server-error" data-testid="panel-title">
+        internal server error
+      </PanelTitle>
       <Panel>
         <Flex justify="center" height="700px" direction="column">
           <GiExplodingPlanet style={{ fontSize: 250, marginBottom: 40 }} />

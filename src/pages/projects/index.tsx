@@ -1,15 +1,16 @@
 import CardPreview from '~components/Layout/CardPreview'
 import Category from '~components/Layout/Category'
+import CategoryDescription from '~components/Layout/CategoryDescription'
 import Flex from '~components/Layout/Flex'
 import Head from '~components/Navigation/Header'
 import { IoPlanet } from '~icons'
-import { getAllProjects } from '~utils/contentfulApi'
-import REVALIDATE_TIME from '~utils/revalidate'
 import type {
   CONTENTFUL_PROJECTS_PAGE,
   GetStaticProps,
   ReactElement
 } from '~types'
+import { getAllProjects } from '~utils/contentfulApi'
+import REVALIDATE_TIME from '~utils/revalidate'
 
 const Projects = ({
   projects
@@ -22,6 +23,10 @@ const Projects = ({
       <IoPlanet style={{ fontSize: 26, marginRight: 10 }} />
       projects
     </Category>
+    <CategoryDescription>
+      A collection of projects that vary from fullstack web applications, to
+      custom NPM packages, to standalone applications.
+    </CategoryDescription>
     <Flex
       data-testid="projects-page"
       justify="center"

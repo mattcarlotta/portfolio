@@ -1,13 +1,13 @@
 import { css } from '@emotion/react'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
+import FileDetails from '~components/Layout/FileDetails'
 import ModalDialog from '~components/Layout/ModalDialog'
 import Panel from '~components/Layout/Panel'
+import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
-import FileDetails from '~components/Layout/FileDetails'
 import SubTitle from '~components/Layout/SubTitle'
 import Text from '~components/Layout/Text'
-import PanelTitle from '~components/Layout/PanelTitle'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
 import { IoPlanet } from '~icons'
@@ -24,31 +24,23 @@ const ProjectPage = ({
   <>
     <Head title={title} description={seoDescription} />
     <Project>
-      <header>
-        <PanelTitle as="h2" id="title" data-testid="panel-title">
-          {title}
-        </PanelTitle>
-      </header>
+      <PanelTitle id="title" data-testid="panel-title">
+        {title}
+      </PanelTitle>
       <Panel>
         <Text>
           <section>
-            <header>
-              <DetailHeadline id="details">Details:</DetailHeadline>
-            </header>
+            <DetailHeadline id="details">Details:</DetailHeadline>
             <FileDetails fileName={title} {...rest} />
           </section>
           <section>
-            <header>
-              <DetailHeadline id="description">Description:</DetailHeadline>
-            </header>
+            <DetailHeadline id="description">Description:</DetailHeadline>
             <SubTitle data-testid="description">
               <ContentfulRichText json={description.json} />
             </SubTitle>
           </section>
           <section>
-            <header>
-              <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
-            </header>
+            <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
             <ul
               data-testid="tech"
               css={css`

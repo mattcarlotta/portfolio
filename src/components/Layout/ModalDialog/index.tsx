@@ -1,5 +1,5 @@
-import { forwardRef, useEffect, useCallback, useState } from 'react'
-import { Slide, Dialog, withStyles } from '@material-ui/core'
+import { Dialog, Slide, withStyles } from '@material-ui/core'
+import { forwardRef, useCallback, useEffect, useState } from 'react'
 import { useImageContext } from '~components/ImageContext'
 import BackgroundImageViewer from '~components/Layout/BackgroundImage'
 import Button from '~components/Layout/Button'
@@ -16,13 +16,13 @@ import ImageTitle from '~components/Layout/ImageTitle'
 import PreviewCard from '~components/Layout/PreviewCard'
 import SnapshotContainer from '~components/Layout/SnapshotContainer'
 import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
-import calculateScale from '~utils/calculateScale'
 import type {
   CONTENTFUL_IMAGE,
   ReactElement,
   Ref,
   TransitionProps
 } from '~types'
+import calculateScale from '~utils/calculateScale'
 
 const ImageViewer = withStyles(() => ({
   paper: {
@@ -168,9 +168,7 @@ const ModalDialog = ({
   return (
     <>
       <section>
-        <header>
-          <DetailHeadline>Snapshots:</DetailHeadline>
-        </header>
+        <DetailHeadline id="snapshots">Snapshots:</DetailHeadline>
         <SnapshotContainer data-testid="snapshots">
           {snapshots.map(({ title, ...rest }, idx) => (
             <section key={title}>

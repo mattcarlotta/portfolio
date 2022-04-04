@@ -6,8 +6,7 @@ import Footer from '~components/Layout/Footer'
 import Header from '~components/Layout/Header'
 import Main from '~components/Layout/Main'
 import ScrollHeightContext from '~components/ScrollHeightContext'
-import '~styles/globals.css'
-import GlobalStylesheet from '~styles/globalStylesheet'
+import '~styles/globals.scss'
 import type { AppProps, ReactElement } from '~types'
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
@@ -33,7 +32,6 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
             </Body>
             <Footer />
           </Main>
-          <GlobalStylesheet />
         </ImageContext>
       </ScrollHeightContext>
     </>

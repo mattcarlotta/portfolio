@@ -7,14 +7,14 @@ import SubTitle from '~components/Layout/SubTitle'
 import Text from '~components/Layout/Text'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
-import { getAllExplorations, getExplorationBySlug } from '~utils/contentfulApi'
-import REVALIDATE_TIME from '~utils/revalidate'
 import type {
   CONTENTFUL_EXPLORATIONS_PAGE,
   GetStaticPaths,
   GetStaticProps,
   ReactElement
 } from '~types'
+import { getAllExplorations, getExplorationBySlug } from '~utils/contentfulApi'
+import REVALIDATE_TIME from '~utils/revalidate'
 
 const ExplorationsPage = ({
   exploration
@@ -27,14 +27,12 @@ const ExplorationsPage = ({
       description={exploration.preview.description}
     />
     <Project>
-      <header>
-        <PanelTitle data-testid="panel-title">{exploration.title}</PanelTitle>
-      </header>
+      <PanelTitle id="exploration-title" data-testid="panel-title">
+        {exploration.title}
+      </PanelTitle>
       <Panel>
         <Text>
-          <header>
-            <DetailHeadline>Details:</DetailHeadline>
-          </header>
+          <DetailHeadline id="details">Details:</DetailHeadline>
           <section>
             <FileDetails
               active
@@ -45,17 +43,13 @@ const ExplorationsPage = ({
             />
           </section>
           <section>
-            <header>
-              <DetailHeadline>Description:</DetailHeadline>
-            </header>
+            <DetailHeadline id="description">Description:</DetailHeadline>
             <SubTitle style={{ marginTop: 20 }} data-testid="description">
               {exploration.preview.description}
             </SubTitle>
           </section>
           <section>
-            <header>
-              <DetailHeadline>Playground:</DetailHeadline>
-            </header>
+            <DetailHeadline id="playground">Playground:</DetailHeadline>
             <SubTitle style={{ margin: '20px 0', padding: '0 10px' }}>
               <iframe
                 src={`https://codesandbox.io/embed/${exploration.sandboxId}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
