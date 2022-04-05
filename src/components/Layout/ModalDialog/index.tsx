@@ -178,9 +178,7 @@ const ModalDialog = ({
                 onClick={() => handleImageClick(idx)}
                 onKeyDown={(event) => handleSelectImage(event, idx)}
               >
-                <header>
-                  <CardTitle id={title}>{title}</CardTitle>
-                </header>
+                <CardTitle id={title}>{title}</CardTitle>
                 <Image
                   scale={25}
                   alt={rest.description}

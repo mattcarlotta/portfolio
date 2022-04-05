@@ -59,6 +59,12 @@ body {
   }
 }
 
+.highlighted-title:hover {
+  [data-title='card-title'] {
+    background: #0080ff;
+  }
+}
+
 * {
   box-sizing: border-box;
   -ms-overflow-style: none;

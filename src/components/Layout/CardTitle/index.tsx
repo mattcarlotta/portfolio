@@ -11,6 +11,7 @@ export default function CardTitle({
     <header>
       <h2
         id={id}
+        data-title="card-title"
         className="m-0 bg-primary-800 p-0.5 text-[0.55rem] font-bold leading-4 text-white"
       >
         {children}

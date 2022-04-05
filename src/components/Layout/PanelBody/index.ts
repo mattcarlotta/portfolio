@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import Bars from '~components/Layout/Bars'
 
 const PanelBody = styled.div`
   width: 100%;
@@ -14,12 +13,10 @@ const PanelBody = styled.div`
   border-image: linear-gradient(to top, #73b9ff 0%, #005193 50%, #005193 100%);
   border-image-slice: 1;
 
-  ${Bars} {
-    .bar1,
-    .bar2,
-    .bar3 {
-      opacity: 1;
-    }
+  #top-bar,
+  #middle-bar,
+  #bottom-bar {
+    opacity: 1;
   }
 `
 

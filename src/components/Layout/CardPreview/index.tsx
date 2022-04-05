@@ -4,7 +4,6 @@ import CardTitle from '~components/Layout/CardTitle'
 import Flex from '~components/Layout/Flex'
 import Image from '~components/Layout/Image'
 import NormalText from '~components/Layout/NormalText'
-import PlaceHolder from '~components/Layout/PlaceHolder'
 import Tooltip from '~components/Layout/Tooltip'
 import Link from '~components/Navigation/Link'
 import OutsideLink from '~components/Navigation/OutsideLink'
@@ -52,11 +51,9 @@ const CardPreview = ({
   width
 }: CardPreviewProps): ReactElement => (
   <Card>
-    <PlaceHolder />
+    <div data-placeholder="true" className="hidden" />
     <div className="panel-container">
-      <header>
-        <CardTitle id={title}>{title}</CardTitle>
-      </header>
+      <CardTitle id={title}>{title}</CardTitle>
       <Bars />
       <Flex justify="center" height="230px" width="100%">
         <Link

@@ -1,7 +1,5 @@
 /* istanbul ignore file */
 import styled from '@emotion/styled'
-// import CardTitle from '~components/Layout/CardTitle'
-import PlaceHolder from '~components/Layout/PlaceHolder'
 
 const Card = styled.div`
   width: 300px;
@@ -26,8 +24,12 @@ const Card = styled.div`
     transform: scale(1.1);
     transition: transform 200ms ease-in-out;
 
-    ${PlaceHolder} {
+    [data-placeholder='true'] {
       display: block;
+    }
+
+    [data-title='card-title'] {
+      background: #0080ff;
     }
 
     .panel-container {
@@ -45,9 +47,9 @@ const Card = styled.div`
       border-bottom-left-radius: 4px;
     }
 
-    .bar1,
-    .bar2,
-    .bar3 {
+    #top-bar,
+    #middle-bar,
+    #bottom-bar {
       background: #73b9ff;
       opacity: 0.4;
     }
