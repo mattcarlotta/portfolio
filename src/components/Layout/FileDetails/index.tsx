@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import Info from '~components/Layout/Info'
 import NormalText from '~components/Layout/NormalText'
 import OutsideLink from '~components/Navigation/OutsideLink'
@@ -27,18 +28,18 @@ const FileDetails = ({
 }: FileDetailsProps): JSX.Element => (
   <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
     <Info
-      style={{ color: active ? 'limegreen' : 'yellow' }}
-      data-testid="status"
+      className={clsx(active ? 'text-lime-400' : 'text-yellow-400')}
+      dataTestId="status"
     >
       <FiPower data-testid="fipower" style={style} />
       {status}
     </Info>
-    <Info style={{ textTransform: 'uppercase' }} data-testid="filename">
+    <Info className="uppercase" dataTestId="filename">
       <AiOutlineFolderOpen style={style} />
       {fileName}
     </Info>
     {location && (
-      <Info data-testid="location">
+      <Info dataTestId="location">
         <FaLink style={style} />
         <OutsideLink
           data-testid="location-link"
@@ -50,7 +51,7 @@ const FileDetails = ({
         </OutsideLink>
       </Info>
     )}
-    <Info data-testid="source">
+    <Info dataTestId="source">
       <FaRegFileCode style={style} />
       <OutsideLink
         data-testid="source-link"

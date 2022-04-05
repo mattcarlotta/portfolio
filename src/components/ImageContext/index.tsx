@@ -1,10 +1,10 @@
 /* istanbul ignore file */
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import type { ReactElement, ReactNode } from '~types'
+import type { ReactNode } from '~types'
 
 export const ImageContext = createContext({ supportsWebp: false })
 
-export const useImageContext = (): { supportsWebp: boolean } => {
+export function useImageContext() {
   const context = useContext(ImageContext)
   if (!context) {
     throw new Error(
@@ -14,7 +14,7 @@ export const useImageContext = (): { supportsWebp: boolean } => {
   return context
 }
 
-const ImageProvider = ({ children }: { children: ReactNode }): ReactElement => {
+export default function ImageProvider({ children }: { children: ReactNode }) {
   const [webpSupport, setSupport] = useState(true)
   const supportsWebp = useMemo(
     () => ({ supportsWebp: webpSupport }),
@@ -43,5 +43,3 @@ const ImageProvider = ({ children }: { children: ReactNode }): ReactElement => {
     </ImageContext.Provider>
   )
 }
-
-export default ImageProvider

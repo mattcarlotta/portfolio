@@ -80,19 +80,19 @@ export default function Background({
             <section>
               <DetailHeadline id="details">Details:</DetailHeadline>
               <NormalText margin="15px 0 0 15px" fontSize="16px">
-                <Info data-testid="status">
+                <Info dataTestId="status">
                   <FiPower className={`${iconClassName} text-lime-400`} />
                   Activated in September 2016
                 </Info>
-                <Info data-testid="location">
+                <Info dataTestId="location">
                   <RiMapPin2Line className={iconClassName} />
                   {background.location}
                 </Info>
-                <Info data-testid="level">
+                <Info dataTestId="level">
                   <GiRank3 className={iconClassName} />
                   {background.rank}
                 </Info>
-                <Info data-testid="source">
+                <Info dataTestId="source">
                   <HiOutlineMail className={iconClassName} />
                   <OutsideLink
                     dataTestId="send-email-link"
@@ -103,7 +103,7 @@ export default function Background({
                   </OutsideLink>
                 </Info>
                 {SocialLinks.map(({ Icon, id, title, href }) => (
-                  <Info key={id}>
+                  <Info dataTestId={title} key={id}>
                     <Icon className={iconClassName} />
                     <OutsideLink
                       dataTestId={`my-${id}-page`}

@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       boxShadow: {
         glow: '0px 0px 26px 0px rgba(0, 64, 255, 1)',
-        ring: 'inset -1px -1px 24px -9px rgb(101 130 255 / 50%),0px 0px 26px -2px rgb(0 64 255)'
+        ring: 'inset -1px -1px 24px -9px rgb(101 130 255 / 50%), 0px 0px 26px -2px rgb(0 64 255)'
       },
       colors: {
         primary: {

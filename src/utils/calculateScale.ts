@@ -1,4 +1,3 @@
-export const calculateScale = (height: number, scale: number): number =>
-  Math.round(height * (scale / 100))
-
-export default calculateScale
+export default function calculateScale(height: number, scale: number) {
+  return Math.round(height * (scale / 100))
+}

@@ -9,7 +9,11 @@ export default function DetailHeadline({
 }) {
   return (
     <header>
-      <h2 id={id} className="mt-5 text-lg font-bold text-[#ccc]">
+      <h2
+        id={id}
+        data-testid={id}
+        className="mt-5 text-lg font-bold text-[#ccc]"
+      >
         {children}
       </h2>
     </header>

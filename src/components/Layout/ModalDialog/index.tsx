@@ -169,7 +169,7 @@ const ModalDialog = ({
     <>
       <section>
         <DetailHeadline id="snapshots">Snapshots:</DetailHeadline>
-        <SnapshotContainer data-testid="snapshots">
+        <SnapshotContainer data-testid="snapshots-container">
           {snapshots.map(({ title, ...rest }, idx) => (
             <section key={title}>
               <PreviewCard

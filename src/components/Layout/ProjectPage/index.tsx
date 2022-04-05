@@ -35,14 +35,14 @@ const ProjectPage = ({
           </section>
           <section>
             <DetailHeadline id="description">Description:</DetailHeadline>
-            <SubTitle data-testid="description">
+            <SubTitle data-testid="description-body">
               <ContentfulRichText json={description.json} />
             </SubTitle>
           </section>
           <section>
             <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
             <ul
-              data-testid="tech"
+              data-testid="tech-list"
               css={css`
                 list-style-type: none;
                 padding: 0 20px;

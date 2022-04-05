@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react'
 import { within } from '@testing-library/dom'
+import { render } from '@testing-library/react'
 import ProjectPage from '../index'
 
 jest.mock('next/router', () => ({
@@ -226,18 +226,20 @@ describe('Project Page', () => {
     ).toBeInTheDocument()
   })
 
-  it('populates the description details', () => {
+  it('populates the description body details', () => {
     const { getByTestId } = render(<ProjectPage {...initProps} />)
     expect(
-      within(getByTestId('description')).getByText(
+      within(getByTestId('description-body')).getByText(
         /Window aspect ratios vary from device to device/
       )
     ).toBeInTheDocument()
   })
 
-  it('populates the tech details', () => {
+  it('populates the tech list details', () => {
     const { getByTestId } = render(<ProjectPage {...initProps} />)
-    expect(within(getByTestId('tech')).getByText(/rust/)).toBeInTheDocument()
+    expect(
+      within(getByTestId('tech-list')).getByText(/rust/)
+    ).toBeInTheDocument()
   })
 
   it('populates the snapshots', () => {
@@ -246,7 +248,7 @@ describe('Project Page', () => {
       snapshotsCollection: { items }
     } = initProps
 
-    const snapshot = queryAllByTestId('snapshots')[0]
+    const snapshot = queryAllByTestId('snapshots-container')[0]
     expect(within(snapshot).getByText(items[0].title)).toBeInTheDocument()
     expect(snapshot.querySelector('img')?.src).toContain(items[0].url)
     // expect(snapshot.querySelector("img")?.alt).toContain(items[0].description);
