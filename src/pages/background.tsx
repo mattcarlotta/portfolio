@@ -73,16 +73,16 @@ export default function Background({
             <Image
               {...background.profileImage}
               alt={background.profileImage.description}
-              styles="border-radius: 10px;"
+              className="rounded-xl"
             />
           </div>
           <div className="px-4 pt-2 pb-6 tracking-wide">
             <section>
               <DetailHeadline id="details">Details:</DetailHeadline>
-              <NormalText margin="15px 0 0 15px" fontSize="16px">
-                <Info dataTestId="status">
-                  <FiPower className={`${iconClassName} text-lime-400`} />
-                  Activated in September 2016
+              <NormalText className="pl-3 text-[0.7rem]">
+                <Info className="text-lime-500" dataTestId="status">
+                  <FiPower className={iconClassName} />
+                  Stacked in September 2016
                 </Info>
                 <Info dataTestId="location">
                   <RiMapPin2Line className={iconClassName} />
@@ -125,10 +125,10 @@ export default function Background({
             </section>
             <section>
               <DetailHeadline id="tech-specs">Tech Specs:</DetailHeadline>
-              <ul data-testid="tech" className="list-none px-2">
+              <ul data-testid="tech" className="list-none p-2">
                 {background.tech.data.map(({ technology, level }, index) => (
                   <li key={technology}>
-                    <NormalText fontSize="20px">
+                    <NormalText className="text-[0.925rem] leading-relaxed">
                       <Flex
                         breakpoint
                         width="100%"
@@ -184,9 +184,12 @@ export default function Background({
               <DetailHeadline id="formal-education">
                 formal Education:
               </DetailHeadline>
-              <SubTitle as="p" data-testid="brief">
+              <p
+                className="px-4 pt-2 font-plain text-[0.90rem]"
+                data-testid="brief"
+              >
                 San Jose State University | 2005-2012 | 3.5GPA
-              </SubTitle>
+              </p>
             </section>
             <section>
               <DetailHeadline id="online-education">
@@ -200,7 +203,7 @@ export default function Background({
                     )}
                     key={title}
                   >
-                    <NormalText style={{ padding: '0 10px' }} fontSize="20px">
+                    <NormalText className="px-2.5 text-[0.925rem] leading-relaxed">
                       <OutsideLink
                         ariaLabel={`Navigate to ${title}`}
                         href={url}

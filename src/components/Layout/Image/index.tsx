@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
 import { useImageContext } from '~components/ImageContext'
@@ -8,24 +7,22 @@ import calculateScale from '~utils/calculateScale'
 
 export type ImageProps = {
   alt?: string
-  containerStyle?: string
+  className?: string
   contentType: string
   height: number
   priority?: boolean
   scale?: number
-  styles?: string
   width: number
   url: string
 }
 
 export default function Image({
   alt,
-  containerStyle,
+  className,
   contentType,
   height,
   priority = false,
   scale = 0,
-  styles,
   url,
   width
 }: ImageProps) {
@@ -49,13 +46,7 @@ export default function Image({
 
   return (
     <>
-      <picture
-        ref={imageRef}
-        data-testid="picture"
-        css={css`
-          ${containerStyle}
-        `}
-      >
+      <picture ref={imageRef} data-testid="picture">
         {!isLoading ? (
           <>
             <source
@@ -68,13 +59,11 @@ export default function Image({
             />
             <img
               data-testid="image"
-              css={css`
-                ${styles}
-              `}
               src={url}
               height={newHeight}
               width={newWidth}
               alt={alt}
+              className={className}
             />
           </>
         ) : (

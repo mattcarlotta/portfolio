@@ -22,7 +22,7 @@ export default function Projects({
       </Category>
       <CategoryDescription>
         A collection of works that vary from fullstack web applications, to
-        custom NPM packages, to standalone applications.
+        custom NPM packages, to standalone Mac OS and Linux applications.
       </CategoryDescription>
       <Flex
         data-testid="projects-page"

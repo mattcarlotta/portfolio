@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import styled from '@emotion/styled'
-import CardTitle from '~components/Layout/CardTitle'
+// import CardTitle from '~components/Layout/CardTitle'
 
 const PreviewCard = styled.div`
   width: 200px;
@@ -21,11 +21,8 @@ const PreviewCard = styled.div`
     background-color: rgba(2, 28, 48, 0.4);
     transform: scale(1.1);
     transition: transform 200ms ease-in-out;
-
-    ${CardTitle} {
-      background: #0080ff;
-    }
   }
 `
+//  ${CardTitle} { background: #0080ff; }
 
 export default PreviewCard

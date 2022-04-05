@@ -179,13 +179,13 @@ const ModalDialog = ({
                 onKeyDown={(event) => handleSelectImage(event, idx)}
               >
                 <header>
-                  <CardTitle>{title}</CardTitle>
+                  <CardTitle id={title}>{title}</CardTitle>
                 </header>
                 <Image
                   scale={25}
                   alt={rest.description}
                   {...rest}
-                  styles="margin: 0 auto;"
+                  className="mx-auto"
                 />
               </PreviewCard>
             </section>

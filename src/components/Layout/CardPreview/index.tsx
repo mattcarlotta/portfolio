@@ -3,8 +3,8 @@ import Card from '~components/Layout/Card'
 import CardTitle from '~components/Layout/CardTitle'
 import Flex from '~components/Layout/Flex'
 import Image from '~components/Layout/Image'
-import PlaceHolder from '~components/Layout/PlaceHolder'
 import NormalText from '~components/Layout/NormalText'
+import PlaceHolder from '~components/Layout/PlaceHolder'
 import Tooltip from '~components/Layout/Tooltip'
 import Link from '~components/Navigation/Link'
 import OutsideLink from '~components/Navigation/OutsideLink'
@@ -73,7 +73,7 @@ const CardPreview = ({
             height={height}
             width={width}
             contentType={contentType}
-            styles="border-radius: 4px;"
+            className="rounded"
           />
         </Link>
       </Flex>
@@ -115,8 +115,7 @@ const CardPreview = ({
             <OutsideLink
               ariaLabel={`Navigate to ${title} demo page.`}
               href={location}
-              padding="5px"
-              margin="0 5px"
+              className="mx-1.5 p-1.5"
             >
               <FaLink style={{ fontSize: 22 }} />
             </OutsideLink>
@@ -127,8 +126,7 @@ const CardPreview = ({
             <OutsideLink
               ariaLabel={`Navigate to ${title} source page.`}
               href={source}
-              padding="5px"
-              margin="0 5px"
+              className="mx-1.5 p-1.5"
             >
               <FaRegFileCode style={{ fontSize: 24 }} />
             </OutsideLink>
@@ -136,11 +134,7 @@ const CardPreview = ({
         )}
       </Flex>
       <header>
-        <NormalText
-          as="h3"
-          id={`${title} description`}
-          padding="0px 10px 15px 10px"
-        >
+        <NormalText className="px-2.5 pt-0 pb-4 text-[0.7rem]">
           {typeof description === 'string' ? (
             description
           ) : (

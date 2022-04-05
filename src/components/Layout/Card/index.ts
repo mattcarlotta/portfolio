@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import styled from '@emotion/styled'
-import CardTitle from '~components/Layout/CardTitle'
+// import CardTitle from '~components/Layout/CardTitle'
 import PlaceHolder from '~components/Layout/PlaceHolder'
 
 const Card = styled.div`
@@ -25,10 +25,6 @@ const Card = styled.div`
     border: 0;
     transform: scale(1.1);
     transition: transform 200ms ease-in-out;
-
-    ${CardTitle} {
-      background: #0080ff;
-    }
 
     ${PlaceHolder} {
       display: block;
@@ -57,6 +53,8 @@ const Card = styled.div`
     }
   }
 `
+
+// ${CardTitle} { background: #0080ff; }
 
 // Card.defaultProps = {
 //   whileHover: "hover",

@@ -26,9 +26,9 @@ const FileDetails = ({
   source,
   status
 }: FileDetailsProps): JSX.Element => (
-  <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
+  <NormalText className="mb-5 pl-4">
     <Info
-      className={clsx(active ? 'text-lime-400' : 'text-yellow-400')}
+      className={clsx(active ? 'text-lime-500' : 'text-yellow-500')}
       dataTestId="status"
     >
       <FiPower data-testid="fipower" style={style} />
@@ -42,7 +42,7 @@ const FileDetails = ({
       <Info dataTestId="location">
         <FaLink style={style} />
         <OutsideLink
-          data-testid="location-link"
+          dataTestId="location-link"
           href={location}
           ariaLabel="Navigate to demo website"
           showIcon
@@ -54,7 +54,7 @@ const FileDetails = ({
     <Info dataTestId="source">
       <FaRegFileCode style={style} />
       <OutsideLink
-        data-testid="source-link"
+        dataTestId="source-link"
         href={source}
         ariaLabel="Navigate to source code"
         showIcon

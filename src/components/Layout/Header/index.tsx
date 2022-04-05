@@ -6,7 +6,7 @@ export default function Header() {
   const { asPath } = useRouter()
   return (
     <nav data-testid="head" className="mb-10 p-4 pt-10 lg:mb-0">
-      <div className="mx-auto flex max-w-sm flex-wrap place-content-around items-center lg:flex-nowrap">
+      <div className="mx-auto flex max-w-sm flex-wrap place-content-around items-center md:flex-nowrap">
         {HEADERLINKS.map(({ href, page }) => (
           <LinkIcon
             key={page}
