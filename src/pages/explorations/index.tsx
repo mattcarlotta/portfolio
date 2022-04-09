@@ -1,6 +1,5 @@
 import CardPreview from '~components/Layout/CardPreview'
 import Category from '~components/Layout/Category'
-import CategoryDescription from '~components/Layout/CategoryDescription'
 import Flex from '~components/Layout/Flex'
 import Head from '~components/Navigation/Header'
 import { GiPlanetCore } from '~icons'
@@ -19,11 +18,11 @@ const ExplorationsPage = ({
       <GiPlanetCore style={{ fontSize: 22, marginRight: 10 }} />
       Explorations
     </Category>
-    <CategoryDescription>
+    <p className="mb-5 p-2 text-center font-plain">
       A miscellaneous collection of works that vary from project-specific
       problem solving, to ground-up custom components, to answering
       stackoverflow questions.
-    </CategoryDescription>
+    </p>
     <Flex
       data-testid="home-page"
       justify="center"

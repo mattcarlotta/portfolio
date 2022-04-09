@@ -1,6 +1,5 @@
 import CardPreview from '~components/Layout/CardPreview'
 import Category from '~components/Layout/Category'
-import CategoryDescription from '~components/Layout/CategoryDescription'
 import Flex from '~components/Layout/Flex'
 import Head from '~components/Navigation/Header'
 import { IoPlanet } from '~icons'
@@ -20,10 +19,10 @@ export default function Projects({
         <IoPlanet style={{ fontSize: 26, marginRight: 10 }} />
         projects
       </Category>
-      <CategoryDescription>
+      <p className="mb-5 p-2 text-center font-plain">
         A collection of works that vary from fullstack web applications, to
         custom NPM packages, to standalone Mac OS and Linux applications.
-      </CategoryDescription>
+      </p>
       <Flex
         data-testid="projects-page"
         justify="center"
