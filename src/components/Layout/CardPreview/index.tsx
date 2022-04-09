@@ -131,7 +131,7 @@ const CardPreview = ({
         )}
       </Flex>
       <header>
-        <NormalText className="px-2.5 pt-0 pb-4 text-[0.7rem]">
+        <NormalText className="px-2.5 pt-0 pb-4 text-sm">
           {typeof description === 'string' ? (
             description
           ) : (

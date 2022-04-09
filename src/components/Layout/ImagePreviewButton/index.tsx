@@ -1,35 +1,45 @@
-/* istanbul ignore file */
-import styled from '@emotion/styled'
+import clsx from 'clsx'
+import { useImageContext } from '~components/ImageContext'
+import calculateScale from '~utils/calculateScale'
 
-const ImagePreviewButton = styled.button<{
+export type ImagePreviewButtonProps = {
   active: boolean
   height: number
+  onClick: () => void
   src: string
-  supportsWebp: boolean
+  title: string
   width: number
-}>`
-  background-image: ${({ src, height, width, supportsWebp }) =>
-    supportsWebp
-      ? `url(${src}?fm=webp&h=${height}&w=${width})`
-      : `url(${src}&h=${height}&w=${width})`};
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0 5px 10px 5px;
-  padding: 0px;
-  height: 75px;
-  min-width: 75px;
-  overflow: hidden;
-  border-radius: 4px;
-  border: 3px solid ${({ active }) => (active ? '#0080ff' : '#ccc')};
-  opacity: ${({ active }) => (active ? 1 : 0.4)};
-  transition: all 300ms ease-in-out;
+}
 
-  :hover {
-    opacity: 1;
-  }
-`
+export default function ImagePreviewButton({
+  active,
+  height,
+  onClick,
+  src,
+  title,
+  width
+}: ImagePreviewButtonProps) {
+  const newHeight = calculateScale(height, 10)
+  const newWidth = calculateScale(width, 10)
 
-export default ImagePreviewButton
+  const backgroundImage = useImageContext().supportsWebp
+    ? `url(${src}?fm=webp&h=${newHeight}&w=${newWidth})`
+    : `url(${src}&h=${newHeight}&w=${newWidth})`
+
+  return (
+    <button
+      aria-label={`View the ${title} image`}
+      aria-selected={active}
+      data-testid={`button-${title}`}
+      id={`button-preview-${title}`}
+      style={{ backgroundImage }}
+      type="button"
+      className={clsx(
+        'mx-1.5 mb-2.5 h-preview min-w-preview cursor-pointer overflow-hidden rounded border-[0.1875rem] bg-cover bg-center bg-no-repeat p-0 duration-300 ease-in-out hover:opacity-100',
+        active ? 'border-primary-25 opacity-100' : 'border-gray-200 opacity-40'
+      )}
+      onClick={onClick}
+      tabIndex={-1}
+    />
+  )
+}

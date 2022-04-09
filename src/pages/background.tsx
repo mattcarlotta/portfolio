@@ -54,7 +54,7 @@ const SocialLinks = [
   }
 ]
 
-const iconClassName = 'mr-2 align-middle text-[0.9rem]'
+const iconClassName = 'mr-2 align-middle text-base'
 
 export default function Background({
   background
@@ -79,7 +79,7 @@ export default function Background({
           <div className="px-4 pt-2 pb-6 tracking-wide">
             <section>
               <DetailHeadline id="details">Details:</DetailHeadline>
-              <NormalText className="pl-3 text-[0.7rem]">
+              <NormalText className="pl-3 text-tiny">
                 <Info className="text-lime-500" dataTestId="status">
                   <FiPower className={iconClassName} />
                   Stacked in September 2016
@@ -128,7 +128,7 @@ export default function Background({
               <ul data-testid="tech" className="list-none p-2">
                 {background.tech.data.map(({ technology, level }, index) => (
                   <li key={technology}>
-                    <NormalText className="text-[0.925rem] leading-relaxed">
+                    <NormalText className="text-md leading-relaxed">
                       <Flex
                         breakpoint
                         width="100%"
@@ -161,7 +161,7 @@ export default function Background({
                             Array.from({ length: level }, (_, i) => (
                               <AiFillStar
                                 key={`${technology}-${i}`}
-                                className="mr-2 align-middle text-[0.9rem] text-primary-25"
+                                className="mr-2 align-middle text-base text-primary-25"
                               />
                             ))
                           ]}
@@ -169,7 +169,7 @@ export default function Background({
                             ? Array.from({ length: 5 - level }, (_, i) => (
                                 <AiOutlineStar
                                   key={`not-${technology}-${i}`}
-                                  className="mr-2 align-middle text-[0.9rem] text-gray"
+                                  className="mr-2 align-middle text-base text-gray"
                                 />
                               ))
                             : null}
@@ -184,10 +184,7 @@ export default function Background({
               <DetailHeadline id="formal-education">
                 formal Education:
               </DetailHeadline>
-              <p
-                className="px-4 pt-2 font-plain text-[0.90rem]"
-                data-testid="brief"
-              >
+              <p className="px-4 pt-2 font-plain text-md" data-testid="brief">
                 San Jose State University | 2005-2012 | 3.5GPA
               </p>
             </section>
@@ -203,7 +200,7 @@ export default function Background({
                     )}
                     key={title}
                   >
-                    <NormalText className="px-2.5 text-[0.925rem] leading-relaxed">
+                    <NormalText className="px-2.5 text-md leading-relaxed">
                       <OutsideLink
                         ariaLabel={`Navigate to ${title}`}
                         href={url}

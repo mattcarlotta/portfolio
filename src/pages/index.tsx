@@ -24,7 +24,7 @@ export default function Home({
         >
           MATT CARLOTTA
         </h1>
-        <h2 className="m-0 p-0 text-[0.8rem] text-primary">
+        <h2 className="m-0 p-0 text-tiny text-primary">
           Fullstack Software Engineer
         </h2>
         <Orbits />

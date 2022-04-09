@@ -19,10 +19,16 @@ module.exports = {
           900: '#001031'
         },
         gray: {
-          DEFAULT: '#4a4a4a'
+          DEFAULT: '#4a4a4a',
+          100: '#d2d2d2',
+          200: 'ccc'
+        },
+        fire: {
+          DEFAULT: '#f5222d'
         },
         accent: '#1295f3',
-        'light-blue': '#63bfff'
+        'light-blue': '#63bfff',
+        'off-black': '#1f1f1f'
       },
       fontFamily: {
         plain: [
@@ -53,6 +59,31 @@ module.exports = {
           'Helvetica Neue',
           'sans-serif'
         ]
+      },
+      fontSize: {
+        xxs: '0.55rem',
+        xs: '0.6rem',
+        sm: '0.7rem',
+        tiny: '0.8rem',
+        base: '0.9rem',
+        md: '0.925rem',
+        lg: '1.125rem',
+        xl: '1.25rem',
+        '2xl': '1.5rem',
+        '3xl': '1.875rem',
+        '4xl': '2.25rem',
+        '5xl': '3rem',
+        '6xl': '4rem',
+        '7xl': '5rem'
+      },
+      height: {
+        preview: '4rem'
+      },
+      minHeight: {
+        body: '40.625rem'
+      },
+      minWidth: {
+        preview: '4rem'
       }
     }
   },

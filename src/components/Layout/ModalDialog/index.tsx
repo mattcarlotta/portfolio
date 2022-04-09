@@ -1,20 +1,12 @@
 import { Dialog, Slide, withStyles } from '@material-ui/core'
 import { forwardRef, useCallback, useEffect, useState } from 'react'
-import { useImageContext } from '~components/ImageContext'
 import BackgroundImageViewer from '~components/Layout/BackgroundImage'
 import Button from '~components/Layout/Button'
 import CardTitle from '~components/Layout/CardTitle'
-import Center from '~components/Layout/Center'
-import CloseModalButton from '~components/Layout/CloseModalButton'
 import DetailHeadline from '~components/Layout/DetailHeadline'
-import Fixed from '~components/Layout/Fixed'
-import Flex from '~components/Layout/Flex'
 import Image from '~components/Layout/Image'
-import ImageCounter from '~components/Layout/ImageCounter'
 import ImagePreviewButton from '~components/Layout/ImagePreviewButton'
-import ImageTitle from '~components/Layout/ImageTitle'
 import PreviewCard from '~components/Layout/PreviewCard'
-import SnapshotContainer from '~components/Layout/SnapshotContainer'
 import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
 import type {
   CONTENTFUL_IMAGE,
@@ -22,7 +14,6 @@ import type {
   Ref,
   TransitionProps
 } from '~types'
-import calculateScale from '~utils/calculateScale'
 
 const ImageViewer = withStyles(() => ({
   paper: {
@@ -64,7 +55,6 @@ const ModalDialog = ({
 }: {
   snapshots: Array<CONTENTFUL_IMAGE>
 }): ReactElement => {
-  const { supportsWebp } = useImageContext()
   const [state, setState] = useState<ModalDialogState>(initialImageState)
   const { open, currentIndex, url, title } = state
   const snapsLength = snapshots.length
@@ -169,7 +159,10 @@ const ModalDialog = ({
     <>
       <section>
         <DetailHeadline id="snapshots">Snapshots:</DetailHeadline>
-        <SnapshotContainer data-testid="snapshots-container">
+        <div
+          className="my-4 flex flex-wrap items-center justify-center px-2.5"
+          data-testid="snapshots-container"
+        >
           {snapshots.map(({ title, ...rest }, idx) => (
             <section key={title}>
               <PreviewCard
@@ -188,7 +181,7 @@ const ModalDialog = ({
               </PreviewCard>
             </section>
           ))}
-        </SnapshotContainer>
+        </div>
       </section>
       <ImageViewer
         fullScreen
@@ -200,80 +193,65 @@ const ModalDialog = ({
         TransitionComponent={SlideTransition}
         TransitionProps={{ onExited: handleModalExit }}
       >
-        <Fixed top="0px" width="100%">
-          <ImageCounter>
-            <IoImages
-              style={{ position: 'relative', top: 3, marginRight: 10 }}
-            />
+        <div className="fixed top-0 w-full">
+          <div className="absolute top-5 left-5 font-plain text-lg text-white">
+            <IoImages className="mr-2.5 align-middle" />
             {currentIndex + 1} of {snapsLength}
-          </ImageCounter>
-          <ImageTitle data-testid="modal-title">{title}</ImageTitle>
-          <CloseModalButton
-            data-testid="close-modal"
+          </div>
+          <h2
+            className="mt-8 p-5 text-center text-lg text-white sm:mt-0"
+            data-testid="modal-title"
+          >
+            {title}
+          </h2>
+          <button
             aria-label="close modal"
+            data-testid="close-modal"
+            className="pointer absolute top-4 right-5 border-0 bg-transparent p-1.5 text-xl text-gray-100 duration-300 ease-in-out hover:text-fire focus:outline-0"
             type="button"
             onClick={handleModalClose}
           >
             <FaTimes />
-          </CloseModalButton>
-        </Fixed>
-        <Fixed top="calc(50% - 35px)" left="0px">
-          <Flex justify="flex-start" width="120px">
-            <Button
-              aria-label="View previous image"
-              data-testid="previous-image"
-              type="button"
-              clickable={snapsLength > 1}
-              onClick={() => handleNextImage(currentIndex - 1)}
-            >
-              <FaChevronLeft />
-            </Button>
-          </Flex>
-        </Fixed>
-        <Fixed bottom="100px" left="80px" right="80px" top="80px">
-          <Flex justify="center">
-            <BackgroundImageViewer dataTestId={`image-${title}`} src={url} />
-          </Flex>
-        </Fixed>
-        <Fixed top="calc(50% - 35px)" right="0px">
-          <Flex justify="flex-end" width="120px">
-            <Button
-              data-testid="next-image"
-              aria-label="View next image"
-              type="button"
-              clickable={snapsLength > 1}
-              onClick={() => handleNextImage(currentIndex + 1)}
-            >
-              <FaChevronRight />
-            </Button>
-          </Flex>
-        </Fixed>
-        <Fixed left="0px" bottom="0px" width="100%">
-          <Center
-            style={{
-              overflowY: 'auto',
-              whiteSpace: 'nowrap'
-            }}
+          </button>
+        </div>
+        <div className="fixed left-0 top-[calc(50%-35px)]">
+          <Button
+            ariaLabel="View previous image"
+            dataTestId="previous-image"
+            clickable={snapsLength > 1}
+            onClick={() => handleNextImage(currentIndex - 1)}
           >
+            <FaChevronLeft />
+          </Button>
+        </div>
+        <div className="fixed bottom-24 left-20 right-20 top-20">
+          <BackgroundImageViewer dataTestId={`image-${title}`} src={url} />
+        </div>
+        <div className="fixed right-0 top-[calc(50%-35px)]">
+          <Button
+            ariaLabel="View next image"
+            dataTestId="next-image"
+            clickable={snapsLength > 1}
+            onClick={() => handleNextImage(currentIndex + 1)}
+          >
+            <FaChevronRight />
+          </Button>
+        </div>
+        <div className="fixed left-0 bottom-0 w-full">
+          <div className="overflow-y-auto whitespace-nowrap text-center">
             {snapshots.map(({ title, height, width, url }, idx) => (
               <ImagePreviewButton
                 key={`preview${title}`}
-                tabIndex={-1}
                 active={idx === currentIndex}
-                aria-selected={idx === currentIndex}
                 onClick={() => selectImage(idx)}
-                type="button"
-                supportsWebp={supportsWebp}
                 src={url}
-                height={calculateScale(height, 10)}
-                width={calculateScale(width, 10)}
-                aria-label={`View the ${title} image`}
-                id={`button-preview-${title}`}
-                data-testid={`button-${title}`}
+                height={height}
+                title={title}
+                width={width}
               />
             ))}
-          </Center>
-        </Fixed>
+          </div>
+        </div>
       </ImageViewer>
     </>
   )
