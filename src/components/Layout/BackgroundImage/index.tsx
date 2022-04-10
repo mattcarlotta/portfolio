@@ -1,15 +1,11 @@
 import { useImageContext } from '~components/ImageContext'
-import type { ReactElement } from '~types'
 
 export type BackImageViewerProps = {
   dataTestId: string
   src: string
 }
 
-const BackgroundImageViewer = ({
-  dataTestId,
-  src
-}: BackImageViewerProps): ReactElement => {
+const BackgroundImageViewer = ({ dataTestId, src }: BackImageViewerProps) => {
   const backgroundImage = useImageContext().supportsWebp
     ? `url(${src}?fm=webp)`
     : `url(${src})`

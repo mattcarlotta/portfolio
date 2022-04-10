@@ -22,15 +22,18 @@ export { FiLinkedin } from '@react-icons/all-files/fi/FiLinkedin'
 export { FiPower } from '@react-icons/all-files/fi/FiPower'
 // GI
 export { GiExplodingPlanet } from '@react-icons/all-files/gi/GiExplodingPlanet'
+export { GiPlanetConquest } from '@react-icons/all-files/gi/GiPlanetConquest'
 export { GiPlanetCore } from '@react-icons/all-files/gi/GiPlanetCore'
-// export { GiRingedPlanet } from "@react-icons/all-files/gi/GiRingedPlanet";
 export { GiRank3 } from '@react-icons/all-files/gi/GiRank3'
+export { GiRingedPlanet } from '@react-icons/all-files/gi/GiRingedPlanet'
+export { GiToolbox } from '@react-icons/all-files/gi/GiToolbox'
 // GO
 export { GoHome } from '@react-icons/all-files/go/GoHome'
 // HI
 export { HiOutlineMail } from '@react-icons/all-files/hi/HiOutlineMail'
 // IM
 export { ImInfo } from '@react-icons/all-files/im/ImInfo'
+export { ImRocket } from '@react-icons/all-files/im/ImRocket'
 export { IoImages } from '@react-icons/all-files/io5/IoImages'
 // IO
 export { IoPlanet } from '@react-icons/all-files/io5/IoPlanet'

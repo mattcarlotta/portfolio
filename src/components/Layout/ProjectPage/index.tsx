@@ -7,11 +7,10 @@ import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
 import SubTitle from '~components/Layout/SubTitle'
-import Text from '~components/Layout/Text'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
 import { IoPlanet } from '~icons'
-import type { CONTENTFUL_PROJECTS_PAGE, ReactElement } from '~types'
+import type { CONTENTFUL_PROJECTS_PAGE } from '~types'
 
 const ProjectPage = ({
   title,
@@ -20,7 +19,7 @@ const ProjectPage = ({
   snapshotsCollection,
   tech,
   ...rest
-}: CONTENTFUL_PROJECTS_PAGE): ReactElement => (
+}: CONTENTFUL_PROJECTS_PAGE) => (
   <>
     <Head title={title} description={seoDescription} />
     <Project>
@@ -28,7 +27,7 @@ const ProjectPage = ({
         {title}
       </PanelTitle>
       <Panel>
-        <Text>
+        <div className="py-2.5 px-5 tracking-wide">
           <section>
             <DetailHeadline id="details">Details:</DetailHeadline>
             <FileDetails fileName={title} {...rest} />
@@ -75,7 +74,7 @@ const ProjectPage = ({
           {snapshotsCollection.items.length > 0 ? (
             <ModalDialog snapshots={snapshotsCollection!.items} />
           ) : null}
-        </Text>
+        </div>
       </Panel>
     </Project>
     <GoBack href="/projects" title="projects" />

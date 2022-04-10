@@ -3,7 +3,6 @@ import Flex from '~components/Layout/Flex'
 import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
-import Text from '~components/Layout/Text'
 import GoBack from '~components/Navigation/GoBack'
 import { GiExplodingPlanet } from '~icons'
 
@@ -20,10 +19,10 @@ export default function ErrorPage() {
         <Panel>
           <Flex justify="center" height="700px" direction="column">
             <GiExplodingPlanet style={{ fontSize: 250, marginBottom: 40 }} />
-            <Text>
+            <div className="py-2.5 px-5 tracking-wide">
               The server ran into an issue. Please wait a few minutes and
               refresh the page.
-            </Text>
+            </div>
           </Flex>
         </Panel>
       </Project>

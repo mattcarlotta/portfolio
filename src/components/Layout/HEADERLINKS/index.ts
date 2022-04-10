@@ -1,20 +1,26 @@
+import { GiPlanetCore, GiRingedPlanet, ImRocket, IoPlanet } from '~icons'
+
 /* istanbul ignore file */
 export const HEADERLINKS = [
   {
     page: 'home',
-    href: '/'
+    href: '/',
+    Icon: GiRingedPlanet
   },
   {
     page: 'projects',
-    href: '/projects'
+    href: '/projects',
+    Icon: IoPlanet
   },
   {
     page: 'explorations',
-    href: '/explorations'
+    href: '/explorations',
+    Icon: ImRocket
   },
   {
     page: 'background',
-    href: '/background'
+    href: '/background',
+    Icon: GiPlanetCore
   }
   // {
   //   page: 'linkedIn',

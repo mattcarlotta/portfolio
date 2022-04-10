@@ -1,15 +1,13 @@
 import clsx from 'clsx'
 import type { ReactNode } from '~types'
 
-export default function Info({
-  children,
-  className,
-  dataTestId
-}: {
+export type InfoProps = {
   children: ReactNode
   className?: string
   dataTestId: string
-}) {
+}
+
+export default function Info({ children, className, dataTestId }: InfoProps) {
   return (
     <p
       data-testid={dataTestId}

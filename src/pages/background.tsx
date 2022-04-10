@@ -4,7 +4,6 @@ import DetailHeadline from '~components/Layout/DetailHeadline'
 import Flex from '~components/Layout/Flex'
 import Image from '~components/Layout/Image'
 import Info from '~components/Layout/Info'
-import NormalText from '~components/Layout/NormalText'
 import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
@@ -64,22 +63,22 @@ export default function Background({
   return (
     <>
       <Head />
+      <div className="mt-2 flex items-center justify-center">
+        <Image
+          {...background.profileImage}
+          alt={background.profileImage.description}
+          className="rounded"
+        />
+      </div>
       <Project>
         <PanelTitle id="background-title" data-testid="panel-title">
           {background.title}
         </PanelTitle>
         <Panel>
-          <div className="mt-6 flex items-center justify-center">
-            <Image
-              {...background.profileImage}
-              alt={background.profileImage.description}
-              className="rounded-xl"
-            />
-          </div>
-          <div className="px-4 pt-2 pb-6 tracking-wide">
+          <div className="px-4 pb-6 tracking-wide">
             <section>
               <DetailHeadline id="details">Details:</DetailHeadline>
-              <NormalText className="pl-3 text-tiny">
+              <div className="pl-3 font-plain text-tiny">
                 <Info className="text-lime-500" dataTestId="status">
                   <FiPower className={iconClassName} />
                   Stacked in September 2016
@@ -115,7 +114,7 @@ export default function Background({
                     </OutsideLink>
                   </Info>
                 ))}
-              </NormalText>
+              </div>
             </section>
             <section>
               <DetailHeadline id="brief">Brief:</DetailHeadline>
@@ -128,7 +127,7 @@ export default function Background({
               <ul data-testid="tech" className="list-none p-2">
                 {background.tech.data.map(({ technology, level }, index) => (
                   <li key={technology}>
-                    <NormalText className="text-md leading-relaxed">
+                    <div className="font-plain text-md leading-relaxed">
                       <Flex
                         breakpoint
                         width="100%"
@@ -175,7 +174,7 @@ export default function Background({
                             : null}
                         </Flex>
                       </Flex>
-                    </NormalText>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -200,7 +199,7 @@ export default function Background({
                     )}
                     key={title}
                   >
-                    <NormalText className="px-2.5 text-md leading-relaxed">
+                    <div className="px-2.5 font-plain text-md leading-relaxed">
                       <OutsideLink
                         ariaLabel={`Navigate to ${title}`}
                         href={url}
@@ -208,7 +207,7 @@ export default function Background({
                       >
                         {title}
                       </OutsideLink>
-                    </NormalText>
+                    </div>
                   </li>
                 ))}
               </ul>

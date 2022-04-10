@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import styled from '@emotion/styled'
+import Link from 'next/link'
 import type { CSSProperties, ReactElement, ReactNode } from '~types'
 
 export type LinkProps = {
@@ -44,9 +44,8 @@ const StyledLink = styled(LinkComponent)<{
   padding: ${({ padding }) => padding || '10px 15px'};
   margin: ${({ margin }) => margin};
   color: #1295f3;
-  transition: all 0.5s;
+  transition: color 0.5s;
   text-decoration: none;
-  outline: none;
   font-size: ${({ fontSize }) => fontSize};
 
   :hover {

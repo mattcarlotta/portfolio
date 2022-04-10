@@ -3,12 +3,11 @@ import Card from '~components/Layout/Card'
 import CardTitle from '~components/Layout/CardTitle'
 import Flex from '~components/Layout/Flex'
 import Image from '~components/Layout/Image'
-import NormalText from '~components/Layout/NormalText'
 import Tooltip from '~components/Layout/Tooltip'
 import Link from '~components/Navigation/Link'
 import OutsideLink from '~components/Navigation/OutsideLink'
 import { FaLink, FaRegFileCode, FiPower, ImInfo } from '~icons'
-import type { CONTENTFUL_JSON, ReactElement } from '~types'
+import type { CONTENTFUL_JSON } from '~types'
 import ContentfulRichText from '../ContentfulRichText'
 
 export type CardPreviewProps = {
@@ -49,7 +48,7 @@ const CardPreview = ({
   title,
   url,
   width
-}: CardPreviewProps): ReactElement => (
+}: CardPreviewProps) => (
   <Card>
     <div data-placeholder="true" className="hidden" />
     <div className="panel-container">
@@ -131,13 +130,13 @@ const CardPreview = ({
         )}
       </Flex>
       <header>
-        <NormalText className="px-2.5 pt-0 pb-4 text-sm">
+        <div className="px-2.5 pt-0 pb-4 font-plain text-sm">
           {typeof description === 'string' ? (
             description
           ) : (
             <ContentfulRichText json={description.json} />
           )}
-        </NormalText>
+        </div>
       </header>
     </div>
   </Card>

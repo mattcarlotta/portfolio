@@ -4,7 +4,6 @@ import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
 import SubTitle from '~components/Layout/SubTitle'
-import Text from '~components/Layout/Text'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
 import type { CONTENTFUL_EXPLORATIONS_PAGE, ContextParams } from '~types'
@@ -27,7 +26,7 @@ export default function ExplorationsPage({
           {exploration.title}
         </PanelTitle>
         <Panel>
-          <Text>
+          <div className="py-2.5 px-5 tracking-wide">
             <DetailHeadline id="details">Details:</DetailHeadline>
             <section>
               <FileDetails
@@ -62,7 +61,7 @@ export default function ExplorationsPage({
                 />
               </SubTitle>
             </section>
-          </Text>
+          </div>
         </Panel>
       </Project>
       <GoBack href="/explorations" title="Explorations" />

@@ -26,7 +26,7 @@ export default function OutsideLink({
       aria-label={ariaLabel}
       data-testid={dataTestId}
       className={clsx(
-        'focus:color-white cursor-pointer text-light-blue outline-0 duration-300 ease-in-out hover:text-white',
+        'focus:color-white cursor-pointer border-2 border-transparent text-light-blue underline transition-colors hover:text-white',
         className
       )}
       href={href}
@@ -39,28 +39,3 @@ export default function OutsideLink({
     </a>
   )
 }
-
-// const OutsideLink = styled(OutsideLinkComponent)<{
-//   padding?: string
-//   margin?: string
-//   textDecoration?: string
-// }>`
-//   padding: ${({ padding }) => padding || '0px'};
-//   margin: ${({ margin }) => margin};
-//   color: #63bfff;
-//   transition: all 0.5s;
-//   text-decoration: ${({ textDecoration }) => textDecoration || 'underline'};
-//   cursor: pointer;
-//   outline: 0;
-
-//   :hover {
-//     color: #fff;
-//   }
-
-//   :focus {
-//     color: #fff;
-//     text-decoration: ${({ textDecoration }) => textDecoration || 'underline'};
-//   }
-// `
-
-// export default OutsideLink

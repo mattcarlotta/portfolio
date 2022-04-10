@@ -13,7 +13,6 @@ const PreviewCard = styled.div`
   border: 1px solid #16487a;
   color: #0096ff;
   cursor: pointer;
-  outline: 0;
 
   :hover,
   :focus,

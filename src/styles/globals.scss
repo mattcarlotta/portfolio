@@ -80,7 +80,7 @@ body {
 }
 
 :focus-visible {
-  outline: 0;
+  @apply text-white outline-dotted outline-2 outline-offset-2 outline-primary;
 }
 
 img,

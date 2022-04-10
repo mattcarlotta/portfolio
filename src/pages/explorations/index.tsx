@@ -1,8 +1,7 @@
 import CardPreview from '~components/Layout/CardPreview'
-import Category from '~components/Layout/Category'
 import Flex from '~components/Layout/Flex'
 import Head from '~components/Navigation/Header'
-import { GiPlanetCore } from '~icons'
+import { ImRocket } from '~icons'
 import type { CONTENTFUL_EXPLORATIONS_PAGE, GetStaticProps } from '~types'
 import { getAllExplorations } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
@@ -14,15 +13,19 @@ const ExplorationsPage = ({
 }) => (
   <>
     <Head description="A small collection of codesandbox explorations I've created over the years" />
-    <Category>
-      <GiPlanetCore style={{ fontSize: 22, marginRight: 10 }} />
-      Explorations
-    </Category>
-    <p className="mb-5 p-2 text-center font-plain">
-      A miscellaneous collection of works that vary from project-specific
-      problem solving, to ground-up custom components, to answering
-      stackoverflow questions.
-    </p>
+    <section className="mt-2 mb-10 rounded border border-primary-600 bg-primary-700 p-4">
+      <header>
+        <h1 className="text-center font-stylized text-lg leading-none md:text-2xl">
+          <ImRocket className="mr-2.5 text-lg" />
+          Explorations
+        </h1>
+      </header>
+      <p className="mx-auto max-w-xl p-2 text-center font-plain text-primary-25">
+        A miscellaneous collection of works that vary from project-specific
+        problem solving, to ground-up custom components, to answering
+        stackoverflow questions.
+      </p>
+    </section>
     <Flex
       data-testid="home-page"
       justify="center"

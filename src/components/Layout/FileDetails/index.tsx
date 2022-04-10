@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import Info from '~components/Layout/Info'
-import NormalText from '~components/Layout/NormalText'
 import OutsideLink from '~components/Navigation/OutsideLink'
 import { AiOutlineFolderOpen, FaLink, FaRegFileCode, FiPower } from '~icons'
 import type { CSSProperties } from '~types'
@@ -25,8 +24,8 @@ const FileDetails = ({
   fileName,
   source,
   status
-}: FileDetailsProps): JSX.Element => (
-  <NormalText className="mb-5 pl-4">
+}: FileDetailsProps) => (
+  <div className="mb-5 pl-4 font-plain">
     <Info
       className={clsx(active ? 'text-lime-500' : 'text-yellow-500')}
       dataTestId="status"
@@ -62,7 +61,7 @@ const FileDetails = ({
         Source
       </OutsideLink>
     </Info>
-  </NormalText>
+  </div>
 )
 
 export default FileDetails

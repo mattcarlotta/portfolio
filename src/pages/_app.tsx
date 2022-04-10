@@ -26,17 +26,18 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <ScrollHeightContext>
         <ImageContext>
-          <nav data-testid="head" className="mb-10 p-4 pt-10 lg:mb-0">
+          <nav data-testid="head" className="p-4 lg:mb-0 lg:pt-10">
             <div className="mx-auto flex max-w-sm flex-wrap place-content-around items-center md:flex-nowrap">
-              {HEADERLINKS.map(({ href, page }) => (
+              {HEADERLINKS.map(({ Icon, href, page }) => (
                 <LinkIcon
                   key={page}
                   active={asPath.includes(page)}
-                  className="p-1 text-sm lg:text-xs"
+                  className="my-1.5 p-1 text-sm lg:my-0 lg:text-xs"
                   dataTestId={`go-to-${page}`}
                   ariaLabel={`Navigate to my ${page} page`}
                   href={href}
                 >
+                  <Icon className="mr-2 text-tiny" />
                   {page}
                 </LinkIcon>
               ))}
