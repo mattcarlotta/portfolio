@@ -12,7 +12,7 @@ export default function DetailHeadline({
       <h2
         id={id}
         data-testid={id}
-        className="mt-5 text-lg font-bold text-[#ccc]"
+        className="mt-5 text-2xl font-bold text-gray-200"
       >
         {children}
       </h2>

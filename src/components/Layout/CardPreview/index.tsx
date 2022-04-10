@@ -87,7 +87,7 @@ const CardPreview = ({
                 data-testid="fipower"
                 style={{
                   color: active ? 'limegreen' : 'yellow',
-                  fontSize: 22
+                  fontSize: 18
                 }}
               />
             </Link>
@@ -102,7 +102,7 @@ const CardPreview = ({
               margin="0 5px"
               href={`/${href}/${slug}`}
             >
-              <ImInfo style={{ fontSize: 22 }} />
+              <ImInfo style={{ fontSize: 18 }} />
             </Link>
           </Tooltip>
         )}
@@ -113,7 +113,7 @@ const CardPreview = ({
               href={location}
               className="mx-1.5 p-1.5"
             >
-              <FaLink style={{ fontSize: 22 }} />
+              <FaLink style={{ fontSize: 18 }} />
             </OutsideLink>
           </Tooltip>
         )}
@@ -124,13 +124,13 @@ const CardPreview = ({
               href={source}
               className="mx-1.5 p-1.5"
             >
-              <FaRegFileCode style={{ fontSize: 24 }} />
+              <FaRegFileCode style={{ fontSize: 20 }} />
             </OutsideLink>
           </Tooltip>
         )}
       </Flex>
       <header>
-        <div className="px-2.5 pt-0 pb-4 font-plain text-sm">
+        <div className="px-2.5 pt-0 pb-4 font-plain text-base">
           {typeof description === 'string' ? (
             description
           ) : (

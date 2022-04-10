@@ -1,4 +1,14 @@
-import ProjectPage from '~components/Layout/ProjectPage'
+import clsx from 'clsx'
+import ContentfulRichText from '~components/Layout/ContentfulRichText'
+import DetailHeadline from '~components/Layout/DetailHeadline'
+import FileDetails from '~components/Layout/FileDetails'
+import ModalDialog from '~components/Layout/ModalDialog'
+import Panel from '~components/Layout/Panel'
+import PanelTitle from '~components/Layout/PanelTitle'
+import Project from '~components/Layout/Project'
+import GoBack from '~components/Navigation/GoBack'
+import Head from '~components/Navigation/Header'
+import { IoPlanet } from '~icons'
 import type { CONTENTFUL_PROJECTS_PAGE, ContextParams } from '~types'
 import { getAllProjects, getProjectBySlug } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
@@ -8,7 +18,54 @@ export default function ProjectPageComponent({
 }: {
   project: CONTENTFUL_PROJECTS_PAGE
 }) {
-  return <ProjectPage {...project} />
+  return (
+    <>
+      <Head title={project.title} description={project.seoDescription} />
+      <Project>
+        <PanelTitle id="title" data-testid="panel-title">
+          {project.title}
+        </PanelTitle>
+        <Panel>
+          <div className="py-2.5 px-5 tracking-wide">
+            <section>
+              <DetailHeadline id="details">Details:</DetailHeadline>
+              <FileDetails fileName={project.title} {...project} />
+            </section>
+            <section>
+              <DetailHeadline id="description">Description:</DetailHeadline>
+              <div
+                className="pl-4 font-plain text-xl tracking-wide"
+                data-testid="brief"
+              >
+                <ContentfulRichText json={project.description.json} />
+              </div>
+            </section>
+            <section>
+              <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
+              <ul data-testid="tech-list" className="list-none p-2 py-4">
+                {project.tech.map((item, idx) => (
+                  <li
+                    className={clsx(
+                      'px-2 font-plain text-xl',
+                      idx % 2 ? 'bg-primary-900' : 'bg-transparent'
+                    )}
+                    key={item}
+                  >
+                    <IoPlanet className="mr-4 align-middle" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+            {project.snapshotsCollection.items.length > 0 ? (
+              <ModalDialog snapshots={project.snapshotsCollection!.items} />
+            ) : null}
+          </div>
+        </Panel>
+      </Project>
+      <GoBack href="/projects" title="projects" />
+    </>
+  )
 }
 
 export async function getStaticProps({ params }: ContextParams) {

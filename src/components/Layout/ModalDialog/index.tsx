@@ -194,12 +194,12 @@ const ModalDialog = ({
         TransitionProps={{ onExited: handleModalExit }}
       >
         <div className="fixed top-0 w-full">
-          <div className="absolute top-5 left-5 font-plain text-lg text-white">
+          <div className="absolute top-5 left-5 font-plain text-2xl text-white">
             <IoImages className="mr-2.5 align-middle" />
             {currentIndex + 1} of {snapsLength}
           </div>
           <h2
-            className="mt-8 p-5 text-center text-lg text-white sm:mt-0"
+            className="mt-8 p-5 text-center text-2xl text-white sm:mt-0"
             data-testid="modal-title"
           >
             {title}
@@ -207,7 +207,7 @@ const ModalDialog = ({
           <button
             aria-label="close modal"
             data-testid="close-modal"
-            className="pointer absolute top-4 right-5 border-0 bg-transparent p-1.5 text-xl text-gray-100 duration-300 ease-in-out hover:text-fire focus:outline-0"
+            className="pointer absolute top-4 right-5 border-0 bg-transparent p-1.5 text-2xl text-gray-100 duration-300 ease-in-out hover:text-fire focus:outline-0"
             type="button"
             onClick={handleModalClose}
           >

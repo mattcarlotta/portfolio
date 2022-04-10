@@ -37,7 +37,7 @@ export default class CustomDocument extends Document {
           <meta name="theme-color" content="#000000" />
           <meta
             name="robots"
-            content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+            content="follow, index, max-image-preview:large"
           />
           <meta name="build version" content={packageJson.version} />
           <link

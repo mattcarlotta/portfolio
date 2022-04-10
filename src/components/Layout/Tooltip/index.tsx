@@ -43,7 +43,7 @@ const CustomTooltip = ({
       classes={useClasses()}
       placement={placement}
       title={
-        <div className="m-0 p-px text-center font-plain text-tiny">{title}</div>
+        <div className="m-0 p-px text-center font-plain text-base">{title}</div>
       }
     >
       <span className="text-center">{children}</span>

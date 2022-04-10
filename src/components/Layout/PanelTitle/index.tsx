@@ -12,7 +12,7 @@ export default function PanelTitle({
       <h1
         id={id}
         data-testid="panel-title"
-        className="text-md m-0 rounded-t-xl bg-primary-50 p-2 text-center font-bold text-white"
+        className="m-0 rounded-t-xl bg-primary-50 p-2 text-center text-xl font-bold text-white"
       >
         {children}
       </h1>

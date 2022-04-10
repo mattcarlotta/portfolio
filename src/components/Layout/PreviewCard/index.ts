@@ -3,8 +3,8 @@ import styled from '@emotion/styled'
 // import CardTitle from '~components/Layout/CardTitle'
 
 const PreviewCard = styled.div`
-  width: 155px;
-  height: 120px;
+  width: 150px;
+  height: 125px;
   margin: 5px 8px;
   border-radius: 4px;
   overflow: hidden;

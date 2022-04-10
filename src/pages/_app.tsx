@@ -28,12 +28,12 @@ export default function App({ Component, pageProps }: AppProps) {
               {HEADERLINKS.map(({ Icon, href, page }) => (
                 <LinkIcon
                   key={page}
-                  className="my-1.5 p-1 text-sm lg:my-0 lg:text-xs"
+                  className="my-1.5 p-1 text-tiny lg:my-0"
                   dataTestId={`go-to-${page}`}
                   ariaLabel={`Navigate to my ${page} page`}
                   href={href}
                 >
-                  <Icon className="mr-2 text-tiny" />
+                  <Icon className="mr-2 text-md" />
                   {page}
                 </LinkIcon>
               ))}
@@ -44,8 +44,8 @@ export default function App({ Component, pageProps }: AppProps) {
               <Component {...pageProps} />
             </div>
             <footer data-testid="footer" className="mt-14 pb-2 text-center">
-              <p className="text-xs font-bold text-accent">
-                ©{new Date().getFullYear()} matt carlotta
+              <p className="text-tiny font-bold text-accent">
+                &#169;{new Date().getFullYear()} matt carlotta
               </p>
             </footer>
           </main>

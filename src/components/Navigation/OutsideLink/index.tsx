@@ -26,7 +26,7 @@ export default function OutsideLink({
       aria-label={ariaLabel}
       data-testid={dataTestId}
       className={clsx(
-        'focus:color-white cursor-pointer border-2 border-transparent text-light-blue underline transition-colors hover:text-white',
+        'focus:color-white cursor-pointer border-2 border-solid border-transparent text-light-blue underline transition-colors hover:text-white',
         className
       )}
       href={href}
@@ -35,7 +35,7 @@ export default function OutsideLink({
       style={style}
     >
       {children}
-      {showIcon && <FiExternalLink className="ml-0.5 align-top text-sm" />}
+      {showIcon && <FiExternalLink className="ml-1 align-top text-md" />}
     </a>
   )
 }

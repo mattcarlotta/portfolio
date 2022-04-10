@@ -43,7 +43,7 @@ const StyledLink = styled(LinkComponent)<{
 }>`
   padding: ${({ padding }) => padding || '10px 15px'};
   margin: ${({ margin }) => margin};
-  color: #1295f3;
+  color: #d7d7d7;
   transition: color 0.5s;
   text-decoration: none;
   font-size: ${({ fontSize }) => fontSize};

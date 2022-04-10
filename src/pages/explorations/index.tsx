@@ -14,11 +14,11 @@ const ExplorationsPage = ({
   <>
     <Head description="A small collection of codesandbox explorations I've created over the years" />
     <Section>
-      <h1 className="font-stylized text-lg leading-none md:text-2xl">
-        <ImRocket className="mr-2.5 text-lg" />
+      <h1 className="font-stylized text-2xl leading-none md:text-3xl">
+        <ImRocket className="mr-2.5 text-3xl" />
         Explorations
       </h1>
-      <p className="mx-auto max-w-xl p-2 font-plain text-primary-25">
+      <p className="mx-auto mt-2 max-w-2xl p-2 font-plain text-lg text-primary-25">
         A miscellaneous collection of works that vary from project-specific
         problem solving, to ground-up custom components, to answering
         stackoverflow questions.

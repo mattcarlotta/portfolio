@@ -16,7 +16,7 @@ export default function GoBack({ href, title }: GoBackProps) {
         fontSize="15px"
         showUnderline
       >
-        <GoHome className="mr-1 align-middle text-md" />
+        <GoHome className="mr-1 align-middle text-xl" />
         go back to {title} page
       </Link>
     </div>

@@ -7,7 +7,6 @@ import Info from '~components/Layout/Info'
 import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
-import SubTitle from '~components/Layout/SubTitle'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
 import OutsideLink from '~components/Navigation/OutsideLink'
@@ -27,7 +26,7 @@ import type { CONTENTFUL_BACKGROUND_PAGE } from '~types'
 import { getBackground } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
-const SocialLinks = [
+const SOCIALLINKS = [
   {
     Icon: VscGithub,
     id: 'github',
@@ -54,7 +53,7 @@ const SocialLinks = [
   }
 ]
 
-const iconClassName = 'mr-2 align-middle text-base'
+const iconClassName = 'mr-2 align-middle text-xl'
 
 export default function Background({
   background
@@ -64,7 +63,7 @@ export default function Background({
   return (
     <>
       <Head />
-      <div className="mt-5 flex items-center justify-center rounded border border-primary-600 bg-primary-700 p-4">
+      <div className="mt-5 flex items-center justify-center rounded border border-solid border-primary-600 bg-primary-700 p-4">
         <Image
           {...background.profileImage}
           alt={background.profileImage.description}
@@ -76,13 +75,13 @@ export default function Background({
           {background.title}
         </PanelTitle>
         <Panel>
-          <div className="px-4 pb-6 tracking-wide">
+          <div className="p-5 tracking-wide">
             <section>
               <DetailHeadline id="details">Details:</DetailHeadline>
-              <div className="pl-3 font-plain text-tiny">
+              <div className="pl-3 font-plain text-md">
                 <Info className="text-lime-500" dataTestId="status">
                   <FiPower className={iconClassName} />
-                  Stacked in September 2016
+                  In Orbit Circa September 2016
                 </Info>
                 <Info dataTestId="location">
                   <RiMapPin2Line className={iconClassName} />
@@ -102,7 +101,7 @@ export default function Background({
                     {background.email}
                   </OutsideLink>
                 </Info>
-                {SocialLinks.map(({ Icon, id, title, href }) => (
+                {SOCIALLINKS.map(({ Icon, id, title, href }) => (
                   <Info dataTestId={title} key={id}>
                     <Icon className={iconClassName} />
                     <OutsideLink
@@ -119,16 +118,19 @@ export default function Background({
             </section>
             <section>
               <DetailHeadline id="brief">Brief:</DetailHeadline>
-              <SubTitle data-testid="brief">
+              <div
+                className="pl-4 font-plain text-xl tracking-wide"
+                data-testid="brief"
+              >
                 <ContentfulRichText json={background.description.json} />
-              </SubTitle>
+              </div>
             </section>
             <section>
               <DetailHeadline id="tech-specs">Tech Specs:</DetailHeadline>
               <ul data-testid="tech" className="list-none p-2">
                 {background.tech.data.map(({ technology, level }, index) => (
                   <li key={technology}>
-                    <div className="font-plain text-md leading-relaxed">
+                    <div className="font-plain text-xl leading-relaxed">
                       <Flex
                         breakpoint
                         width="100%"
@@ -161,7 +163,7 @@ export default function Background({
                             Array.from({ length: level }, (_, i) => (
                               <AiFillStar
                                 key={`${technology}-${i}`}
-                                className="mr-2 align-middle text-base text-primary-25"
+                                className="mr-2 align-middle text-xl text-primary-25"
                               />
                             ))
                           ]}
@@ -169,7 +171,7 @@ export default function Background({
                             ? Array.from({ length: 5 - level }, (_, i) => (
                                 <AiOutlineStar
                                   key={`not-${technology}-${i}`}
-                                  className="mr-2 align-middle text-base text-gray"
+                                  className="mr-2 align-middle text-xl text-gray"
                                 />
                               ))
                             : null}
@@ -184,7 +186,7 @@ export default function Background({
               <DetailHeadline id="formal-education">
                 formal Education:
               </DetailHeadline>
-              <p className="px-4 pt-2 font-plain text-md" data-testid="brief">
+              <p className="px-4 pt-2 font-plain text-xl" data-testid="brief">
                 San Jose State University | 2005-2012 | 3.5GPA
               </p>
             </section>
@@ -200,7 +202,7 @@ export default function Background({
                     )}
                     key={title}
                   >
-                    <div className="px-2.5 font-plain text-md leading-relaxed">
+                    <div className="px-2.5 font-plain text-xl leading-relaxed">
                       <OutsideLink
                         ariaLabel={`Navigate to ${title}`}
                         href={url}

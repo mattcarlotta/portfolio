@@ -23,7 +23,7 @@ module.exports = {
         gray: {
           DEFAULT: '#4a4a4a',
           100: '#d2d2d2',
-          200: 'ccc'
+          200: '#ccc'
         },
         fire: {
           DEFAULT: '#f5222d'
@@ -68,7 +68,7 @@ module.exports = {
         sm: '0.7rem',
         tiny: '0.8rem',
         base: '0.9rem',
-        md: '0.925rem',
+        md: '1rem',
         lg: '1.125rem',
         xl: '1.25rem',
         '2xl': '1.5rem',
@@ -80,16 +80,16 @@ module.exports = {
         ginormous: '17rem'
       },
       height: {
-        preview: '4rem'
+        preview: '4.6875rem'
       },
       maxWidth: {
         main: '950px'
       },
       minHeight: {
-        body: '30rem'
+        body: '40rem'
       },
       minWidth: {
-        preview: '4rem'
+        preview: '4.6875rem'
       }
     }
   },

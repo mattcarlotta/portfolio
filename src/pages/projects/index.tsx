@@ -16,13 +16,13 @@ export default function Projects({
       <Head description="A collection of personal and professional projects that I've created over the years" />
       <Section>
         <h1
-          className="font-stylized text-lg leading-none md:text-2xl"
+          className="font-stylized text-2xl leading-none md:text-3xl"
           data-testid="category"
         >
-          <IoPlanet className="mr-2.5 text-xl" />
+          <IoPlanet className="mr-2.5 text-3xl" />
           projects
         </h1>
-        <p className="mx-auto max-w-lg p-2 font-plain text-primary-25">
+        <p className="mx-auto mt-2 max-w-xl p-2 font-plain text-lg text-primary-25">
           A collection of works that vary from fullstack web applications, to
           custom NPM packages, to standalone Mac OS and Linux applications.
         </p>
