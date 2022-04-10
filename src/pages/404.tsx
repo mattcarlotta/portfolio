@@ -11,7 +11,7 @@ export default function ErrorPage() {
       <Head>
         <title>Page Not Found | Matt Carlotta</title>
       </Head>
-      <Project data-testid="not-found-page">
+      <Project dataTestId="not-found-page">
         <PanelTitle id="file-not-found" data-testid="panel-title">
           file not found
         </PanelTitle>

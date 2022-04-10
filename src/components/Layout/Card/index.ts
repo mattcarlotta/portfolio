@@ -47,9 +47,7 @@ const Card = styled.div`
       border-bottom-left-radius: 4px;
     }
 
-    #top-bar,
-    #middle-bar,
-    #bottom-bar {
+    [data-title='bar'] {
       background: #73b9ff;
       opacity: 0.4;
     }

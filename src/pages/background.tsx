@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
-import Flex from '~components/Layout/Flex'
 import Image from '~components/Layout/Image'
 import Info from '~components/Layout/Info'
 import Panel from '~components/Layout/Panel'
@@ -63,13 +62,6 @@ export default function Background({
   return (
     <>
       <Head />
-      <div className="mt-5 flex items-center justify-center rounded border border-solid border-primary-600 bg-primary-700 p-4">
-        <Image
-          {...background.profileImage}
-          alt={background.profileImage.description}
-          className="rounded"
-        />
-      </div>
       <Project>
         <PanelTitle id="background-title" data-testid="panel-title">
           {background.title}
@@ -77,6 +69,13 @@ export default function Background({
         <Panel>
           <div className="p-5 tracking-wide">
             <section>
+              <div className="mt-2 flex flex-col items-center justify-center overflow-hidden rounded border border-solid border-primary-600 bg-primary-700 py-4">
+                <Image
+                  {...background.profileImage}
+                  alt={background.profileImage.description}
+                  className="rounded"
+                />
+              </div>
               <DetailHeadline id="details">Details:</DetailHeadline>
               <div className="pl-3 font-plain text-md">
                 <Info className="text-lime-500" dataTestId="status">
@@ -131,61 +130,40 @@ export default function Background({
                 {background.tech.data.map(({ technology, level }, index) => (
                   <li key={technology}>
                     <div className="font-plain text-xl leading-relaxed">
-                      <Flex
-                        breakpoint
-                        width="100%"
-                        flexwrap
-                        style={{
-                          background: index % 2 ? '#001031' : 'transparent',
-                          padding: '0 10px'
-                        }}
+                      <div
+                        className={clsx(
+                          'px-2.5 text-center sm:flex sm:items-center',
+                          index % 2 ? 'bg-primary-900' : 'bg-transparent'
+                        )}
                       >
-                        <Flex
-                          breakpoint
-                          as="p"
-                          padding="0"
-                          margin="0"
-                          justify="flex-start"
-                          width="50%"
-                          style={{ color: '#0088ff' }}
-                        >
+                        <p className="text-primary-25 sm:flex sm:flex-1">
                           {technology}
-                        </Flex>
-                        <Flex
-                          as="p"
-                          breakpoint
-                          padding="0"
-                          margin="0"
-                          justify="flex-end"
-                          width="50%"
-                        >
+                        </p>
+                        <p className="text-primary-25 sm:flex sm:flex-1 sm:justify-end">
                           {[
-                            Array.from({ length: level }, (_, i) => (
-                              <AiFillStar
-                                key={`${technology}-${i}`}
-                                className="mr-2 align-middle text-xl text-primary-25"
-                              />
-                            ))
-                          ]}
-                          {5 - level > 0
-                            ? Array.from({ length: 5 - level }, (_, i) => (
+                            Array.from({ length: 5 }, (_, i) =>
+                              i < level ? (
+                                <AiFillStar
+                                  key={`${technology}-level-${i}`}
+                                  className="mr-2 align-middle text-xl text-primary-25"
+                                />
+                              ) : (
                                 <AiOutlineStar
-                                  key={`not-${technology}-${i}`}
+                                  key={`${technology}-not-level-${i}`}
                                   className="mr-2 align-middle text-xl text-gray"
                                 />
-                              ))
-                            : null}
-                        </Flex>
-                      </Flex>
+                              )
+                            )
+                          ]}
+                        </p>
+                      </div>
                     </div>
                   </li>
                 ))}
               </ul>
             </section>
             <section>
-              <DetailHeadline id="formal-education">
-                formal Education:
-              </DetailHeadline>
+              <DetailHeadline id="formal-education">Education:</DetailHeadline>
               <p className="px-4 pt-2 font-plain text-xl" data-testid="brief">
                 San Jose State University | 2005-2012 | 3.5GPA
               </p>

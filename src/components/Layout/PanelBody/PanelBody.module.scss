@@ -1,0 +1,9 @@
+.panelBody {
+  @apply w-full overflow-hidden rounded border-2 border-solid border-transparent bg-transparent text-left text-primary-25 shadow-ring;
+  border-image: linear-gradient(to top, #73b9ff 0%, #005193 50%, #005193 100%);
+  border-image-slice: 1;
+
+  [data-title='bar'] {
+    @apply opacity-100;
+  }
+}

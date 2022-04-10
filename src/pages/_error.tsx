@@ -11,7 +11,7 @@ export default function ErrorPage() {
       <Head>
         <title>Server Error | Matt Carlotta</title>
       </Head>
-      <Project data-testid="server-error-page">
+      <Project dataTestId="server-error-page">
         <PanelTitle id="internal-server-error" data-testid="panel-title">
           internal server error
         </PanelTitle>
