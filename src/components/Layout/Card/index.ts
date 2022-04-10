@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 const Card = styled.div`
   width: 300px;
   height: 260px;
-  margin: 5px;
+  margin: 10px 5px;
   text-align: center;
   background: transparent;
   color: #0096ff;

@@ -24,13 +24,13 @@ const OrbitsIcon = styled(Orbits)`
 
   .container {
     position: absolute;
-    top: -50px;
+    top: -70px;
     left: 0;
     right: 0;
     bottom: 0;
     margin: auto;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     transform: rotateX(60deg) rotateZ(-30deg);
     animation: solar-rotate 20s infinite linear;
     transform-style: preserve-3d;
@@ -53,8 +53,8 @@ const OrbitsIcon = styled(Orbits)`
   }
 
   .circle {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     position: absolute;
     transform-style: preserve-3d;
     border-radius: 100%;
@@ -79,8 +79,8 @@ const OrbitsIcon = styled(Orbits)`
       right: 0;
       bottom: 0;
       margin: auto;
-      width: 5px;
-      height: 5px;
+      width: 7px;
+      height: 7px;
       border-radius: 100%;
       background: #2c4776;
       box-shadow: 0 0 5px 2px #2c4776;

@@ -15,7 +15,7 @@ const ExplorationsPage = ({
     <Head description="A small collection of codesandbox explorations I've created over the years" />
     <Section>
       <h1 className="font-stylized text-2xl leading-none md:text-3xl">
-        <ImRocket className="mr-2.5 text-3xl" />
+        <ImRocket className="mr-2.5 text-2xl" />
         Explorations
       </h1>
       <p className="mx-auto mt-2 max-w-2xl p-2 font-plain text-lg text-primary-25">
