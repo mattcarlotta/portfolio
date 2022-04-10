@@ -44,7 +44,7 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
   })
 
@@ -54,7 +54,7 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.click(getByTestId('next-image'))
@@ -80,7 +80,7 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 456'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.click(getByTestId('next-image'))
@@ -98,7 +98,7 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.click(getByTestId('previous-image'))
@@ -116,7 +116,7 @@ describe('ModalDialog', () => {
     user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.click(getByTestId('button-example 456'))
@@ -134,7 +134,7 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.tab()
@@ -152,7 +152,7 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.keyboard('{ArrowRight}')
@@ -170,7 +170,7 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.keyboard('{ArrowLeft}')
@@ -188,7 +188,7 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.tab({ shift: true })
@@ -206,13 +206,15 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.keyboard('{Escape}')
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).not.toBeInTheDocument()
+      expect(
+        document.querySelector('#image-gallery-modal')
+      ).not.toBeInTheDocument()
     })
   })
 
@@ -222,13 +224,13 @@ describe('ModalDialog', () => {
     await user.click(getByTestId('example 123'))
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
 
     await user.keyboard('{ArrowUp}')
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
   })
 
@@ -238,7 +240,7 @@ describe('ModalDialog', () => {
     fireEvent.keyDown(getByTestId('example 123'), { key: 'Enter' })
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).toBeInTheDocument()
+      expect(document.querySelector('#image-gallery-modal')).toBeInTheDocument()
     })
   })
 
@@ -248,7 +250,9 @@ describe('ModalDialog', () => {
     fireEvent.keyDown(getByTestId('example 123'), { key: 'ArrowUp' })
 
     await waitFor(() => {
-      expect(document.querySelector('#modal')).not.toBeInTheDocument()
+      expect(
+        document.querySelector('#image-gallery-modal')
+      ).not.toBeInTheDocument()
     })
   })
 })

@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
               {HEADERLINKS.map(({ Icon, href, page }) => (
                 <LinkIcon
                   key={page}
-                  className="my-1.5 p-1 text-tiny lg:my-0"
+                  className="my-1.5 p-2.5 text-tiny lg:my-0 lg:mx-2 lg:p-1"
                   dataTestId={`go-to-${page}`}
                   ariaLabel={`Navigate to my ${page} page`}
                   href={href}

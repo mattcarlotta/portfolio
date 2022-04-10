@@ -6,7 +6,7 @@ import Image from '~components/Layout/Image'
 import Tooltip from '~components/Layout/Tooltip'
 import Link from '~components/Navigation/Link'
 import OutsideLink from '~components/Navigation/OutsideLink'
-import { FaLink, FaRegFileCode, FiPower, ImInfo } from '~icons'
+import { FaRegFileCode, FiPower, ImInfo, IoRocket } from '~icons'
 import type { CONTENTFUL_JSON } from '~types'
 import ContentfulRichText from '../ContentfulRichText'
 
@@ -113,7 +113,7 @@ const CardPreview = ({
               href={location}
               className="mx-1.5 p-1.5"
             >
-              <FaLink style={{ fontSize: 18 }} />
+              <IoRocket style={{ fontSize: 18 }} />
             </OutsideLink>
           </Tooltip>
         )}
@@ -130,7 +130,7 @@ const CardPreview = ({
         )}
       </Flex>
       <header>
-        <div className="px-2.5 pt-0 pb-4 font-plain text-base">
+        <div className="px-2.5 pt-0 pb-4 font-plain text-md">
           {typeof description === 'string' ? (
             description
           ) : (

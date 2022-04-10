@@ -15,7 +15,7 @@ import type {
   TransitionProps
 } from '~types'
 
-const ImageViewer = withStyles(() => ({
+const ModalImageGallery = withStyles(() => ({
   paper: {
     backgroundColor: '#00020e'
   }
@@ -183,10 +183,10 @@ const ModalDialog = ({
           ))}
         </div>
       </section>
-      <ImageViewer
+      <ModalImageGallery
         fullScreen
         scroll="body"
-        id="modal"
+        id="image-gallery-modal"
         open={open}
         onClose={handleModalClose}
         aria-labelledby="actions-dialog"
@@ -252,7 +252,7 @@ const ModalDialog = ({
             ))}
           </div>
         </div>
-      </ImageViewer>
+      </ModalImageGallery>
     </>
   )
 }

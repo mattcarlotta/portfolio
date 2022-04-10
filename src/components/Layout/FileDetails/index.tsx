@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import Info from '~components/Layout/Info'
 import OutsideLink from '~components/Navigation/OutsideLink'
-import { AiOutlineFolderOpen, FaLink, FaRegFileCode, FiPower } from '~icons'
+import { AiOutlineFolderOpen, FaRegFileCode, FiPower, IoRocket } from '~icons'
 import type { CSSProperties } from '~types'
 
 export type FileDetailsProps = {
@@ -39,7 +39,7 @@ const FileDetails = ({
     </Info>
     {location && (
       <Info dataTestId="location">
-        <FaLink style={style} />
+        <IoRocket style={style} />
         <OutsideLink
           dataTestId="location-link"
           href={location}

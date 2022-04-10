@@ -16,10 +16,10 @@ export default function Projects({
       <Head description="A collection of personal and professional projects that I've created over the years" />
       <Section>
         <h1
-          className="font-stylized text-2xl leading-none md:text-3xl"
+          className="break-words font-stylized text-2xl leading-none md:text-3xl"
           data-testid="category"
         >
-          <IoPlanet className="mr-2.5 text-3xl" />
+          <IoPlanet className="mb-2 mr-2.5 text-3xl sm:mb-0" />
           projects
         </h1>
         <p className="mx-auto mt-2 max-w-xl p-2 font-plain text-lg text-primary-25">

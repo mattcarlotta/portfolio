@@ -73,7 +73,6 @@
     "jest-resolve": "^27.5.1",
     "jest-transform-stub": "^2.0.0",
     "jsdom": "^19.0.0",
-    "opener": "^1.5.2",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.8",

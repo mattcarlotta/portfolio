@@ -17,13 +17,13 @@ export default function Home({
       <Section>
         <h1
           style={{ textShadow: 'rgb(119, 110, 183) 0px 0px 3px' }}
-          className="m-0 text-5xl uppercase leading-none tracking-wider text-white"
+          className="m-0 text-3xl uppercase leading-none tracking-wider text-white sm:text-5xl"
         >
           MATT CARLOTTA
         </h1>
         <h2
           style={{ textShadow: 'rgb(119, 110, 183) 0px 0px 1px' }}
-          className="m-0 p-0 text-lg text-primary"
+          className="m-0 p-0 text-tiny text-primary sm:text-lg"
         >
           Fullstack Software Engineer
         </h2>
