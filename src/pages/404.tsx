@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Flex from '~components/Layout/Flex'
 import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
@@ -17,12 +16,12 @@ export default function ErrorPage() {
           file not found
         </PanelTitle>
         <Panel>
-          <Flex justify="center" height="700px" direction="column">
-            <GiExplodingPlanet style={{ fontSize: 250, marginBottom: 40 }} />
+          <div className="flex h-[44rem] flex-col items-center justify-center">
+            <GiExplodingPlanet className="mb-10 text-ginormous" />
             <div className="py-2.5 px-5 tracking-wide">
               Unable to locate the requested file.
             </div>
-          </Flex>
+          </div>
         </Panel>
       </Project>
       <GoBack href="/" title="home" />

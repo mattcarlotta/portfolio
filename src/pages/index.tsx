@@ -1,6 +1,6 @@
 import CardPreview from '~components/Layout/CardPreview'
-import Flex from '~components/Layout/Flex'
 import Orbits from '~components/Layout/Orbits'
+import Section from '~components/Layout/Section'
 import Head from '~components/Navigation/Header'
 import type { CONTENTFUL_PAGE_CARD } from '~types'
 import { getHomepageCards } from '~utils/contentfulApi'
@@ -14,26 +14,24 @@ export default function Home({
   return (
     <>
       <Head />
-      <header
-        className="border-primary-600 mb-[8rem] mt-2 rounded border bg-primary-700 p-4 text-center"
-        data-testid="header"
-      >
+      <Section>
         <h1
           style={{ textShadow: 'rgb(119, 110, 183) 0px 0px 3px' }}
           className="m-0 text-4xl uppercase leading-none tracking-wider text-white"
         >
           MATT CARLOTTA
         </h1>
-        <h2 className="m-0 p-0 text-tiny text-primary">
+        <h2
+          style={{ textShadow: 'rgb(119, 110, 183) 0px 0px 1px' }}
+          className="m-0 p-0 text-tiny text-primary"
+        >
           Fullstack Software Engineer
         </h2>
         <Orbits />
-      </header>
-      <Flex
+      </Section>
+      <div
+        className="mt-20 flex flex-wrap items-center justify-center"
         data-testid="home-page"
-        margin="75px 0 0 0"
-        justify="center"
-        flexwrap
       >
         {cards.map(({ sys, preview, slug, ...rest }) => (
           <CardPreview
@@ -46,7 +44,7 @@ export default function Home({
             alt={preview.description}
           />
         ))}
-      </Flex>
+      </div>
     </>
   )
 }

@@ -76,13 +76,17 @@ module.exports = {
         '4xl': '2.25rem',
         '5xl': '3rem',
         '6xl': '4rem',
-        '7xl': '5rem'
+        '7xl': '5rem',
+        ginormous: '17rem'
       },
       height: {
         preview: '4rem'
       },
+      maxWidth: {
+        main: '950px'
+      },
       minHeight: {
-        body: '40.625rem'
+        body: '30rem'
       },
       minWidth: {
         preview: '4rem'

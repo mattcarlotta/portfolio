@@ -3,7 +3,6 @@ import Link from 'next/link'
 import type { CSSProperties, ReactNode } from '~types'
 
 export type LinkIconProps = {
-  active?: boolean
   ariaLabel: string
   asHref?: string
   dataTestId: string
@@ -15,7 +14,6 @@ export type LinkIconProps = {
 }
 
 export default function LinkIcon({
-  active,
   ariaLabel,
   asHref,
   children,
@@ -32,8 +30,7 @@ export default function LinkIcon({
         data-testid={dataTestId}
         style={style}
         className={clsx(
-          'flex w-full items-center justify-center rounded border-2 border-transparent no-underline transition-[box-shadow] duration-300 ease-in-out hover:text-white focus:border-primary-100 focus:text-white focus:shadow-ring sm:mx-0 md:mx-1 md:w-auto md:p-2',
-          active ? 'border-primary-100 text-white shadow-ring' : 'text-primary',
+          'flex w-full items-center justify-center rounded border-2 border-transparent text-primary no-underline transition-[box-shadow] duration-300 ease-in-out hover:text-white focus:border-primary-100 focus:text-white focus:shadow-ring sm:mx-0 md:mx-1 md:w-auto md:p-2',
           className
         )}
       >

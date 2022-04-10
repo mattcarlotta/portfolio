@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import ImageContext from '~components/ImageContext'
 import HEADERLINKS from '~components/Layout/HEADERLINKS'
@@ -9,8 +8,6 @@ import '~styles/globals.scss'
 import type { AppProps } from '~types'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { asPath } = useRouter()
-
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) jssStyles.parentElement?.removeChild(jssStyles)
@@ -31,7 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
               {HEADERLINKS.map(({ Icon, href, page }) => (
                 <LinkIcon
                   key={page}
-                  active={asPath.includes(page)}
                   className="my-1.5 p-1 text-sm lg:my-0 lg:text-xs"
                   dataTestId={`go-to-${page}`}
                   ariaLabel={`Navigate to my ${page} page`}
@@ -43,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
               ))}
             </div>
           </nav>
-          <div className="mx-auto h-full w-full max-w-3xl px-2.5">
+          <main className="mx-auto h-full w-full max-w-main px-2.5 lg:px-0">
             <div className="min-h-body p-2.5 md:p-0" data-testid="body">
               <Component {...pageProps} />
             </div>
@@ -52,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 ©{new Date().getFullYear()} matt carlotta
               </p>
             </footer>
-          </div>
+          </main>
         </ImageContext>
       </ScrollHeightContext>
     </>

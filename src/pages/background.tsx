@@ -8,6 +8,7 @@ import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
 import SubTitle from '~components/Layout/SubTitle'
+import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
 import OutsideLink from '~components/Navigation/OutsideLink'
 import {
@@ -63,7 +64,7 @@ export default function Background({
   return (
     <>
       <Head />
-      <div className="mt-2 flex items-center justify-center">
+      <div className="mt-5 flex items-center justify-center rounded border border-primary-600 bg-primary-700 p-4">
         <Image
           {...background.profileImage}
           alt={background.profileImage.description}
@@ -215,6 +216,7 @@ export default function Background({
           </div>
         </Panel>
       </Project>
+      <GoBack href="/" title="Home" />
     </>
   )
 }
