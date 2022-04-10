@@ -199,7 +199,7 @@ const ModalDialog = ({
             {currentIndex + 1} of {snapsLength}
           </div>
           <h2
-            className="mt-8 p-5 text-center text-2xl text-white sm:mt-0"
+            className="mt-10 p-5 text-center text-md text-white sm:mt-0 sm:text-2xl"
             data-testid="modal-title"
           >
             {title}

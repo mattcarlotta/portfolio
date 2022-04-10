@@ -34,7 +34,7 @@ export default function ProjectPageComponent({
             <section>
               <DetailHeadline id="description">Description:</DetailHeadline>
               <div
-                className="pl-4 font-plain text-xl tracking-wide"
+                className="px-4 font-plain text-xl tracking-wide"
                 data-testid="brief"
               >
                 <ContentfulRichText json={project.description.json} />
@@ -42,7 +42,7 @@ export default function ProjectPageComponent({
             </section>
             <section>
               <DetailHeadline id="tech">Tech Specs:</DetailHeadline>
-              <ul data-testid="tech-list" className="list-none p-2 py-4">
+              <ul data-testid="tech-list" className="list-none p-2">
                 {project.tech.map((item, idx) => (
                   <li
                     className={clsx(
@@ -51,7 +51,7 @@ export default function ProjectPageComponent({
                     )}
                     key={item}
                   >
-                    <IoPlanet className="mr-4 align-middle" />
+                    <IoPlanet className="mr-3 align-middle" />
                     {item}
                   </li>
                 ))}
