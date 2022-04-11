@@ -149,6 +149,7 @@ const ModalDialog = ({
     const previewImage = title
       ? document.getElementById(`button-preview-${title}`)
       : null
+
     /* istanbul ignore next */
     if (previewImage?.scrollIntoView)
       previewImage.scrollIntoView({
