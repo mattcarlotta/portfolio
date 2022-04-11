@@ -1,20 +1,26 @@
+import { CacheProvider, EmotionCache } from '@emotion/react'
 import Head from 'next/head'
-import { useEffect } from 'react'
 import ImageContext from '~components/ImageContext'
 import HEADERLINKS from '~components/Layout/HEADERLINKS'
 import Link from '~components/Navigation/Link'
 import ScrollHeightContext from '~components/ScrollHeightContext'
 import '~styles/globals.scss'
 import type { AppProps } from '~types'
+import createEmotionCache from '~utils/emotionCache'
 
-export default function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) jssStyles.parentElement?.removeChild(jssStyles)
-  }, [])
+const clientSideEmotionCache = createEmotionCache()
 
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache
+}
+
+export default function App({
+  Component,
+  emotionCache = clientSideEmotionCache,
+  pageProps
+}: MyAppProps) {
   return (
-    <>
+    <CacheProvider value={emotionCache}>
       <Head>
         <meta
           name="viewport"
@@ -51,6 +57,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </main>
         </ImageContext>
       </ScrollHeightContext>
-    </>
+    </CacheProvider>
   )
 }

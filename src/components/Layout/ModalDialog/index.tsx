@@ -1,4 +1,7 @@
-import { Dialog, Slide, withStyles } from '@material-ui/core'
+import Dialog from '@mui/material/Dialog'
+import Slide from '@mui/material/Slide'
+import { styled } from '@mui/material/styles'
+import type { TransitionProps } from '@mui/material/transitions'
 import { forwardRef, useCallback, useEffect, useState } from 'react'
 import BackgroundImageViewer from '~components/Layout/BackgroundImage'
 import Button from '~components/Layout/Button'
@@ -12,19 +15,18 @@ import type {
   CONTENTFUL_IMAGE,
   KeyboardEvent as onKeyEvent,
   ReactElement,
-  Ref,
-  TransitionProps
+  Ref
 } from '~types'
 
-const ModalImageGallery = withStyles(() => ({
-  paper: {
-    background: '#00020e'
+const ModalImageGallery = styled(Dialog)`
+  & .MuiPaper-root {
+    background: #00020e;
   }
-}))(Dialog)
+`
 
 const SlideTransition = forwardRef(
   (
-    props: TransitionProps & { children?: ReactElement<any, any> },
+    props: TransitionProps & { children: ReactElement<any, any> },
     ref: Ref<unknown>
   ) => <Slide direction="right" ref={ref} {...props} />
 )

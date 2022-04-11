@@ -2,7 +2,6 @@
 import type { Document, NodeData } from '@contentful/rich-text-types'
 import { ParsedUrlQuery } from 'querystring'
 
-export { TransitionProps } from '@material-ui/core/transitions'
 export type {
   GetStaticPaths,
   GetStaticProps,

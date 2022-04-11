@@ -1,4 +1,6 @@
-import { makeStyles, Tooltip } from '@material-ui/core'
+// import { makeStyles, Tooltip } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
 import type { ReactElement, ReactNode } from '~types'
 
 export type TTooltipPlacement =
@@ -16,15 +18,18 @@ export type TTooltipPlacement =
   | 'top-start'
   | undefined
 
-const useClasses = makeStyles(() => ({
-  arrow: {
-    color: '#0088ff'
-  },
-  tooltip: {
-    background: '#0088ff',
-    boxShadow: '0px 0px 8px -2px rgba(0, 64, 255, 1)'
+const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} arrow classes={{ popper: className }} />
+))`
+  & .MuiTooltip-arrow {
+    color: #0088ff;
   }
-}))
+
+  & .MuiTooltip-tooltip {
+    background: #0088ff;
+    box-shadow: 0px 0px 8px -2px rgba(0, 64, 255, 1);
+  }
+`
 
 export type TCustomTooltipProps = {
   children: ReactNode
@@ -32,23 +37,21 @@ export type TCustomTooltipProps = {
   title: ReactNode
 }
 
-const CustomTooltip = ({
+const MuiTooltip = ({
   children,
   placement = 'top',
   title
 }: TCustomTooltipProps): ReactElement => {
   return (
-    <Tooltip
-      arrow
-      classes={useClasses()}
+    <CustomTooltip
       placement={placement}
       title={
         <div className="m-0 p-px text-center font-plain text-base">{title}</div>
       }
     >
       <span className="text-center">{children}</span>
-    </Tooltip>
+    </CustomTooltip>
   )
 }
 
-export default CustomTooltip
+export default MuiTooltip
