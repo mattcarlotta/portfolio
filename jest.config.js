@@ -6,7 +6,7 @@ module.exports = {
     '~(.*)$': '<rootDir>/src/$1'
   },
   transform: {
-    '^.+\\.(ts|tsx)$': 'babel-jest',
+    '^.+\\.(ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
     '.+\\.(css|styl|less|sass|scss|gif|ico|png|jpg|jpeg|svg|ttf|webp|woff2)$':
       'jest-transform-stub'
   },
