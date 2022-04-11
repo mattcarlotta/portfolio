@@ -10,14 +10,12 @@ module.exports = (api) => {
         'next/babel',
         {
           'preset-react': {
-            runtime: 'automatic',
-            importSource: '@emotion/react'
+            runtime: 'automatic'
           }
         }
       ]
     ],
     plugins: [
-      '@emotion/babel-plugin',
       INPRODUCTION &&
         !INSTAGING && [
           'react-remove-properties',

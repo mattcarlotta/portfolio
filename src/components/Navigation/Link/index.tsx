@@ -1,8 +1,8 @@
 import clsx from 'clsx'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import type { ReactNode } from '~types'
 
-export type LinkComponentProps = {
+export type LinkProps = {
   ariaLabel: string
   asHref?: string
   dataTestId: string
@@ -12,7 +12,7 @@ export type LinkComponentProps = {
   scroll?: boolean
 }
 
-export default function LinkComponent({
+export default function Link({
   ariaLabel,
   asHref,
   children,
@@ -20,9 +20,9 @@ export default function LinkComponent({
   dataTestId,
   href,
   scroll
-}: LinkComponentProps) {
+}: LinkProps) {
   return (
-    <Link href={href} as={asHref} prefetch={false} scroll={scroll} passHref>
+    <NextLink href={href} as={asHref} prefetch={false} scroll={scroll} passHref>
       <a
         aria-label={ariaLabel}
         data-testid={dataTestId}
@@ -33,6 +33,6 @@ export default function LinkComponent({
       >
         {children}
       </a>
-    </Link>
+    </NextLink>
   )
 }

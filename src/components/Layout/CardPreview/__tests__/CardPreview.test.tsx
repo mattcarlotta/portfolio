@@ -63,6 +63,6 @@ describe('Image', () => {
 
   it('renders inactive projects', () => {
     const { getByTestId } = render(<CardPreview {...nextProps} />)
-    expect(getByTestId('fipower')).toHaveStyle('color:yellow')
+    expect(getByTestId('fipower')).toHaveClass('text-yellow-500')
   })
 })
