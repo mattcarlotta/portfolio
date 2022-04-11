@@ -24,7 +24,7 @@ const ExplorationsPage = ({
         stackoverflow questions.
       </p>
     </Section>
-    <div
+    <section
       className="mb-20 flex flex-wrap items-center justify-center"
       data-testid="home-page"
     >
@@ -42,7 +42,7 @@ const ExplorationsPage = ({
           alt={preview.description}
         />
       ))}
-    </div>
+    </section>
   </>
 )
 

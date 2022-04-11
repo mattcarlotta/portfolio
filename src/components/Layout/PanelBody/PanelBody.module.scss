@@ -4,6 +4,6 @@
   border-image-slice: 1;
 
   [data-title='bar'] {
-    @apply opacity-100;
+    @apply block opacity-100;
   }
 }

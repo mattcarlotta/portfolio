@@ -19,7 +19,7 @@
     }
 
     [data-title='bar'] {
-      @apply bg-primary-200 opacity-40;
+      @apply block bg-primary-200 opacity-40;
     }
   }
 }

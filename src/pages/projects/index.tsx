@@ -27,7 +27,7 @@ export default function Projects({
           custom NPM packages, to standalone Mac OS and Linux applications.
         </p>
       </Section>
-      <div
+      <section
         className="mb-20 flex flex-wrap items-center justify-center"
         data-testid="projects-page"
       >
@@ -42,7 +42,7 @@ export default function Projects({
             alt={preview.description}
           />
         ))}
-      </div>
+      </section>
     </>
   )
 }

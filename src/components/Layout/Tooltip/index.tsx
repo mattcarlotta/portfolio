@@ -21,7 +21,7 @@ const useClasses = makeStyles(() => ({
     color: '#0088ff'
   },
   tooltip: {
-    backgroundColor: '#0088ff',
+    background: '#0088ff',
     boxShadow: '0px 0px 8px -2px rgba(0, 64, 255, 1)'
   }
 }))

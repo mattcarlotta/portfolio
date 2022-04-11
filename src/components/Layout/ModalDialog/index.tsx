@@ -18,7 +18,7 @@ import type {
 
 const ModalImageGallery = withStyles(() => ({
   paper: {
-    backgroundColor: '#00020e'
+    background: '#00020e'
   }
 }))(Dialog)
 
