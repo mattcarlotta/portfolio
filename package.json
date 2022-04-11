@@ -38,7 +38,7 @@
     "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^14.0.4",
+    "@testing-library/user-event": "^14.1.0",
     "@types/jest": "^27.4.1",
     "@types/jsdom": "^16.2.14",
     "@types/lodash.throttle": "^4.1.6",

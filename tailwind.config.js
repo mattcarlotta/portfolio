@@ -97,9 +97,9 @@ module.exports = {
       },
       keyframes: {
         pulse: {
-          '0%': { background: '#00020e' },
-          '50%': { background: '#00264d' },
-          '100%': { background: '#00020e' }
+          '0%': { opacity: 0.85 },
+          '50%': { opacity: 0.4 },
+          '100%': { opacity: 0.85 }
         }
       },
       maxWidth: {

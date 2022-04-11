@@ -71,6 +71,7 @@ export default function Background({
             <section>
               <div className="mt-2 flex flex-col items-center justify-center overflow-hidden rounded border border-solid border-primary-600 bg-primary-700 py-4">
                 <Image
+                  priority
                   {...background.profileImage}
                   alt={background.profileImage.description}
                   className="rounded"

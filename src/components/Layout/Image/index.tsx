@@ -67,7 +67,7 @@ export default function Image({
           </>
         ) : (
           <div
-            className="mx-auto animate-pulse rounded"
+            className="mx-auto animate-pulse rounded bg-primary-800"
             data-testid="placeholder"
             style={{
               height,
