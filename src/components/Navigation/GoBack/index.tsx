@@ -13,8 +13,6 @@ export default function GoBack({ href, title }: GoBackProps) {
         dataTestId="navigate-home"
         ariaLabel={`Navigate back to ${title} page`}
         href={href}
-        fontSize="15px"
-        showUnderline
       >
         <GoHome className="mr-1 align-middle text-xl" />
         go back to {title} page

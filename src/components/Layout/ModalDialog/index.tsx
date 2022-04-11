@@ -10,6 +10,7 @@ import PreviewCard from '~components/Layout/PreviewCard'
 import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
 import type {
   CONTENTFUL_IMAGE,
+  KeyboardEvent as onKeyEvent,
   ReactElement,
   Ref,
   TransitionProps
@@ -122,10 +123,10 @@ const ModalDialog = ({
   )
 
   const handleSelectImage = (
-    { key }: { key: string },
+    e: onKeyEvent<HTMLDivElement>,
     selectedIndex: number
   ): void => {
-    switch (key) {
+    switch (e.key) {
       case 'Enter':
         handleImageClick(selectedIndex)
         break
@@ -135,10 +136,10 @@ const ModalDialog = ({
   }
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('keydown', handleKeyDown)
     }
   }, [handleKeyDown])
 
@@ -166,8 +167,7 @@ const ModalDialog = ({
           {snapshots.map(({ title, ...rest }, idx) => (
             <section key={title}>
               <PreviewCard
-                data-testid={title}
-                tabIndex={0}
+                dataTestId={title}
                 onClick={() => handleImageClick(idx)}
                 onKeyDown={(event) => handleSelectImage(event, idx)}
               >

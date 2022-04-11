@@ -1,0 +1,62 @@
+@keyframes solar {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+.wrapper {
+  @apply relative z-[-1] hidden opacity-40 sm:block;
+}
+
+.container {
+  @apply absolute top-[-4rem] left-0 right-0 bottom-0 m-auto h-[12.5rem] w-[12.5rem];
+  transform: rotateX(60deg) rotateZ(-30deg);
+  animation: solar 20s infinite linear;
+  transform-style: preserve-3d;
+}
+
+.circle {
+  @apply absolute h-[12.5rem] w-[12.5rem] rounded-full shadow-circle;
+  transform-style: preserve-3d;
+
+  &:after {
+    transform: translateZ(90px);
+  }
+
+  &:before {
+    transform: translateZ(-90px);
+  }
+
+  &:before,
+  &:after {
+    @apply absolute top-0 bottom-0 right-0 left-0 m-auto block h-[0.1rem] w-[0.1rem] bg-primary-500 shadow-orbits content-[''];
+  }
+}
+
+.circleOne {
+  @extend .circle;
+  transform: rotateZ(72deg) rotateX(63.435deg);
+}
+
+.circleTwo {
+  @extend .circle;
+  transform: rotateZ(144deg) rotateX(63.435deg);
+}
+
+.circleThree {
+  @extend .circle;
+  transform: rotateZ(216deg) rotateX(63.435deg);
+}
+
+.circleFour {
+  @extend .circle;
+  transform: rotateZ(288deg) rotateX(63.435deg);
+}
+
+.circleFive {
+  @extend .circle;
+  transform: rotateZ(360deg) rotateX(63.435deg);
+}

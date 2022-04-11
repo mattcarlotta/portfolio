@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
 import { useImageContext } from '~components/ImageContext'
-import LoadingPlaceholder from '~components/Layout/LoadingPlaceholder'
 import { useScrollHeight } from '~components/ScrollHeightContext'
 import calculateScale from '~utils/calculateScale'
 
@@ -67,11 +66,13 @@ export default function Image({
             />
           </>
         ) : (
-          <LoadingPlaceholder
+          <div
+            className="mx-auto animate-pulse rounded"
             data-testid="placeholder"
-            height={height}
-            width={width}
-            isLoading={isLoading}
+            style={{
+              height,
+              width
+            }}
           />
         )}
       </picture>

@@ -3,7 +3,6 @@ import FileDetails from '~components/Layout/FileDetails'
 import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
-import SubTitle from '~components/Layout/SubTitle'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
 import type { CONTENTFUL_EXPLORATIONS_PAGE, ContextParams } from '~types'
@@ -39,27 +38,24 @@ export default function ExplorationsPage({
             </section>
             <section>
               <DetailHeadline id="description">Description:</DetailHeadline>
-              <SubTitle style={{ marginTop: 20 }} data-testid="description">
+              <div
+                className="mt-2 px-4 font-plain text-xl tracking-wide"
+                data-testid="exploration-description"
+              >
                 {exploration.preview.description}
-              </SubTitle>
+              </div>
             </section>
             <section>
               <DetailHeadline id="playground">Playground:</DetailHeadline>
-              <SubTitle style={{ margin: '20px 0', padding: '0 10px' }}>
+              <div className="my-5 px-2.5 font-plain">
                 <iframe
                   src={`https://codesandbox.io/embed/${exploration.sandboxId}?codemirror=1&fontsize=14&hidenavigation=1&view=preview&hidedevtools=1&theme=dark`}
                   title={exploration.title}
-                  style={{
-                    width: '100%',
-                    height: '500px',
-                    border: 0,
-                    borderRadius: 4,
-                    overflow: 'hidden'
-                  }}
+                  className="h-[31.25rem] w-full overflow-hidden rounded border-0"
                   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
                   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
                 />
-              </SubTitle>
+              </div>
             </section>
           </div>
         </Panel>

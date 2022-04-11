@@ -16,6 +16,7 @@ export type {
   CSSProperties,
   FC,
   FormEvent,
+  KeyboardEvent,
   MouseEvent,
   ReactElement,
   ReactNode,

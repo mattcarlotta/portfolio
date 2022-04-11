@@ -34,7 +34,7 @@ export default function ProjectPageComponent({
             <section>
               <DetailHeadline id="description">Description:</DetailHeadline>
               <div
-                className="px-4 font-plain text-xl tracking-wide"
+                className="mt-2 px-4 font-plain text-xl tracking-wide"
                 data-testid="brief"
               >
                 <ContentfulRichText json={project.description.json} />

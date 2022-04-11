@@ -1,7 +1,7 @@
+import clsx from 'clsx'
 import Bars from '~components/Layout/Bars'
 import Card from '~components/Layout/Card'
 import CardTitle from '~components/Layout/CardTitle'
-import Flex from '~components/Layout/Flex'
 import Image from '~components/Layout/Image'
 import Tooltip from '~components/Layout/Tooltip'
 import Link from '~components/Navigation/Link'
@@ -54,11 +54,10 @@ const CardPreview = ({
     <div className="panel-container">
       <CardTitle id={title}>{title}</CardTitle>
       <Bars />
-      <Flex justify="center" height="230px" width="100%">
+      <div className="flex h-[14.375rem] items-center justify-center">
         <Link
           dataTestId={title}
           ariaLabel={ariaLabel}
-          padding="0px"
           href={`/${href}/${slug}`}
         >
           <Image
@@ -72,23 +71,21 @@ const CardPreview = ({
             className="rounded"
           />
         </Link>
-      </Flex>
-      <Flex justify="center" width="100%" margin="5px 0 10px 0">
+      </div>
+      <div className="mt-1 mb-2.5 flex items-center justify-center">
         {Boolean(status) && (
           <Tooltip title={status}>
             <Link
               dataTestId={`status-${title}`}
               ariaLabel={ariaLabel}
-              padding="5px"
-              margin="0 5px"
               href={`/${href}/${slug}`}
             >
               <FiPower
                 data-testid="fipower"
-                style={{
-                  color: active ? 'limegreen' : 'yellow',
-                  fontSize: 18
-                }}
+                className={clsx(
+                  'text-lg',
+                  active ? 'text-lime-500' : 'text-yellow-500'
+                )}
               />
             </Link>
           </Tooltip>
@@ -98,11 +95,9 @@ const CardPreview = ({
             <Link
               dataTestId={`info-${title}`}
               ariaLabel={ariaLabel}
-              padding="5px"
-              margin="0 5px"
               href={`/${href}/${slug}`}
             >
-              <ImInfo style={{ fontSize: 18 }} />
+              <ImInfo className="text-lg" />
             </Link>
           </Tooltip>
         )}
@@ -113,7 +108,7 @@ const CardPreview = ({
               href={location}
               className="mx-1.5 p-1.5"
             >
-              <IoRocket style={{ fontSize: 18 }} />
+              <IoRocket className="text-lg" />
             </OutsideLink>
           </Tooltip>
         )}
@@ -124,11 +119,11 @@ const CardPreview = ({
               href={source}
               className="mx-1.5 p-1.5"
             >
-              <FaRegFileCode style={{ fontSize: 20 }} />
+              <FaRegFileCode className="text-lg" />
             </OutsideLink>
           </Tooltip>
         )}
-      </Flex>
+      </div>
       <header>
         <div className="px-2.5 pt-0 pb-4 font-plain text-md">
           {typeof description === 'string' ? (

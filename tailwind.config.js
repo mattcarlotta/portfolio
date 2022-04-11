@@ -5,8 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        pulse: 'pulse 1.2s infinite'
+      },
       boxShadow: {
+        circle: '0 0 20px #00020c, inset 0 0 20px #2c4776',
         glow: '0px 0px 26px 0px rgba(0, 64, 255, 1)',
+        orbits: '0 0 5px 2px #2c4776',
         ring: 'inset -1px -1px 24px -9px rgb(101 130 255 / 50%), 0px 0px 26px -2px rgb(0 64 255)'
       },
       colors: {
@@ -15,9 +20,12 @@ module.exports = {
           25: '#0088ff',
           50: 'rgba(0, 128, 255, 0.8)',
           100: '#0096ff',
+          400: '#16487a',
+          500: '#2c4776',
           600: '#003366',
           700: 'rgba(2, 28, 48, 0.2)',
           800: '#00264d',
+          850: 'rgba(2, 28, 48, 0.4)',
           900: '#001031'
         },
         gray: {
