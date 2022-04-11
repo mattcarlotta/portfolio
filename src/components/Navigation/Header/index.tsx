@@ -45,7 +45,7 @@ export default function Header({
         property="og:site_name"
         content="Matt Carlotta - Fullstack Software Engineer"
       />
-      <meta property="og:updated_time" content="2022-03-26T20:58:20.097Z" />
+      <meta property="og:updated_time" content="2022-04-11T10:41:30.097Z" />
       <meta
         property="og:image"
         content="https://images.ctfassets.net/hb5otnhwin4m/5XlzNcNVgoachT9KBOv4TW/93e008136db547b48ce1dd4d8bfe5bf1/profile_300.png"
