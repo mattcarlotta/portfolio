@@ -1,7 +1,7 @@
 // import { makeStyles, Tooltip } from '@material-ui/core'
 import { styled } from '@mui/material/styles'
-import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
-import type { ReactElement, ReactNode } from '~types'
+import Tooltip from '@mui/material/Tooltip'
+import type { ReactElement, ReactNode, TooltipProps } from '~types'
 
 export type TTooltipPlacement =
   | 'bottom'

@@ -2,6 +2,9 @@
 import type { Document, NodeData } from '@contentful/rich-text-types'
 import { ParsedUrlQuery } from 'querystring'
 
+export type { EmotionCache } from '@emotion/react'
+export type { TooltipProps } from '@mui/material/Tooltip'
+export type { TransitionProps } from '@mui/material/transitions'
 export type {
   GetStaticPaths,
   GetStaticProps,

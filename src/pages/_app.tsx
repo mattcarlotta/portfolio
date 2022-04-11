@@ -1,12 +1,12 @@
-import { CacheProvider, EmotionCache } from '@emotion/react'
+import { CacheProvider } from '@emotion/react'
 import Head from 'next/head'
 import ImageContext from '~components/ImageContext'
 import HEADERLINKS from '~components/Layout/HEADERLINKS'
 import Link from '~components/Navigation/Link'
 import ScrollHeightContext from '~components/ScrollHeightContext'
 import '~styles/globals.scss'
-import type { AppProps } from '~types'
-import createEmotionCache from '~utils/emotionCache'
+import type { AppProps, EmotionCache } from '~types'
+import createEmotionCache from '~utils/createEmotionCache'
 
 const clientSideEmotionCache = createEmotionCache()
 

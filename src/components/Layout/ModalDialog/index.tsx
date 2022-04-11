@@ -1,7 +1,6 @@
 import Dialog from '@mui/material/Dialog'
 import Slide from '@mui/material/Slide'
 import { styled } from '@mui/material/styles'
-import type { TransitionProps } from '@mui/material/transitions'
 import { forwardRef, useCallback, useEffect, useState } from 'react'
 import BackgroundImageViewer from '~components/Layout/BackgroundImage'
 import Button from '~components/Layout/Button'
@@ -15,7 +14,8 @@ import type {
   CONTENTFUL_IMAGE,
   KeyboardEvent as onKeyEvent,
   ReactElement,
-  Ref
+  Ref,
+  TransitionProps
 } from '~types'
 
 const ModalImageGallery = styled(Dialog)`
@@ -209,7 +209,7 @@ const ModalDialog = ({
           <button
             aria-label="close modal"
             data-testid="close-modal"
-            className="pointer absolute top-4 right-5 border-0 bg-transparent p-1.5 text-2xl text-gray-100 duration-300 ease-in-out hover:text-fire focus:outline-0"
+            className="pointer absolute top-2 right-5 border-0 bg-transparent p-1.5 text-3xl text-gray-100 duration-300 ease-in-out hover:text-fire focus:outline-0"
             type="button"
             onClick={handleModalClose}
           >

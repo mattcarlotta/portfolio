@@ -1,5 +1,5 @@
-/* eslint-disable react/no-invalid-html-attribute */
-// import { ServerStyleSheets } from '@material-ui/styles'
+/* eslint-disable react/no-invalid-html-attribute  */
+/* eslint-disable react/no-danger */
 import createEmotionServer from '@emotion/server/create-instance'
 import Document, {
   DocumentContext,
@@ -8,7 +8,7 @@ import Document, {
   Main,
   NextScript
 } from 'next/document'
-import createEmotionCache from '~utils/emotionCache'
+import createEmotionCache from '~utils/createEmotionCache'
 import packageJson from '../../package.json'
 
 export default class CustomDocument extends Document {
@@ -26,20 +26,18 @@ export default class CustomDocument extends Document {
       })
 
     const initialProps = await Document.getInitialProps(ctx)
-    const emotionStyles = extractCriticalToChunks(initialProps.html)
-    const emotionStyleTags = emotionStyles.styles.map(
-      (style: { key: string; ids: Array<string>; css: string }) => (
-        <style
-          data-emotion={`${style.key} ${style.ids.join(' ')}`}
-          key={style.key}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: style.css }}
-        />
-      )
-    )
+
     return {
       ...initialProps,
-      emotionStyleTags
+      emotionStyleTags: extractCriticalToChunks(initialProps.html).styles.map(
+        (style) => (
+          <style
+            data-emotion={`${style.key} ${style.ids.join(' ')}`}
+            key={style.key}
+            dangerouslySetInnerHTML={{ __html: style.css }}
+          />
+        )
+      )
     }
   }
 
