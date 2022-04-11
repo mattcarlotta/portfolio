@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import styles from './Orbits.module.scss'
 
 export default function Orbits() {

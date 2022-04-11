@@ -18,85 +18,50 @@
   src: url('/fonts/Mukta.ttf') format('truetype');
 }
 
-#__next,
-body,
-html {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  margin: 0;
-  color: #fff;
-  background: url('/bg.webp');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-color: #010007;
-  font-family: 'Elemental', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
-}
-
-@keyframes pulse {
-  0% {
-    background-color: #00020e;
+@layer base {
+  #__next,
+  body,
+  html {
+    @apply h-full w-full;
   }
-  50% {
-    background-color: #00264d;
+
+  body {
+    background: url('/bg.webp');
+    @apply m-0 bg-midnight bg-fixed bg-center bg-no-repeat font-stylized text-white;
   }
-  100% {
-    background-color: #00020e;
+
+  * {
+    @apply box-border;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    ::-webkit-scrollbar {
+      @apply hidden;
+    }
   }
-}
 
-@keyframes solar {
-  0% {
-    transform: rotateX(0) rotateY(0) rotateZ(0);
+  :-moz-focus-inner {
+    border: 0;
   }
-  100% {
-    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+
+  :focus-visible {
+    @apply text-white outline-dotted outline-2 outline-offset-2 outline-primary;
   }
-}
 
-.highlighted-title:hover {
-  [data-title='card-title'] {
-    background: #0080ff;
+  img,
+  video {
+    @apply h-auto max-w-none;
   }
-}
 
-* {
-  box-sizing: border-box;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  ::-webkit-scrollbar {
-    display: none;
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    @apply align-middle;
+    display: initial;
   }
-}
-
-:-moz-focus-inner {
-  border: 0;
-}
-
-:focus-visible {
-  @apply text-white outline-dotted outline-2 outline-offset-2 outline-primary;
-}
-
-img,
-video {
-  max-width: unset;
-  height: auto;
-}
-
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-  display: initial;
-  vertical-align: middle;
 }

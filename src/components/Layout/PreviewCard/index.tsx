@@ -16,11 +16,12 @@ export default function PreviewCard({
 }: PreviewCardProps) {
   return (
     <div
-      tabIndex={0}
+      role="button"
+      className={styles.previewCard}
       data-testid={dataTestId}
       onClick={onClick}
       onKeyDown={onKeyDown}
-      className={styles.previewCard}
+      tabIndex={0}
     >
       {children}
     </div>

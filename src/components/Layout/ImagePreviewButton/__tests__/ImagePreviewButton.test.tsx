@@ -20,7 +20,9 @@ jest.mock('~components/ImageContext', () => ({
 const initProps = {
   active: true,
   height: 100,
-  onClick: () => {},
+  onClick: () => {
+    return null
+  },
   src,
   title: 'hi',
   width: 100

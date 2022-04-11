@@ -25,7 +25,7 @@ const customMarkdownOptions = {
 
 export default function ContentfulRichText({ json }: { json: Document }) {
   return (
-    <div className={styles.markdown}>
+    <div data-testid="contentful-body" className={styles.markdown}>
       {documentToReactComponents(json, customMarkdownOptions)}
     </div>
   )

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import Bars from '~components/Layout/Bars'
 import PanelBody from '~components/Layout/PanelBody'
 import type { ReactNode } from '~types'

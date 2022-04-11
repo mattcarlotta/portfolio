@@ -6,7 +6,9 @@ const initProps = {
   clickable: true,
   children: <p>Hello</p>,
   dataTestId: 'test',
-  onClick: () => {}
+  onClick: () => {
+    return null
+  }
 }
 
 describe('Button', () => {

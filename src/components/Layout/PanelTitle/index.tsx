@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import type { ReactNode } from '~types'
 
 export default function PanelTitle({

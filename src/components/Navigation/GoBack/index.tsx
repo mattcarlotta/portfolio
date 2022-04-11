@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import Link from '~components/Navigation/Link'
 import { GoHome } from '~icons'
 

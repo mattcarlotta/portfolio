@@ -53,7 +53,12 @@ const CardPreview = ({
     <CardTitle id={title}>{title}</CardTitle>
     <Bars />
     <div className="flex h-[14.375rem] items-center justify-center">
-      <Link dataTestId={title} ariaLabel={ariaLabel} href={`/${href}/${slug}`}>
+      <Link
+        dataTestId={title}
+        ariaLabel={ariaLabel}
+        href={`/${href}/${slug}`}
+        noFocusRing
+      >
         <Image
           priority={imagePriority}
           url={url}
@@ -73,6 +78,7 @@ const CardPreview = ({
             dataTestId={`status-${title}`}
             ariaLabel={ariaLabel}
             href={`/${href}/${slug}`}
+            className="mx-1 p-2"
           >
             <FiPower
               data-testid="fipower"
@@ -90,6 +96,7 @@ const CardPreview = ({
             dataTestId={`info-${title}`}
             ariaLabel={ariaLabel}
             href={`/${href}/${slug}`}
+            className="mx-1 p-2"
           >
             <ImInfo className="text-lg" />
           </Link>
@@ -100,7 +107,7 @@ const CardPreview = ({
           <OutsideLink
             ariaLabel={`Navigate to ${title} demo page.`}
             href={location}
-            className="mx-1.5 p-1.5"
+            className="mx-1 flex items-center justify-center p-2"
           >
             <IoRocket className="text-lg" />
           </OutsideLink>
@@ -111,7 +118,7 @@ const CardPreview = ({
           <OutsideLink
             ariaLabel={`Navigate to ${title} source page.`}
             href={source}
-            className="mx-1.5 p-1.5"
+            className="mx-1 flex items-center justify-center p-2"
           >
             <FaRegFileCode className="text-lg" />
           </OutsideLink>

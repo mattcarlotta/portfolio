@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import type { ReactNode } from '~types'
 import styles from './PanelBody.module.scss'
 

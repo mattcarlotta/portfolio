@@ -41,7 +41,8 @@ module.exports = {
         },
         accent: '#1295f3',
         'light-blue': '#63bfff',
-        'off-black': '#1f1f1f'
+        'off-black': '#1f1f1f',
+        midnight: '#010007'
       },
       fontFamily: {
         plain: [
@@ -93,6 +94,13 @@ module.exports = {
       },
       height: {
         preview: '4.6875rem'
+      },
+      keyframes: {
+        pulse: {
+          '0%': { backgroundColor: '#00020e' },
+          '50%': { backgroundColor: '#00264d' },
+          '100%': { backgroundColor: '#00020e' }
+        }
       },
       maxWidth: {
         main: '950px'

@@ -1,6 +1,6 @@
+/* istanbul ignore file */
 import { GiPlanetCore, GiRingedPlanet, ImRocket, IoPlanet } from '~icons'
 
-/* istanbul ignore file */
 export const HEADERLINKS = [
   {
     page: 'home',
