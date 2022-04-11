@@ -1,25 +1,24 @@
-import Head from "next/head";
-import { useRouter } from "next/router";
-import type { ReactElement } from "~types";
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 export type HeaderProps = {
-  description?: string;
-  title?: string;
-  type?: string;
-};
+  description?: string
+  title?: string
+  type?: string
+}
 
-const Header = ({
-  description = "A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications",
-  title = "",
-  type = "website",
-}: HeaderProps): ReactElement => {
-  const { asPath } = useRouter();
+export default function Header({
+  description = 'A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications',
+  title = '',
+  type = 'website'
+}: HeaderProps) {
+  const { asPath } = useRouter()
   const newTitle = title
-    .split(" ")
-    .map(str => str.charAt(0).toUpperCase().concat(str.slice(1)))
-    .join(" ")
-    .concat(` ${title && "-"} ${description} | Matt Carlotta`)
-    .replace(/\./, "");
+    .split(' ')
+    .map((str) => str.charAt(0).toUpperCase().concat(str.slice(1)))
+    .join(' ')
+    .concat(` ${title && '-'} ${description} | Matt Carlotta`)
+    .replace(/\./, '')
   return (
     <Head>
       <title data-testid="head-title">{newTitle}</title>
@@ -46,7 +45,7 @@ const Header = ({
         property="og:site_name"
         content="Matt Carlotta - Fullstack Software Engineer"
       />
-      <meta property="og:updated_time" content="2022-03-26T20:58:20.097Z" />
+      <meta property="og:updated_time" content="2022-04-11T10:41:30.097Z" />
       <meta
         property="og:image"
         content="https://images.ctfassets.net/hb5otnhwin4m/5XlzNcNVgoachT9KBOv4TW/93e008136db547b48ce1dd4d8bfe5bf1/profile_300.png"
@@ -68,7 +67,5 @@ const Header = ({
         color="#01406C"
       />
     </Head>
-  );
-};
-
-export default Header;
+  )
+}

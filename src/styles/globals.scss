@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Elemental';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/Elemental.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/Mukta.ttf') format('truetype');
+}
+
+@layer base {
+  #__next,
+  body,
+  html {
+    @apply h-full w-full;
+  }
+
+  body {
+    background: url('/bg.webp');
+    @apply m-0 bg-midnight bg-fixed bg-center bg-no-repeat font-stylized text-white;
+  }
+
+  * {
+    @apply box-border;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    ::-webkit-scrollbar {
+      @apply hidden;
+    }
+  }
+
+  :-moz-focus-inner {
+    border: 0;
+  }
+
+  :focus-visible {
+    @apply text-white outline-dotted outline-2 outline-offset-2 outline-primary;
+  }
+
+  img,
+  video {
+    @apply h-auto max-w-none;
+  }
+
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    @apply align-middle;
+    display: initial;
+  }
+}

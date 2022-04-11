@@ -1,66 +1,57 @@
-import styled from "@emotion/styled";
-import { Tooltip, makeStyles } from "@material-ui/core";
-import type { ReactElement, ReactNode } from "~types";
-
-const TooltipText = styled.div`
-  text-align: center;
-  letter-spacing: 1px;
-  font-size: 14px;
-  padding: 1px;
-  margin: 0;
-  font-family: "Mukta", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-`;
+// import { makeStyles, Tooltip } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import Tooltip from '@mui/material/Tooltip'
+import type { ReactElement, ReactNode, TooltipProps } from '~types'
 
 export type TTooltipPlacement =
-  | "bottom"
-  | "left"
-  | "right"
-  | "top"
-  | "bottom-end"
-  | "bottom-start"
-  | "left-end"
-  | "left-start"
-  | "right-end"
-  | "right-start"
-  | "top-end"
-  | "top-start"
-  | undefined;
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'top'
+  | 'bottom-end'
+  | 'bottom-start'
+  | 'left-end'
+  | 'left-start'
+  | 'right-end'
+  | 'right-start'
+  | 'top-end'
+  | 'top-start'
+  | undefined
 
-const useClasses = makeStyles(() => ({
-  arrow: {
-    color: "#0096ff",
-  },
-  tooltip: {
-    backgroundColor: "#0096ff",
-    boxShadow: "0px 0px 8px -2px rgba(0, 64, 255, 1)",
-  },
-}));
+const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} arrow classes={{ popper: className }} />
+))`
+  & .MuiTooltip-arrow {
+    color: #0088ff;
+  }
+
+  & .MuiTooltip-tooltip {
+    background: #0088ff;
+    box-shadow: 0px 0px 8px -2px rgba(0, 64, 255, 1);
+  }
+`
 
 export type TCustomTooltipProps = {
-  children: ReactNode;
-  placement?: TTooltipPlacement;
-  title: ReactNode;
-};
+  children: ReactNode
+  placement?: TTooltipPlacement
+  title: ReactNode
+}
 
-const CustomTooltip = ({
+const MuiTooltip = ({
   children,
-  placement = "top",
-  title,
+  placement = 'top',
+  title
 }: TCustomTooltipProps): ReactElement => {
-  const classes = useClasses();
-
   return (
-    <Tooltip
-      arrow
-      classes={classes}
+    <CustomTooltip
       placement={placement}
-      title={<TooltipText>{title}</TooltipText>}
+      title={
+        <div className="m-0 p-px text-center font-plain text-base">{title}</div>
+      }
     >
-      <span style={{ textAlign: "center" }}>{children}</span>
-    </Tooltip>
-  );
-};
+      <span className="text-center">{children}</span>
+    </CustomTooltip>
+  )
+}
 
-export default CustomTooltip;
+export default MuiTooltip

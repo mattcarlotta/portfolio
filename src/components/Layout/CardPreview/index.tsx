@@ -1,40 +1,38 @@
-import Bars from "~components/Layout/Bars";
-import Card from "~components/Layout/Card";
-import CardTitle from "~components/Layout/CardTitle";
-import Flex from "~components/Layout/Flex";
-import Image from "~components/Layout/Image";
-import PlaceHolder from "~components/Layout/PlaceHolder";
-import NormalText from "~components/Layout/NormalText";
-import Tooltip from "~components/Layout/Tooltip";
-import Link from "~components/Navigation/Link";
-import OutsideLink from "~components/Navigation/OutsideLink";
-import { FaLink, FaRegFileCode, FiPower, ImInfo } from "~icons";
-import type { CONTENTFUL_JSON, ReactElement } from "~types";
-import ContentfulRichText from "../ContentfulRichText";
+import clsx from 'clsx'
+import Bars from '~components/Layout/Bars'
+import Card from '~components/Layout/Card'
+import CardTitle from '~components/Layout/CardTitle'
+import Image from '~components/Layout/Image'
+import Tooltip from '~components/Layout/Tooltip'
+import Link from '~components/Navigation/Link'
+import OutsideLink from '~components/Navigation/OutsideLink'
+import { FaRegFileCode, FiPower, ImInfo, IoRocket } from '~icons'
+import type { CONTENTFUL_JSON } from '~types'
+import ContentfulRichText from '../ContentfulRichText'
 
 export type CardPreviewProps = {
-  active?: boolean;
-  alt?: string;
-  ariaLabel: string;
-  description: string | CONTENTFUL_JSON;
-  contentType: string;
-  height: number;
-  href?: string;
-  imagePriority?: boolean;
-  location?: string | null;
-  scale?: number;
-  showInfo?: boolean;
-  slug?: string;
-  source?: string;
-  status?: string;
-  title: string;
-  url: string;
-  width: number;
-};
+  active?: boolean
+  alt?: string
+  ariaLabel: string
+  description: string | CONTENTFUL_JSON
+  contentType: string
+  height: number
+  href?: string
+  imagePriority?: boolean
+  location?: string | null
+  scale?: number
+  showInfo?: boolean
+  slug?: string
+  source?: string
+  status?: string
+  title: string
+  url: string
+  width: number
+}
 
 const CardPreview = ({
   active,
-  alt = "",
+  alt = '',
   ariaLabel,
   contentType,
   description,
@@ -44,112 +42,99 @@ const CardPreview = ({
   location,
   scale,
   showInfo = true,
-  slug = "",
+  slug = '',
   source,
   status,
   title,
   url,
-  width,
-}: CardPreviewProps): ReactElement => (
+  width
+}: CardPreviewProps) => (
   <Card>
-    <PlaceHolder />
-    <div className="panel-container">
-      <header>
-        <CardTitle id={title}>{title}</CardTitle>
-      </header>
-      <Bars />
-      <Flex justify="center" height="230px" width="100%">
-        <Link
-          dataTestId={title}
-          ariaLabel={ariaLabel}
-          padding="0px"
-          href={`/${href}/${slug}`}
-        >
-          <Image
-            priority={imagePriority}
-            url={url}
-            alt={alt}
-            scale={scale}
-            height={height}
-            width={width}
-            contentType={contentType}
-            styles="border-radius: 4px;"
-          />
-        </Link>
-      </Flex>
-      <Flex justify="center" width="100%" margin="5px 0 10px 0">
-        {Boolean(status) && (
-          <Tooltip title={status}>
-            <Link
-              dataTestId={`status-${title}`}
-              ariaLabel={ariaLabel}
-              padding="5px"
-              margin="0 5px"
-              href={`/${href}/${slug}`}
-            >
-              <FiPower
-                data-testid="fipower"
-                style={{
-                  color: active ? "limegreen" : "yellow",
-                  fontSize: 22,
-                }}
-              />
-            </Link>
-          </Tooltip>
-        )}
-        {showInfo && (
-          <Tooltip title="More Info">
-            <Link
-              dataTestId={`info-${title}`}
-              ariaLabel={ariaLabel}
-              padding="5px"
-              margin="0 5px"
-              href={`/${href}/${slug}`}
-            >
-              <ImInfo style={{ fontSize: 22 }} />
-            </Link>
-          </Tooltip>
-        )}
-        {location && (
-          <Tooltip title="Demo">
-            <OutsideLink
-              ariaLabel={`Navigate to ${title} demo page.`}
-              href={location}
-              padding="5px"
-              margin="0 5px"
-            >
-              <FaLink style={{ fontSize: 22 }} />
-            </OutsideLink>
-          </Tooltip>
-        )}
-        {source && (
-          <Tooltip title="Source">
-            <OutsideLink
-              ariaLabel={`Navigate to ${title} source page.`}
-              href={source}
-              padding="5px"
-              margin="0 5px"
-            >
-              <FaRegFileCode style={{ fontSize: 24 }} />
-            </OutsideLink>
-          </Tooltip>
-        )}
-      </Flex>
-      <header>
-        <NormalText
-          as="h3"
-          id={`${title} description`}
-          padding="0px 10px 15px 10px"
-        >
-          {typeof description === "string" ? (
-            description
-          ) : (
-            <ContentfulRichText json={description.json} />
-          )}
-        </NormalText>
-      </header>
+    <CardTitle id={title}>{title}</CardTitle>
+    <Bars />
+    <div className="flex h-[14.375rem] items-center justify-center">
+      <Link
+        dataTestId={title}
+        ariaLabel={ariaLabel}
+        href={`/${href}/${slug}`}
+        noFocusRing
+      >
+        <Image
+          priority={imagePriority}
+          url={url}
+          alt={alt}
+          scale={scale}
+          height={height}
+          width={width}
+          contentType={contentType}
+          className="rounded"
+        />
+      </Link>
     </div>
+    <div className="mt-1 mb-2.5 flex items-center justify-center">
+      {Boolean(status) && (
+        <Tooltip title={status}>
+          <Link
+            dataTestId={`status-${title}`}
+            ariaLabel={ariaLabel}
+            href={`/${href}/${slug}`}
+            className="mx-1 p-2"
+          >
+            <FiPower
+              data-testid="fipower"
+              className={clsx(
+                'text-lg',
+                active ? 'text-lime-500' : 'text-yellow-500'
+              )}
+            />
+          </Link>
+        </Tooltip>
+      )}
+      {showInfo && (
+        <Tooltip title="More Info">
+          <Link
+            dataTestId={`info-${title}`}
+            ariaLabel={ariaLabel}
+            href={`/${href}/${slug}`}
+            className="mx-1 p-2"
+          >
+            <ImInfo className="text-lg" />
+          </Link>
+        </Tooltip>
+      )}
+      {location && (
+        <Tooltip title="Demo">
+          <OutsideLink
+            ariaLabel={`Navigate to ${title} demo page.`}
+            href={location}
+            className="mx-1 flex items-center justify-center p-2"
+          >
+            <IoRocket className="text-lg" />
+          </OutsideLink>
+        </Tooltip>
+      )}
+      {source && (
+        <Tooltip title="Source">
+          <OutsideLink
+            ariaLabel={`Navigate to ${title} source page.`}
+            href={source}
+            className="mx-1 flex items-center justify-center p-2"
+          >
+            <FaRegFileCode className="text-lg" />
+          </OutsideLink>
+        </Tooltip>
+      )}
+    </div>
+    <header>
+      <div className="px-2.5 pt-0 pb-4 font-plain text-md">
+        {typeof description === 'string' ? (
+          description
+        ) : (
+          <ContentfulRichText json={description.json} />
+        )}
+      </div>
+    </header>
   </Card>
-);
+)
 
-export default CardPreview;
+export default CardPreview

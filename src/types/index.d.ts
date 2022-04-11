@@ -1,99 +1,111 @@
 /* istanbul ignore file */
-import type { Document, NodeData } from "@contentful/rich-text-types";
+import type { Document, NodeData } from '@contentful/rich-text-types'
+import { ParsedUrlQuery } from 'querystring'
 
-export type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-export type { AppProps } from "next/app";
+export type { EmotionCache } from '@emotion/react'
+export type { TooltipProps } from '@mui/material/Tooltip'
+export type { TransitionProps } from '@mui/material/transitions'
 export type {
-  ComponentType,
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage
+} from 'next'
+export type { AppProps } from 'next/app'
+export type {
   ChangeEvent,
+  ComponentType,
   CSSProperties,
   FC,
   FormEvent,
+  KeyboardEvent,
   MouseEvent,
-  ReactNode,
   ReactElement,
-  Ref,
-} from "react";
-export { TransitionProps } from "@material-ui/core/transitions";
+  ReactNode,
+  Ref
+} from 'react'
+export { Document, NodeData }
+
+export type ContextParams = {
+  params: ParsedUrlQuery
+}
 
 export type CONTENTFUL_ID = {
   sys: {
-    id: string;
-  };
-};
+    id: string
+  }
+}
 
 export type CONTENTFUL_IMAGE = {
-  url: string;
-  description: string;
-  contentType: string;
-  height: number;
-  width: number;
-  title: string;
-};
+  url: string
+  description: string
+  contentType: string
+  height: number
+  width: number
+  title: string
+}
 
 export type CONTENTFUL_TITLE = {
-  title: string;
-};
+  title: string
+}
 
 export type CONTENTFUL_SLUG = {
-  slug: string;
-};
+  slug: string
+}
 
 export type CONTENTFUL_JSON = {
-  json: any;
-};
+  json: any
+}
 
 export type CONTENTFUL_DESCRIPTION = {
-  description: CONTENTFUL_JSON;
-};
+  description: CONTENTFUL_JSON
+}
 
 export type CONTENTFUL_BACKGROUND_PAGE = {
-  profileImage: CONTENTFUL_IMAGE;
-  location: string;
-  rank: string;
-  email: string;
+  profileImage: CONTENTFUL_IMAGE
+  location: string
+  rank: string
+  email: string
 
   tech: {
-    data: Array<{ level: number; technology: string }>;
-  };
+    data: Array<{ level: number; technology: string }>
+  }
   education: {
-    data: Array<{ url: string; title: string }>;
-  };
+    data: Array<{ url: string; title: string }>
+  }
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE &
-  CONTENTFUL_DESCRIPTION;
+  CONTENTFUL_DESCRIPTION
 
 export type CONTENTFUL_EXPLORATIONS_PAGE = {
-  imagePriority: boolean;
-  sandboxId: string;
-  preview: CONTENTFUL_IMAGE;
+  imagePriority: boolean
+  sandboxId: string
+  preview: CONTENTFUL_IMAGE
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE &
-  CONTENTFUL_SLUG;
+  CONTENTFUL_SLUG
 
 export type CONTENTFUL_PAGE_CARD = {
-  description: string;
-  imagePriority: boolean;
-  preview: CONTENTFUL_IMAGE;
+  description: string
+  imagePriority: boolean
+  preview: CONTENTFUL_IMAGE
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE &
-  CONTENTFUL_SLUG;
+  CONTENTFUL_SLUG
 
 export type CONTENTFUL_PROJECTS_PAGE = {
-  imagePriority: boolean;
-  seoDescription: string;
-  active: boolean;
-  status: string;
-  location?: string | null;
-  source: string;
-  preview: CONTENTFUL_IMAGE;
-  tech: Array<string>;
+  imagePriority: boolean
+  seoDescription: string
+  active: boolean
+  status: string
+  location?: string | null
+  source: string
+  preview: CONTENTFUL_IMAGE
+  tech: Array<string>
   snapshotsCollection: {
-    items: Array<CONTENTFUL_IMAGE>;
-  };
+    items: Array<CONTENTFUL_IMAGE>
+  }
 } & CONTENTFUL_ID &
   CONTENTFUL_TITLE &
   CONTENTFUL_DESCRIPTION &
-  CONTENTFUL_SLUG;
-
-export { Document, NodeData };
+  CONTENTFUL_SLUG

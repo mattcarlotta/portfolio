@@ -1,17 +1,15 @@
-import PanelBody from "~components/Layout/PanelBody";
-import PanelContainer from "~components/Layout/PanelContainer";
-import Bars from "~components/Layout/Bars";
-import Solar from "~components/Layout/Solar";
-import type { ReactNode, ReactElement } from "~types";
+/* istanbul ignore file */
+import Bars from '~components/Layout/Bars'
+import PanelBody from '~components/Layout/PanelBody'
+import type { ReactNode } from '~types'
 
-const Panel = ({ children }: { children: ReactNode }): ReactElement => (
-  <PanelContainer>
-    <Solar />
+const Panel = ({ children }: { children: ReactNode }) => (
+  <div className="mb-16 w-full overflow-hidden rounded-b-md bg-primary-700 font-bold text-primary-25">
     <PanelBody>
       <Bars />
       {children}
     </PanelBody>
-  </PanelContainer>
-);
+  </div>
+)
 
-export default Panel;
+export default Panel

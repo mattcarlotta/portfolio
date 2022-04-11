@@ -1,4 +1,4 @@
-<a target="_blank" rel="noopener noreferrer" href="https://mattcarlotta.sh" alt="websiteHeader.png">
+<a target="_blank" rel="noopener noreferrer" href="https://mattcarlotta.dev" alt="websiteHeader.png">
   <img src="https://i.imgur.com/JNqLbpA.png" />
 </a>
 

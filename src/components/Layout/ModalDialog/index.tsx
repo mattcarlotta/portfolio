@@ -1,286 +1,263 @@
-import { forwardRef, useEffect, useCallback, useState } from "react";
-import { Slide, Dialog, withStyles } from "@material-ui/core";
-import { useImageContext } from "~components/ImageContext";
-import BackgroundImageViewer from "~components/Layout/BackgroundImage";
-import Button from "~components/Layout/Button";
-import CardTitle from "~components/Layout/CardTitle";
-import Center from "~components/Layout/Center";
-import CloseModalButton from "~components/Layout/CloseModalButton";
-import DetailHeadline from "~components/Layout/DetailHeadline";
-import Fixed from "~components/Layout/Fixed";
-import Flex from "~components/Layout/Flex";
-import Image from "~components/Layout/Image";
-import ImageCounter from "~components/Layout/ImageCounter";
-import ImagePreviewButton from "~components/Layout/ImagePreviewButton";
-import ImageTitle from "~components/Layout/ImageTitle";
-import PreviewCard from "~components/Layout/PreviewCard";
-import SnapshotContainer from "~components/Layout/SnapshotContainer";
-import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from "~icons";
-import calculateScale from "~utils/calculateScale";
+import Dialog from '@mui/material/Dialog'
+import Slide from '@mui/material/Slide'
+import { styled } from '@mui/material/styles'
+import { forwardRef, useCallback, useEffect, useState } from 'react'
+import BackgroundImageViewer from '~components/Layout/BackgroundImage'
+import Button from '~components/Layout/Button'
+import CardTitle from '~components/Layout/CardTitle'
+import DetailHeadline from '~components/Layout/DetailHeadline'
+import Image from '~components/Layout/Image'
+import ImagePreviewButton from '~components/Layout/ImagePreviewButton'
+import PreviewCard from '~components/Layout/PreviewCard'
+import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
 import type {
   CONTENTFUL_IMAGE,
+  KeyboardEvent as onKeyEvent,
   ReactElement,
   Ref,
-  TransitionProps,
-} from "~types";
+  TransitionProps
+} from '~types'
 
-const ImageViewer = withStyles(() => ({
-  paper: {
-    backgroundColor: "#00020e",
-  },
-}))(Dialog);
+const ModalImageGallery = styled(Dialog)`
+  & .MuiPaper-root {
+    background: #00020e;
+  }
+`
 
 const SlideTransition = forwardRef(
   (
-    props: TransitionProps & { children?: ReactElement<any, any> },
-    ref: Ref<unknown>,
-  ) => <Slide direction="right" ref={ref} {...props} />,
-);
+    props: TransitionProps & { children: ReactElement<any, any> },
+    ref: Ref<unknown>
+  ) => <Slide direction="right" ref={ref} {...props} />
+)
 
 export type ModalDialogState = {
-  open: boolean;
-  currentIndex: number;
-  url: string;
-  description: string;
-  contentType: string;
-  height: number;
-  width: number;
-  title: string;
-};
+  open: boolean
+  currentIndex: number
+  url: string
+  description: string
+  contentType: string
+  height: number
+  width: number
+  title: string
+}
 
 const initialImageState = {
   open: false,
   currentIndex: 0,
-  url: "",
-  description: "",
-  contentType: "",
+  url: '',
+  description: '',
+  contentType: '',
   height: 0,
   width: 0,
-  title: "",
-};
+  title: ''
+}
 
 const ModalDialog = ({
-  snapshots,
+  snapshots
 }: {
-  snapshots: Array<CONTENTFUL_IMAGE>;
+  snapshots: Array<CONTENTFUL_IMAGE>
 }): ReactElement => {
-  const { supportsWebp } = useImageContext();
-  const [state, setState] = useState<ModalDialogState>(initialImageState);
-  const { open, currentIndex, url, title } = state;
-  const snapsLength = snapshots.length;
+  const [state, setState] = useState<ModalDialogState>(initialImageState)
+  const { open, currentIndex, url, title } = state
+  const snapsLength = snapshots.length
 
   const selectImage = (selectedIndex: number): void => {
-    const image = snapshots[selectedIndex];
-    setState(prevState => ({
+    const image = snapshots[selectedIndex]
+    setState((prevState) => ({
       ...prevState,
       currentIndex: selectedIndex,
-      ...image,
-    }));
-  };
+      ...image
+    }))
+  }
 
   const handleImageClick = (selectedIndex: number): void => {
-    const image = snapshots[selectedIndex];
+    const image = snapshots[selectedIndex]
     setState({
       open: true,
       currentIndex: selectedIndex,
-      ...image,
-    });
-  };
+      ...image
+    })
+  }
 
   const handleNextImage = useCallback(
     (nextIndex: number): void => {
-      const snapsIndexLength = snapsLength - 1;
-      let selectedIndex = currentIndex;
+      const snapsIndexLength = snapsLength - 1
+      let selectedIndex = currentIndex
 
       if (nextIndex >= 0 && nextIndex <= snapsIndexLength) {
-        selectedIndex = nextIndex;
+        selectedIndex = nextIndex
       } else if (nextIndex < 0) {
-        selectedIndex = snapsIndexLength;
+        selectedIndex = snapsIndexLength
       } else {
-        selectedIndex = 0;
+        selectedIndex = 0
       }
 
-      selectImage(selectedIndex);
+      selectImage(selectedIndex)
     },
-    [currentIndex, snapsLength],
-  );
+    [currentIndex, snapsLength]
+  )
 
   const handleModalExit = (): void => {
-    setState(initialImageState);
-  };
+    setState(initialImageState)
+  }
 
   const handleModalClose = (): void => {
-    setState(prevState => ({ ...prevState, open: false }));
-  };
+    setState((prevState) => ({ ...prevState, open: false }))
+  }
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent): void => {
-      if (!open) return;
+      if (!open) return
 
-      const { key, shiftKey } = event;
-      const tabKeyPressed = key === "Tab";
-      const arrowLeftPressed = key === "ArrowLeft";
-      const arrowRightPressed = key === "ArrowRight";
+      const { key, shiftKey } = event
+      const tabKeyPressed = key === 'Tab'
+      const arrowLeftPressed = key === 'ArrowLeft'
+      const arrowRightPressed = key === 'ArrowRight'
 
       if ((shiftKey && tabKeyPressed) || arrowLeftPressed) {
-        handleNextImage(currentIndex - 1);
+        handleNextImage(currentIndex - 1)
       } else if (tabKeyPressed || arrowRightPressed) {
-        handleNextImage(currentIndex + 1);
+        handleNextImage(currentIndex + 1)
       }
     },
-    [open, handleNextImage, currentIndex],
-  );
+    [open, handleNextImage, currentIndex]
+  )
 
   const handleSelectImage = (
-    { key }: { key: string },
-    selectedIndex: number,
+    e: onKeyEvent<HTMLDivElement>,
+    selectedIndex: number
   ): void => {
-    switch (key) {
-      case "Enter":
-        handleImageClick(selectedIndex);
-        break;
+    switch (e.key) {
+      case 'Enter':
+        handleImageClick(selectedIndex)
+        break
       default:
-        break;
+        break
     }
-  };
+  }
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [handleKeyDown]);
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [handleKeyDown])
 
   useEffect(() => {
     const previewImage = title
       ? document.getElementById(`button-preview-${title}`)
-      : null;
+      : null
+
     /* istanbul ignore next */
     if (previewImage?.scrollIntoView)
       previewImage.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      });
-  }, [title]);
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center'
+      })
+  }, [title])
 
   return (
     <>
       <section>
-        <header>
-          <DetailHeadline>Snapshots:</DetailHeadline>
-        </header>
-        <SnapshotContainer data-testid="snapshots">
+        <DetailHeadline id="snapshots">Snapshots:</DetailHeadline>
+        <div
+          className="my-4 flex flex-wrap items-center justify-center px-2.5"
+          data-testid="snapshots-container"
+        >
           {snapshots.map(({ title, ...rest }, idx) => (
             <section key={title}>
               <PreviewCard
-                data-testid={title}
-                tabIndex={0}
+                dataTestId={title}
                 onClick={() => handleImageClick(idx)}
-                onKeyDown={event => handleSelectImage(event, idx)}
+                onKeyDown={(event) => handleSelectImage(event, idx)}
               >
-                <header>
-                  <CardTitle>{title}</CardTitle>
-                </header>
+                <CardTitle id={title}>{title}</CardTitle>
                 <Image
                   scale={25}
                   alt={rest.description}
                   {...rest}
-                  styles="margin: 0 auto;"
+                  className="mx-auto"
                 />
               </PreviewCard>
             </section>
           ))}
-        </SnapshotContainer>
+        </div>
       </section>
-      <ImageViewer
+      <ModalImageGallery
         fullScreen
         scroll="body"
-        id="modal"
+        id="image-gallery-modal"
         open={open}
         onClose={handleModalClose}
         aria-labelledby="actions-dialog"
         TransitionComponent={SlideTransition}
         TransitionProps={{ onExited: handleModalExit }}
       >
-        <Fixed top="0px" width="100%">
-          <ImageCounter>
-            <IoImages
-              style={{ position: "relative", top: 3, marginRight: 10 }}
-            />
+        <div className="fixed top-0 w-full">
+          <div className="absolute top-5 left-5 font-plain text-2xl text-white">
+            <IoImages className="mr-2.5 align-middle" />
             {currentIndex + 1} of {snapsLength}
-          </ImageCounter>
-          <ImageTitle data-testid="modal-title">{title}</ImageTitle>
-          <CloseModalButton
-            data-testid="close-modal"
+          </div>
+          <h2
+            className="mt-10 p-5 text-center text-md text-white sm:mt-0 sm:text-2xl"
+            data-testid="modal-title"
+          >
+            {title}
+          </h2>
+          <button
             aria-label="close modal"
+            data-testid="close-modal"
+            className="pointer absolute top-2 right-5 border-0 bg-transparent p-1.5 text-3xl text-gray-100 duration-300 ease-in-out hover:text-fire focus:outline-0"
             type="button"
             onClick={handleModalClose}
           >
             <FaTimes />
-          </CloseModalButton>
-        </Fixed>
-        <Fixed top="calc(50% - 35px)" left="0px">
-          <Flex justify="flex-start" width="120px">
-            <Button
-              aria-label="View previous image"
-              data-testid="previous-image"
-              type="button"
-              clickable={snapsLength > 1}
-              onClick={() => handleNextImage(currentIndex - 1)}
-            >
-              <FaChevronLeft />
-            </Button>
-          </Flex>
-        </Fixed>
-        <Fixed bottom="100px" left="80px" right="80px" top="80px">
-          <Flex justify="center">
-            <BackgroundImageViewer dataTestId={`image-${title}`} src={url} />
-          </Flex>
-        </Fixed>
-        <Fixed top="calc(50% - 35px)" right="0px">
-          <Flex justify="flex-end" width="120px">
-            <Button
-              data-testid="next-image"
-              aria-label="View next image"
-              type="button"
-              clickable={snapsLength > 1}
-              onClick={() => handleNextImage(currentIndex + 1)}
-            >
-              <FaChevronRight />
-            </Button>
-          </Flex>
-        </Fixed>
-        <Fixed left="0px" bottom="0px" width="100%">
-          <Center
-            style={{
-              overflowY: "auto",
-              whiteSpace: "nowrap",
-            }}
+          </button>
+        </div>
+        <div className="fixed left-0 top-[calc(50%-35px)]">
+          <Button
+            ariaLabel="View previous image"
+            dataTestId="previous-image"
+            clickable={snapsLength > 1}
+            onClick={() => handleNextImage(currentIndex - 1)}
           >
+            <FaChevronLeft />
+          </Button>
+        </div>
+        <div className="fixed bottom-24 left-20 right-20 top-20">
+          <BackgroundImageViewer dataTestId={`image-${title}`} src={url} />
+        </div>
+        <div className="fixed right-0 top-[calc(50%-35px)]">
+          <Button
+            ariaLabel="View next image"
+            dataTestId="next-image"
+            clickable={snapsLength > 1}
+            onClick={() => handleNextImage(currentIndex + 1)}
+          >
+            <FaChevronRight />
+          </Button>
+        </div>
+        <div className="fixed left-0 bottom-0 w-full">
+          <div className="overflow-y-auto whitespace-nowrap text-center">
             {snapshots.map(({ title, height, width, url }, idx) => (
               <ImagePreviewButton
                 key={`preview${title}`}
-                tabIndex={-1}
                 active={idx === currentIndex}
-                aria-selected={idx === currentIndex}
                 onClick={() => selectImage(idx)}
-                type="button"
-                supportsWebp={supportsWebp}
                 src={url}
-                height={calculateScale(height, 10)}
-                width={calculateScale(width, 10)}
-                aria-label={`View the ${title} image`}
-                id={`button-preview-${title}`}
-                data-testid={`button-${title}`}
+                height={height}
+                title={title}
+                width={width}
               />
             ))}
-          </Center>
-        </Fixed>
-      </ImageViewer>
+          </div>
+        </div>
+      </ModalImageGallery>
     </>
-  );
-};
+  )
+}
 
-export default ModalDialog;
+export default ModalDialog

@@ -1,0 +1,13 @@
+.previewCard {
+  @apply my-1 mx-2 h-[7.8125rem] w-[9.375rem] cursor-pointer overflow-hidden rounded border border-solid border-primary-400 bg-transparent text-center text-primary-100;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    @apply scale-110 bg-primary-850 transition-transform duration-200 ease-in-out;
+
+    & [data-title='card-title'] {
+      background: #0080ff;
+    }
+  }
+}

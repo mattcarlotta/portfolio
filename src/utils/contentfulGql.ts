@@ -2,7 +2,7 @@ const sys = `
 sys {
   id
 }
-`;
+`
 
 const image = `
 url
@@ -11,19 +11,19 @@ contentType
 height
 width
 title
-`;
+`
 
 const preview = `
 preview {
   ${image}
 }
-`;
+`
 
 const description = `
 description {
   json
 }
-`;
+`
 
 export const PROJECTS = `
 ${sys}
@@ -43,7 +43,7 @@ snapshotsCollection {
 ${preview}
 imagePriority
 slug
-`;
+`
 
 export const BACKGROUND = `
 ${sys}
@@ -58,7 +58,7 @@ location
 ${description}
 tech
 education
-`;
+`
 
 export const EXPLORATIONS = `
 ${sys}
@@ -67,7 +67,7 @@ sandboxId
 ${preview}
 imagePriority
 slug
-`;
+`
 
 export const HOMEPAGE_CARDS = `
 ${sys}
@@ -76,4 +76,4 @@ description
 ${preview}
 imagePriority
 slug
-`;
+`

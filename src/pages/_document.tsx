@@ -1,66 +1,81 @@
-/* eslint-disable react/no-invalid-html-attribute */
-import { Children } from "react";
+/* eslint-disable react/no-invalid-html-attribute  */
+/* eslint-disable react/no-danger */
+import createEmotionServer from '@emotion/server/create-instance'
 import Document, {
   DocumentContext,
-  Html,
   Head,
+  Html,
   Main,
-  NextScript,
-} from "next/document";
-import { ServerStyleSheets } from "@material-ui/styles";
-import type { ReactElement } from "~types";
-import packageJson from "../../package.json";
+  NextScript
+} from 'next/document'
+import createEmotionCache from '~utils/createEmotionCache'
+import packageJson from '../../package.json'
 
-class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<any> {
-    const sheets = new ServerStyleSheets();
-    const originalRenderPage = ctx.renderPage;
+export default class CustomDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
+    const cache = createEmotionCache()
+    const { extractCriticalToChunks } = createEmotionServer(cache)
+    const originalRenderPage = ctx.renderPage
 
     ctx.renderPage = () =>
       originalRenderPage({
-        enhanceApp: App => props => sheets.collect(<App {...props} />),
-      });
+        enhanceApp: (App: any) =>
+          function EnhanceApp(props) {
+            return <App emotionCache={cache} {...props} />
+          }
+      })
 
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await Document.getInitialProps(ctx)
+
     return {
       ...initialProps,
-      styles: [
-        ...Children.toArray(initialProps.styles),
-        sheets.getStyleElement(),
-      ],
-    };
+      emotionStyleTags: extractCriticalToChunks(initialProps.html).styles.map(
+        (style) => (
+          <style
+            data-emotion={`${style.key} ${style.ids.join(' ')}`}
+            key={style.key}
+            dangerouslySetInnerHTML={{ __html: style.css }}
+          />
+        )
+      )
+    }
   }
 
-  render = (): ReactElement => (
-    <Html lang="en">
-      <Head>
-        <meta name="theme-color" content="#000000" />
-        <meta
-          name="robots"
-          content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
-        />
-        <meta name="build version" content={packageJson.version} />
-        <link rel="apple-touch-icon" sizes="192x192" href="/logo_192x192.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link
-          rel="preload"
-          href="/fonts/Elemental.ttf"
-          as="font"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Mukta.ttf"
-          as="font"
-          crossOrigin="anonymous"
-        />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <meta name="theme-color" content="#000000" />
+          <meta
+            name="robots"
+            content="follow, index, max-image-preview:large"
+          />
+          <meta name="build version" content={packageJson.version} />
+          <link
+            rel="apple-touch-icon"
+            sizes="192x192"
+            href="/logo_192x192.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link
+            rel="preload"
+            href="/fonts/Elemental.ttf"
+            as="font"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/Mukta.ttf"
+            as="font"
+            crossOrigin="anonymous"
+          />
+          {(this.props as any).emotionStyleTags}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
 }
-
-export default CustomDocument;

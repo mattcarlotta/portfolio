@@ -1,5 +1,1 @@
-/* eslint-disable */
-import "@testing-library/jest-dom";
-import { matchers } from "@emotion/jest";
-
-expect.extend(matchers);
+import '@testing-library/jest-dom'

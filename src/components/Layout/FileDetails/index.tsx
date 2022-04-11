@@ -1,47 +1,47 @@
-import Info from "~components/Layout/Info";
-import NormalText from "~components/Layout/NormalText";
-import OutsideLink from "~components/Navigation/OutsideLink";
-import { AiOutlineFolderOpen, FaLink, FaRegFileCode, FiPower } from "~icons";
-import type { CSSProperties } from "~types";
+import clsx from 'clsx'
+import Info from '~components/Layout/Info'
+import OutsideLink from '~components/Navigation/OutsideLink'
+import { AiOutlineFolderOpen, FaRegFileCode, FiPower, IoRocket } from '~icons'
+import type { CSSProperties } from '~types'
 
 export type FileDetailsProps = {
-  active: boolean;
-  fileName: string;
-  location?: string | null;
-  status: string;
-  source: string;
-};
+  active: boolean
+  fileName: string
+  location?: string | null
+  status: string
+  source: string
+}
 
 const style = {
   fontSize: 20,
-  verticalAlign: "middle",
-  marginRight: 10,
-} as CSSProperties;
+  verticalAlign: 'middle',
+  marginRight: 10
+} as CSSProperties
 
 const FileDetails = ({
   active,
   location,
   fileName,
   source,
-  status,
-}: FileDetailsProps): JSX.Element => (
-  <NormalText margin="0 0 20px 0" padding="0 0 0 15px" fontSize="16px">
+  status
+}: FileDetailsProps) => (
+  <div className="mb-5 pl-4 font-plain">
     <Info
-      style={{ color: active ? "limegreen" : "yellow" }}
-      data-testid="status"
+      className={clsx(active ? 'text-lime-500' : 'text-yellow-500')}
+      dataTestId="status"
     >
       <FiPower data-testid="fipower" style={style} />
       {status}
     </Info>
-    <Info style={{ textTransform: "uppercase" }} data-testid="filename">
+    <Info className="uppercase" dataTestId="filename">
       <AiOutlineFolderOpen style={style} />
       {fileName}
     </Info>
     {location && (
-      <Info data-testid="location">
-        <FaLink style={style} />
+      <Info dataTestId="location">
+        <IoRocket style={style} />
         <OutsideLink
-          data-testid="location-link"
+          dataTestId="location-link"
           href={location}
           ariaLabel="Navigate to demo website"
           showIcon
@@ -50,10 +50,10 @@ const FileDetails = ({
         </OutsideLink>
       </Info>
     )}
-    <Info data-testid="source">
+    <Info dataTestId="source">
       <FaRegFileCode style={style} />
       <OutsideLink
-        data-testid="source-link"
+        dataTestId="source-link"
         href={source}
         ariaLabel="Navigate to source code"
         showIcon
@@ -61,7 +61,7 @@ const FileDetails = ({
         Source
       </OutsideLink>
     </Info>
-  </NormalText>
-);
+  </div>
+)
 
-export default FileDetails;
+export default FileDetails

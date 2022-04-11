@@ -1,30 +1,32 @@
 /* eslint-disable react/destructuring-assignment */
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { INLINES } from "@contentful/rich-text-types";
-import OutsideLink from "~components/Navigation/OutsideLink";
-import type { Document, NodeData } from "~types";
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { INLINES } from '@contentful/rich-text-types'
+import OutsideLink from '~components/Navigation/OutsideLink'
+import type { Document, NodeData } from '~types'
+import styles from './ContentfulRichText.module.scss'
 
 const customMarkdownOptions = {
   renderNode: {
     [INLINES.HYPERLINK]: (node: NodeData) => {
-      const title = node.content?.[0]?.value;
-      const URL = node.data?.uri;
+      const title = node.content?.[0]?.value
 
       return (
         <OutsideLink
           showIcon
           ariaLabel={`Navigate to ${title} page`}
-          href={URL}
+          href={node.data?.uri}
         >
           {title}
         </OutsideLink>
-      );
-    },
-  },
-};
+      )
+    }
+  }
+}
 
-const ContentfulRichText = ({ json }: { json: Document }) => (
-  <>{documentToReactComponents(json, customMarkdownOptions)}</>
-);
-
-export default ContentfulRichText;
+export default function ContentfulRichText({ json }: { json: Document }) {
+  return (
+    <div data-testid="contentful-body" className={styles.markdown}>
+      {documentToReactComponents(json, customMarkdownOptions)}
+    </div>
+  )
+}

@@ -1,66 +1,43 @@
-import Link from "next/link";
-import styled from "@emotion/styled";
-import type { CSSProperties, ReactElement, ReactNode } from "~types";
+import clsx from 'clsx'
+import NextLink from 'next/link'
+import type { ReactNode } from '~types'
 
 export type LinkProps = {
-  ariaLabel: string;
-  asHref?: string;
-  dataTestId: string;
-  children: ReactNode;
-  className?: string;
-  href: string;
-  scroll?: boolean;
-  style?: CSSProperties;
-};
+  ariaLabel: string
+  asHref?: string
+  dataTestId: string
+  children: ReactNode
+  className?: string
+  href: string
+  noFocusRing?: boolean
+  scroll?: boolean
+}
 
-const LinkComponent = ({
+export default function Link({
   ariaLabel,
   asHref,
-  className,
   children,
+  className,
   dataTestId,
   href,
-  scroll,
-  style,
-}: LinkProps): ReactElement => (
-  <Link href={href} as={asHref} prefetch={false} scroll={scroll} passHref>
-    <a
-      aria-label={ariaLabel}
-      data-testid={dataTestId}
-      style={style}
-      className={className}
-    >
-      {children}
-    </a>
-  </Link>
-);
-
-const StyledLink = styled(LinkComponent)<{
-  fontSize?: string;
-  showUnderline?: boolean;
-  margin?: string;
-  padding?: string;
-}>`
-  padding: ${({ padding }) => padding || "10px 15px"};
-  margin: ${({ margin }) => margin};
-  color: #1295f3;
-  transition: all 0.5s;
-  text-decoration: none;
-  outline: none;
-  font-size: ${({ fontSize }) => fontSize};
-
-  :hover {
-    cursor: pointer;
-    text-decoration: ${({ showUnderline }) =>
-      showUnderline ? "underline" : "none"};
-    color: #fff;
-  }
-
-  :focus {
-    color: #fff;
-    text-decoration: ${({ showUnderline }) =>
-      showUnderline ? "underline" : "none"};
-  }
-`;
-
-export default StyledLink;
+  noFocusRing,
+  scroll
+}: LinkProps) {
+  return (
+    <NextLink href={href} as={asHref} prefetch={false} scroll={scroll} passHref>
+      <a
+        aria-label={ariaLabel}
+        data-testid={dataTestId}
+        className={clsx(
+          'flex w-full items-center justify-center rounded border-2 border-solid border-transparent text-primary no-underline transition-[box-shadow] duration-300 ease-in-out hover:text-white sm:mx-0 md:mx-1 md:w-auto md:p-2',
+          className,
+          noFocusRing
+            ? ''
+            : 'focus:border-primary-100 focus:text-white focus:shadow-ring'
+        )}
+      >
+        {children}
+      </a>
+    </NextLink>
+  )
+}
