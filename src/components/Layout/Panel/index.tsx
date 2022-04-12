@@ -4,7 +4,7 @@ import PanelBody from '~components/Layout/PanelBody'
 import type { ReactNode } from '~types'
 
 const Panel = ({ children }: { children: ReactNode }) => (
-  <div className="mb-16 w-full overflow-hidden rounded-b-md bg-primary-700 font-bold text-primary-25">
+  <div className="text-primary-2 mb-16 w-full overflow-hidden rounded-b-sm bg-primary-700 font-bold">
     <PanelBody>
       <Bars />
       {children}
