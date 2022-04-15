@@ -35,6 +35,7 @@ export default function Modal({
             </p>
           )}
           <div
+            role="presentation"
             data-title="backdrop"
             className="fixed top-0 right-0 bottom-0 left-0 z-[-1] flex items-center justify-center bg-black"
             onClick={onClose}
