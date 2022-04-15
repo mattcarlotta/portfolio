@@ -116,8 +116,10 @@ const ModalDialog = ({
       const arrowRightPressed = key === 'ArrowRight'
 
       if ((shiftKey && tabKeyPressed) || arrowLeftPressed) {
+        event.preventDefault()
         handleNextImage(currentIndex - 1)
       } else if (tabKeyPressed || arrowRightPressed) {
+        event.preventDefault()
         handleNextImage(currentIndex + 1)
       }
     },
@@ -125,13 +127,15 @@ const ModalDialog = ({
   )
 
   const handleSelectImage = (
-    e: onKeyEvent<HTMLDivElement>,
+    event: onKeyEvent<HTMLDivElement>,
     selectedIndex: number
   ): void => {
-    switch (e.key) {
-      case 'Enter':
+    switch (event.key) {
+      case 'Enter': {
+        event.preventDefault()
         handleImageClick(selectedIndex)
         break
+      }
       default:
         break
     }
@@ -210,7 +214,7 @@ const ModalDialog = ({
           <button
             aria-label="close modal"
             data-testid="close-modal"
-            className="pointer absolute top-2 right-5 border-0 bg-transparent p-1.5 text-3xl text-gray-100 duration-300 ease-in-out hover:text-fire focus:outline-0"
+            className="pointer absolute top-2 right-5 border-0 bg-transparent p-1.5 text-3xl text-gray-100 duration-300 ease-in-out hover:text-fire"
             type="button"
             onClick={handleModalClose}
           >
