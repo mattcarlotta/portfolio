@@ -1,12 +1,6 @@
-import type { ReactNode } from '~types'
+import type { Children, ID } from '~types'
 
-export default function CardTitle({
-  children,
-  id
-}: {
-  children: ReactNode
-  id: string
-}) {
+export default function CardTitle({ children, id }: Children & ID) {
   return (
     <header>
       <h2

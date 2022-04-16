@@ -6,7 +6,7 @@ const initProps = {
   title: 'Hi world'
 }
 
-describe('ModalDialog', () => {
+describe('Tooltip', () => {
   it('renders without errors', async () => {
     const { getByTestId } = render(<Tooltip {...initProps} />)
 

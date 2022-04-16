@@ -1,15 +1,13 @@
 import clsx from 'clsx'
 import { FiExternalLink } from '~icons'
-import type { CSSProperties, ReactNode } from '~types'
+import type { Children } from '~types'
 
-export type OutsideLinkProps = {
+export type OutsideLinkProps = Children & {
   ariaLabel: string
   className?: string
-  children: ReactNode
   dataTestId?: string
   href: string
   showIcon?: boolean
-  style?: CSSProperties
 }
 
 export default function OutsideLink({
@@ -18,8 +16,7 @@ export default function OutsideLink({
   children,
   dataTestId,
   href,
-  showIcon,
-  style
+  showIcon
 }: OutsideLinkProps) {
   return (
     <a
@@ -32,7 +29,6 @@ export default function OutsideLink({
       href={href}
       rel="noopener noreferrer"
       target="_blank"
-      style={style}
     >
       {children}
       {showIcon && <FiExternalLink className="ml-1 align-top text-md" />}

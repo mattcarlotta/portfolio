@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import ImageContext from '~components/ImageContext'
+import ImageContext from '~components/Context/ImageContext'
+import ScrollHeightContext from '~components/Context/ScrollHeightContext'
 import HEADERLINKS from '~components/Layout/HEADERLINKS'
 import Link from '~components/Navigation/Link'
-import ScrollHeightContext from '~components/ScrollHeightContext'
 import '~styles/globals.scss'
 import type { AppProps } from '~types'
 
@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </div>
             <footer data-testid="footer" className="mt-14 pb-2 text-center">
               <p className="text-tiny font-bold text-accent">
-                &#169;{new Date().getFullYear()} matt carlotta
+                &#169;{new Date().getFullYear()} Matt Carlotta
               </p>
             </footer>
           </main>

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
-import { useImageContext } from '~components/ImageContext'
-import { useScrollHeight } from '~components/ScrollHeightContext'
+import { useImageContext } from '~components/Context/ImageContext'
+import { useScrollHeight } from '~components/Context/ScrollHeightContext'
 import calculateScale from '~utils/calculateScale'
 
 export type ImageProps = {

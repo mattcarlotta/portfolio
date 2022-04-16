@@ -30,6 +30,10 @@
     @apply m-0 bg-midnight bg-fixed bg-center bg-no-repeat font-stylized text-white;
   }
 
+  .blue-text-shadow {
+    text-shadow: rgb(119, 110, 183) 0px 0px 3px;
+  }
+
   * {
     @apply box-border;
     -ms-overflow-style: none;
@@ -41,7 +45,7 @@
   }
 
   :-moz-focus-inner {
-    border: 0;
+    @apply border-0;
   }
 
   :focus-visible {

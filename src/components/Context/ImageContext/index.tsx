@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import type { ReactNode } from '~types'
+import type { Children } from '~types'
 
 export const ImageContext = createContext({ supportsWebp: false })
 
@@ -14,7 +14,7 @@ export function useImageContext() {
   return context
 }
 
-export default function ImageProvider({ children }: { children: ReactNode }) {
+export default function ImageProvider({ children }: Children) {
   const [webpSupport, setSupport] = useState(true)
   const supportsWebp = useMemo(
     () => ({ supportsWebp: webpSupport }),

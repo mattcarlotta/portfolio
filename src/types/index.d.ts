@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 import type { Document, NodeData } from '@contentful/rich-text-types'
-import { ParsedUrlQuery } from 'querystring'
+import type { ParsedUrlQuery } from 'querystring'
+import type { ReactNode } from 'react'
 
 export type {
   GetStaticPaths,
@@ -12,16 +13,22 @@ export type { AppProps } from 'next/app'
 export type {
   ChangeEvent,
   ComponentType,
-  CSSProperties,
   FC,
   FormEvent,
   KeyboardEvent,
   MouseEvent,
   ReactElement,
-  ReactNode,
   Ref
 } from 'react'
 export { Document, NodeData }
+
+export type Children = {
+  children: ReactNode
+}
+
+export type ID = {
+  id: string
+}
 
 export type ContextParams = {
   params: ParsedUrlQuery

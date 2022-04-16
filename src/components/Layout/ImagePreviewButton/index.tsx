@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { useImageContext } from '~components/ImageContext'
+import { useImageContext } from '~components/Context/ImageContext'
 import calculateScale from '~utils/calculateScale'
 
 export type ImagePreviewButtonProps = {

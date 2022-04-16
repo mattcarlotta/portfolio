@@ -1,12 +1,11 @@
 import clsx from 'clsx'
 import NextLink from 'next/link'
-import type { ReactNode } from '~types'
+import type { Children } from '~types'
 
-export type LinkProps = {
+export type LinkProps = Children & {
   ariaLabel: string
   asHref?: string
   dataTestId: string
-  children: ReactNode
   className?: string
   href: string
   noFocusRing?: boolean

@@ -1,7 +1,7 @@
 /* istanbul ignore file */
-import type { ReactNode } from '~types'
+import type { Children } from '~types'
 import styles from './PanelBody.module.scss'
 
-export default function PanelBody({ children }: { children: ReactNode }) {
+export default function PanelBody({ children }: Children) {
   return <div className={styles.panelBody}>{children}</div>
 }

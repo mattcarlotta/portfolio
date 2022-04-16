@@ -2,7 +2,6 @@ import clsx from 'clsx'
 import Info from '~components/Layout/Info'
 import OutsideLink from '~components/Navigation/OutsideLink'
 import { AiOutlineFolderOpen, FaRegFileCode, FiPower, IoRocket } from '~icons'
-import type { CSSProperties } from '~types'
 
 export type FileDetailsProps = {
   active: boolean
@@ -11,12 +10,6 @@ export type FileDetailsProps = {
   status: string
   source: string
 }
-
-const style = {
-  fontSize: 20,
-  verticalAlign: 'middle',
-  marginRight: 10
-} as CSSProperties
 
 const FileDetails = ({
   active,
@@ -30,16 +23,16 @@ const FileDetails = ({
       className={clsx(active ? 'text-lime-500' : 'text-yellow-500')}
       dataTestId="status"
     >
-      <FiPower data-testid="fipower" style={style} />
+      <FiPower data-testid="fipower" className="mr-2.5 align-middle text-xl" />
       {status}
     </Info>
     <Info className="uppercase" dataTestId="filename">
-      <AiOutlineFolderOpen style={style} />
+      <AiOutlineFolderOpen className="mr-2.5 align-middle text-xl" />
       {fileName}
     </Info>
     {location && (
       <Info dataTestId="location">
-        <IoRocket style={style} />
+        <IoRocket className="mr-2.5 align-middle text-xl" />
         <OutsideLink
           dataTestId="location-link"
           href={location}
@@ -51,7 +44,7 @@ const FileDetails = ({
       </Info>
     )}
     <Info dataTestId="source">
-      <FaRegFileCode style={style} />
+      <FaRegFileCode className="mr-2.5 align-middle text-xl" />
       <OutsideLink
         dataTestId="source-link"
         href={source}

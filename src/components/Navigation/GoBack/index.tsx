@@ -2,12 +2,13 @@
 import Link from '~components/Navigation/Link'
 import { GoHome } from '~icons'
 
-export type GoBackProps = {
+export default function GoBack({
+  href,
+  title
+}: {
   href: string
   title: string
-}
-
-export default function GoBack({ href, title }: GoBackProps) {
+}) {
   return (
     <div className="text-center">
       <Link

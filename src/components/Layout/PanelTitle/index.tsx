@@ -1,13 +1,7 @@
 /* istanbul ignore file */
-import type { ReactNode } from '~types'
+import type { Children, ID } from '~types'
 
-export default function PanelTitle({
-  children,
-  id
-}: {
-  children: ReactNode
-  id: string
-}) {
+export default function PanelTitle({ children, id }: Children & ID) {
   return (
     <header>
       <h1

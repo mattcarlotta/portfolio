@@ -1,8 +1,7 @@
 import clsx from 'clsx'
-import type { ReactNode } from '~types'
+import type { Children } from '~types'
 
-export type InfoProps = {
-  children: ReactNode
+export type InfoProps = Children & {
   className?: string
   dataTestId: string
 }

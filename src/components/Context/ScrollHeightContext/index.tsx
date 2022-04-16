@@ -8,7 +8,7 @@ import {
   useRef,
   useState
 } from 'react'
-import type { ReactNode } from '~types'
+import type { Children } from '~types'
 
 export const ScrollHeight = createContext({ clientHeight: 0, scrollHeight: 0 })
 
@@ -22,11 +22,7 @@ export function useScrollHeight() {
   return context
 }
 
-export default function ScrollHeightProvider({
-  children
-}: {
-  children: ReactNode
-}) {
+export default function ScrollHeightProvider({ children }: Children) {
   const [scrollHeight, setScrollHeight] = useState(0)
   const [clientHeight, setClientHeight] = useState(0)
 

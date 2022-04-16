@@ -1,13 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import type { ReactNode } from '~types'
+import type { Children } from '~types'
 
-export default function Tooltip({
-  children,
-  title
-}: {
-  children: ReactNode
-  title?: string
-}) {
+export type ToolTipProps = Children & { title?: string }
+
+export default function Tooltip({ children, title }: ToolTipProps) {
   const [isMounted, setMounted] = useState(false)
   const tooltipRef = useRef<HTMLDivElement | null>(null)
   const tooltipArrowRef = useRef<HTMLDivElement | null>(null)

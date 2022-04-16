@@ -1,8 +1,7 @@
-import type { KeyboardEvent, ReactNode } from '~types'
+import type { Children, KeyboardEvent } from '~types'
 import styles from './PreviewCard.module.scss'
 
-export type PreviewCardProps = {
-  children: ReactNode
+export type PreviewCardProps = Children & {
   dataTestId: string
   onClick: () => void
   onKeyDown: (event: KeyboardEvent<HTMLDivElement>) => void

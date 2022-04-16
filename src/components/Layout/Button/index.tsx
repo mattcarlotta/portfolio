@@ -1,10 +1,9 @@
 import clsx from 'clsx'
-import type { ReactNode } from '~types'
+import type { Children } from '~types'
 
-export type ButtonProps = {
+export type ButtonProps = Children & {
   ariaLabel: string
   clickable?: boolean
-  children: ReactNode
   dataTestId: string
   onClick: () => void
 }

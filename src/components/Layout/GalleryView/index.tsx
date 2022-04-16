@@ -102,6 +102,7 @@ const ModalDialog = ({
         event.preventDefault()
         handleNextImage(currentIndex + 1)
       } else if (escKeyPressed) {
+        event.stopPropagation()
         handleModalClose()
       }
     },
@@ -112,14 +113,9 @@ const ModalDialog = ({
     event: onKeyEvent<HTMLDivElement>,
     selectedIndex: number
   ): void => {
-    switch (event.key) {
-      case 'Enter': {
-        event.preventDefault()
-        handleImageClick(selectedIndex)
-        break
-      }
-      default:
-        break
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      handleImageClick(selectedIndex)
     }
   }
 
@@ -132,13 +128,10 @@ const ModalDialog = ({
   }, [handleKeyDown])
 
   useEffect(() => {
-    const previewImage = title
-      ? document.getElementById(`button-preview-${title}`)
-      : null
+    const node = document.getElementById(`button-preview-${title}`)
 
-    /* istanbul ignore next */
-    if (previewImage?.scrollIntoView)
-      previewImage.scrollIntoView({
+    if (node?.scrollIntoView)
+      node.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
         inline: 'center'
