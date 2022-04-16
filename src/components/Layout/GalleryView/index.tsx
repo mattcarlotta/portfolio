@@ -10,20 +10,19 @@ import PreviewCard from '~components/Layout/PreviewCard'
 import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
 import type {
   CONTENTFUL_IMAGE,
+  HeightAndWidth,
   KeyboardEvent as onKeyEvent,
-  ReactElement
+  Title
 } from '~types'
 
-export type ModalDialogState = {
-  open: boolean
-  currentIndex: number
-  url: string
-  description: string
-  contentType: string
-  height: number
-  width: number
-  title: string
-}
+export type ModalDialogState = HeightAndWidth &
+  Title & {
+    contentType: string
+    currentIndex: number
+    description: string
+    open: boolean
+    url: string
+  }
 
 const initialImageState = {
   open: false,
@@ -36,11 +35,7 @@ const initialImageState = {
   title: ''
 }
 
-const ModalDialog = ({
-  snapshots
-}: {
-  snapshots: Array<CONTENTFUL_IMAGE>
-}): ReactElement => {
+const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
   const [state, setState] = useState<ModalDialogState>(initialImageState)
   const { description, currentIndex, open, title, url } = state
   const snapsLength = snapshots.length
@@ -129,7 +124,7 @@ const ModalDialog = ({
 
   useEffect(() => {
     const node = document.getElementById(`button-preview-${title}`)
-
+    /* istanbul ignore next */
     if (node?.scrollIntoView)
       node.scrollIntoView({
         behavior: 'smooth',

@@ -7,28 +7,26 @@ import Tooltip from '~components/Layout/Tooltip'
 import Link from '~components/Navigation/Link'
 import OutsideLink from '~components/Navigation/OutsideLink'
 import { FaRegFileCode, FiPower, ImInfo, IoRocket } from '~icons'
-import type { CONTENTFUL_JSON } from '~types'
+import type { AriaLabel, CONTENTFUL_JSON, HeightAndWidth, Title } from '~types'
 import ContentfulRichText from '../ContentfulRichText'
 
-export type CardPreviewProps = {
-  active?: boolean
-  alt?: string
-  ariaLabel: string
-  description: string | CONTENTFUL_JSON
-  contentType: string
-  height: number
-  href?: string
-  imagePriority?: boolean
-  location?: string | null
-  scale?: number
-  showInfo?: boolean
-  slug?: string
-  source?: string
-  status?: string
-  title: string
-  url: string
-  width: number
-}
+export type CardPreviewProps = AriaLabel &
+  HeightAndWidth &
+  Title & {
+    active?: boolean
+    alt?: string
+    description: string | CONTENTFUL_JSON
+    contentType: string
+    href?: string
+    imagePriority?: boolean
+    location?: string | null
+    scale?: number
+    showInfo?: boolean
+    slug?: string
+    source?: string
+    status?: string
+    url: string
+  }
 
 const CardPreview = ({
   active,

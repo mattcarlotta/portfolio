@@ -1,6 +1,6 @@
-import type { Children, ID } from '~types'
+import type { ChildrenWithId } from '~types'
 
-export default function DetailHeadline({ children, id }: Children & ID) {
+export default function DetailHeadline({ children, id }: ChildrenWithId) {
   return (
     <header>
       <h2

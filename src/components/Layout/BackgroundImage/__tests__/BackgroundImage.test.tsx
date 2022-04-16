@@ -3,7 +3,7 @@ import BackgroundImage from '../index'
 
 const src = '/projects/123.png'
 
-jest.mock('~components/ImageContext', () => ({
+jest.mock('~components/Context/ImageContext', () => ({
   __esModule: true,
   useImageContext: jest
     .fn()

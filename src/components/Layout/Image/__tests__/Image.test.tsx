@@ -1,7 +1,7 @@
 import { render, waitFor } from '@testing-library/react'
 import Image from '../index'
 
-jest.mock('~components/ScrollHeightContext', () => ({
+jest.mock('~components/Context/ScrollHeightContext', () => ({
   __esModule: true,
   useScrollHeight: jest
     .fn()
@@ -15,7 +15,7 @@ jest.mock('~components/ScrollHeightContext', () => ({
     })
 }))
 
-jest.mock('~components/ImageContext', () => ({
+jest.mock('~components/Context/ImageContext', () => ({
   __esModule: true,
   useImageContext: jest
     .fn()

@@ -1,11 +1,11 @@
-import type { Children, KeyboardEvent } from '~types'
+import type { Children, DataTestId, KeyboardEvent, OnClickEvent } from '~types'
 import styles from './PreviewCard.module.scss'
 
-export type PreviewCardProps = Children & {
-  dataTestId: string
-  onClick: () => void
-  onKeyDown: (event: KeyboardEvent<HTMLDivElement>) => void
-}
+export type PreviewCardProps = Children &
+  DataTestId &
+  OnClickEvent & {
+    onKeyDown: (event: KeyboardEvent<HTMLDivElement>) => void
+  }
 
 export default function PreviewCard({
   children,

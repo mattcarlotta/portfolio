@@ -1,10 +1,7 @@
 import clsx from 'clsx'
-import type { Children } from '~types'
+import type { Children, DataTestId, OptionalClassName } from '~types'
 
-export type InfoProps = Children & {
-  className?: string
-  dataTestId: string
-}
+export type InfoProps = Children & DataTestId & OptionalClassName
 
 export default function Info({ children, className, dataTestId }: InfoProps) {
   return (

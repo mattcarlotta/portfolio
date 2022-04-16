@@ -1,14 +1,9 @@
 /* istanbul ignore file */
 import Link from '~components/Navigation/Link'
 import { GoHome } from '~icons'
+import type { Href, Title } from '~types'
 
-export default function GoBack({
-  href,
-  title
-}: {
-  href: string
-  title: string
-}) {
+export default function GoBack({ href, title }: Href & Title) {
   return (
     <div className="text-center">
       <Link

@@ -1,7 +1,7 @@
 /* istanbul ignore file */
-import type { Children, ID } from '~types'
+import type { ChildrenWithId } from '~types'
 
-export default function PanelTitle({ children, id }: Children & ID) {
+export default function PanelTitle({ children, id }: ChildrenWithId) {
   return (
     <header>
       <h1

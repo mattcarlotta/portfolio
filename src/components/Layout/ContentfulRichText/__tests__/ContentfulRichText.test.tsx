@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import type { Document } from '~types'
+import type { CONTENTFUL_JSON } from '~types'
 import ContentfulRichText from '../index'
 
 const json = {
@@ -40,7 +40,7 @@ const json = {
       data: {}
     }
   ]
-} as Document
+} as CONTENTFUL_JSON['json']
 
 describe('ContentfulRichText', () => {
   it('renders without errors', () => {

@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 import { FiExternalLink } from '~icons'
-import type { Children } from '~types'
+import type { AriaLabel, Children, Href, OptionalClassName } from '~types'
 
-export type OutsideLinkProps = Children & {
-  ariaLabel: string
-  className?: string
-  dataTestId?: string
-  href: string
-  showIcon?: boolean
-}
+export type OutsideLinkProps = AriaLabel &
+  Children &
+  Href &
+  OptionalClassName & {
+    dataTestId?: string
+    showIcon?: boolean
+  }
 
 export default function OutsideLink({
   ariaLabel,

@@ -2,18 +2,17 @@ import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
 import { useImageContext } from '~components/Context/ImageContext'
 import { useScrollHeight } from '~components/Context/ScrollHeightContext'
+import type { HeightAndWidth, OptionalClassName } from '~types'
 import calculateScale from '~utils/calculateScale'
 
-export type ImageProps = {
-  alt?: string
-  className?: string
-  contentType: string
-  height: number
-  priority?: boolean
-  scale?: number
-  width: number
-  url: string
-}
+export type ImageProps = HeightAndWidth &
+  OptionalClassName & {
+    alt?: string
+    contentType: string
+    priority?: boolean
+    scale?: number
+    url: string
+  }
 
 export default function Image({
   alt,

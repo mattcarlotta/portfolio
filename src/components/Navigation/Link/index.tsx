@@ -1,16 +1,22 @@
 import clsx from 'clsx'
 import NextLink from 'next/link'
-import type { Children } from '~types'
+import type {
+  AriaLabel,
+  Children,
+  DataTestId,
+  Href,
+  OptionalClassName
+} from '~types'
 
-export type LinkProps = Children & {
-  ariaLabel: string
-  asHref?: string
-  dataTestId: string
-  className?: string
-  href: string
-  noFocusRing?: boolean
-  scroll?: boolean
-}
+export type LinkProps = AriaLabel &
+  Children &
+  DataTestId &
+  Href &
+  OptionalClassName & {
+    asHref?: string
+    noFocusRing?: boolean
+    scroll?: boolean
+  }
 
 export default function Link({
   ariaLabel,

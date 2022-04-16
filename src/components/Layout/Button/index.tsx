@@ -1,12 +1,12 @@
 import clsx from 'clsx'
-import type { Children } from '~types'
+import type { AriaLabel, Children, DataTestId, OnClickEvent } from '~types'
 
-export type ButtonProps = Children & {
-  ariaLabel: string
-  clickable?: boolean
-  dataTestId: string
-  onClick: () => void
-}
+export type ButtonProps = AriaLabel &
+  Children &
+  DataTestId &
+  OnClickEvent & {
+    clickable?: boolean
+  }
 
 export default function Button({
   ariaLabel,

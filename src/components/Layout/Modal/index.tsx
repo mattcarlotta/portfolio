@@ -1,9 +1,8 @@
 import { createPortal } from 'react-dom'
-import type { Children } from '~types'
+import type { ChildrenWithId } from '~types'
 
-export type ModalProps = Children & {
+export type ModalProps = ChildrenWithId & {
   description?: string
-  id: string
   onClose: () => void
   open: boolean
 }
