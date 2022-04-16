@@ -13,6 +13,7 @@ export default function Tooltip({
   const tooltipArrowRef = useRef<HTMLDivElement | null>(null)
 
   const handleShowTooltip = () => {
+    /* istanbul ignore else */
     if (tooltipRef.current && tooltipArrowRef.current) {
       tooltipRef.current.style.display = 'block'
       const { width } = tooltipRef.current.getBoundingClientRect()
@@ -29,6 +30,7 @@ export default function Tooltip({
   }
 
   const handleHideTooltip = () => {
+    /* istanbul ignore else */
     if (tooltipRef.current && tooltipArrowRef.current) {
       tooltipRef.current.style.opacity = '0'
       tooltipRef.current.style.display = ''
@@ -43,10 +45,10 @@ export default function Tooltip({
   }, [])
 
   return isMounted ? (
-    <div className="relative">
+    <div data-testid="container" className="relative">
       <div
         role="presentation"
-        className="flex items-center"
+        data-testid="tooltip-child"
         onFocus={handleShowTooltip}
         onBlur={handleHideTooltip}
         onMouseEnter={handleShowTooltip}
@@ -55,13 +57,15 @@ export default function Tooltip({
         {children}
       </div>
       <div
-        className="whitespace-no-wrap fixed z-[200] hidden rounded bg-primary-25 px-4 py-2 font-plain text-tiny text-white opacity-0"
+        data-testid="tooltip"
+        className="whitespace-no-wrap fixed z-50 hidden rounded bg-primary-25 px-4 py-2 font-plain text-tiny text-white opacity-0"
         ref={tooltipRef}
       >
         {title}
       </div>
       <div
-        className="fixed z-[100] hidden h-3 w-3 bg-primary-25 opacity-0"
+        data-testid="tooltip-arrow"
+        className="fixed z-40 hidden h-3 w-3 bg-primary-25 opacity-0"
         ref={tooltipArrowRef}
       />
     </div>
