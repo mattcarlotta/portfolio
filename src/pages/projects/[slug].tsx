@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
 import FileDetails from '~components/Layout/FileDetails'
-import ModalDialog from '~components/Layout/ModalDialog'
+import GalleryView from '~components/Layout/GalleryView'
 import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
@@ -58,7 +58,7 @@ export default function ProjectPageComponent({
               </ul>
             </section>
             {project.snapshotsCollection.items.length > 0 ? (
-              <ModalDialog snapshots={project.snapshotsCollection!.items} />
+              <GalleryView snapshots={project.snapshotsCollection!.items} />
             ) : null}
           </div>
         </Panel>

@@ -2,12 +2,12 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { INLINES } from '@contentful/rich-text-types'
 import OutsideLink from '~components/Navigation/OutsideLink'
-import type { Document, NodeData } from '~types'
+import type { CONTENTFUL_JSON } from '~types'
 import styles from './ContentfulRichText.module.scss'
 
 const customMarkdownOptions = {
   renderNode: {
-    [INLINES.HYPERLINK]: (node: NodeData) => {
+    [INLINES.HYPERLINK]: (node: any) => {
       const title = node.content?.[0]?.value
 
       return (
@@ -23,7 +23,7 @@ const customMarkdownOptions = {
   }
 }
 
-export default function ContentfulRichText({ json }: { json: Document }) {
+export default function ContentfulRichText({ json }: CONTENTFUL_JSON) {
   return (
     <div data-testid="contentful-body" className={styles.markdown}>
       {documentToReactComponents(json, customMarkdownOptions)}

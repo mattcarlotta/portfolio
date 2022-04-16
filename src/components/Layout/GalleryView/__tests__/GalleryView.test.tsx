@@ -2,7 +2,7 @@ import { within } from '@testing-library/dom'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ReactElement } from '~types'
-import ModalDialog from '../index'
+import GalleryView from '../index'
 
 const props = {
   snapshots: [
@@ -32,14 +32,14 @@ const setupUserEvent = (jsx: ReactElement) => ({
   ...render(jsx)
 })
 
-describe('ModalDialog', () => {
+describe('GalleryView', () => {
   it('renders without errors', () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId } = render(<GalleryView {...props} />)
     expect(getByTestId('snapshots')).toBeInTheDocument()
   })
 
   it('opens a modal dialog when clicking on a snapshot', async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -49,7 +49,7 @@ describe('ModalDialog', () => {
   })
 
   it("navigates the snapshots when clicking on the 'next-image' or 'previous-image' buttons", async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -75,7 +75,7 @@ describe('ModalDialog', () => {
   })
 
   it("wraps around to the first image when clicking on the 'next-image' button", async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 456'))
 
@@ -93,7 +93,7 @@ describe('ModalDialog', () => {
   })
 
   it("wraps around to the last image clicking on the 'previous-image' button", async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -111,7 +111,7 @@ describe('ModalDialog', () => {
   })
 
   it('navigates to an image when clicking on a preview of it', async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     user.click(getByTestId('example 123'))
 
@@ -129,7 +129,7 @@ describe('ModalDialog', () => {
   })
 
   it('pressing tab navigates to next image', async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -147,7 +147,7 @@ describe('ModalDialog', () => {
   })
 
   it('pressing arrowright key navigates to next image', async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -165,7 +165,7 @@ describe('ModalDialog', () => {
   })
 
   it('pressing arrowleft key navigates to previous image', async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -183,7 +183,7 @@ describe('ModalDialog', () => {
   })
 
   it('pressing shift+tab keys navigates to previous image', async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -201,7 +201,7 @@ describe('ModalDialog', () => {
   })
 
   it('pressing esc key closes the modal', async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -219,7 +219,7 @@ describe('ModalDialog', () => {
   })
 
   it('pressing arrowup key does nothing', async () => {
-    const { getByTestId, user } = setupUserEvent(<ModalDialog {...props} />)
+    const { getByTestId, user } = setupUserEvent(<GalleryView {...props} />)
 
     await user.click(getByTestId('example 123'))
 
@@ -235,7 +235,7 @@ describe('ModalDialog', () => {
   })
 
   it('opens the modal when pressing enter key on a snapshot preview', async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId } = render(<GalleryView {...props} />)
 
     fireEvent.keyDown(getByTestId('example 123'), { key: 'Enter' })
 
@@ -245,7 +245,7 @@ describe('ModalDialog', () => {
   })
 
   it("doesn't open the modal when pressing an invalid key on a snapshot preview", async () => {
-    const { getByTestId } = render(<ModalDialog {...props} />)
+    const { getByTestId } = render(<GalleryView {...props} />)
 
     fireEvent.keyDown(getByTestId('example 123'), { key: 'ArrowUp' })
 

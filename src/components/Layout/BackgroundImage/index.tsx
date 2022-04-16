@@ -1,7 +1,7 @@
-import { useImageContext } from '~components/ImageContext'
+import { useImageContext } from '~components/Context/ImageContext'
+import type { DataTestId } from '~types'
 
-export type BackImageViewerProps = {
-  dataTestId: string
+export type BackImageViewerProps = DataTestId & {
   src: string
 }
 

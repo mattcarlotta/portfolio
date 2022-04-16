@@ -1,12 +1,6 @@
-import type { ReactNode } from '~types'
+import type { ChildrenWithId } from '~types'
 
-export default function DetailHeadline({
-  children,
-  id
-}: {
-  children: ReactNode
-  id: string
-}) {
+export default function DetailHeadline({ children, id }: ChildrenWithId) {
   return (
     <header>
       <h2

@@ -1,13 +1,9 @@
 /* istanbul ignore file */
-import type { ReactNode } from '~types'
+import type { Children } from '~types'
 
-export default function Project({
-  children,
-  dataTestId
-}: {
-  children: ReactNode
-  dataTestId?: string
-}) {
+export type ProjectProps = Children & { dataTestId?: string }
+
+export default function Project({ children, dataTestId }: ProjectProps) {
   return (
     <article className="my-8 rounded-t-xl shadow-glow" data-testid={dataTestId}>
       {children}

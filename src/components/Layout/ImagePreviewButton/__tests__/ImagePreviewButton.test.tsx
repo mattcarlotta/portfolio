@@ -5,7 +5,7 @@ const src = '/projects/123.png'
 const webpSrc = `url(${src}?fm=webp&h=10&w=10)`
 const pngSrc = `url(${src}&h=10&w=10)`
 
-jest.mock('~components/ImageContext', () => ({
+jest.mock('~components/Context/ImageContext', () => ({
   __esModule: true,
   useImageContext: jest
     .fn()

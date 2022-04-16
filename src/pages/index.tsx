@@ -15,16 +15,10 @@ export default function Home({
     <>
       <Head />
       <Section>
-        <h1
-          style={{ textShadow: 'rgb(119, 110, 183) 0px 0px 3px' }}
-          className="m-0 text-3xl uppercase leading-none tracking-wider text-white sm:text-5xl"
-        >
-          MATT CARLOTTA
+        <h1 className="blue-text-shadow m-0 text-3xl uppercase leading-none tracking-wider text-white sm:text-5xl">
+          Matt Carlotta
         </h1>
-        <h2
-          style={{ textShadow: 'rgb(119, 110, 183) 0px 0px 1px' }}
-          className="m-0 p-0 text-tiny text-primary sm:text-lg"
-        >
+        <h2 className="m-0 p-0 text-tiny text-primary sm:text-lg">
           Fullstack Software Engineer
         </h2>
         <Orbits />

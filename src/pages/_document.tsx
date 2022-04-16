@@ -1,4 +1,3 @@
-/* eslint-disable react/no-invalid-html-attribute  */
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import packageJson from '../../package.json'
 

@@ -1,6 +1,6 @@
 /* istanbul ignore file */
-import type { Document, NodeData } from '@contentful/rich-text-types'
-import { ParsedUrlQuery } from 'querystring'
+import type { ParsedUrlQuery } from 'querystring'
+import type { ReactNode } from 'react'
 
 export type {
   GetStaticPaths,
@@ -12,16 +12,37 @@ export type { AppProps } from 'next/app'
 export type {
   ChangeEvent,
   ComponentType,
-  CSSProperties,
   FC,
   FormEvent,
   KeyboardEvent,
   MouseEvent,
   ReactElement,
-  ReactNode,
   Ref
 } from 'react'
-export { Document, NodeData }
+
+export type AriaLabel = {
+  ariaLabel: string
+}
+
+export type Children = {
+  children: ReactNode
+}
+
+export type ChildrenWithId = Children & {
+  id: string
+}
+
+export type DataTestId = {
+  dataTestId: string
+}
+
+export type Href = {
+  href: string
+}
+
+export type OptionalClassName = {
+  className?: string
+}
 
 export type ContextParams = {
   params: ParsedUrlQuery
@@ -33,18 +54,27 @@ export type CONTENTFUL_ID = {
   }
 }
 
-export type CONTENTFUL_IMAGE = {
-  url: string
-  description: string
-  contentType: string
+export type HeightAndWidth = {
   height: number
   width: number
+}
+
+export type OnClickEvent = {
+  onClick: () => void
+}
+
+export type Title = {
   title: string
 }
 
-export type CONTENTFUL_TITLE = {
-  title: string
-}
+export type CONTENTFUL_IMAGE = HeightAndWidth &
+  Title & {
+    contentType: string
+    description: string
+    url: string
+  }
+
+export type CONTENTFUL_TITLE = Title
 
 export type CONTENTFUL_SLUG = {
   slug: string
@@ -63,7 +93,6 @@ export type CONTENTFUL_BACKGROUND_PAGE = {
   location: string
   rank: string
   email: string
-
   tech: {
     data: Array<{ level: number; technology: string }>
   }

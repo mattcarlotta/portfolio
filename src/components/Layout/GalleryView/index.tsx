@@ -10,20 +10,19 @@ import PreviewCard from '~components/Layout/PreviewCard'
 import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
 import type {
   CONTENTFUL_IMAGE,
+  HeightAndWidth,
   KeyboardEvent as onKeyEvent,
-  ReactElement
+  Title
 } from '~types'
 
-export type ModalDialogState = {
-  open: boolean
-  currentIndex: number
-  url: string
-  description: string
-  contentType: string
-  height: number
-  width: number
-  title: string
-}
+export type ModalDialogState = HeightAndWidth &
+  Title & {
+    contentType: string
+    currentIndex: number
+    description: string
+    open: boolean
+    url: string
+  }
 
 const initialImageState = {
   open: false,
@@ -36,11 +35,7 @@ const initialImageState = {
   title: ''
 }
 
-const ModalDialog = ({
-  snapshots
-}: {
-  snapshots: Array<CONTENTFUL_IMAGE>
-}): ReactElement => {
+const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
   const [state, setState] = useState<ModalDialogState>(initialImageState)
   const { description, currentIndex, open, title, url } = state
   const snapsLength = snapshots.length
@@ -102,6 +97,7 @@ const ModalDialog = ({
         event.preventDefault()
         handleNextImage(currentIndex + 1)
       } else if (escKeyPressed) {
+        event.stopPropagation()
         handleModalClose()
       }
     },
@@ -112,14 +108,9 @@ const ModalDialog = ({
     event: onKeyEvent<HTMLDivElement>,
     selectedIndex: number
   ): void => {
-    switch (event.key) {
-      case 'Enter': {
-        event.preventDefault()
-        handleImageClick(selectedIndex)
-        break
-      }
-      default:
-        break
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      handleImageClick(selectedIndex)
     }
   }
 
@@ -132,13 +123,10 @@ const ModalDialog = ({
   }, [handleKeyDown])
 
   useEffect(() => {
-    const previewImage = title
-      ? document.getElementById(`button-preview-${title}`)
-      : null
-
+    const node = document.getElementById(`button-preview-${title}`)
     /* istanbul ignore next */
-    if (previewImage?.scrollIntoView)
-      previewImage.scrollIntoView({
+    if (node?.scrollIntoView)
+      node.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
         inline: 'center'

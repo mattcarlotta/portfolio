@@ -1,13 +1,12 @@
 import clsx from 'clsx'
-import type { ReactNode } from '~types'
+import type { AriaLabel, Children, DataTestId, OnClickEvent } from '~types'
 
-export type ButtonProps = {
-  ariaLabel: string
-  clickable?: boolean
-  children: ReactNode
-  dataTestId: string
-  onClick: () => void
-}
+export type ButtonProps = AriaLabel &
+  Children &
+  DataTestId &
+  OnClickEvent & {
+    clickable?: boolean
+  }
 
 export default function Button({
   ariaLabel,
