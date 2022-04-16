@@ -29,7 +29,7 @@ export default function Home({
         </h2>
         <Orbits />
       </Section>
-      <div
+      <section
         className="mt-28 flex flex-wrap items-center justify-center"
         data-testid="home-page"
       >
@@ -44,7 +44,7 @@ export default function Home({
             alt={preview.description}
           />
         ))}
-      </div>
+      </section>
     </>
   )
 }
