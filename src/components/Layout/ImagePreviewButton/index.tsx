@@ -28,7 +28,7 @@ export default function ImagePreviewButton({
 
   return (
     <button
-      aria-label={`View the ${title} image`}
+      aria-label={title}
       data-testid={`button-${title}`}
       id={`button-preview-${title}`}
       style={{ backgroundImage }}

@@ -1,14 +1,12 @@
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const process = require('process')
+
+const { ANALYZE, INSTAGING, NODE_ENV } = process.env
+
 /**
  * @type {import('next').NextConfig}
  **/
 module.exports = {
-  compiler: {
-    reactRemoveProperties:
-      process.env.NODE_ENV == 'production' && !process.env.INSTAGING
-  },
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   async headers() {
     return [
       {
@@ -41,5 +39,25 @@ module.exports = {
         ]
       }
     ]
+  },
+  compiler: {
+    reactRemoveProperties: NODE_ENV == 'production' && !INSTAGING
+  },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  webpack(config, { isServer }) {
+    if (ANALYZE != null) {
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          reportFilename: isServer
+            ? '../analyze/server.html'
+            : './analyze/client.html'
+        })
+      )
+    }
+
+    return config
   }
 }

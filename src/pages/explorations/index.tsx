@@ -25,7 +25,7 @@ const ExplorationsPage = ({
       </p>
     </Section>
     <section
-      className="mb-20 flex flex-wrap items-center justify-center"
+      className="my-20 flex flex-wrap items-center justify-center"
       data-testid="home-page"
     >
       {explorations.map(({ sys, title, sandboxId, preview, ...rest }) => (

@@ -1,35 +1,18 @@
-import Dialog from '@mui/material/Dialog'
-import Slide from '@mui/material/Slide'
-import { styled } from '@mui/material/styles'
-import { forwardRef, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import BackgroundImageViewer from '~components/Layout/BackgroundImage'
 import Button from '~components/Layout/Button'
 import CardTitle from '~components/Layout/CardTitle'
 import DetailHeadline from '~components/Layout/DetailHeadline'
 import Image from '~components/Layout/Image'
 import ImagePreviewButton from '~components/Layout/ImagePreviewButton'
+import Modal from '~components/Layout/Modal'
 import PreviewCard from '~components/Layout/PreviewCard'
 import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
 import type {
   CONTENTFUL_IMAGE,
   KeyboardEvent as onKeyEvent,
-  ReactElement,
-  Ref,
-  TransitionProps
+  ReactElement
 } from '~types'
-
-const ModalImageGallery = styled(Dialog)`
-  & .MuiPaper-root {
-    background: #00020e;
-  }
-`
-
-const SlideTransition = forwardRef(
-  (
-    props: TransitionProps & { children: ReactElement<any, any> },
-    ref: Ref<unknown>
-  ) => <Slide direction="right" ref={ref} {...props} />
-)
 
 export type ModalDialogState = {
   open: boolean
@@ -59,7 +42,7 @@ const ModalDialog = ({
   snapshots: Array<CONTENTFUL_IMAGE>
 }): ReactElement => {
   const [state, setState] = useState<ModalDialogState>(initialImageState)
-  const { open, currentIndex, url, title } = state
+  const { description, currentIndex, open, title, url } = state
   const snapsLength = snapshots.length
 
   const selectImage = (selectedIndex: number): void => {
@@ -98,12 +81,8 @@ const ModalDialog = ({
     [currentIndex, snapsLength]
   )
 
-  const handleModalExit = (): void => {
-    setState(initialImageState)
-  }
-
   const handleModalClose = (): void => {
-    setState((prevState) => ({ ...prevState, open: false }))
+    setState(initialImageState)
   }
 
   const handleKeyDown = useCallback(
@@ -111,6 +90,7 @@ const ModalDialog = ({
       if (!open) return
 
       const { key, shiftKey } = event
+      const escKeyPressed = key === 'Esc' || key === 'Escape'
       const tabKeyPressed = key === 'Tab'
       const arrowLeftPressed = key === 'ArrowLeft'
       const arrowRightPressed = key === 'ArrowRight'
@@ -121,9 +101,11 @@ const ModalDialog = ({
       } else if (tabKeyPressed || arrowRightPressed) {
         event.preventDefault()
         handleNextImage(currentIndex + 1)
+      } else if (escKeyPressed) {
+        handleModalClose()
       }
     },
-    [open, handleNextImage, currentIndex]
+    [open, handleNextImage, handleModalClose, currentIndex]
   )
 
   const handleSelectImage = (
@@ -190,15 +172,11 @@ const ModalDialog = ({
           ))}
         </div>
       </section>
-      <ModalImageGallery
-        fullScreen
-        scroll="body"
+      <Modal
         id="image-gallery-modal"
+        description={description}
         open={open}
         onClose={handleModalClose}
-        aria-labelledby="actions-dialog"
-        TransitionComponent={SlideTransition}
-        TransitionProps={{ onExited: handleModalExit }}
       >
         <div className="fixed top-0 w-full">
           <div className="absolute top-5 left-5 font-plain text-2xl text-white">
@@ -207,6 +185,7 @@ const ModalDialog = ({
           </div>
           <h2
             className="mt-10 p-5 text-center text-md text-white sm:mt-0 sm:text-2xl"
+            id="snapshot-title"
             data-testid="modal-title"
           >
             {title}
@@ -259,7 +238,7 @@ const ModalDialog = ({
             ))}
           </div>
         </div>
-      </ModalImageGallery>
+      </Modal>
     </>
   )
 }

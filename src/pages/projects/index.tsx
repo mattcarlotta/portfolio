@@ -28,7 +28,7 @@ export default function Projects({
         </p>
       </Section>
       <section
-        className="mb-20 flex flex-wrap items-center justify-center"
+        className="mb-64 mt-20 flex flex-wrap items-center justify-center"
         data-testid="projects-page"
       >
         {projects.map(({ sys, preview, seoDescription, ...rest }) => (
