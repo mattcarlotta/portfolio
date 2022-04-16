@@ -58,7 +58,7 @@ export default function Header({
       <meta property="og:image:height" content="300" />
       <meta
         property="og:image:alt"
-        content="Matt Carlotta - A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications"
+        content="A fullstack developer who is passionate about open-source projects, helping the web development community, and building SEO optimized applications"
       />
       <meta property="og:image:type" content="image/png" />
       <link
