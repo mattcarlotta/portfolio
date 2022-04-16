@@ -1,26 +1,14 @@
-import { CacheProvider } from '@emotion/react'
 import Head from 'next/head'
 import ImageContext from '~components/ImageContext'
 import HEADERLINKS from '~components/Layout/HEADERLINKS'
 import Link from '~components/Navigation/Link'
 import ScrollHeightContext from '~components/ScrollHeightContext'
 import '~styles/globals.scss'
-import type { AppProps, EmotionCache } from '~types'
-import createEmotionCache from '~utils/createEmotionCache'
+import type { AppProps } from '~types'
 
-const clientSideEmotionCache = createEmotionCache()
-
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache
-}
-
-export default function App({
-  Component,
-  emotionCache = clientSideEmotionCache,
-  pageProps
-}: MyAppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <CacheProvider value={emotionCache}>
+    <>
       <Head>
         <meta
           name="viewport"
@@ -57,6 +45,6 @@ export default function App({
           </main>
         </ImageContext>
       </ScrollHeightContext>
-    </CacheProvider>
+    </>
   )
 }

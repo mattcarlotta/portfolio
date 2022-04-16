@@ -1,5 +1,5 @@
 .card {
-  @apply relative mx-1 my-2.5 h-[16.25rem] w-[18.75rem] overflow-hidden rounded-b border border-solid border-primary-600 bg-transparent text-center text-primary-100 shadow-card;
+  @apply relative mx-1 mb-8 h-[16.25rem] w-[18.75rem] overflow-hidden rounded-b border border-solid border-primary-600 bg-transparent text-center text-primary-100 shadow-card sm:mb-20;
 
   &:hover,
   &:focus,

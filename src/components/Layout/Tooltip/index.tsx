@@ -1,57 +1,69 @@
-// import { makeStyles, Tooltip } from '@material-ui/core'
-import { styled } from '@mui/material/styles'
-import Tooltip from '@mui/material/Tooltip'
-import type { ReactElement, ReactNode, TooltipProps } from '~types'
+import { useEffect, useRef, useState } from 'react'
+import type { ReactNode } from '~types'
 
-export type TTooltipPlacement =
-  | 'bottom'
-  | 'left'
-  | 'right'
-  | 'top'
-  | 'bottom-end'
-  | 'bottom-start'
-  | 'left-end'
-  | 'left-start'
-  | 'right-end'
-  | 'right-start'
-  | 'top-end'
-  | 'top-start'
-  | undefined
-
-const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} arrow classes={{ popper: className }} />
-))`
-  & .MuiTooltip-arrow {
-    color: #0088ff;
-  }
-
-  & .MuiTooltip-tooltip {
-    background: #0088ff;
-    box-shadow: 0px 0px 8px -2px rgba(0, 64, 255, 1);
-  }
-`
-
-export type TCustomTooltipProps = {
-  children: ReactNode
-  placement?: TTooltipPlacement
-  title: ReactNode
-}
-
-const MuiTooltip = ({
+export default function Tooltip({
   children,
-  placement = 'top',
   title
-}: TCustomTooltipProps): ReactElement => {
-  return (
-    <CustomTooltip
-      placement={placement}
-      title={
-        <div className="m-0 p-px text-center font-plain text-base">{title}</div>
-      }
-    >
-      <span className="text-center">{children}</span>
-    </CustomTooltip>
-  )
-}
+}: {
+  children: ReactNode
+  title?: string
+}) {
+  const [isMounted, setMounted] = useState(false)
+  const tooltipRef = useRef<HTMLDivElement | null>(null)
+  const tooltipArrowRef = useRef<HTMLDivElement | null>(null)
 
-export default MuiTooltip
+  const handleShowTooltip = () => {
+    if (tooltipRef.current && tooltipArrowRef.current) {
+      tooltipRef.current.style.display = 'block'
+      const { width } = tooltipRef.current.getBoundingClientRect()
+      tooltipRef.current.style.translate = `-${Math.round(width / 4.75)}px`
+      tooltipRef.current.style.top = '79%'
+      tooltipRef.current.style.opacity = '1'
+
+      tooltipArrowRef.current.style.top = '89%'
+      tooltipArrowRef.current.style.translate = '130%'
+      tooltipArrowRef.current.style.transform = 'rotate(45deg)'
+      tooltipArrowRef.current.style.opacity = '1'
+      tooltipArrowRef.current.style.display = 'block'
+    }
+  }
+
+  const handleHideTooltip = () => {
+    if (tooltipRef.current && tooltipArrowRef.current) {
+      tooltipRef.current.style.opacity = '0'
+      tooltipRef.current.style.display = ''
+
+      tooltipArrowRef.current.style.opacity = '0'
+      tooltipArrowRef.current.style.display = ''
+    }
+  }
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  return isMounted ? (
+    <div className="relative">
+      <div
+        role="presentation"
+        className="flex items-center"
+        onFocus={handleShowTooltip}
+        onBlur={handleHideTooltip}
+        onMouseEnter={handleShowTooltip}
+        onMouseLeave={handleHideTooltip}
+      >
+        {children}
+      </div>
+      <div
+        className="whitespace-no-wrap fixed z-[200] hidden rounded bg-primary-25 px-4 py-2 font-plain text-tiny text-white opacity-0"
+        ref={tooltipRef}
+      >
+        {title}
+      </div>
+      <div
+        className="fixed z-[100] hidden h-3 w-3 bg-primary-25 opacity-0"
+        ref={tooltipArrowRef}
+      />
+    </div>
+  ) : null
+}
