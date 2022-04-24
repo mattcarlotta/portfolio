@@ -1,14 +1,15 @@
 /* eslint-disable react/destructuring-assignment */
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { INLINES } from '@contentful/rich-text-types'
 import OutsideLink from '~components/Navigation/OutsideLink'
-import type { CONTENTFUL_JSON } from '~types'
+import type { BlockOrInline, CONTENTFUL_JSON, Text } from '~types'
+import { documentToReactComponents } from '~utils/richTextRender'
 import styles from './ContentfulRichText.module.scss'
 
 const customMarkdownOptions = {
   renderNode: {
-    [INLINES.HYPERLINK]: (node: any) => {
-      const title = node.content?.[0]?.value
+    [INLINES.HYPERLINK]: (node: BlockOrInline) => {
+      const nodeContent = node.content?.[0] as Text
+      const title = nodeContent?.value
 
       return (
         <OutsideLink
