@@ -1,4 +1,12 @@
 /* istanbul ignore file */
+import type {
+  Block,
+  Document,
+  Inline,
+  Mark,
+  Node as ContentfulNode,
+  Text
+} from '@contentful/rich-text-types'
 import type { ParsedUrlQuery } from 'querystring'
 import type { ReactNode } from 'react'
 
@@ -17,8 +25,28 @@ export type {
   KeyboardEvent,
   MouseEvent,
   ReactElement,
+  ReactNode,
   Ref
 } from 'react'
+/// contentful types
+export { Block, ContentfulNode, Document, Inline, Mark, Text }
+export type BlockOrInline = Block | Inline
+export type CommonNode = Text | BlockOrInline
+export interface RenderNode {
+  [k: string]: { (node: BlockOrInline, children: ReactNode): ReactNode }
+}
+export interface RenderMark {
+  [k: string]: (text: ReactNode) => ReactNode
+}
+export interface RenderText {
+  (text: string): ReactNode
+}
+export interface Options {
+  renderNode?: RenderNode
+  renderMark?: RenderMark
+  renderText?: RenderText
+}
+///
 
 export type AriaLabel = {
   ariaLabel: string

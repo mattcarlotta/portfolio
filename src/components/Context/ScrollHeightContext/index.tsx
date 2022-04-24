@@ -1,5 +1,4 @@
 /* istanbul ignore file */
-import throttle from 'lodash.throttle'
 import {
   createContext,
   useContext,
@@ -9,6 +8,7 @@ import {
   useState
 } from 'react'
 import type { Children } from '~types'
+import throttle from '~utils/throttle'
 
 export const ScrollHeight = createContext({ clientHeight: 0, scrollHeight: 0 })
 
