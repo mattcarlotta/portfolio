@@ -9,7 +9,6 @@
   "scripts": {
     "analyze": "ANALYZE=true next build",
     "build": "next build",
-    "postbuild": "sh ./scripts/postbuild.sh",
     "dev": "NODE_OPTIONS='--max_old_space_size=4096' next dev",
     "lint": "eslint src --ext .ts,.tsx",
     "start": "next start",

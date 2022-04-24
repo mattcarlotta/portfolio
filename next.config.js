@@ -46,6 +46,9 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  publicRuntimeConfig: {
+    BUILD_DATE: new Date().toISOString()
+  },
   webpack(config, { isServer }) {
     if (ANALYZE != null) {
       config.plugins.push(
