@@ -46,7 +46,7 @@ export default function Header({
         property="og:site_name"
         content="Matt Carlotta - Fullstack Software Engineer"
       />
-      <meta property="og:updated_time" content={new Date().toLocaleString()} />
+      <meta property="og:updated_time" content={new Date().toISOString()} />
       <meta
         property="og:image"
         content="https://images.ctfassets.net/hb5otnhwin4m/5XlzNcNVgoachT9KBOv4TW/93e008136db547b48ce1dd4d8bfe5bf1/profile_300.png"
