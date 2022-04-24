@@ -21,7 +21,7 @@ export default function Header({
     .replace(/\./, '')
   return (
     <Head>
-      <title data-testid="head-title">{newTitle}</title>
+      <title data-testid="head-title">{newTitle.trim()}</title>
       <meta name="theme-color" content="#000000" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="description" content={description} />
@@ -35,7 +35,7 @@ export default function Header({
       />
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content={type} />
-      <meta property="og:title" content={newTitle} />
+      <meta property="og:title" content={newTitle.trim()} />
       <meta property="og:description" content={description} />
       <meta
         property="og:url"
