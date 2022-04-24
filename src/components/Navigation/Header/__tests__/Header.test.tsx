@@ -1,15 +1,6 @@
 import { render } from '@testing-library/react'
 import Header from '../index'
 
-jest.mock('next/config', () => ({
-  __esModule: true,
-  default: () => ({
-    publicRuntimeConfig: {
-      BUILD_DATE: new Date().toLocaleString()
-    }
-  })
-}))
-
 jest.mock('next/router', () => ({
   useRouter: () => ({
     route: '/',

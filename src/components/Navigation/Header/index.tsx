@@ -1,8 +1,5 @@
-import getConfig from 'next/config'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-
-const { publicRuntimeConfig } = getConfig()
 
 export type HeaderProps = {
   description?: string
@@ -22,9 +19,10 @@ export default function Header({
     .join(' ')
     .concat(` ${title && '-'} ${description} | Matt Carlotta`)
     .replace(/\./, '')
+    .trim()
   return (
     <Head>
-      <title data-testid="head-title">{newTitle.trim()}</title>
+      <title data-testid="head-title">{newTitle}</title>
       <meta name="theme-color" content="#000000" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="description" content={description} />
@@ -38,7 +36,7 @@ export default function Header({
       />
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content={type} />
-      <meta property="og:title" content={newTitle.trim()} />
+      <meta property="og:title" content={newTitle} />
       <meta property="og:description" content={description} />
       <meta
         property="og:url"
@@ -48,10 +46,7 @@ export default function Header({
         property="og:site_name"
         content="Matt Carlotta - Fullstack Software Engineer"
       />
-      <meta
-        property="og:updated_time"
-        content={publicRuntimeConfig.BUILD_DATE}
-      />
+      <meta property="og:updated_time" content={new Date().toLocaleString()} />
       <meta
         property="og:image"
         content="https://images.ctfassets.net/hb5otnhwin4m/5XlzNcNVgoachT9KBOv4TW/93e008136db547b48ce1dd4d8bfe5bf1/profile_300.png"
