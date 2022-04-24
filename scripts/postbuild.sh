@@ -1,11 +1,12 @@
 #!/bin/bash -eux
 
-HTMLFILES=$(find $PWD/.next/server/pages -type f -name "*.html")
-DATE=$(date -u +"%FT%TZ")
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+HTMLFILES=$(/usr/bin/find $DIR/../.next/server/pages -type f -name "*.html")
+DATE=$(/bin/date -u +"%FT%TZ")
 
 for file in $HTMLFILES; do
-  line=$(grep -n 'og:updated_time' $file)
+  line=$(/bin/grep -n 'og:updated_time' $file)
   if [ ! -z "$line" ]; then
-    perl -pi -e "s/time.+?(?=>)/time\" content=\"$DATE\"\//g;" ${file}  
+    /usr/bin/perl -pi -e "s/time.+?(?=>)/time\" content=\"$DATE\"\//g;" ${file}  
   fi
 done
