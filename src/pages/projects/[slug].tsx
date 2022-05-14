@@ -20,6 +20,7 @@ export default function ProjectPageComponent({
 }) {
   return (
     <>
+      {console.log('project', project)}
       <Head title={project.title} description={project.seoDescription} />
       <Project>
         <PanelTitle id="title" data-testid="panel-title">
