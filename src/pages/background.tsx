@@ -21,9 +21,28 @@ import {
   SiStackoverflow,
   VscGithub
 } from '~icons'
-import type { CONTENTFUL_BACKGROUND_PAGE } from '~types'
+import type { CONTENTFUL_BACKGROUND_PAGE, InferNextProps } from '~types'
 import { getBackground } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
+
+export async function getStaticProps() {
+  const res = await getBackground()
+
+  const background: CONTENTFUL_BACKGROUND_PAGE = res.data?.background
+
+  if (!background) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      background
+    },
+    revalidate: REVALIDATE_TIME
+  }
+}
 
 const SOCIALLINKS = [
   {
@@ -56,9 +75,7 @@ const iconClassName = 'mr-2 align-middle text-xl'
 
 export default function Background({
   background
-}: {
-  background: CONTENTFUL_BACKGROUND_PAGE
-}) {
+}: InferNextProps<typeof getStaticProps>) {
   return (
     <>
       <Head />
@@ -200,23 +217,4 @@ export default function Background({
       <GoBack href="/" title="Home" />
     </>
   )
-}
-
-export async function getStaticProps() {
-  const res = await getBackground()
-
-  const background = res.data?.background
-
-  if (!background) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      background
-    },
-    revalidate: REVALIDATE_TIME
-  }
 }

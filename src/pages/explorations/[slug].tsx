@@ -5,15 +5,52 @@ import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
-import type { CONTENTFUL_EXPLORATIONS_PAGE, ContextParams } from '~types'
+import type {
+  CONTENTFUL_EXPLORATIONS_PAGE,
+  ContextParams,
+  InferNextProps
+} from '~types'
 import { getAllExplorations, getExplorationBySlug } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
+export async function getStaticProps({ params }: ContextParams) {
+  const slug = params?.slug as string
+  const res = await getExplorationBySlug(slug)
+
+  const exploration: CONTENTFUL_EXPLORATIONS_PAGE =
+    res.data?.explorationsCollection?.items?.[0]
+
+  if (!exploration) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      exploration
+    },
+    revalidate: REVALIDATE_TIME
+  }
+}
+
+export async function getStaticPaths() {
+  const res = await getAllExplorations()
+
+  const explorations: Array<CONTENTFUL_EXPLORATIONS_PAGE> =
+    res.data?.explorationsCollection?.items
+
+  return {
+    paths: explorations.map(({ slug }) => ({
+      params: { slug }
+    })),
+    fallback: 'blocking'
+  }
+}
+
 export default function ExplorationsPage({
   exploration
-}: {
-  exploration: CONTENTFUL_EXPLORATIONS_PAGE
-}) {
+}: InferNextProps<typeof getStaticProps>) {
   return (
     <>
       <Head
@@ -63,39 +100,4 @@ export default function ExplorationsPage({
       <GoBack href="/explorations" title="Explorations" />
     </>
   )
-}
-
-export async function getStaticProps({ params }: ContextParams) {
-  const slug = params?.slug as string
-  const res = await getExplorationBySlug(slug)
-
-  const exploration: CONTENTFUL_EXPLORATIONS_PAGE =
-    res.data?.explorationsCollection?.items?.[0]
-
-  if (!exploration) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      exploration
-    },
-    revalidate: REVALIDATE_TIME
-  }
-}
-
-export async function getStaticPaths() {
-  const res = await getAllExplorations()
-
-  const explorations: Array<CONTENTFUL_EXPLORATIONS_PAGE> =
-    res.data?.explorationsCollection?.items
-
-  return {
-    paths: explorations.map(({ slug }) => ({
-      params: { slug }
-    })),
-    fallback: 'blocking'
-  }
 }

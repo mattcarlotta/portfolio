@@ -2,15 +2,33 @@ import CardPreview from '~components/Layout/CardPreview'
 import Section from '~components/Layout/Section'
 import Head from '~components/Navigation/Header'
 import { IoPlanet } from '~icons'
-import type { CONTENTFUL_PROJECTS_PAGE } from '~types'
+import type { CONTENTFUL_PROJECTS_PAGE, InferNextProps } from '~types'
 import { getAllProjects } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
+export async function getStaticProps() {
+  const res = await getAllProjects()
+
+  const projects: Array<CONTENTFUL_PROJECTS_PAGE> =
+    res.data?.projectsCollection?.items
+
+  if (!projects) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      projects
+    },
+    revalidate: REVALIDATE_TIME
+  }
+}
+
 export default function Projects({
   projects
-}: {
-  projects: Array<CONTENTFUL_PROJECTS_PAGE>
-}) {
+}: InferNextProps<typeof getStaticProps>) {
   return (
     <>
       <Head description="A collection of personal and professional projects that I've created over the years" />
@@ -45,23 +63,4 @@ export default function Projects({
       </section>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const res = await getAllProjects()
-
-  const projects = res.data?.projectsCollection?.items
-
-  if (!projects) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      projects
-    },
-    revalidate: REVALIDATE_TIME
-  }
 }

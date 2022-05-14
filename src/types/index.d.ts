@@ -163,3 +163,14 @@ export type CONTENTFUL_PROJECTS_PAGE = {
   CONTENTFUL_TITLE &
   CONTENTFUL_DESCRIPTION &
   CONTENTFUL_SLUG
+
+type AsyncReturnType<T> = T extends (...args: any[]) => Promise<infer R>
+  ? R
+  : any
+
+type Filter<T, U> = T extends U ? T : never
+
+export type InferNextProps<T> = Filter<
+  AsyncReturnType<T>,
+  { props: any }
+>['props']
