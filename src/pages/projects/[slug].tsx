@@ -9,15 +9,17 @@ import Project from '~components/Layout/Project'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
 import { IoPlanet } from '~icons'
-import type { CONTENTFUL_PROJECTS_PAGE, ContextParams } from '~types'
+import type {
+  CONTENTFUL_PROJECTS_PAGE,
+  ContextParams,
+  InferNextProps
+} from '~types'
 import { getAllProjects, getProjectBySlug } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
 export default function ProjectPageComponent({
   project
-}: {
-  project: CONTENTFUL_PROJECTS_PAGE
-}) {
+}: InferNextProps<typeof getStaticProps>) {
   return (
     <>
       <Head title={project.title} description={project.seoDescription} />

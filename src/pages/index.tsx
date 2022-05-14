@@ -2,15 +2,11 @@ import CardPreview from '~components/Layout/CardPreview'
 import Orbits from '~components/Layout/Orbits'
 import Section from '~components/Layout/Section'
 import Head from '~components/Navigation/Header'
-import type { CONTENTFUL_PAGE_CARD } from '~types'
+import type { CONTENTFUL_PAGE_CARD, InferNextProps } from '~types'
 import { getHomepageCards } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
-export default function Home({
-  cards
-}: {
-  cards: Array<CONTENTFUL_PAGE_CARD>
-}) {
+export default function Home({ cards }: InferNextProps<typeof getStaticProps>) {
   return (
     <>
       <Head />
@@ -46,7 +42,8 @@ export default function Home({
 export async function getStaticProps() {
   const res = await getHomepageCards()
 
-  const cards = res.data?.homepageCardCollection?.items
+  const cards: Array<CONTENTFUL_PAGE_CARD> =
+    res.data?.homepageCardCollection?.items
 
   if (!cards) {
     return {

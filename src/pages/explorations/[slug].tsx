@@ -5,15 +5,17 @@ import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
-import type { CONTENTFUL_EXPLORATIONS_PAGE, ContextParams } from '~types'
+import type {
+  CONTENTFUL_EXPLORATIONS_PAGE,
+  ContextParams,
+  InferNextProps
+} from '~types'
 import { getAllExplorations, getExplorationBySlug } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
 export default function ExplorationsPage({
   exploration
-}: {
-  exploration: CONTENTFUL_EXPLORATIONS_PAGE
-}) {
+}: InferNextProps<typeof getStaticProps>) {
   return (
     <>
       <Head
