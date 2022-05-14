@@ -80,9 +80,9 @@ export async function getStaticProps({ params }: ContextParams) {
 
   return {
     props: {
-      exploration,
-      revalidate: REVALIDATE_TIME
-    }
+      exploration
+    },
+    revalidate: REVALIDATE_TIME
   }
 }
 
