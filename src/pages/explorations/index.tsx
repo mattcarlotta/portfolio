@@ -6,6 +6,26 @@ import type { CONTENTFUL_EXPLORATIONS_PAGE, InferNextProps } from '~types'
 import { getAllExplorations } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
+export const getStaticProps = async () => {
+  const res = await getAllExplorations()
+
+  const explorations: Array<CONTENTFUL_EXPLORATIONS_PAGE> =
+    res.data?.explorationsCollection?.items
+
+  if (!explorations) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      explorations
+    },
+    revalidate: REVALIDATE_TIME
+  }
+}
+
 export default function ExplorationsPage({
   explorations
 }: InferNextProps<typeof getStaticProps>) {
@@ -44,24 +64,4 @@ export default function ExplorationsPage({
       </section>
     </>
   )
-}
-
-export const getStaticProps = async () => {
-  const res = await getAllExplorations()
-
-  const explorations: Array<CONTENTFUL_EXPLORATIONS_PAGE> =
-    res.data?.explorationsCollection?.items
-
-  if (!explorations) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      explorations
-    },
-    revalidate: REVALIDATE_TIME
-  }
 }

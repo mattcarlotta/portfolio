@@ -25,6 +25,25 @@ import type { CONTENTFUL_BACKGROUND_PAGE, InferNextProps } from '~types'
 import { getBackground } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
+export async function getStaticProps() {
+  const res = await getBackground()
+
+  const background: CONTENTFUL_BACKGROUND_PAGE = res.data?.background
+
+  if (!background) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      background
+    },
+    revalidate: REVALIDATE_TIME
+  }
+}
+
 const SOCIALLINKS = [
   {
     Icon: VscGithub,
@@ -198,23 +217,4 @@ export default function Background({
       <GoBack href="/" title="Home" />
     </>
   )
-}
-
-export async function getStaticProps() {
-  const res = await getBackground()
-
-  const background: CONTENTFUL_BACKGROUND_PAGE = res.data?.background
-
-  if (!background) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      background
-    },
-    revalidate: REVALIDATE_TIME
-  }
 }

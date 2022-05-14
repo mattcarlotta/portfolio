@@ -6,6 +6,26 @@ import type { CONTENTFUL_PROJECTS_PAGE, InferNextProps } from '~types'
 import { getAllProjects } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
+export async function getStaticProps() {
+  const res = await getAllProjects()
+
+  const projects: Array<CONTENTFUL_PROJECTS_PAGE> =
+    res.data?.projectsCollection?.items
+
+  if (!projects) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      projects
+    },
+    revalidate: REVALIDATE_TIME
+  }
+}
+
 export default function Projects({
   projects
 }: InferNextProps<typeof getStaticProps>) {
@@ -43,24 +63,4 @@ export default function Projects({
       </section>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const res = await getAllProjects()
-
-  const projects: Array<CONTENTFUL_PROJECTS_PAGE> =
-    res.data?.projectsCollection?.items
-
-  if (!projects) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      projects
-    },
-    revalidate: REVALIDATE_TIME
-  }
 }

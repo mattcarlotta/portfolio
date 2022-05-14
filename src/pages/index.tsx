@@ -6,6 +6,26 @@ import type { CONTENTFUL_PAGE_CARD, InferNextProps } from '~types'
 import { getHomepageCards } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
+export async function getStaticProps() {
+  const res = await getHomepageCards()
+
+  const cards: Array<CONTENTFUL_PAGE_CARD> =
+    res.data?.homepageCardCollection?.items
+
+  if (!cards) {
+    return {
+      notFound: true
+    }
+  }
+
+  return {
+    props: {
+      cards
+    },
+    revalidate: REVALIDATE_TIME
+  }
+}
+
 export default function Home({ cards }: InferNextProps<typeof getStaticProps>) {
   return (
     <>
@@ -37,24 +57,4 @@ export default function Home({ cards }: InferNextProps<typeof getStaticProps>) {
       </section>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const res = await getHomepageCards()
-
-  const cards: Array<CONTENTFUL_PAGE_CARD> =
-    res.data?.homepageCardCollection?.items
-
-  if (!cards) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      cards
-    },
-    revalidate: REVALIDATE_TIME
-  }
 }
