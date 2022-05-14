@@ -60,8 +60,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      projects,
-      revalidate: REVALIDATE_TIME
-    }
+      projects
+    },
+    revalidate: REVALIDATE_TIME
   }
 }

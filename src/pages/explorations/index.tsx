@@ -59,9 +59,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      explorations,
-      revalidate: REVALIDATE_TIME
-    }
+      explorations
+    },
+    revalidate: REVALIDATE_TIME
   }
 }
 

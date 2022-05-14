@@ -215,8 +215,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      background,
-      revalidate: REVALIDATE_TIME
-    }
+      background
+    },
+    revalidate: REVALIDATE_TIME
   }
 }

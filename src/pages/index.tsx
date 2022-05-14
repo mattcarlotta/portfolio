@@ -56,8 +56,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      cards,
-      revalidate: REVALIDATE_TIME
-    }
+      cards
+    },
+    revalidate: REVALIDATE_TIME
   }
 }
