@@ -1,5 +1,17 @@
 .markdown {
+  ul {
+    @apply my-3 list-disc;
+
+    li {
+      @apply mt-[-0.5rem] ml-10;
+    }
+
+    p {
+      @apply my-0;
+    }
+  }
+
   p {
-    @apply my-3 font-plain;
+    @apply my-3 py-1.5 font-plain;
   }
 }
