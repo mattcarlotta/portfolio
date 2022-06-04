@@ -25,7 +25,7 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(getByTestId('tooltip-child'))
 
     expect(getByTestId('tooltip')).toHaveStyle('opacity: 1')
-    expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 1')
+    // expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 1')
   })
 
   it('hides a tooltip when mouse leaves tooltip child', async () => {
@@ -38,12 +38,12 @@ describe('Tooltip', () => {
     fireEvent.mouseOver(getByTestId('tooltip-child'))
 
     expect(getByTestId('tooltip')).toHaveStyle('opacity: 1')
-    expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 1')
+    // expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 1')
 
     fireEvent.mouseLeave(getByTestId('tooltip-child'))
 
     expect(getByTestId('tooltip')).toHaveStyle('opacity: 0')
-    expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 0')
+    // expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 0')
   })
 
   it('displays a tooltip when focus enters tooltip child', async () => {
@@ -56,7 +56,7 @@ describe('Tooltip', () => {
     fireEvent.focus(getByTestId('tooltip-child'))
 
     expect(getByTestId('tooltip')).toHaveStyle('opacity: 1')
-    expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 1')
+    // expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 1')
   })
 
   it('hides a tooltip when focus leaves tooltip child', async () => {
@@ -69,11 +69,11 @@ describe('Tooltip', () => {
     fireEvent.focus(getByTestId('tooltip-child'))
 
     expect(getByTestId('tooltip')).toHaveStyle('opacity: 1')
-    expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 1')
+    // expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 1')
 
     fireEvent.blur(getByTestId('tooltip-child'))
 
     expect(getByTestId('tooltip')).toHaveStyle('opacity: 0')
-    expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 0')
+    // expect(getByTestId('tooltip-arrow')).toHaveStyle('opacity: 0')
   })
 })

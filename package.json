@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "11.2.3",
+  "version": "11.3.0",
   "description": "My personal website.",
   "repository": "https://github.com/mattcarlotta/portfolio",
   "author": "Matt Carlotta",
@@ -10,6 +10,7 @@
     "analyze": "ANALYZE=true next build",
     "build": "next build",
     "dev": "NODE_OPTIONS='--max_old_space_size=4096' next dev",
+    "postbuild": "next-sitemap",
     "lint": "eslint src --ext .ts,.tsx",
     "start": "next start",
     "test": "jest --passWithNoTests",
@@ -56,6 +57,7 @@
     "jest-environment-jsdom": "^27.5.1",
     "jest-transform-stub": "^2.0.0",
     "jsdom": "^19.0.0",
+    "next-sitemap": "^3.0.5",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
