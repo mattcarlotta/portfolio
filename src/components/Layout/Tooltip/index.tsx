@@ -14,14 +14,14 @@ export default function Tooltip({ children, title }: ToolTipProps) {
       tooltipRef.current.style.display = 'block'
       const { width } = tooltipRef.current.getBoundingClientRect()
       tooltipRef.current.style.translate = `-${Math.round(width / 4.75)}px`
-      tooltipRef.current.style.top = '79%'
+      tooltipRef.current.style.top = '82%'
       tooltipRef.current.style.opacity = '1'
 
-      tooltipArrowRef.current.style.top = '89%'
-      tooltipArrowRef.current.style.translate = '130%'
-      tooltipArrowRef.current.style.transform = 'rotate(45deg)'
-      tooltipArrowRef.current.style.opacity = '1'
-      tooltipArrowRef.current.style.display = 'block'
+      // tooltipArrowRef.current.style.top = '89%'
+      // tooltipArrowRef.current.style.translate = '130%'
+      // tooltipArrowRef.current.style.transform = 'rotate(45deg)'
+      // tooltipArrowRef.current.style.opacity = '1'
+      // tooltipArrowRef.current.style.display = 'block'
     }
   }
 
@@ -31,8 +31,8 @@ export default function Tooltip({ children, title }: ToolTipProps) {
       tooltipRef.current.style.opacity = '0'
       tooltipRef.current.style.display = ''
 
-      tooltipArrowRef.current.style.opacity = '0'
-      tooltipArrowRef.current.style.display = ''
+      // tooltipArrowRef.current.style.opacity = '0'
+      // tooltipArrowRef.current.style.display = ''
     }
   }
 
