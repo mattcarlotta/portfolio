@@ -68,7 +68,6 @@ export default function ExplorationsPage({
               <FileDetails
                 active
                 location={`https://${exploration.sandboxId}.csb.app/`}
-                fileName={exploration.title}
                 source={`https://codesandbox.io/s/${exploration.sandboxId}`}
                 status="In Orbit"
               />

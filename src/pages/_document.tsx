@@ -1,5 +1,7 @@
+/* eslint-disable react/no-danger */
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import packageJson from '../../package.json'
+import { GTAG_ID } from '../utils/gtag'
 
 export default class CustomDocument extends Document {
   render() {
@@ -29,6 +31,15 @@ export default class CustomDocument extends Document {
             href="/fonts/Mukta.ttf"
             as="font"
             crossOrigin="anonymous"
+          />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GTAG_ID}', {page_path: window.location.pathname});`
+            }}
           />
         </Head>
         <body>

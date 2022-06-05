@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import type { Children, DataTestId, OptionalClassName } from '~types'
+import clsx from '~utils/clsx'
 
 export type InfoProps = Children & DataTestId & OptionalClassName
 

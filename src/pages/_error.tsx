@@ -3,7 +3,7 @@ import Panel from '~components/Layout/Panel'
 import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
 import GoBack from '~components/Navigation/GoBack'
-import { GiExplodingPlanet } from '~icons'
+import NotFoundIcon from '~icons/NotfoundIcon'
 
 export default function ErrorPage() {
   return (
@@ -17,7 +17,7 @@ export default function ErrorPage() {
         </PanelTitle>
         <Panel>
           <div className="flex h-[44rem] flex-col items-center justify-center">
-            <GiExplodingPlanet className="mb-10 text-ginormous" />
+            <NotFoundIcon />
             <div className="py-2.5 px-5 tracking-wide">
               The server ran into an issue. Please wait a few minutes and
               refresh the page.

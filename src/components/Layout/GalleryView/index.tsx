@@ -7,7 +7,10 @@ import Image from '~components/Layout/Image'
 import ImagePreviewButton from '~components/Layout/ImagePreviewButton'
 import Modal from '~components/Layout/Modal'
 import PreviewCard from '~components/Layout/PreviewCard'
-import { FaChevronLeft, FaChevronRight, FaTimes, IoImages } from '~icons'
+import ChevronLeftIcon from '~icons/ChevronLeftIcon'
+import ChevronRightIcon from '~icons/ChevronRightIcon'
+import CloseIcon from '~icons/CloseIcon'
+import ImagesIcon from '~icons/ImagesIcon'
 import type {
   CONTENTFUL_IMAGE,
   HeightAndWidth,
@@ -168,7 +171,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
       >
         <div className="fixed top-0 w-full">
           <div className="absolute top-5 left-5 font-plain text-2xl text-white">
-            <IoImages className="mr-2.5 align-middle" />
+            <ImagesIcon />
             {currentIndex + 1} of {snapsLength}
           </div>
           <h2
@@ -185,7 +188,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
             type="button"
             onClick={handleModalClose}
           >
-            <FaTimes />
+            <CloseIcon />
           </button>
         </div>
         <div className="fixed left-0 top-[calc(50%-35px)]">
@@ -195,7 +198,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
             clickable={snapsLength > 1}
             onClick={() => handleNextImage(currentIndex - 1)}
           >
-            <FaChevronLeft />
+            <ChevronLeftIcon />
           </Button>
         </div>
         <div className="fixed bottom-24 left-20 right-20 top-20">
@@ -208,7 +211,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
             clickable={snapsLength > 1}
             onClick={() => handleNextImage(currentIndex + 1)}
           >
-            <FaChevronRight />
+            <ChevronRightIcon />
           </Button>
         </div>
         <div className="fixed left-0 bottom-0 w-full">

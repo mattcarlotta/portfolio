@@ -1,6 +1,6 @@
-import clsx from 'clsx'
-import { FiExternalLink } from '~icons'
+import ExternalLinkIcon from '~icons/ExternalLinkIcon'
 import type { AriaLabel, Children, Href, OptionalClassName } from '~types'
+import clsx from '~utils/clsx'
 
 export type OutsideLinkProps = AriaLabel &
   Children &
@@ -31,7 +31,7 @@ export default function OutsideLink({
       target="_blank"
     >
       {children}
-      {showIcon && <FiExternalLink className="ml-1 align-top text-md" />}
+      {showIcon && <ExternalLinkIcon className="ml-1 align-top text-md" />}
     </a>
   )
 }

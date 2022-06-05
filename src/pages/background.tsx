@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
 import Image from '~components/Layout/Image'
@@ -9,19 +8,18 @@ import Project from '~components/Layout/Project'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
 import OutsideLink from '~components/Navigation/OutsideLink'
-import {
-  AiFillStar,
-  AiOutlineStar,
-  FiPower,
-  GiRank3,
-  HiOutlineMail,
-  RiMapPin2Line,
-  SiCodesandbox,
-  SiLinkedin,
-  SiStackoverflow,
-  VscGithub
-} from '~icons'
+import CodesandboxIcon from '~icons/CodesandboxIcon'
+import GithubIcon from '~icons/GithubIcon'
+import LinkedinIcon from '~icons/LinkedinIcon'
+import LocationIcon from '~icons/LocationIcon'
+import MailIcon from '~icons/MailIcon'
+import RankIcon from '~icons/RankIcon'
+import StackOverflowIcon from '~icons/StackOverflowIcon'
+import StarFilledIcon from '~icons/StarFilledIcon'
+import StarOutlineIcon from '~icons/StarOutlineIcon'
+import StatusIcon from '~icons/StatusIcon'
 import type { CONTENTFUL_BACKGROUND_PAGE, InferNextProps } from '~types'
+import clsx from '~utils/clsx'
 import { getBackground } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
@@ -46,25 +44,25 @@ export async function getStaticProps() {
 
 const SOCIALLINKS = [
   {
-    Icon: VscGithub,
+    Icon: GithubIcon,
     id: 'github',
     title: 'Github',
     href: 'https://github.com/mattcarlotta'
   },
   {
-    Icon: SiLinkedin,
+    Icon: LinkedinIcon,
     id: 'linkedin',
     title: 'Linkedin',
     href: 'https://www.linkedin.com/in/mattcarlotta'
   },
   {
-    Icon: SiStackoverflow,
+    Icon: StackOverflowIcon,
     id: 'stackoverflow',
     title: 'Stackoverflow',
     href: 'https://stackoverflow.com/users/7376526/matt-carlotta'
   },
   {
-    Icon: SiCodesandbox,
+    Icon: CodesandboxIcon,
     id: 'codesandbox',
     title: 'CodeSandBox',
     href: 'https://codesandbox.io/u/mattcarlotta/sandboxes'
@@ -97,19 +95,19 @@ export default function Background({
               <DetailHeadline id="details">Details:</DetailHeadline>
               <div className="pl-3 font-plain text-md">
                 <Info className="text-lime-500" dataTestId="status">
-                  <FiPower className={iconClassName} />
+                  <StatusIcon className={iconClassName} />
                   In Orbit Circa September 2016
                 </Info>
                 <Info dataTestId="location">
-                  <RiMapPin2Line className={iconClassName} />
+                  <LocationIcon className={iconClassName} />
                   {background.location}
                 </Info>
                 <Info dataTestId="level">
-                  <GiRank3 className={iconClassName} />
+                  <RankIcon className={iconClassName} />
                   {background.rank}
                 </Info>
                 <Info dataTestId="source">
-                  <HiOutlineMail className={iconClassName} />
+                  <MailIcon className={iconClassName} />
                   <OutsideLink
                     dataTestId="send-email-link"
                     ariaLabel="Click to send me an email."
@@ -161,12 +159,12 @@ export default function Background({
                           {[
                             Array.from({ length: 5 }, (_, i) =>
                               i < level ? (
-                                <AiFillStar
+                                <StarFilledIcon
                                   key={`${technology}-level-${i}`}
                                   className="mr-2 align-middle text-xl text-primary-25"
                                 />
                               ) : (
-                                <AiOutlineStar
+                                <StarOutlineIcon
                                   key={`${technology}-not-level-${i}`}
                                   className="mr-2 align-middle text-xl text-gray"
                                 />

@@ -1,11 +1,12 @@
-import clsx from 'clsx'
 import Info from '~components/Layout/Info'
 import OutsideLink from '~components/Navigation/OutsideLink'
-import { AiOutlineFolderOpen, FaRegFileCode, FiPower, IoRocket } from '~icons'
+import CodeIcon from '~icons/CodeIcon'
+import DemoIcon from '~icons/DemoIcon'
+import StatusIcon from '~icons/StatusIcon'
+import clsx from '~utils/clsx'
 
 export type FileDetailsProps = {
   active: boolean
-  fileName: string
   location?: string | null
   status: string
   source: string
@@ -14,25 +15,20 @@ export type FileDetailsProps = {
 const FileDetails = ({
   active,
   location,
-  fileName,
   source,
   status
 }: FileDetailsProps) => (
   <div className="mb-5 pl-4 font-plain">
     <Info
-      className={clsx(active ? 'text-lime-500' : 'text-yellow-500')}
+      className={clsx(active ? 'text-lime-500' : 'text-gray-500')}
       dataTestId="status"
     >
-      <FiPower data-testid="fipower" className="mr-2.5 align-middle text-xl" />
+      <StatusIcon className="mr-2.5 align-middle text-xl" />
       {status}
-    </Info>
-    <Info className="uppercase" dataTestId="filename">
-      <AiOutlineFolderOpen className="mr-2.5 align-middle text-xl" />
-      {fileName}
     </Info>
     {location && (
       <Info dataTestId="location">
-        <IoRocket className="mr-2.5 align-middle text-xl" />
+        <DemoIcon className="mr-2.5 align-middle text-xl text-amber-500" />
         <OutsideLink
           dataTestId="location-link"
           href={location}
@@ -44,7 +40,7 @@ const FileDetails = ({
       </Info>
     )}
     <Info dataTestId="source">
-      <FaRegFileCode className="mr-2.5 align-middle text-xl" />
+      <CodeIcon className="mr-2.5 align-middle text-xl" />
       <OutsideLink
         dataTestId="source-link"
         href={source}

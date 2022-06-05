@@ -1,26 +1,29 @@
 /* istanbul ignore file */
-import { GiPlanetCore, GiRingedPlanet, ImRocket, IoPlanet } from '~icons'
+import BackgroundIcon from '~icons/BackgroundIcon'
+import ExplorationIcon from '~icons/ExplorationsIcon'
+import HomeIcon from '~icons/HomeIcon'
+import ProjectsIcon from '~icons/ProjectsIcon'
 
 export const HEADERLINKS = [
   {
     page: 'home',
     href: '/',
-    Icon: GiRingedPlanet
+    Icon: HomeIcon
   },
   {
     page: 'projects',
     href: '/projects',
-    Icon: IoPlanet
+    Icon: ProjectsIcon
   },
   {
     page: 'explorations',
     href: '/explorations',
-    Icon: ImRocket
+    Icon: ExplorationIcon
   },
   {
     page: 'background',
     href: '/background',
-    Icon: GiPlanetCore
+    Icon: BackgroundIcon
   }
 ]
 

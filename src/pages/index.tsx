@@ -50,7 +50,6 @@ export default function Home({ cards }: InferNextProps<typeof getStaticProps>) {
             key={sys.id}
             ariaLabel={`Navigate to my ${slug} page`}
             href={slug}
-            showInfo={false}
             alt={preview.description}
           />
         ))}

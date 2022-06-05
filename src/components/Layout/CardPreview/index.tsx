@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import Bars from '~components/Layout/Bars'
 import Card from '~components/Layout/Card'
 import CardTitle from '~components/Layout/CardTitle'
@@ -6,8 +5,11 @@ import Image from '~components/Layout/Image'
 import Tooltip from '~components/Layout/Tooltip'
 import Link from '~components/Navigation/Link'
 import OutsideLink from '~components/Navigation/OutsideLink'
-import { FaRegFileCode, FiPower, ImInfo, IoRocket } from '~icons'
+import CodeIcon from '~icons/CodeIcon'
+import DemoIcon from '~icons/DemoIcon'
+import StatusIcon from '~icons/StatusIcon'
 import type { AriaLabel, CONTENTFUL_JSON, HeightAndWidth, Title } from '~types'
+import clsx from '~utils/clsx'
 import ContentfulRichText from '../ContentfulRichText'
 
 export type CardPreviewProps = AriaLabel &
@@ -21,7 +23,6 @@ export type CardPreviewProps = AriaLabel &
     imagePriority?: boolean
     location?: string | null
     scale?: number
-    showInfo?: boolean
     slug?: string
     source?: string
     status?: string
@@ -39,7 +40,6 @@ const CardPreview = ({
   imagePriority,
   location,
   scale,
-  showInfo = true,
   slug = '',
   source,
   status,
@@ -78,25 +78,12 @@ const CardPreview = ({
             href={`/${href}/${slug}`}
             className="mx-1 p-2"
           >
-            <FiPower
-              data-testid="fipower"
+            <StatusIcon
               className={clsx(
                 'text-lg',
-                active ? 'text-lime-500' : 'text-yellow-500'
+                active ? 'text-lime-500' : 'text-gray-500'
               )}
             />
-          </Link>
-        </Tooltip>
-      )}
-      {showInfo && (
-        <Tooltip title="More Info">
-          <Link
-            dataTestId={`info-${title}`}
-            ariaLabel={ariaLabel}
-            href={`/${href}/${slug}`}
-            className="mx-1 p-2"
-          >
-            <ImInfo className="text-lg" />
           </Link>
         </Tooltip>
       )}
@@ -107,7 +94,7 @@ const CardPreview = ({
             href={location}
             className="mx-1 flex items-center justify-center p-2"
           >
-            <IoRocket className="text-lg" />
+            <DemoIcon className="text-lg text-amber-500" />
           </OutsideLink>
         </Tooltip>
       )}
@@ -118,7 +105,7 @@ const CardPreview = ({
             href={source}
             className="mx-1 flex items-center justify-center p-2"
           >
-            <FaRegFileCode className="text-lg" />
+            <CodeIcon className="text-lg" />
           </OutsideLink>
         </Tooltip>
       )}
