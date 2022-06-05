@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
 import FileDetails from '~components/Layout/FileDetails'
@@ -8,12 +7,13 @@ import PanelTitle from '~components/Layout/PanelTitle'
 import Project from '~components/Layout/Project'
 import GoBack from '~components/Navigation/GoBack'
 import Head from '~components/Navigation/Header'
-import { IoPlanet } from '~icons'
+import ProjectsIcon from '~icons/ProjectsIcon'
 import type {
   CONTENTFUL_PROJECTS_PAGE,
   ContextParams,
   InferNextProps
 } from '~types'
+import clsx from '~utils/clsx'
 import { getAllProjects, getProjectBySlug } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
 
@@ -66,7 +66,7 @@ export default function ProjectPageComponent({
           <div className="py-2.5 px-5 tracking-wide">
             <section>
               <DetailHeadline id="details">Details:</DetailHeadline>
-              <FileDetails fileName={project.title} {...project} />
+              <FileDetails {...project} />
             </section>
             <section>
               <DetailHeadline id="description">Description:</DetailHeadline>
@@ -88,7 +88,7 @@ export default function ProjectPageComponent({
                     )}
                     key={item}
                   >
-                    <IoPlanet className="mr-3 align-middle" />
+                    <ProjectsIcon className="mr-3 align-middle" />
                     {item}
                   </li>
                 ))}

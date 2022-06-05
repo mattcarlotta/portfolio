@@ -20,7 +20,7 @@
     "target": "es6",
     "paths": {
       "~components/*": ["src/components/*"],
-      "~icons": ["src/icons/index"],
+      "~icons/*": ["src/icons/*"],
       "~pages/*": ["src/pages/*"],
       "~styles/*": ["src/styles/*"],
       "~types": ["src/types/index"],

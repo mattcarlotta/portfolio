@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import type { AriaLabel, Children, DataTestId, OnClickEvent } from '~types'
+import clsx from '~utils/clsx'
 
 export type ButtonProps = AriaLabel &
   Children &

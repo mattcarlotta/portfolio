@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import NextLink from 'next/link'
 import type {
   AriaLabel,
@@ -7,6 +6,7 @@ import type {
   Href,
   OptionalClassName
 } from '~types'
+import clsx from '~utils/clsx'
 
 export type LinkProps = AriaLabel &
   Children &

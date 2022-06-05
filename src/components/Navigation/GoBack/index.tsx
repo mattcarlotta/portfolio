@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import Link from '~components/Navigation/Link'
-import { GoHome } from '~icons'
+import GoHomeIcon from '~icons/GoHomeIcon'
 import type { Href, Title } from '~types'
 
 export default function GoBack({ href, title }: Href & Title) {
@@ -11,7 +11,7 @@ export default function GoBack({ href, title }: Href & Title) {
         ariaLabel={`Navigate back to ${title} page`}
         href={href}
       >
-        <GoHome className="mr-1 align-middle text-xl" />
+        <GoHomeIcon />
         go back to {title} page
       </Link>
     </div>

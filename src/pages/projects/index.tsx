@@ -1,7 +1,7 @@
 import CardPreview from '~components/Layout/CardPreview'
 import Section from '~components/Layout/Section'
 import Head from '~components/Navigation/Header'
-import { IoPlanet } from '~icons'
+import ProjectsIcon from '~icons/ProjectsIcon'
 import type { CONTENTFUL_PROJECTS_PAGE, InferNextProps } from '~types'
 import { getAllProjects } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
@@ -37,7 +37,7 @@ export default function Projects({
           className="break-words font-stylized text-2xl leading-none md:text-3xl"
           data-testid="category"
         >
-          <IoPlanet className="mb-2 mr-2.5 text-3xl sm:mb-0" />
+          <ProjectsIcon className="mb-2 mr-2.5 text-3xl sm:mb-0" />
           projects
         </h1>
         <p className="mx-auto mt-2 max-w-xl p-2 font-plain text-lg text-primary-25">

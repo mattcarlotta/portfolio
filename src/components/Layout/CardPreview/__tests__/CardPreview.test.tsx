@@ -15,8 +15,7 @@ const initProps = {
   width: 243,
   title: 'next ssr kit preview',
   href: 'projects',
-  slug: 'nextjs-ssr-kit',
-  showInfo: true
+  slug: 'nextjs-ssr-kit'
 }
 
 const nextProps = {
@@ -63,6 +62,6 @@ describe('Image', () => {
 
   it('renders inactive projects', () => {
     const { getByTestId } = render(<CardPreview {...nextProps} />)
-    expect(getByTestId('fipower')).toHaveClass('text-yellow-500')
+    expect(getByTestId('fipower')).toHaveClass('text-gray-500')
   })
 })

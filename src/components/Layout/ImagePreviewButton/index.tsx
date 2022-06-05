@@ -1,7 +1,7 @@
-import clsx from 'clsx'
 import { useImageContext } from '~components/Context/ImageContext'
 import type { HeightAndWidth, OnClickEvent, Title } from '~types'
 import calculateScale from '~utils/calculateScale'
+import clsx from '~utils/clsx'
 
 export type ImagePreviewButtonProps = HeightAndWidth &
   OnClickEvent &

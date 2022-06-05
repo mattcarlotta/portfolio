@@ -1,12 +1,31 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import ImageContext from '~components/Context/ImageContext'
 import ScrollHeightContext from '~components/Context/ScrollHeightContext'
 import HEADERLINKS from '~components/Layout/HEADERLINKS'
 import Link from '~components/Navigation/Link'
 import '~styles/globals.scss'
 import type { AppProps } from '~types'
+import * as gtag from '~utils/gtag'
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      gtag.pageview(url)
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    router.events.on('hashChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+      router.events.off('hashChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
     <>
       <Head>

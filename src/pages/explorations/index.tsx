@@ -1,7 +1,7 @@
 import CardPreview from '~components/Layout/CardPreview'
 import Section from '~components/Layout/Section'
 import Head from '~components/Navigation/Header'
-import { ImRocket } from '~icons'
+import ExplorationsIcon from '~icons/ExplorationsIcon'
 import type { CONTENTFUL_EXPLORATIONS_PAGE, InferNextProps } from '~types'
 import { getAllExplorations } from '~utils/contentfulApi'
 import REVALIDATE_TIME from '~utils/revalidate'
@@ -34,7 +34,7 @@ export default function ExplorationsPage({
       <Head description="A small collection of codesandbox explorations I've created over the years" />
       <Section>
         <h1 className="break-words font-stylized text-xl leading-none sm:text-2xl md:text-3xl">
-          <ImRocket className="mb-2 mr-2.5 text-2xl sm:mb-0" />
+          <ExplorationsIcon className="mb-2 mr-2.5 text-2xl sm:mb-0" />
           Explorations
         </h1>
         <p className="mx-auto mt-2 max-w-2xl p-2 font-plain text-lg text-primary-25">
