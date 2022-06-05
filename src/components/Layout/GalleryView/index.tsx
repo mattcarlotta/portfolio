@@ -171,7 +171,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
       >
         <div className="fixed top-0 w-full">
           <div className="absolute top-5 left-5 font-plain text-2xl text-white">
-            <ImagesIcon />
+            <ImagesIcon className="mr-2.5 align-middle" />
             {currentIndex + 1} of {snapsLength}
           </div>
           <h2

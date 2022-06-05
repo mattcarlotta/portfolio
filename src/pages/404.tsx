@@ -17,7 +17,7 @@ export default function ErrorPage() {
         </PanelTitle>
         <Panel>
           <div className="flex h-[44rem] flex-col items-center justify-center">
-            <NotFoundIcon />
+            <NotFoundIcon className="mb-10 text-ginormous" />
             <div className="py-2.5 px-5 tracking-wide">
               Unable to locate the requested file.
             </div>

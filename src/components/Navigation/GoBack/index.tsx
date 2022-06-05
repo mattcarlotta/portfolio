@@ -11,7 +11,7 @@ export default function GoBack({ href, title }: Href & Title) {
         ariaLabel={`Navigate back to ${title} page`}
         href={href}
       >
-        <GoHomeIcon />
+        <GoHomeIcon className="mr-1 align-middle text-xl" />
         go back to {title} page
       </Link>
     </div>

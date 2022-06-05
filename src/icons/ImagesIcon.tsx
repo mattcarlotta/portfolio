@@ -1,11 +1,11 @@
-export default function ImagesIcon() {
+export default function ImagesIcon({ className }: { className: string }) {
   return (
     <svg
       stroke="currentColor"
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 512 512"
-      className="mr-2.5 align-middle"
+      className={className}
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
