@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Script from 'next/script'
 import { useEffect } from 'react'
 import ImageContext from '~components/Context/ImageContext'
 import ScrollHeightContext from '~components/Context/ScrollHeightContext'
@@ -8,14 +7,14 @@ import HEADERLINKS from '~components/Layout/HEADERLINKS'
 import Link from '~components/Navigation/Link'
 import '~styles/globals.scss'
 import type { AppProps } from '~types'
-import * as gtag from '~utils/gtag'
+import { pageview } from '~utils/gtag'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
-      gtag.pageview(url)
+      pageview(url)
     }
 
     router.events.on('routeChangeComplete', handleRouteChange)
@@ -29,17 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GTAG_ID}`}
-      />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${gtag.GTAG_ID}', {page_path: window.location.pathname});`
-        }}
-      />
       <Head>
         <meta
           name="viewport"
