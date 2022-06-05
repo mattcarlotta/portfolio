@@ -1,4 +1,4 @@
-export const GTAG_ID = process.env.NEXT_PUBLIC_GTAG_ID as string
+export const GTAG_ID = process.env.NEXT_PUBLIC_GA_ID as string
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: URL) => {
