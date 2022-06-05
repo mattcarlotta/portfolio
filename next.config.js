@@ -1,7 +1,7 @@
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const process = require('process')
 
-const { ANALYZE, GTAG_ID, INSTAGING, NODE_ENV } = process.env
+const { ANALYZE, INSTAGING, NODE_ENV } = process.env
 
 /**
  * @type {import('next').NextConfig}
@@ -45,9 +45,6 @@ module.exports = {
   },
   eslint: {
     ignoreDuringBuilds: true
-  },
-  publicRuntimeConfig: {
-    gtagId: GTAG_ID
   },
   webpack(config, { isServer }) {
     if (ANALYZE != null) {
