@@ -1,0 +1,16 @@
+.tooltip {
+  @apply relative;
+
+  &:hover::before,
+  &:focus-within::before {
+    @apply absolute top-[-28px] whitespace-nowrap rounded bg-primary-25 px-4 py-2 font-plain text-tiny text-white;
+    content: attr(data-title);
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover::after,
+  &:focus-within::after {
+    @apply absolute top-[-5px] border-[6px] border-solid border-transparent border-t-primary-25 content-[''];
+    transform: translate(-50%, -50%);
+  }
+}
