@@ -5,7 +5,7 @@ export type ToolTipProps = Children & { title?: string }
 
 export default function Tooltip({ children, title }: ToolTipProps) {
   return (
-    <div className={styles.tooltip} data-title={title}>
+    <div className={styles.tooltip} data-tooltip={title}>
       {children}
     </div>
   )
