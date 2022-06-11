@@ -113,7 +113,7 @@ const CardPreview = ({
     <header>
       <div className="px-2.5 pt-0 pb-4 font-plain text-md">
         {typeof description === 'string' ? (
-          description
+          <p>{description}</p>
         ) : (
           <ContentfulRichText json={description.json} />
         )}
