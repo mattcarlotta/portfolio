@@ -146,7 +146,10 @@ export default function Background({
             </section>
             <section>
               <DetailHeadline id="tech-specs">Tech Specs:</DetailHeadline>
-              <ul data-testid="tech" className="list-none p-2">
+              <ul
+                data-testid="tech"
+                className="h-60 list-none overflow-y-auto p-2 md:h-full"
+              >
                 {background.tech.data.map(({ technology, level }, index) => (
                   <li key={technology}>
                     <div className="font-plain text-xl leading-relaxed">
