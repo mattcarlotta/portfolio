@@ -57,7 +57,11 @@ export default function ProjectPageComponent({
 }: InferNextProps<typeof getStaticProps>) {
   return (
     <>
-      <Head title={project.title} description={project.seoDescription} />
+      <Head
+        type="article"
+        title={project.title}
+        description={project.seoDescription}
+      />
       <Project>
         <PanelTitle id="title" data-testid="panel-title">
           {project.title}

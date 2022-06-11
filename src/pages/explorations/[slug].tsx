@@ -54,6 +54,7 @@ export default function ExplorationsPage({
   return (
     <>
       <Head
+        type="article"
         title={exploration.title}
         description={exploration.preview.description}
       />
