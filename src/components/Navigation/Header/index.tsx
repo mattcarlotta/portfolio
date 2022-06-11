@@ -20,16 +20,13 @@ export default function Header({
     .concat(` ${title && '-'} ${description} | Matt Carlotta`)
     .replace(/\./, '')
     .trim()
+
   return (
     <Head>
       <title data-testid="head-title">{newTitle}</title>
       <meta name="theme-color" content="#000000" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="description" content={description} />
-      <meta
-        name="robots"
-        content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
-      />
       <link
         rel="canonical"
         href={`${process.env.NEXT_PUBLIC_CLIENT}${asPath}`}
@@ -46,7 +43,6 @@ export default function Header({
         property="og:site_name"
         content="Matt Carlotta - Fullstack Software Engineer"
       />
-      <meta property="og:updated_time" content={new Date().toISOString()} />
       <meta
         property="og:image"
         content="https://images.ctfassets.net/hb5otnhwin4m/5XlzNcNVgoachT9KBOv4TW/93e008136db547b48ce1dd4d8bfe5bf1/profile_300.png"

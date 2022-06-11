@@ -1,18 +1,14 @@
-/* eslint-disable react/no-danger */
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import packageJson from '../../package.json'
-import { GTAG_ID } from '../utils/gtag'
 
 export default class CustomDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
+          <meta httpEquiv="content-type" content="text/html; charset=UTF-8" />
           <meta name="theme-color" content="#000000" />
-          <meta
-            name="robots"
-            content="follow, index, max-image-preview:large"
-          />
+          <meta name="robots" content="follow, index" />
           <meta name="build version" content={packageJson.version} />
           <link
             rel="apple-touch-icon"
@@ -22,25 +18,13 @@ export default class CustomDocument extends Document {
           <link rel="manifest" href="/site.webmanifest" />
           <link
             rel="preload"
-            href="/fonts/Elemental.ttf"
+            href="/fonts/Elemental.woff"
             as="font"
+            type="font/woff"
             crossOrigin="anonymous"
           />
-          <link
-            rel="preload"
-            href="/fonts/Mukta.ttf"
-            as="font"
-            crossOrigin="anonymous"
-          />
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GTAG_ID}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${GTAG_ID}', {page_path: window.location.pathname});`
-            }}
-          />
+          <link rel="dns-prefetch" href="https://images.ctfassets.net/" />
+          <link rel="preload" as="image" href="/bg.webp" />
         </Head>
         <body>
           <Main />

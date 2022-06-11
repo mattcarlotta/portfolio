@@ -29,7 +29,7 @@ export async function getStaticProps() {
 export default function Home({ cards }: InferNextProps<typeof getStaticProps>) {
   return (
     <>
-      <Head />
+      <Head type="article" />
       <Section>
         <h1 className="blue-text-shadow m-0 text-3xl uppercase leading-none tracking-wider text-white sm:text-5xl">
           Matt Carlotta

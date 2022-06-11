@@ -7,15 +7,7 @@
   font-style: normal;
   font-weight: normal;
   font-display: swap;
-  src: url('/fonts/Elemental.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Mukta';
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: url('/fonts/Mukta.ttf') format('truetype');
+  src: url('/fonts/Elemental.woff') format('woff');
 }
 
 @layer base {

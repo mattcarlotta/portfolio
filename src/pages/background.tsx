@@ -76,7 +76,11 @@ export default function Background({
 }: InferNextProps<typeof getStaticProps>) {
   return (
     <>
-      <Head />
+      <Head
+        type="article"
+        title="Background"
+        description="Learn about my journey on how I became a fullstack software engineer"
+      />
       <Project>
         <PanelTitle id="background-title" data-testid="panel-title">
           {background.title}

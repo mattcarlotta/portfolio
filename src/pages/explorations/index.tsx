@@ -31,7 +31,11 @@ export default function ExplorationsPage({
 }: InferNextProps<typeof getStaticProps>) {
   return (
     <>
-      <Head description="A small collection of codesandbox explorations I've created over the years" />
+      <Head
+        type="article"
+        title="Explorations"
+        description="A small collection of codesandbox explorations I've created over the years"
+      />
       <Section>
         <h1 className="break-words font-stylized text-xl leading-none sm:text-2xl md:text-3xl">
           <ExplorationsIcon className="mb-2 mr-2.5 text-2xl sm:mb-0" />

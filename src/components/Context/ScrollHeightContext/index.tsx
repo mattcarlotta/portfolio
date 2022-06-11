@@ -43,9 +43,11 @@ export default function ScrollHeightProvider({ children }: Children) {
     setScrollHeight(document.documentElement.scrollTop)
 
     window.addEventListener('scroll', handleScroll.current)
+    window.addEventListener('resize', handleScroll.current)
 
     return () => {
       window.removeEventListener('scroll', handleScroll.current)
+      window.removeEventListener('resize', handleScroll.current)
     }
   }, [])
 

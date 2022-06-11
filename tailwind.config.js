@@ -46,7 +46,6 @@ module.exports = {
       },
       fontFamily: {
         plain: [
-          'Mukta',
           '-apple-system',
           'BlinkMacSystemFont',
           'Segoe UI',

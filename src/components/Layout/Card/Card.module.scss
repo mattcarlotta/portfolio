@@ -1,25 +1,33 @@
-.card {
-  @apply relative mx-1 mb-8 h-[16.25rem] w-[18.75rem] overflow-hidden rounded-b border border-solid border-primary-600 bg-transparent text-center text-primary-100 shadow-card sm:mb-20;
+@media (hover: hover) {
+  .card {
+    @apply relative mx-1 mb-8 h-[16.25rem] w-[18.75rem] overflow-hidden rounded-b border border-solid border-primary-600 bg-transparent text-center text-primary-100 shadow-card sm:mb-20;
 
-  &:hover,
-  &:focus,
-  &:focus-within {
-    @apply z-10 scale-110 overflow-visible border-0 transition-transform duration-200 ease-in-out;
+    &:hover,
+    &:focus,
+    &:focus-within {
+      @apply z-10 scale-110 overflow-visible border-0 transition-transform duration-200 ease-in-out;
 
-    [data-title='placeholder'] {
-      @apply block;
+      [data-title='placeholder'] {
+        @apply block;
+      }
+
+      [data-title='card-title'] {
+        @apply bg-primary-25;
+      }
+
+      [data-title='card-container'] {
+        @apply absolute top-0 left-0 w-full rounded-b border border-solid border-primary-100 bg-primary-1000 opacity-100 shadow-ring;
+      }
+
+      [data-title='bar'] {
+        @apply block bg-primary-200 opacity-40;
+      }
     }
+  }
+}
 
-    [data-title='card-title'] {
-      @apply bg-primary-25;
-    }
-
-    [data-title='card-container'] {
-      @apply absolute top-0 left-0 w-full rounded-b border border-solid border-primary-100 bg-primary-1000 opacity-100 shadow-ring;
-    }
-
-    [data-title='bar'] {
-      @apply block bg-primary-200 opacity-40;
-    }
+@media (hover: none) {
+  .card {
+    @apply mx-1 mb-8 h-auto w-full rounded-b border border-solid border-primary-600 bg-transparent text-center text-primary-100 shadow-card sm:mb-14 sm:h-[27.5rem] sm:w-[18.75rem];
   }
 }

@@ -31,7 +31,11 @@ export default function Projects({
 }: InferNextProps<typeof getStaticProps>) {
   return (
     <>
-      <Head description="A collection of personal and professional projects that I've created over the years" />
+      <Head
+        type="article"
+        title="Projects"
+        description="A collection of personal and professional projects that I've created over the years"
+      />
       <Section>
         <h1
           className="break-words font-stylized text-2xl leading-none md:text-3xl"
