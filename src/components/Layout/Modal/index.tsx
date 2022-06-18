@@ -1,5 +1,6 @@
 import { createPortal } from 'react-dom'
 import type { ChildrenWithId } from '~types'
+import FocusTrapper from '../FocusTrapper'
 
 export type ModalProps = ChildrenWithId & {
   description?: string
@@ -33,18 +34,23 @@ export default function Modal({
             </p>
           )}
           <div
-            role="presentation"
             data-title="backdrop"
             className="fixed top-0 right-0 bottom-0 left-0 z-[-1] flex items-center justify-center bg-black"
-            onClick={onClose}
           />
-          <div
+          <FocusTrapper
             className="h-full overflow-y-auto overflow-x-hidden text-center outline-0 after:inline after:h-full after:w-0 after:align-middle after:content-['']"
-            role="presentation"
-            tabIndex={-1}
+            onEscapePress={onClose}
           >
-            <div className="m-0 max-w-full">{children}</div>
-          </div>
+            <div
+              className="h-full"
+              role="dialog"
+              aria-describedby="modal-title"
+              aria-modal="true"
+              tabIndex={0}
+            >
+              {children}
+            </div>
+          </FocusTrapper>
         </div>,
         document.body
       )

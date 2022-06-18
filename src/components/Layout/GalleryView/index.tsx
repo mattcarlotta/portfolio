@@ -14,7 +14,7 @@ import ImagesIcon from '~icons/ImagesIcon'
 import type {
   CONTENTFUL_IMAGE,
   HeightAndWidth,
-  KeyboardEvent as onKeyEvent,
+  KeyboardEvent,
   Title
 } from '~types'
 
@@ -83,32 +83,24 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
     setState(initialImageState)
   }
 
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent): void => {
-      if (!open) return
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
+    if (!open) return
 
-      const { key, shiftKey } = event
-      const escKeyPressed = key === 'Esc' || key === 'Escape'
-      const tabKeyPressed = key === 'Tab'
-      const arrowLeftPressed = key === 'ArrowLeft'
-      const arrowRightPressed = key === 'ArrowRight'
+    const { key } = event
+    const arrowLeftPressed = key === 'ArrowLeft'
+    const arrowRightPressed = key === 'ArrowRight'
 
-      if ((shiftKey && tabKeyPressed) || arrowLeftPressed) {
-        event.preventDefault()
-        handleNextImage(currentIndex - 1)
-      } else if (tabKeyPressed || arrowRightPressed) {
-        event.preventDefault()
-        handleNextImage(currentIndex + 1)
-      } else if (escKeyPressed) {
-        event.stopPropagation()
-        handleModalClose()
-      }
-    },
-    [open, handleNextImage, handleModalClose, currentIndex]
-  )
+    if (arrowLeftPressed) {
+      event.preventDefault()
+      handleNextImage(currentIndex - 1)
+    } else if (arrowRightPressed) {
+      event.preventDefault()
+      handleNextImage(currentIndex + 1)
+    }
+  }
 
   const handleSelectImage = (
-    event: onKeyEvent<HTMLDivElement>,
+    event: KeyboardEvent<HTMLDivElement>,
     selectedIndex: number
   ): void => {
     if (event.key === 'Enter') {
@@ -116,14 +108,6 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
       handleImageClick(selectedIndex)
     }
   }
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [handleKeyDown])
 
   useEffect(() => {
     const node = document.getElementById(`button-preview-${title}`)
@@ -175,8 +159,9 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
             {currentIndex + 1} of {snapsLength}
           </div>
           <h2
+            role="presentation"
             className="mt-10 p-5 text-center text-md text-white sm:mt-0 sm:text-2xl"
-            id="snapshot-title"
+            id="modal-title"
             data-testid="modal-title"
           >
             {title}
@@ -184,16 +169,17 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
           <button
             aria-label="close modal"
             data-testid="close-modal"
-            className="pointer absolute top-2 right-5 border-0 bg-transparent p-1.5 text-3xl text-gray-100 duration-300 ease-in-out hover:text-fire"
+            className="pointer absolute top-2 right-3 rounded border-0 bg-transparent p-1.5 text-3xl text-gray-100 transition duration-300 ease-in-out hover:text-fire"
             type="button"
             onClick={handleModalClose}
           >
             <CloseIcon />
           </button>
         </div>
-        <div className="fixed left-0 top-[calc(50%-35px)]">
+        <div className="fixed left-1 top-[calc(50%-35px)]">
           <Button
             ariaLabel="View previous image"
+            className="mr-"
             dataTestId="previous-image"
             clickable={snapsLength > 1}
             onClick={() => handleNextImage(currentIndex - 1)}
@@ -204,7 +190,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
         <div className="fixed bottom-24 left-20 right-20 top-20">
           <BackgroundImageViewer dataTestId={`image-${title}`} src={url} />
         </div>
-        <div className="fixed right-0 top-[calc(50%-35px)]">
+        <div className="fixed right-1 top-[calc(50%-35px)]">
           <Button
             ariaLabel="View next image"
             dataTestId="next-image"
@@ -215,7 +201,12 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
           </Button>
         </div>
         <div className="fixed left-0 bottom-0 w-full">
-          <div className="overflow-y-auto whitespace-nowrap text-center">
+          <div
+            role="presentation"
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+            className="overflow-y-auto whitespace-nowrap text-center"
+          >
             {snapshots.map(({ title, height, width, url }, idx) => (
               <ImagePreviewButton
                 key={`preview${title}`}

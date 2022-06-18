@@ -6,10 +6,12 @@ export type ButtonProps = AriaLabel &
   DataTestId &
   OnClickEvent & {
     clickable?: boolean
+    className?: string
   }
 
 export default function Button({
   ariaLabel,
+  className,
   clickable,
   children,
   dataTestId,
@@ -20,10 +22,11 @@ export default function Button({
       aria-label={ariaLabel}
       data-testid={dataTestId}
       className={clsx(
-        'border-0 bg-transparent p-4 text-3xl !outline-0 duration-300 ease-in-out',
+        'rounded border-0 bg-transparent p-4 text-3xl transition duration-300 ease-in-out',
         clickable
           ? 'cursor-pointer text-white hover:text-primary-25'
-          : 'cursor-not-allowed text-off-black hover:text-off-black'
+          : 'cursor-not-allowed text-off-black hover:text-off-black',
+        className
       )}
       type="button"
       onClick={onClick}
