@@ -1,6 +1,10 @@
 import type { AccessibleElement } from '~types'
 
-export const ACCESSIBLE_ELEMENTS = ['a[href]', 'button', '[tabindex]']
+export const ACCESSIBLE_ELEMENTS = [
+  'a[href]',
+  'button:not(:disabled)',
+  '[tabindex]'
+]
 
 export function isFocusable(element: AccessibleElement) {
   const { disabled, href, nodeName, rel, type, tabIndex } = element

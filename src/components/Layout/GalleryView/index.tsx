@@ -7,9 +7,6 @@ import Image from '~components/Layout/Image'
 import ImagePreviewButton from '~components/Layout/ImagePreviewButton'
 import Modal from '~components/Layout/Modal'
 import PreviewCard from '~components/Layout/PreviewCard'
-import ChevronLeftIcon from '~icons/ChevronLeftIcon'
-import ChevronRightIcon from '~icons/ChevronRightIcon'
-import CloseIcon from '~icons/CloseIcon'
 import ImagesIcon from '~icons/ImagesIcon'
 import type {
   CONTENTFUL_IMAGE,
@@ -169,22 +166,22 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
           <button
             aria-label="close modal"
             data-testid="close-modal"
-            className="pointer absolute top-2 right-3 rounded border-0 bg-transparent p-1.5 text-3xl text-gray-100 transition duration-300 ease-in-out hover:text-fire"
+            className="pointer absolute top-2 right-3 rounded border border-solid border-transparent bg-transparent py-1.5 px-3 text-3xl text-gray-100 transition-[color] duration-300 ease-in-out hover:text-fire focus:border focus:border-solid focus:border-primary-100"
             type="button"
             onClick={handleModalClose}
           >
-            <CloseIcon />
+            &#10006;
           </button>
         </div>
         <div className="fixed left-1 top-[calc(50%-35px)]">
           <Button
             ariaLabel="View previous image"
-            className="mr-"
+            className="rotate-180 border border-solid border-transparent text-[3rem] focus:border focus:border-solid focus:border-primary-100"
             dataTestId="previous-image"
-            clickable={snapsLength > 1}
+            disabled={snapsLength <= 1}
             onClick={() => handleNextImage(currentIndex - 1)}
           >
-            <ChevronLeftIcon />
+            &#10144;
           </Button>
         </div>
         <div className="fixed bottom-24 left-20 right-20 top-20">
@@ -193,17 +190,18 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
         <div className="fixed right-1 top-[calc(50%-35px)]">
           <Button
             ariaLabel="View next image"
+            className="border border-solid border-transparent text-[3rem] focus:border focus:border-solid focus:border-primary-100"
             dataTestId="next-image"
-            clickable={snapsLength > 1}
+            disabled={snapsLength <= 1}
             onClick={() => handleNextImage(currentIndex + 1)}
           >
-            <ChevronRightIcon />
+            &#10144;
           </Button>
         </div>
         <div className="fixed left-0 bottom-0 w-full">
           <div
             role="presentation"
-            tabIndex={0}
+            tabIndex={snapsLength <= 1 ? -1 : 0}
             onKeyDown={handleKeyDown}
             className="overflow-y-auto whitespace-nowrap text-center"
           >

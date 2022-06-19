@@ -5,14 +5,14 @@ export type ButtonProps = AriaLabel &
   Children &
   DataTestId &
   OnClickEvent & {
-    clickable?: boolean
+    disabled?: boolean
     className?: string
   }
 
 export default function Button({
   ariaLabel,
   className,
-  clickable,
+  disabled,
   children,
   dataTestId,
   onClick
@@ -21,9 +21,10 @@ export default function Button({
     <button
       aria-label={ariaLabel}
       data-testid={dataTestId}
+      disabled={disabled}
       className={clsx(
-        'rounded border-0 bg-transparent p-4 text-3xl transition duration-300 ease-in-out',
-        clickable
+        'rounded bg-transparent p-4 text-3xl transition-[color] duration-300 ease-in-out',
+        !disabled
           ? 'cursor-pointer text-white hover:text-primary-25'
           : 'cursor-not-allowed text-off-black hover:text-off-black',
         className

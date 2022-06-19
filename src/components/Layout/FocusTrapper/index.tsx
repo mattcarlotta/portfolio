@@ -34,7 +34,7 @@ export default class FocusTrapper extends Component<
       ).filter((element) => isFocusable(element as AccessibleElement))
 
       this.tabbableItems = tabbableItems as Array<HTMLElement>
-      this.setState({ tabIndex: 0 })
+      this.setState({ tabIndex: tabbableItems.length > 0 ? 0 : -1 })
     }
   }
 
@@ -54,7 +54,7 @@ export default class FocusTrapper extends Component<
     this.lastActiveElement.focus()
   }
 
-  handleOutsideClick = (event: MouseEvent<HTMLDivElement>) => {
+  handleClick = (event: MouseEvent<HTMLElement>) => {
     const tabbableItemIndex = this.tabbableItems.findIndex((node) =>
       node.isEqualNode(event.target as HTMLElement)
     )
@@ -62,7 +62,7 @@ export default class FocusTrapper extends Component<
     this.setState({ tabIndex: tabbableItemIndex >= 0 ? tabbableItemIndex : 0 })
   }
 
-  handleFocusTrap = (event: KeyboardEvent<HTMLDivElement>) => {
+  handleFocusTrap = (event: KeyboardEvent<HTMLElement>) => {
     const { key, shiftKey } = event
     const tabPress = key === 'Tab'
     const escKey = key === 'Escape' || key === 'Esc'
@@ -82,7 +82,7 @@ export default class FocusTrapper extends Component<
       }))
     } else if (escKey) {
       event.stopPropagation()
-      this.props.onEscapePress?.()
+      this.props.onEscapePress()
     }
   }
 
@@ -93,7 +93,7 @@ export default class FocusTrapper extends Component<
         className={clsx(this.props.className)}
         ref={this.focusTrapRef}
         onKeyDown={this.handleFocusTrap}
-        onMouseDown={this.handleOutsideClick}
+        onClick={this.handleClick}
       >
         {this.props.children}
       </div>

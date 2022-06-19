@@ -18,16 +18,13 @@ export default function Modal({
   return open
     ? createPortal(
         <div
-          id={id}
           className="fixed top-0 right-0 bottom-0 left-0 z-[1300]"
-          aria-labelledby={`${id}-title}`}
-          aria-describedby={`${id}-description}`}
           role="presentation"
         >
           {description && (
             <p
               aria-live="polite"
-              id={`${id}-description}`}
+              id="modal-description"
               className="fixed top-0 opacity-0"
             >
               {description}
@@ -42,9 +39,11 @@ export default function Modal({
             onEscapePress={onClose}
           >
             <div
+              id={id}
               className="h-full"
               role="dialog"
-              aria-describedby="modal-title"
+              aria-labelledby="modal-title"
+              aria-describedby="modal-description"
               aria-modal="true"
               tabIndex={0}
             >
