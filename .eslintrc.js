@@ -32,6 +32,7 @@ module.exports = {
     'react/display-name': 0,
     'react/function-component-definition': 0,
     'react/prefer-stateless-function': 'warn',
+    'react/state-in-constructor': 0,
     'react/jsx-filename-extension': [
       1,
       {

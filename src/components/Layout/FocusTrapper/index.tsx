@@ -22,7 +22,9 @@ export default class FocusTrapper extends Component<
   }
 
   lastActiveElement = document.activeElement as HTMLElement
+
   focusTrapRef = createRef<HTMLDivElement>()
+
   tabbableItems = [] as Array<HTMLElement>
 
   componentDidMount() {
@@ -42,11 +44,9 @@ export default class FocusTrapper extends Component<
     _prevProps: FocusTrapperProps,
     prevState: FocusTrapperState
   ) {
-    if (
-      this.state.tabIndex !== prevState.tabIndex &&
-      this.tabbableItems.length > 0
-    ) {
-      this.tabbableItems[this.state.tabIndex]?.focus()
+    const { tabIndex } = this.state
+    if (tabIndex !== prevState.tabIndex && this.tabbableItems.length > 0) {
+      this.tabbableItems[tabIndex]?.focus()
     }
   }
 
@@ -63,6 +63,7 @@ export default class FocusTrapper extends Component<
   }
 
   handleFocusTrap = (event: KeyboardEvent<HTMLElement>) => {
+    const { onEscapePress } = this.props
     const { key, shiftKey } = event
     const tabPress = key === 'Tab'
     const escKey = key === 'Escape' || key === 'Esc'
@@ -82,20 +83,21 @@ export default class FocusTrapper extends Component<
       }))
     } else if (escKey) {
       event.stopPropagation()
-      this.props.onEscapePress()
+      onEscapePress()
     }
   }
 
   render() {
+    const { children, className } = this.props
     return (
       <div
         role="presentation"
-        className={clsx(this.props.className)}
+        className={clsx(className)}
         ref={this.focusTrapRef}
         onKeyDown={this.handleFocusTrap}
         onClick={this.handleClick}
       >
-        {this.props.children}
+        {children}
       </div>
     )
   }

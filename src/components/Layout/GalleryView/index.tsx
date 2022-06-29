@@ -204,7 +204,9 @@ export default function ModalDialog({
         </div>
         <div className="fixed left-0 bottom-0 w-full">
           <div
-            role="presentation"
+            role="listbox"
+            aria-activedescendant={`button-preview-${title}`}
+            aria-labelledby={`button-preview-${title}`}
             tabIndex={snapsLength <= 1 ? -1 : 0}
             onKeyDown={handleKeyDown}
             className="overflow-y-auto whitespace-nowrap text-center"

@@ -46,25 +46,25 @@ const SOCIALLINKS = [
     Icon: GithubIcon,
     id: 'github',
     title: 'Github',
-    href: 'https://github.com/mattcarlotta'
+    href: 'https://github.com/mattcarlotta/'
   },
   {
     Icon: LinkedinIcon,
     id: 'linkedin',
     title: 'Linkedin',
-    href: 'https://www.linkedin.com/in/mattcarlotta'
+    href: 'https://www.linkedin.com/in/mattcarlotta/'
   },
   {
     Icon: StackOverflowIcon,
     id: 'stackoverflow',
     title: 'Stackoverflow',
-    href: 'https://stackoverflow.com/users/7376526/matt-carlotta'
+    href: 'https://stackoverflow.com/users/7376526/matt-carlotta/'
   },
   {
     Icon: CodesandboxIcon,
     id: 'codesandbox',
     title: 'CodeSandBox',
-    href: 'https://codesandbox.io/u/mattcarlotta/sandboxes'
+    href: 'https://codesandbox.io/u/mattcarlotta/sandboxes/'
   }
 ]
 

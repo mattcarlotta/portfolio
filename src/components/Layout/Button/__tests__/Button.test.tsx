@@ -20,9 +20,9 @@ describe('Button', () => {
     expect(btnNode).toHaveClass('hover:text-primary-25')
   })
 
-  it("sets new classes when passed a 'clickable' prop", () => {
+  it("sets new classes when passed a 'disabled' prop", () => {
     const { getByTestId } = render(
-      <Button data-testid="custom-btn" {...initProps} clickable={false} />
+      <Button data-testid="custom-btn" {...initProps} disabled />
     )
     const btnNode = getByTestId('test')
     expect(btnNode).toHaveClass('cursor-not-allowed')

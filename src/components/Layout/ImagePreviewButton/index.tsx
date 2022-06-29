@@ -27,6 +27,8 @@ export default function ImagePreviewButton({
 
   return (
     <button
+      role="option"
+      aria-selected={active}
       aria-label={title}
       data-testid={`button-${title}`}
       id={`button-preview-${title}`}

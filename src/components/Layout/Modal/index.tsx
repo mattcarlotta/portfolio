@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import { createPortal } from 'react-dom'
 import type { ChildrenWithId } from '~types'
 import FocusTrapper from '../FocusTrapper'
