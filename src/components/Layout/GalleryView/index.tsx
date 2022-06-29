@@ -35,12 +35,16 @@ const initialImageState = {
   title: ''
 }
 
-const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
+export default function ModalDialog({
+  snapshots
+}: {
+  snapshots: Array<CONTENTFUL_IMAGE>
+}) {
   const [state, setState] = useState<ModalDialogState>(initialImageState)
   const { description, currentIndex, open, title, url } = state
   const snapsLength = snapshots.length
 
-  const selectImage = (selectedIndex: number): void => {
+  const selectImage = (selectedIndex: number) => {
     const image = snapshots[selectedIndex]
     setState((prevState) => ({
       ...prevState,
@@ -49,7 +53,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
     }))
   }
 
-  const handleImageClick = (selectedIndex: number): void => {
+  const handleImageClick = (selectedIndex: number) => {
     const image = snapshots[selectedIndex]
     setState({
       open: true,
@@ -59,7 +63,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
   }
 
   const handleNextImage = useCallback(
-    (nextIndex: number): void => {
+    (nextIndex: number) => {
       const snapsIndexLength = snapsLength - 1
       let selectedIndex = currentIndex
 
@@ -76,11 +80,11 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
     [currentIndex, snapsLength]
   )
 
-  const handleModalClose = (): void => {
+  const handleModalClose = () => {
     setState(initialImageState)
   }
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>): void => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (!open) return
 
     const { key } = event
@@ -99,7 +103,7 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
   const handleSelectImage = (
     event: KeyboardEvent<HTMLDivElement>,
     selectedIndex: number
-  ): void => {
+  ) => {
     if (event.key === 'Enter') {
       event.preventDefault()
       handleImageClick(selectedIndex)
@@ -222,5 +226,3 @@ const ModalDialog = ({ snapshots }: { snapshots: Array<CONTENTFUL_IMAGE> }) => {
     </>
   )
 }
-
-export default ModalDialog

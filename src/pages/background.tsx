@@ -1,3 +1,4 @@
+import BackgroundTechList from '~components/Layout/BackgroundTechList'
 import ContentfulRichText from '~components/Layout/ContentfulRichText'
 import DetailHeadline from '~components/Layout/DetailHeadline'
 import Image from '~components/Layout/Image'
@@ -15,8 +16,6 @@ import LocationIcon from '~icons/LocationIcon'
 import MailIcon from '~icons/MailIcon'
 import RankIcon from '~icons/RankIcon'
 import StackOverflowIcon from '~icons/StackOverflowIcon'
-import StarFilledIcon from '~icons/StarFilledIcon'
-import StarOutlineIcon from '~icons/StarOutlineIcon'
 import StatusIcon from '~icons/StatusIcon'
 import type { CONTENTFUL_BACKGROUND_PAGE, InferNextProps } from '~types'
 import clsx from '~utils/clsx'
@@ -146,44 +145,7 @@ export default function Background({
             </section>
             <section>
               <DetailHeadline id="tech-specs">Tech Specs:</DetailHeadline>
-              <ul
-                data-testid="tech"
-                className="h-60 list-none overflow-y-auto p-2 md:h-full"
-              >
-                {background.tech.data.map(({ technology, level }, index) => (
-                  <li key={technology}>
-                    <div className="font-plain text-xl leading-relaxed">
-                      <div
-                        className={clsx(
-                          'px-2.5 text-center sm:flex sm:items-center',
-                          index % 2 ? 'bg-primary-900' : 'bg-transparent'
-                        )}
-                      >
-                        <p className="text-primary-25 sm:flex sm:flex-1">
-                          {technology}
-                        </p>
-                        <p className="text-primary-25 sm:flex sm:flex-1 sm:justify-end">
-                          {[
-                            Array.from({ length: 5 }, (_, i) =>
-                              i < level ? (
-                                <StarFilledIcon
-                                  key={`${technology}-level-${i}`}
-                                  className="mr-2 align-middle text-xl text-primary-25"
-                                />
-                              ) : (
-                                <StarOutlineIcon
-                                  key={`${technology}-not-level-${i}`}
-                                  className="mr-2 align-middle text-xl text-gray"
-                                />
-                              )
-                            )
-                          ]}
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <BackgroundTechList tech={background.tech} />
             </section>
             <section>
               <DetailHeadline id="formal-education">Education:</DetailHeadline>

@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useImageContext } from '~components/Context/ImageContext'
-import { useScrollHeight } from '~components/Context/ScrollHeightContext'
 import type { HeightAndWidth, OptionalClassName } from '~types'
 import calculateScale from '~utils/calculateScale'
+import useLoadingElement from '~utils/useLoadingElement'
 
 export type ImageProps = HeightAndWidth &
   OptionalClassName & {
@@ -26,21 +26,11 @@ export default function Image({
 }: ImageProps) {
   const { supportsWebp } = useImageContext()
   const imageRef = useRef<HTMLImageElement | null>(null)
-  const { clientHeight, scrollHeight } = useScrollHeight()
-  const [isLoading, setLoading] = useState(true)
+  const isLoading = useLoadingElement(imageRef)
   const isRescaled = scale !== 0
   const newHeight = isRescaled ? calculateScale(height, scale) : height
   const newWidth = isRescaled ? calculateScale(width, scale) : width
   const rescale = isRescaled ? `fit=scale&h=${newHeight}&w=${newWidth}` : ''
-
-  useEffect(() => {
-    if (imageRef.current && clientHeight > 0 && isLoading) {
-      const { top: topOfImage } = imageRef.current.getBoundingClientRect()
-      /* istanbul ignore next */
-      if (clientHeight >= topOfImage || scrollHeight >= topOfImage)
-        setLoading(false)
-    }
-  }, [isLoading, scrollHeight, clientHeight])
 
   return (
     <>
