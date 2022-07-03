@@ -1,3 +1,4 @@
+import NextLink from 'next/link'
 import Bars from '~components/Layout/Bars'
 import Card from '~components/Layout/Card'
 import CardTitle from '~components/Layout/CardTitle'
@@ -8,16 +9,15 @@ import OutsideLink from '~components/Navigation/OutsideLink'
 import CodeIcon from '~icons/CodeIcon'
 import DemoIcon from '~icons/DemoIcon'
 import StatusIcon from '~icons/StatusIcon'
-import type { AriaLabel, CONTENTFUL_JSON, HeightAndWidth, Title } from '~types'
+import type { AriaLabel, HeightAndWidth, Title } from '~types'
 import clsx from '~utils/clsx'
-import ContentfulRichText from '../ContentfulRichText'
 
 export type CardPreviewProps = AriaLabel &
   HeightAndWidth &
   Title & {
     active?: boolean
     alt?: string
-    description: string | CONTENTFUL_JSON
+    description: string
     contentType: string
     href?: string
     imagePriority?: boolean
@@ -58,6 +58,7 @@ const CardPreview = ({
         noFocusRing
       >
         <Image
+          className="rounded"
           priority={imagePriority}
           url={url}
           alt={alt}
@@ -65,11 +66,10 @@ const CardPreview = ({
           height={height}
           width={width}
           contentType={contentType}
-          className="rounded"
         />
       </Link>
     </div>
-    <div className="mt-1 mb-2.5 flex items-center justify-center">
+    <div className="mt-1 flex items-center justify-center">
       {Boolean(status) && (
         <Tooltip title={status}>
           <Link
@@ -110,15 +110,11 @@ const CardPreview = ({
         </Tooltip>
       )}
     </div>
-    <header>
-      <div className="px-2.5 pt-0 pb-4 font-plain text-md">
-        {typeof description === 'string' ? (
-          <p>{description}</p>
-        ) : (
-          <ContentfulRichText json={description.json} />
-        )}
-      </div>
-    </header>
+    <NextLink href={`/${href}/${slug}`}>
+      <a className="m-2 block rounded border-2 border-solid border-transparent px-2.5 py-4 font-plain text-md transition-colors hover:text-white focus:border-primary-100 focus:text-white">
+        {description}
+      </a>
+    </NextLink>
   </Card>
 )
 
