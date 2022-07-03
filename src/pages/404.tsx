@@ -9,7 +9,7 @@ export default function ErrorPage() {
   return (
     <>
       <Head>
-        <title>Page Not Found | Matt Carlotta</title>
+        <title>File Not Found | Matt Carlotta</title>
       </Head>
       <Project dataTestId="not-found-page">
         <PanelTitle id="file-not-found" data-testid="panel-title">
