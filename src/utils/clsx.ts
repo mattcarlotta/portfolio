@@ -8,7 +8,7 @@ type MixArgs =
   | undefined
 
 function toVal(mix: MixArgs) {
-  var k,
+  let k,
     y,
     str = ''
 
@@ -38,7 +38,7 @@ function toVal(mix: MixArgs) {
 }
 
 export default function clsx(...args: Array<MixArgs>) {
-  var i = 0,
+  let i = 0,
     tmp,
     x,
     str = ''

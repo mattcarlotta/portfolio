@@ -8,10 +8,8 @@
 }
 
 .bar {
-  display: none;
-  position: absolute;
+  @apply absolute hidden w-0;
   height: 2px;
-  width: 0px;
   background: #005193;
 }
 
