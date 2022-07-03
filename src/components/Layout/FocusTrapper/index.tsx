@@ -28,6 +28,7 @@ export default class FocusTrapper extends Component<
   tabbableItems = [] as Array<HTMLElement>
 
   componentDidMount() {
+    /* istanbul ignore else */
     if (this.focusTrapRef.current) {
       const tabbableItems = Array.from(
         this.focusTrapRef.current.querySelectorAll(
@@ -36,7 +37,7 @@ export default class FocusTrapper extends Component<
       ).filter((element) => isFocusable(element as AccessibleElement))
 
       this.tabbableItems = tabbableItems as Array<HTMLElement>
-      this.setState({ tabIndex: tabbableItems.length > 0 ? 0 : -1 })
+      this.setState({ tabIndex: 0 })
     }
   }
 
@@ -91,6 +92,7 @@ export default class FocusTrapper extends Component<
     const { children, className } = this.props
     return (
       <div
+        data-testid="focus-trapper"
         role="presentation"
         className={clsx(className)}
         ref={this.focusTrapRef}

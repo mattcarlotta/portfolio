@@ -85,8 +85,6 @@ export default function ModalDialog({
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (!open) return
-
     const { key } = event
     const arrowLeftPressed = key === 'ArrowLeft'
     const arrowRightPressed = key === 'ArrowRight'
@@ -204,6 +202,7 @@ export default function ModalDialog({
         </div>
         <div className="fixed left-0 bottom-0 w-full">
           <div
+            data-testid="gallery-preview"
             role="listbox"
             aria-activedescendant={`button-preview-${title}`}
             aria-labelledby={`button-preview-${title}`}

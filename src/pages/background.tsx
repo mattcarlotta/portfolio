@@ -90,9 +90,11 @@ export default function Background({
               <div className="mt-2 flex flex-col items-center justify-center overflow-hidden rounded border border-solid border-primary-600 bg-primary-700 py-4">
                 <Image
                   priority
+                  className="rounded"
                   {...background.profileImage}
                   alt={background.profileImage.description}
-                  className="rounded"
+                  height={150}
+                  width={150}
                 />
               </div>
               <DetailHeadline id="details">Details:</DetailHeadline>

@@ -11,8 +11,9 @@ export default function calculateWindowWidth() {
       setWidth(window.innerWidth)
     }, 300)
 
-    window.addEventListener('resize', updateWindowWidth)
     updateWindowWidth()
+
+    window.addEventListener('resize', updateWindowWidth)
 
     return () => {
       window.removeEventListener('resize', updateWindowWidth)

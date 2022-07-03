@@ -17,7 +17,7 @@ export default function BackgroundTechList({
   const width = useWindowWidth()
 
   return (
-    <div ref={listRef}>
+    <div data-testid="background-tech-wrapper" ref={listRef}>
       {!isLoading ? (
         <List
           height={256}
@@ -27,7 +27,11 @@ export default function BackgroundTechList({
           itemCount={tech.data.length}
         >
           {({ data, index, style }) => (
-            <div style={style} key={data[index].technology}>
+            <div
+              style={style}
+              data-testid={data[index].technology}
+              key={data[index].technology}
+            >
               <div className="font-plain text-xl leading-relaxed">
                 <div
                   className={clsx(
@@ -39,21 +43,19 @@ export default function BackgroundTechList({
                     {data[index].technology}
                   </p>
                   <p className="text-primary-25 sm:flex sm:flex-1 sm:justify-end">
-                    {[
-                      Array.from({ length: 5 }, (_, i) =>
-                        i < data[index].level ? (
-                          <StarFilledIcon
-                            key={`${data[index].technology}-level-${i}`}
-                            className="mr-2 align-middle text-xl text-primary-25"
-                          />
-                        ) : (
-                          <StarOutlineIcon
-                            key={`${data[index].technology}-not-level-${i}`}
-                            className="mr-2 align-middle text-xl text-gray"
-                          />
-                        )
+                    {Array.from({ length: 5 }, (_, i) =>
+                      i < data[index].level ? (
+                        <StarFilledIcon
+                          key={`${data[index].technology}-level-${i}`}
+                          className="mr-2 align-middle text-xl text-primary-25"
+                        />
+                      ) : (
+                        <StarOutlineIcon
+                          key={`${data[index].technology}-not-level-${i}`}
+                          className="mr-2 align-middle text-xl text-gray"
+                        />
                       )
-                    ]}
+                    )}
                   </p>
                 </div>
               </div>
