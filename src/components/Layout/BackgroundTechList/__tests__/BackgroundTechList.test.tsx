@@ -34,9 +34,8 @@ describe('FocusTrapper', () => {
     const { getByTestId } = render(<BackgroundTechList {...props} />)
 
     const node = getByTestId('ReactJS')
-
     expect(node).toBeInTheDocument()
-    expect(node.style.height).toEqual('75px')
+    expect(node).toHaveStyle('height: 75px')
   })
 
   it('changes the tech list height for larger screens', async () => {
@@ -44,6 +43,6 @@ describe('FocusTrapper', () => {
 
     const node = getByTestId('ReactJS')
     expect(node).toBeInTheDocument()
-    expect(node.style.height).toEqual('40px')
+    expect(node).toHaveStyle('height: 40px')
   })
 })
