@@ -8,7 +8,8 @@ export default class CustomDocument extends Document {
         <Head>
           <meta httpEquiv="content-type" content="text/html; charset=UTF-8" />
           <meta name="theme-color" content="#000000" />
-          <meta name="robots" content="follow, index" />
+          <meta name="robots" content="all" />
+          <meta name="googlebot" content="all" />
           <meta name="build version" content={packageJson.version} />
           <link
             rel="apple-touch-icon"
