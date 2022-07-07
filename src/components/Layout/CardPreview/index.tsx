@@ -110,7 +110,7 @@ const CardPreview = ({
         </Tooltip>
       )}
     </div>
-    <NextLink href={`/${href}/${slug}`}>
+    <NextLink href={`/${href}/${slug}`} prefetch={false}>
       <a className="m-2 block rounded border-2 border-solid border-transparent px-2.5 py-4 font-plain text-md transition-colors hover:text-white focus:border-primary-100 focus:text-white">
         {description}
       </a>
