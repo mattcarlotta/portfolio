@@ -12,17 +12,17 @@ export const HEADERLINKS = [
   },
   {
     page: 'projects',
-    href: '/projects',
+    href: '/projects/',
     Icon: ProjectsIcon
   },
   {
     page: 'explorations',
-    href: '/explorations',
+    href: '/explorations/',
     Icon: ExplorationIcon
   },
   {
     page: 'background',
-    href: '/background',
+    href: '/background/',
     Icon: BackgroundIcon
   }
 ]
