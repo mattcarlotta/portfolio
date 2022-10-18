@@ -1,6 +1,6 @@
 import { Component, createRef } from 'react'
 import { AccessibleElement, KeyboardEvent, MouseEvent, ReactNode } from '~types'
-import { ACCESSIBLE_ELEMENTS, isFocusable } from '~utils/accessbilityHelpers'
+import { ACCESSIBLE_ELEMENTS, isFocusable } from '~utils/accessibilityHelpers'
 import clsx from '~utils/clsx'
 
 export type FocusTrapperState = {
